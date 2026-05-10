@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: "Oswald", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    min-height: 100%;
+    width: 100%;
+    background-color: #080F18;
+}
+
+header {
+    padding: 30px 4vw 0;
+    width: 100%;
+    display: flex;
+    gap: 5vw;
+    align-items: center;
+}
+
+#head1 p {
+    color: #8fb2d5;
+    font-size: 15px;
+    word-spacing: 5px;
+}
+
+#head1 h1 {
+    font-size: 5.3vw;
+    font-weight: 600;
+    background: linear-gradient(to bottom, white, #bbd9f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+#head2 {
+    margin-top: 30px;
+    padding-right: 40px;
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
+
+#head2 p {
+    font-size: 15px;
+    font-weight: 200;
+    word-spacing: 5px;
+}
+
+#head3 {
+    margin-top: 25px;
+    padding-right: 40px;
+    padding-left: 20px;
+    ;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-left: 2px solid #1F2932;
+}
+
+#head3 p {
+    font-size: 15px;
+    font-weight: 200;
+    word-spacing: 5px;
+}
+
+#head4 {
+    margin-left: auto;
+}
+
+#head4 button {
+    padding: 10px 25px;
+    font-size: 18px;
+    font-weight: 300;
+    background-color: #121e2d;
+    border: 1px solid rgba(255, 255, 255, 0.351);
+    letter-spacing: 2px;
+    border-radius: 15px;
+}
+
+#heroDiv {
+    width: 100%;
+    padding: 30px 4vw 0;
+
+}
+
+#upperHero {
+    height: 32vw;
+    width: 100%;
+    /* border-radius: 25px; */
+    display: flex;
+    gap: 20px;
+    /* background-color: grey; */
+    
+}
+
+#bigHeroDiv {
+    height: 100%;
+    width: 45%;
+    border-radius: 20px;
+    background-image: url(Images/main.png);
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#roundButtonDiv{
+    height: 4.5vw;
+    width: 4.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #121e2d;
+    border: 3px solid #3f5b75;
+}
+
+.commonDiv {
+    height: 100%;
+    width: 18%;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #243A4E;
+}
+
+.commonImgDiv {
+    height: 75%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: grey;
+}
+
+.commonImgDiv img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.commonImgDiv h1 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.commonImgDiv p {
+    font-size: 14px;
+    font-weight: 300;
+    word-spacing: 3px;
+}
+
+.colorBol {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.commonImgBottom {
+    padding: 12px 0 0 18px;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+#bottomHero {
+    height: 35vw;
+    width: 100%;
+    /* border-radius: 25px; */
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.commonDiv2 {
+    height: 100%;
+    width: 18.8%;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #243A4E;
+}
+
+footer {
+    width: 100%;
+    padding: 13px 4vw;
+}
+
+#lastFoot {
+    height: 6vw;
+    width: 100%;
+    background-color: #162431;
+    border-radius: 20px;
+    border: 1px solid #ffffff4a;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 20px;
+}
+#lastFoot p{
+    font-size: 15px;
+    font-weight: 200;
+}
+.innerLast {
+    height: 80%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+}
+
+.innerLast img {
+    height: 100%;
+    width: 20%;
+    object-fit: contain;
+}
+
+.innerLast i {
+    font-size: 2.5vw;
+    color: #E55901
+}
+
+.innerLast h1 {
+    font-size: 15px;
+}
+
+#EndStrip {
+    height: 4vw;
+    width: 100%;
+    background-color: #162431;
+    border-radius: 20px;
+    border: 1px solid #ffffff4a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 15px;
+}
+#copyRight{
+    height: 100%;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#imageDivFoot{
+    height: 90%;
+    width: 25%;
+}
+#imageDivFoot img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+#endMidFoot{
+    font-size: 15px;
+    font-weight: 300;
+    display: flex;
+    gap:4vw;
+}
+#socialLink{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 13px;
+    font-weight: 300;
+}
+#socialLink i{
+    font-size: 25px;
+}
