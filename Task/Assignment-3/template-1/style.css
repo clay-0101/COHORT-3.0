@@ -1,0 +1,514 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    min-height: 100%;
+    width: 100%;
+    background-color: #000709;
+}
+
+header {
+    height: 6vw;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 4vw;
+    /* background-color: grey; */
+}
+
+.head1 {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.logoDiv {
+    height: 100%;
+    width: 30%;
+}
+
+.logoDiv img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.head1 p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#head2 {
+    display: flex;
+    gap: 3vw;
+    align-items: center;
+}
+
+#head2 p {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+#head3 {
+    width: 12vw;
+    padding: 15px 5px;
+    border: 1px solid #13c2a4;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#head3 i {
+    color: #13c2a4;
+}
+
+#heroDiv {
+    color: white;
+    padding: 0 4vw;
+    display: flex;
+    justify-content: space-between;
+    background-image: url(images/bg.png);
+    background-size: cover;
+}
+
+#heroDiv1 {
+    height: 49vw;
+    width: 52%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#heroUppr1 h3 {
+    color: #3a9183;
+    font-size: 2.5vw;
+    font-weight: 400;
+}
+
+#heroUppr1 h1 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 10rem;
+    line-height: 0.8;
+    color: #3a9183;
+}
+
+#heroUppr2 {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+#heroUppr2 h1 {
+    font-size: 2vw;
+    font-weight: 300;
+}
+
+#heroUppr2 p {
+    font-size: 18px;
+    font-weight: 200;
+
+}
+
+#heroUppr3 {
+    height: 8.5vw;
+    display: flex;
+    gap: 3vw;
+    align-items: center;
+}
+
+.btnDiv {
+    width: 15vw;
+    font-size: 22px;
+    padding: 15px 5px;
+    border: 2px solid #13c2a4;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btnDiv p {
+    font-size: 18px;
+}
+
+.btnDiv i {
+    color: #13c2a4;
+}
+
+#playDiv {
+    height: 3.5vw;
+    width: 3.5vw;
+    border: 2px solid #13c2a4;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+}
+
+#heroABSdiv2 {
+    height: 52vw;
+    width: 45%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-25%, -44%);
+}
+
+#heroABSdiv2 img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#heroDiv3 {
+    height: 35vw;
+    width: 18%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 5vw;
+
+}
+
+.commonBtnDiv {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+}
+
+.commonBtnDiv p {
+    font-size: 20px;
+    width: 8vw;
+    font-family: "Anta", sans-serif;
+
+}
+
+.commonBtnDiv i {
+    color: #13c2a4;
+}
+
+.commonBtn {
+    height: 4vw;
+    width: 4vw;
+    border: 3px solid #13c2a4;
+    border-radius: 20px;
+    font-size: 2.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* PAGE 2 */
+#page2 {
+    min-height: 100vh;
+    width: 100%;
+    padding: 0 4vw;
+    color: white;
+}
+
+#stripDiv {
+    height: 10vw;
+    width: 100%;
+
+    background-color: rgba(188, 253, 242, 0.095);
+    backdrop-filter: blur(20px);
+    border: 1px solid #13c2a4;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+
+.stripContentDiv {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
+.stripContent {
+    width: 12vw;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* background-color: grey; */
+}
+
+.stripContent h1 {
+    font-weight: 400;
+    color: #13c2a4;
+}
+
+.stripContent h1,
+p {
+    font-family: "Anta", sans-serif;
+
+}
+
+#img1 {
+    height: 12vw;
+    width: 15%;
+    position: absolute;
+    left: 0;
+    bottom: 1.5vw;
+}
+
+#img1 img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#img2 {
+    height: 12vw;
+    width: 15%;
+    position: absolute;
+    right: 0;
+    bottom: 1.5vw;
+}
+
+#img2 img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.heading {
+    text-align: center;
+    margin-top: 3vw;
+}
+
+.heading h1,
+p {
+    font-family: "Anta", sans-serif;
+}
+
+.heading p {
+    font-size: 20px;
+    color: #13c2a4;
+}
+
+.heading h1 {
+    font-size: 2.8vw;
+    font-weight: 400;
+}
+
+/* PROJECTION SECTION */
+#projectDiv {
+    height: 30vw;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+
+.projectImgDiv {
+    height: 100%;
+    width: 32%;
+    border-radius: 20px;
+    border: 3px solid #13c2a4;
+    overflow: hidden;
+}
+
+.projectImage {
+    height: 70%;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: flex-end;
+    background-image: url(images/img1.jpg);
+    background-size: cover;
+}
+
+.projectImage2 {
+    background-image: url(images/img2.jpg);
+    background-size: cover;
+}
+
+.projectImage3 {
+    background-image: url(images/img3.jpg);
+    background-size: cover;
+}
+
+.imgBtn {
+    border: 1px solid #13c2a4;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background-color: rgba(129, 153, 148, 0.211);
+    backdrop-filter: blur(5px);
+}
+
+.paraDiv {
+    width: 60%;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 200;
+}
+
+.buttonDiv {
+    padding: 0 15px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.icon {
+    font-size: 25px;
+}
+
+.storeButton {
+    border: 1px solid #13c2a4;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+
+.roundIcon {
+    height: 3vw;
+    width: 3vw;
+    border: 1px solid #13c2a4;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-left: auto;
+}
+
+/* PAGE 3 */
+#page3 {
+    min-height: 80vh;
+    width: 100%;
+    padding: 0 4vw;
+    color: white;
+
+}
+
+#workingProcessDiv {
+    height: 12vw;
+    width: 100%;
+
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between
+}
+
+.processDiv {
+    height: 100%;
+    width: 18%;
+    background-color: #215766;
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+
+}
+
+.roundImg {
+    height: 5vw;
+    width: 5vw;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.roundImg img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+.processText {
+    width: 50%;
+
+}
+
+.processText h1 {
+    font-size: 3vw;
+    font-weight: 400;
+    font-family: "Anta", sans-serif;
+}
+
+.processText p {
+    font-size: 20px;
+}
+
+/* FOOTER */
+#footer {
+    height: 18vw;
+    width: 100%;
+    border-radius: 25px;
+    margin-top: 5vw;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#foot1 {
+    height: 100%;
+    width: 40%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1vw
+}
+
+#foot1 h1,
+p {
+    line-height: 0.9;
+    font-family: "Anta", sans-serif;
+}
+
+#foot2 {
+    height: 100%;
+    width: 40%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#footIcons {
+    display: flex;
+    gap: 10px;
+
+}
+
+#footIcons i {
+    padding: 1vw;
+    border-radius: 50%;
+    border: 2px solid #13c2a4;
+
+}
