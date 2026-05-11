@@ -473,6 +473,8 @@ p {
     margin-top: 5vw;
     display: flex;
     justify-content: space-between;
+    background-image: url(images/bg-2.png);
+    background-size: cover;
 
 }
 
