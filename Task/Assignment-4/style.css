@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 4vw;
+}
+
+header {
+    height: 15vh;
+    width: 100%;
+    /* background-color: lightseagreen; */
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 0.2fr 0.6fr 0.2fr;
+    padding: 20px 0 20px;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.333);
+}
+
+.head {
+    height: 100%;
+    width: 100%;
+    /* background-color: grey; */
+
+}
+
+#head1 {
+    display: flex;
+    align-items: center;
+}
+
+#head1 h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+#head2 {
+    display: flex;
+    justify-content: center;
+    gap: 3vw;
+    align-items: center;
+}
+
+#head2 p {
+    font-size: 20px;
+}
+
+#head3 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2vw;
+}
+
+#head3 i {
+    padding: 15px;
+    font-size: 22px;
+    border-radius: 50%;
+}
+
+#heroSection {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    gap: 4vw;
+    flex-direction: column;
+    position: relative;
+}
+
+#heroNav {
+    height: 20%;
+    margin-top: 3vw;
+}
+
+#heroNav h1 {
+    text-align: center;
+    font-size: 5.3rem;
+    line-height: 1;
+    font-weight: 500;
+}
+
+#innerHero {
+    height: 80%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "leftcenter  secdiv  center  frdiv  rightcenter"
+    ;
+    place-items: center;
+    gap: 16px;
+}
+
+.gridDiv {
+    overflow: hidden;
+    border-radius: 20px;
+    min-height: 0;
+    min-width: 0;
+}
+
+.gridDiv img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+#leftcenter {
+    height: 50%;
+    width: 100%;
+    background-color: #ffb24d;
+    grid-area: leftcenter;
+    background-image: url("https://image-cdn.hypb.st/https://hypebeast.com/image/2018/05/white-rock-spring-summer-2018-editorial-14.jpg?q=75&w=800&cbr=1&fit=max");
+    background-size: 150%;
+    background-position: 60% top;
+}
+
+#secdiv {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-area: secdiv;
+
+}
+
+#secuppr {
+    height: 40%;
+    width: 100%;
+    background-color: #e1c598;
+    background-image: url("https://i.pinimg.com/736x/17/c9/4a/17c94aea525d13162dd978859b40082a.jpg");
+    background-size: 120%;
+    background-position: center 10%;
+}
+
+#secbtm {
+    height: 60%;
+    width: 100%;
+    background-color: #24b8af;
+    background-image: url("https://image-cdn.hypb.st/https://hypebeast.com/image/2016/09/golf-wang-fw16-collection-5.jpg?q=75&w=800&cbr=1&fit=max");
+    background-size: cover;
+
+}
+
+#center {
+    height: 100%;
+    width: 100%;
+    background-color: #f4d35e;
+    grid-area: center;
+    background-image: url("https://i.pinimg.com/736x/5f/c8/36/5fc8360b3599bfd85e283d4acee5ce1f.jpg");
+    background-size: cover;
+}
+
+#frdiv {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-area: frdiv;
+    min-height: 0;
+
+}
+
+#fruppr {
+    height: 60%;
+    width: 100%;
+    background-color: #fd8637;
+    background-image: url("https://i.pinimg.com/236x/fb/08/33/fb08337aeb6edcec4a8820224de0b326.jpg");
+    background-size: cover;
+
+}
+
+#frbtm {
+    height: 40%;
+    width: 100%;
+    background-color: #00a1ec;
+    background-image: url("https://i.pinimg.com/1200x/dc/55/b0/dc55b098eba29e77bf859e6b77789ed5.jpg");
+    background-size: cover;
+}
+
+#rightcenter {
+    height: 50%;
+    width: 100%;
+    background-color: #75b38c;
+    grid-area: rightcenter;
+    background-image: url("https://i.pinimg.com/736x/37/24/f1/3724f1c2a8ef7754f468cd85a29ef8dc.jpg");
+    background-size: 160%;
+    background-position: 5% top;
+}
+
+footer {
+    height: 30vh;
+    display: grid;
+    grid-template-columns: 0.4fr 0.2fr 0.4fr;
+    gap: 20px;
+    padding: 10px 0 4vw;
+    position: relative;
+}
+
+.foot {
+    height: 100%;
+    width: 100%;
+}
+
+#foot1 p {
+    font-size: 20px;
+    line-height: 2;
+}
+
+#foot1 div {
+    height: 40%;
+    width: 50%;
+}
+
+#foot2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#foot2 div {
+    width: 70%;
+    padding: 15px 20px;
+    border: 1px solid rgba(128, 128, 128, 0.326);
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+#foot3 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#abstext {
+    position: absolute;
+    top: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+.absImg {
+    position: absolute;
+    height: 55px;
+    width: 55px;
+    /* background-color: grey; */
+}
+
+.absImg img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.img1 {
+    top: 4vw
+}
+
+.img2 {
+    left: 20%;
+    top: 13vw;
+}
+
+.img3 {
+    right: 0;
+    top: 4vw;
+}
+
+.img4 {
+    position: absolute;
+    right: 4%;
+    top: 26%;
+    height: 100px;
+    width: 100px;
+}
+
+.img4 img {
+    height: 150%;
+    width: 150%;
+    object-fit: cover;
+}
+.img5{
+    height: 80px;
+    width: 80px;
+    left:47%;
+    top:28%;
+}
+.img6{
+    height: 100px;
+    width: 100px;
+    bottom: 0;
+}
+.img7{
+    left:38%;
+    top:28%;
+}
+.img8{
+    height: 90px;
+    width: 90px;
+    right: 0;
+    top: -10%;
+}
+.img9{
+    height: 70px;
+    left:66%;
+    top:22%;
+
+}
