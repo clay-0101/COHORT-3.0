@@ -300,6 +300,11 @@ footer {
     width: 150%;
     object-fit: cover;
 }
+.abstext2{
+    position: absolute;
+    right: 7%;
+    bottom: 13%;
+}
 .img5{
     height: 80px;
     width: 80px;
