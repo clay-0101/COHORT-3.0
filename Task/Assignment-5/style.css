@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    min-height: 100%;
+    width: 100%;
+    padding: 0 7vw;
+}
+
+
+/* THIS IS THE PAGE 1 */
+
+#page-1 {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 13% 87%;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(154, 154, 154, 0.219);
+}
+
+#left-nav {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+
+#right-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5vw;
+
+}
+
+.underline {
+    position: relative;
+
+}
+
+.underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0%;
+    background-color: black;
+    transition: all 0.2s linear;
+}
+
+.underline:hover::after {
+    width: 100%;
+}
+
+.fillbg {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.2s linear;
+}
+
+.fillbg::after {
+    content: "";
+    background-color: black;
+    position: absolute;
+    bottom: -500%;
+    left: 0;
+    z-index: -1;
+    height: 120px;
+    width: 120px;
+    border-radius: 35%;
+    transition: all 0.5s linear;
+
+}
+
+.fillbg:hover {
+    color: white;
+
+}
+
+.fillbg:hover::after {
+    bottom: -100%;
+}
+
+#hero-section1 {
+    display: flex;
+    align-items: center;
+}
+
+#hero-text1 {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 3vw;
+    /* background-color: grey; */
+
+}
+
+#hero-text1 h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 6.5rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+#hero-text1 p {
+    font-size: 25px;
+}
+
+#hero-text1 button {
+    width: 12%;
+    padding: 1.3vw 1.5vw;
+    border-radius: 30px;
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 15px;
+}
+
+/* THIS IS THE PAGE 2 */
+
+#page-2{
+    height: 80vh;
+    width: 100%;
+
+}
+#strip{
+    height: 18%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow:hidden;
+    margin-top: 20px;
+}
+
+.movingStrip{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    gap: 4vw;
+    animation: moveText 10s linear infinite;
+}
+.movingImg {
+    height:55%;
+    width: 12%;
+
+}
+
+@keyframes moveText {
+    from{
+        transform: translateX(0%);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+#hero-section2{
+    height:80%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.page2-box{
+    height: 80%;
+    width: 23%;
+    background-color: #f4f4f5;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2vw;
+    padding: 4vw 2.5vw 0 2.8vw;
+}
+.page2-box h1{
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+.page2-box p{
+    font-size: 20px;
+    color: grey;
+    line-height: 1.5;
+}
+.page2-box a{
+    color: black;
+    text-decoration-color: black;
+}
+
+/* THIS IS MY PAGE 3 */
+
+#page-3{
+    min-height: 100vh;
+    width: 100%;
+    margin-top: 2vw;
+    /* background-color: black; */
+}
+#nav-page3-4{
+    width: 100%;
+    padding: 1.5vw 0;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.256);
+}
+#hero-text3{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4vw 0 ;
+}
+#hero-text3 h1{
+    font-size: 3.4rem;
+    font-weight: 500;
+}
+#page3-boxes{
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-rows:repeat(2,1fr);
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 1.5vw;
+    row-gap: 1vw;
+}
+.box3{
+    height: 70vh;
+}
+.box3-img{
+    height: 90%;
+    overflow: hidden;
+}
+.box3-img img{
+    height: 100%;
+    width: 100%;
+    transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.box3-img img:hover{
+    transform: scale(1.1);
+}
+.box3-btm-text{
+    height:10% ;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.box3-btm-text h3{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.box3-btm-text p{
+    padding: 5px 12px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
