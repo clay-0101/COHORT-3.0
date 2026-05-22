@@ -1,4 +1,4 @@
-# 📑JavaScript Beginner Practice Questions
+# 📑JavaScript Practice Questions - 1
 
 # ***Instructions***:
 
