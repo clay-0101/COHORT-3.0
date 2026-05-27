@@ -1,0 +1,864 @@
+@font-face {
+    font-family: figtree;
+    src: url(./font/figtree_n4.3c0838aba1701047e60be6a99a1b0a40ce9b8419.woff2);
+}
+
+@font-face {
+    font-family: RobotoMono;
+    src: url(./font/RobotoMono-Regular.ttf);
+}
+
+@font-face {
+    font-family: Reckless;
+    src: url(./font/RecklessCondensedS-TRIAL-Book.woff);
+}
+
+@font-face {
+    font-family: Robotomedium;
+    src: url(./font/RobotoMono-Medium.ttf);
+}
+
+@font-face {
+    font-family: midnight;
+    src: url(./font/midnight-sans-rd-12-semibold-trial.otf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+}
+
+::-webkit-scrollbar {
+    width: 1.4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.header-1 {
+    padding: 0.3rem;
+}
+
+.header-2 {
+    padding: 0.5rem 0.8rem;
+}
+
+.navbar-1 h2 {
+    font-size: 1.2rem;
+}
+
+.navbar-1 h2:nth-child(3) {
+    position: relative;
+}
+
+.navbar-1 h2 button {
+    background-color: rgb(193, 228, 248);
+}
+
+.navbar-3 p {
+    position: relative;
+}
+
+.navbar-1 h2:nth-child(3)::after,
+.navbar-3 p::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 0.1px;
+    background-color: black;
+}
+
+.navbar-1 h2:nth-child(3):hover::after,
+.navbar-3 p:hover::after {
+    transition: 0.3s;
+    width: 100%;
+}
+
+section.hero {
+    width: 100%;
+    min-height: 95vh;
+    background: url(./hero-img/Alpine-web.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 60% center;
+    padding: 2.5rem;
+}
+
+.hero-button {
+    padding: 0.5rem 2.7rem;
+    font-size: 0.9rem;
+    border: 0.2px solid transparent;
+}
+
+.hero-button:hover {
+    border: 0.2px solid black;
+    background-color: #fff;
+    color: black;
+}
+
+.cart div {
+    font-size: 11px;
+}
+
+.section-2 p {
+    font-size: 3.2rem;
+    padding: 5rem;
+    font-family: Reckless;
+}
+
+.heading {
+    padding: 0.1rem;
+}
+
+.section-3-div {
+    width: auto;
+    grid-template-columns: repeat(9, 16.5rem);
+}
+
+.tag-1 {
+    padding: 0 0.2rem;
+}
+
+.section-3-text {
+    margin-top: 1rem;
+}
+
+.s-p {
+    color: rgb(95, 91, 85);
+}
+
+.section-3 .hero-button {
+    margin-bottom: 8rem;
+}
+
+.add:hover,
+.section-5 .hero-button:hover,
+.section-7 .hero-button:hover,
+.section-8 .hero-button:hover {
+    background-color: #292756;
+    color: white;
+}
+
+.section-4 {
+    padding: 5rem 0 5rem 0;
+}
+
+.section-4-p {
+    font-size: 3.2rem;
+    font-family: Reckless;
+}
+
+.blank {
+    font-size: 1.6rem;
+    padding: 0 0 0 1rem;
+}
+
+.hashtags {
+    padding: 5rem 0 0 0;
+    margin: 0 0 6rem 0;
+}
+
+.hashtag .heading {
+    padding: 0.2rem 1rem;
+}
+
+.section-5 {
+    padding: 20rem 0 7rem 0;
+    background-image: url("https://www.twoleavestea.com/cdn/shop/files/adam-vradenburg-_gu7E90QChU-unsplash_1_1.webp?v=1771592855&width=2560");
+}
+
+.hashtag .heading:hover {
+    background-color: #A2C9FC;
+}
+
+.section-5-background {
+    margin-top: 9rem;
+}
+
+.section-5-heading {
+    font-size: 10rem;
+    line-height: 10rem;
+}
+
+.section-5-p {
+    font-size: 3rem;
+    line-height: 3rem;
+    margin-bottom: 5rem;
+}
+
+.section-6 .section-4-p,
+.section-9 .section-4-p {
+    padding: 7rem 0 0 7rem;
+}
+
+.section-6-container {
+    padding-bottom: 5rem;
+}
+
+.section-6-h1 {
+    margin-top: -30px;
+}
+
+.shop {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.section-7 .section-4-p {
+    font-size: 3.8rem;
+}
+
+.section-7-div {
+    padding: 0 0 0 3rem;
+}
+
+.section-7-div p:nth-child(2) {
+    font-size: 1.2rem;
+}
+
+.section-8-heading {
+    font-size: 4rem;
+}
+.section-8-subdiv h1{
+    width: 60%;
+}
+
+.section-8 {
+    padding: 6rem 1.5rem 1.5rem 1.5rem;
+}
+
+.section-8-subdiv {
+    padding: 3rem 2rem;
+}
+
+.section-9 {
+    padding: 0 0 4rem 0;
+}
+
+.section-9-img:hover {
+    .section-9-img img {
+        transition: 0.3s;
+        scale: 1.1;
+    }
+}
+
+.section-9-div p {
+    padding: 0 0 0 0.3rem;
+}
+
+.section-10 {
+    background-image: url("https://www.twoleavestea.com/cdn/shop/files/Two_Leaves_Tea_Aug_25_Shoot-14x_SQ_1_d549e6bb-f1ad-4b36-a851-05e1af195a31.webp?v=1771593222&width=3200");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 30% center;
+    padding: 0 0 0 2.5rem;
+}
+
+.section-10 div {
+    padding: 6rem 0 2.5rem 2.5rem;
+}
+
+.search {
+    margin: 5rem 0;
+}
+
+.search-bar input {
+    border: 0.2px solid black;
+    padding: 0.6rem 6rem 0.6rem 1rem;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.search-bar .hero-button:hover {
+    background-color: #FFB500;
+}
+
+.contact {
+    padding: 2rem;
+}
+
+.contact h1 {
+    padding-bottom: 0.6rem;
+}
+
+.contact p {
+    position: relative;
+    font-size: 0.9rem;
+    width: fit-content;
+}
+
+.contact p::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 0.1px;
+}
+
+.contact p:hover {
+    color: white;
+}
+
+.contact p:hover::after {
+    transition: 0.3s;
+    width: 100%;
+    background-color: white;
+}
+
+.end {
+    background: url(./footer/Gemini_Generated_Image_6d324u6d324u6d32.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 0 0 1rem 0;
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------- */
+
+/* RESPONSIVE DESIGN STARTS FROM HERE */
+
+@media (max-width:1024px) {
+    .header-1 {
+        font-size: 0.7rem;
+    }
+
+    .header-2 p {
+        font-size: 0.7rem;
+    }
+
+    .header-2 {
+        padding: 0.9rem 1.2rem;
+    }
+
+    .navbar-1 {
+        width: 34%;
+    }
+
+    .navbar-1 h2 {
+        font-size: 1.4rem;
+    }
+
+    .navbar-2 {
+        width: 5rem;
+    }
+
+    .hero h1 {
+        font-size: 5vw;
+        width: 40%;
+    }
+
+    .hero p {
+        width: 50%;
+    }
+
+    .section-3-div {
+        width: auto;
+        grid-template-columns: repeat(9, 21rem);
+    }
+
+    .hero-button {
+        font-size: 1.1rem;
+    }
+
+    .heading {
+        font-size: 3.4rem;
+    }
+
+    .section-4 {
+        width: 90%;
+    }
+
+    .section-4-p {
+        font-size: 3.6rem;
+    }
+
+    .hashtags p {
+        font-size: 1rem;
+    }
+
+    .hashtag .heading {
+        font-size: 2rem;
+    }
+
+    .section-5-logo-1 {
+        width: 8.5rem;
+        height: 8.5rem;
+    }
+
+    .section-5-heading {
+        font-size: 11rem;
+    }
+
+    .section-5-p {
+        font-size: 3.45rem;
+        line-height: 4rem;
+    }
+
+    .section-5-logos img {
+        width: 7rem;
+        height: 7rem;
+    }
+
+    .section-5-logo-h {
+        font-size: 1.1rem;
+    }
+
+    .section-6-container {
+        width: 98%;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .section-8-subdiv h1 {
+        flex-wrap: nowrap;
+        font-size: 1.1rem;
+    }
+
+    .tea-img {
+        width: 100%;
+    }
+
+    .section-6 .section-4-p,
+    .section-9 .section-4-p {
+        padding: 7rem 0 0 0rem;
+        width: 90%;
+    }
+
+    .section-6-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .search-bar {
+        width: 80%;
+    }
+
+    .contact {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact h1 {
+        font-size: 1.5rem;
+    }
+
+    .contact p {
+        font-size: 1.2rem;
+    }
+}
+
+/* ------------------------------------------------------------------- */
+
+@media (max-width:768px) {
+    .header-1 {
+        font-size: 0.8rem;
+    }
+
+    .navbar-1 h2,
+    .header-2 p {
+        display: none;
+    }
+
+    .header-2 {
+        padding: 0.9rem 1.2rem;
+    }
+
+    .menu {
+        display: initial;
+    }
+
+    .navbar-1 {
+        width: fit-content;
+    }
+
+    section.hero {
+        background: url(./hero-img/AlpineBerry_mobile.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 7vw;
+        width: 100%;
+    }
+
+    .hero p {
+        width: 100%;
+    }
+
+    .hero .hero-button {
+        width: 100%;
+        padding: 0.8rem 0;
+        border-radius: 30px;
+    }
+
+    .section-2 p {
+        width: 65%;
+        font-size: 1.7rem;
+    }
+
+    .section-3-div {
+        width: auto;
+        grid-template-columns: repeat(9, 21rem);
+    }
+
+    .heading {
+        font-size: 2.4rem;
+    }
+
+    .section-4 {
+        width: 90%;
+    }
+
+    .section-4-p {
+        width: 70%;
+        font-size: 2rem;
+    }
+
+    .blank {
+        width: 98%;
+        padding: 2.5rem;
+        font-size: 2rem;
+    }
+
+    .section-5-logo-1 {
+        right: 2rem;
+    }
+
+    .section-5-heading {
+        font-size: 7.5rem;
+        line-height: 7rem;
+    }
+
+    .section-5-p {
+        font-size: 2rem;
+        line-height: 2.3rem;
+        width: 43%;
+        margin-bottom: 0;
+    }
+
+    .section-5 button {
+        margin: -8rem 0 0 0;
+        width: 98%;
+        padding: 0.55rem;
+    }
+
+    .section-6 .section-6-container {
+        width: 98%;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .section-6-div h1 {
+        font-size: 1.8rem;
+    }
+
+    .section-6-div div {
+        height: 4.5rem;
+    }
+
+    .shop {
+        position: absolute;
+        right: 0.5rem;
+    }
+
+    .section-7 {
+        flex-direction: column;
+    }
+
+    .section-7 div {
+        width: 100%;
+        height: 80vh;
+        text-align: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .section-8-heading {
+        width: 50%;
+        line-height: 4rem;
+    }
+
+    .tea {
+        gap: 0;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .tea-container {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+    }
+
+    .tea-img {
+        position: absolute;
+        left: -5rem;
+    }
+
+
+    .section-8-subdiv {
+        align-items: center;
+    }
+
+    .section-8-subdiv h1 {
+        width: 100%;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    .section-8 .section-4-p {
+        width: 100%;
+        text-align: center;
+        font-size: 2.6rem;
+    }
+
+
+    .section-9-div {
+        min-height: 65vh;
+    }
+
+    .section-9 .section-6-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tag-1 {
+        font-size: 1.5rem;
+    }
+
+    .section-9-div p {
+        font-size: 1rem;
+    }
+
+    .search {
+        width: 95%;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .contact {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact h1 {
+        font-size: 1.5rem;
+    }
+
+    .contact p {
+        font-size: 1.2rem;
+    }
+
+}
+
+/* -------------------------------------------------------------------- */
+
+@media (max-width:500px) {
+    .contact {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+/* -------------------------------------------------------------------- */
+
+@media (max-width:440px) {
+    .header-2 {
+        width: 95%;
+        border-radius: 14px;
+    }
+
+    section.hero {
+        padding: 1rem;
+
+    }
+
+    .hero h1 {
+        font-size: 12vw;
+        line-height: 14vw;
+    }
+
+
+    .section-2 p {
+        width: 100%;
+        padding: 7rem 2.1rem;
+
+        font-size: 2rem;
+    }
+
+    .section-4-p {
+        width: 90%;
+        font-size: 2rem;
+    }
+
+    .section-5-p {
+        width: 82%;
+    }
+
+    .section-5 button {
+        width: 95%;
+    }
+
+    .section-5-logo {
+        gap: 2rem;
+    }
+
+    .section-5-logo p {
+        width: 80%;
+    }
+
+    .section-6 .section-6-container {
+        width: 80%;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+    }
+
+    .section-7 {
+        padding: 0 0 5rem 0;
+        flex-direction: column;
+    }
+
+    .section-8-heading {
+        text-align: center;
+        width: 95%;
+    }
+
+    .tea {
+        gap: 0;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .section-8-subdiv {
+        padding: 0 2rem 2rem 2rem;
+        align-items: center;
+    }
+
+
+    .section-9 .section-6-container {
+        width: 85%;
+        gap: 2rem;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+
+    .search {
+        width: 95%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .search-bar {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .icons {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .section-5-heading {
+        font-size: 6rem;
+    }
+
+    .section-10 {
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section-10 div {
+        width: 90%;
+    }
+
+}
+
+/* -------------------------------------------------------------------- */
+
+@media (max-width:376px) {
+    .hero h1 {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    .section-5 {
+        padding: 15rem 0 -10rem 0;
+        gap: 7rem;
+    }
+
+    .section-5-heading {
+        font-size: 5rem;
+        line-height: 5.2rem;
+    }
+
+    .section-5 button {
+        margin: 0;
+    }
+
+    .section-5-logo {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "div1 div2"
+            "div3 div3";
+        gap: 2rem;
+    }
+
+    .section-5-logo>div:nth-child(1) {
+        grid-area: div1;
+    }
+
+    .section-5-logo>div:nth-child(2) {
+        grid-area: div2;
+    }
+
+    .section-5-logo>div:nth-child(3) {
+        grid-area: div3;
+        display: flex;
+        justify-content: center;
+    }
+
+    .section-6 .section-6-container {
+        width: 100%;
+    }
+
+    .section-7 div {
+        height: 60vh;
+    }
+
+    .section-7 .section-4-p {
+        font-size: 3rem;
+    }
+    .section-7-div{
+        margin-top: 4rem;
+    }
+
+}
