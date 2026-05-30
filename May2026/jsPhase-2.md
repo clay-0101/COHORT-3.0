@@ -1241,3 +1241,5 @@ By the end of this phase, your students should be able to:
     
 6. **Forgetting the initial value in `reduce`.** Without it, the first element becomes the initial accumulator — usually not what you want.
 7. **Using `for...in` on arrays.** It works but gives weird results. Use `for...of` for arrays, `for...in` for objects.
+
+
