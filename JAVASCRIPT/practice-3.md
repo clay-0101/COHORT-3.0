@@ -1,375 +1,319 @@
-# 📑JavaScript Beginner Practice Questions (Phase -2 ) Sheet - 3
+# 📑JavaScript Beginner Practice Questions (Phase -2 ) Sheet - 2
 
-## 1. `forEach()`
+## 1. Array
 
-### Intermediate Question
+### Intermediate
 
-You are given an array of prices.
+Create an array of 5 favorite movies and print all values.
 
-Print each price with `"₹"` before it.
+**Hint:** Use indexing
 
-```jsx
-let prices = [100, 250, 399, 499];
-```
+### Hard
 
-### Hint
+Create an array containing numbers, strings, boolean, and another array. Print only the nested array value.
 
-- `forEach()` runs once for every element.
-- You don't return anything here.
-- Use `console.log()` inside it.
+**Hint:** Mixed data types + nested indexing
 
 ---
 
-### Hard Question
+# 2. Indexing in Array
 
-You are given an array of students.
+### Intermediate
 
-```jsx
-let students = [
-  { name: "Anubhav", marks: 85 },
-  { name: "Rahul", marks: 42 },
-  { name: "Aman", marks: 90 },
-];
-```
+Print the first and last element of an array.
 
-Print:
+**Hint:** Use `0` and `length - 1`
 
-- `"Pass"` if marks are greater than 50
-- `"Fail"` otherwise
+### Hard
 
-Output format:
+Swap the second and second-last element using indexing.
 
-```jsx
-Anubhav - Pass
-Rahul - Fail
-```
-
-### Hint
-
-- Loop through objects using `forEach()`
-- Use condition checking inside loop.
+**Hint:** Use temporary variable
 
 ---
 
-# 2. `map()`
+# 3. Multi-Dimensional Arrays
 
-### Intermediate Question
+### Intermediate
 
-Convert all names into uppercase.
+Create a 2D array and print all first elements of inner arrays.
 
-```jsx
-let names = ["anubhav", "rahul", "aman"];
-```
+**Hint:** Double indexing
 
-Expected Output:
+### Hard
 
-```jsx
-["ANUBHAV", "RAHUL", "AMAN"]
-```
+Find the sum of all diagonal elements in a 3x3 matrix.
 
-### Hint
-
-- `map()` creates a new array.
-- Use `.toUpperCase()`.
+**Hint:** Same row and column index
 
 ---
 
-### Hard Question
+# 4. length
 
-You are given products.
+### Intermediate
 
-```jsx
-let products = [
-  { name: "Laptop", price: 50000 },
-  { name: "Phone", price: 20000 },
-];
-```
+Find total elements in an array without counting manually.
 
-Create a new array where:
+**Hint:** Use `.length`
 
-- Every product has a new property `discountPrice`
-- Discount is 10%
+### Hard
 
-Expected:
+Create a function that checks whether array length is even or odd.
 
-```jsx
-[
-  { name: "Laptop", price: 50000, discountPrice: 45000 }
-]
-```
-
-### Hint
-
-- Return a new object from `map()`
-- Formula:
-
-```jsx
-price - (price * 10 / 100)
-```
+**Hint:** Use modulus operator
 
 ---
 
-# 3. `filter()`
+# 5. push()
 
-### Intermediate Question
+### Intermediate
 
-Filter all even numbers.
+Add 3 new elements at the end of array.
 
-```jsx
-let nums = [1,2,3,4,5,6,7,8];
-```
+**Hint:** Use `push()`
 
-Expected Output:
+### Hard
 
-```jsx
-[2,4,6,8]
-```
+Add elements dynamically inside loop from another array.
 
-### Hint
-
-- `filter()` keeps elements when condition is `true`.
+**Hint:** Loop + push
 
 ---
 
-### Hard Question
+# 6. pop()
 
-You are given users.
+### Intermediate
 
-```jsx
-let users = [
-  { name: "Anubhav", active: true },
-  { name: "Rahul", active: false },
-  { name: "Aman", active: true },
-];
-```
+Remove last element and print removed value.
 
-Return only active users.
+**Hint:** Store `pop()` result
 
-### Hint
+### Hard
 
-- Check `active === true`
-- Return condition directly.
+Keep removing elements until array becomes empty.
+
+**Hint:** Use `while` loop
 
 ---
 
-# 4. `reduce()`
+# 7. unshift()
 
-### Intermediate Question
+### Intermediate
 
-Find total sum of array.
+Add one username at beginning of array.
 
-```jsx
-let nums = [10,20,30,40];
-```
+**Hint:** Use `unshift()`
 
-Expected Output:
+### Hard
 
-```jsx
-100
-```
+Insert multiple elements at beginning without replacing existing ones.
 
-### Hint
-
-- `reduce()` needs:
-    - accumulator
-    - current value
+**Hint:** Multiple arguments
 
 ---
 
-### Hard Question
+# 8. shift()
 
-Count frequency of elements.
+### Intermediate
 
-```jsx
-let fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
-```
+Remove first element from array.
 
-Expected Output:
+**Hint:** Use `shift()`
 
-```jsx
-{
-  apple: 3,
-  banana: 2,
-  orange: 1
-}
-```
+### Hard
 
-### Hint
+Remove first element repeatedly until only 2 elements remain.
 
-- Create an empty object `{}` as initial value.
-- Increase count if already exists.
+**Hint:** Loop + length check
 
 ---
 
-# 5. `find()`
+# 9. splice()
 
-### Intermediate Question
+### Intermediate
 
-Find first number greater than 50.
+Remove 2 elements from middle of array.
 
-```jsx
-let nums = [20, 35, 60, 80];
-```
+**Hint:** `splice(start, deleteCount)`
 
-Expected Output:
+### Hard
 
-```jsx
-60
-```
+Replace 3 middle elements with 5 new values.
 
-### Hint
-
-- `find()` returns first matching element.
+**Hint:** Use insertion with splice
 
 ---
 
-### Hard Question
+# 10. reverse()
 
-Find a user with username `"admin"`.
+### Intermediate
 
-```jsx
-let users = [
-  { username: "rahul" },
-  { username: "admin" },
-  { username: "aman" }
-];
-```
+Reverse an array using method.
 
-### Hint
+**Hint:** Use `reverse()`
 
-- Compare inside callback:
+### Hard
 
-```jsx
-user.username === "admin"
-```
+Reverse only first half of array.
+
+**Hint:** Manual swapping
 
 ---
 
-# 6. `findIndex()`
+# 11. sort()
 
-### Intermediate Question
+### Intermediate
 
-Find index of number `90`.
+Sort numbers in ascending order.
 
-```jsx
-let nums = [10, 40, 90, 50];
-```
+**Hint:** Compare function
 
-### Hint
+### Hard
 
-- `findIndex()` returns index number.
+Sort array so even numbers come first and odd later.
 
----
-
-### Hard Question
-
-Find index of first failed student.
-
-```jsx
-let students = [
-  { name: "A", marks: 90 },
-  { name: "B", marks: 30 },
-  { name: "C", marks: 70 },
-];
-```
-
-Condition:
-
-- Failed if marks < 40
-
-### Hint
-
-- Use condition directly inside callback.
+**Hint:** Custom compare logic
 
 ---
 
-# 7. `some()`
+# 12. slice()
 
-### Intermediate Question
+### Intermediate
 
-Check if any number is negative.
+Extract first 4 elements into new array.
 
-```jsx
-let nums = [10, 20, -5, 40];
-```
+**Hint:** Use `slice()`
 
-Expected Output:
+### Hard
 
-```jsx
-true
-```
+Create a copy excluding first and last element.
 
-### Hint
-
-- `some()` returns true if at least one condition matches.
+**Hint:** Use start and end indexes
 
 ---
 
-### Hard Question
+# 13. concat()
 
-Check if any product is out of stock.
+### Intermediate
 
-```jsx
-let products = [
-  { name: "Laptop", stock: 5 },
-  { name: "Phone", stock: 0 },
-];
-```
+Merge two arrays.
 
-### Hint
+**Hint:** Use `concat()`
 
-- Check:
+### Hard
 
-```jsx
-stock === 0
-```
+Merge 3 arrays and remove duplicate values.
+
+**Hint:** Combine + loop/includes
 
 ---
 
-# 8. `every()`
+# 14. includes()
 
-### Intermediate Question
+### Intermediate
 
-Check if all numbers are positive.
+Check whether `"apple"` exists in array.
 
-```jsx
-let nums = [10, 20, 30, 40];
-```
+**Hint:** Use boolean result
 
-Expected Output:
+### Hard
 
-```jsx
-true
-```
+Check if all elements of one array exist inside another.
 
-### Hint
-
-- `every()` checks all elements.
+**Hint:** Loop + includes
 
 ---
 
-### Hard Question
+# 15. indexOf()
 
-Check if all students passed.
+### Intermediate
 
-```jsx
-let students = [
-  { name: "A", marks: 80 },
-  { name: "B", marks: 45 },
-  { name: "C", marks: 60 },
-];
-```
+Find index of `"Rahul"` in array.
 
-Passing marks:
+**Hint:** Use `indexOf()`
 
-```jsx
-40
-```
+### Hard
 
-### Hint
+Find all positions of repeated number `5`.
 
-- Return condition:
+**Hint:** Loop through entire array
 
-```jsx
-marks >= 40
-```
+---
+
+# 16. join()
+
+### Intermediate
+
+Convert array into comma separated string.
+
+**Hint:** Use `join(",")`
+
+### Hard
+
+Convert array into sentence format.
+
+**Hint:** Join with spaces
+
+---
+
+# 17. for loop
+
+### Intermediate
+
+Print all array elements using loop.
+
+**Hint:** Loop through indexes
+
+### Hard
+
+Print elements at only even indexes.
+
+**Hint:** Increase loop smartly
+
+---
+
+# 18. for...of
+
+### Intermediate
+
+Print all values using `for...of`.
+
+**Hint:** Direct value iteration
+
+### Hard
+
+Count vowels from array of characters.
+
+**Hint:** Use conditions inside loop
+
+---
+
+# 19. Reference Behaviour of Array
+
+### Intermediate
+
+Assign one array to another variable and modify second one.
+
+**Hint:** Observe original array
+
+### Hard
+
+Create true copy so original array does not change.
+
+**Hint:** Use spread operator
+
+---
+
+# 20. Spread Operator
+
+### Intermediate
+
+Copy array into new array.
+
+**Hint:** Use `...`
+
+### Hard
+
+Merge arrays and add extra values in between.
+
+**Hint:** Combine spread carefully

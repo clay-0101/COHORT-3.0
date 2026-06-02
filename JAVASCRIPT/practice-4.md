@@ -1,363 +1,296 @@
-# 📑JavaScript Beginner Practice Questions (Phase -2 ) Sheet - 4
+# 📑JavaScript Beginner Practice Questions (Phase -2 ) Sheet - 3
 
-## Beginner Level
+## 1. `forEach()`
 
-### 1. Create an Object
+### Intermediate Question
 
-Create an object for a student with:
+You are given an array of prices.
 
-- name
-- age
-- course
+Print each price with `"₹"` before it.
 
-Then print all values.
+```jsx
+let prices = [100, 250, 399, 499];
+```
+
+### Hint
+
+- `forEach()` runs once for every element.
+- You don't return anything here.
+- Use `console.log()` inside it.
 
 ---
 
-### 2. Access Properties
+### Hard Question
 
-Given:
+You are given an array of students.
 
 ```jsx
-const car = {
-  brand: "BMW",
-  model: "M4",
-  year: 2022
-}
+let students = [
+  { name: "Anubhav", marks: 85 },
+  { name: "Rahul", marks: 42 },
+  { name: "Aman", marks: 90 },
+];
 ```
 
 Print:
 
-- brand
-- model
+- `"Pass"` if marks are greater than 50
+- `"Fail"` otherwise
 
-using both:
+Output format:
 
-- dot notation
-- bracket notation
+```jsx
+Anubhav - Pass
+Rahul - Fail
+```
+
+### Hint
+
+- Loop through objects using `forEach()`
+- Use condition checking inside loop.
 
 ---
 
-### 3. Update Object Value
+# 2. `map()`
 
-Change the age of a user from 20 to 25.
+### Intermediate Question
 
-```jsx
-const user = {
-  name: "Anubhav",
-  age: 20
-}
-```
-
----
-
-### 4. Add New Property
-
-Add a new property:
+Convert all names into uppercase.
 
 ```jsx
-isAdmin: true
-```
-
-to this object.
-
----
-
-### 5. Delete Property
-
-Remove the `password` property from the object.
-
-```jsx
-const account = {
-  username: "john",
-  password: "12345"
-}
-```
-
----
-
-# Intermediate Level
-
-### 6. Count Properties
-
-Write a function that returns how many properties an object has.
-
-Example:
-
-```jsx
-countProperties({a:1,b:2,c:3})
-// 3
-```
-
-Hint:
-
-Use:
-
-```jsx
-Object.keys()
-```
-
----
-
-### 7. Loop Through Object
-
-Print all keys and values from this object.
-
-```jsx
-const person = {
-  name: "Rahul",
-  age: 22,
-  city: "Delhi"
-}
-```
-
-Hint:
-
-Use:
-
-```jsx
-for...in
-```
-
----
-
-### 8. Check Property Exists
-
-Check whether `"email"` exists inside an object or not.
-
-Hint:
-
-Use:
-
-```jsx
-in
-```
-
----
-
-### 9. Merge Two Objects
-
-Merge these two objects into one.
-
-```jsx
-const obj1 = { a: 1, b: 2 }
-const obj2 = { c: 3, d: 4 }
-```
-
-Hint:
-
-Use:
-
-```jsx
-spread operator
-```
-
----
-
-### 10. Convert Object to Array
-
-Convert this object into an array of key-value pairs.
-
-```jsx
-const user = {
-  name: "Aman",
-  age: 21
-}
-```
-
-Hint:
-
-Use:
-
-```jsx
-Object.entries()
-```
-
----
-
-# Problem Solving Level
-
-### 11. Find Highest Value
-
-Find the student with highest marks.
-
-```jsx
-const marks = {
-  Anubhav: 95,
-  Rahul: 82,
-  Aman: 90
-}
+let names = ["anubhav", "rahul", "aman"];
 ```
 
 Expected Output:
 
 ```jsx
-"Anubhav"
+["ANUBHAV", "RAHUL", "AMAN"]
 ```
+
+### Hint
+
+- `map()` creates a new array.
+- Use `.toUpperCase()`.
 
 ---
 
-### 12. Sum of Object Values
+### Hard Question
 
-Find total salary.
+You are given products.
 
 ```jsx
-const salaries = {
-  john: 1000,
-  alex: 2000,
-  bob: 1500
-}
+let products = [
+  { name: "Laptop", price: 50000 },
+  { name: "Phone", price: 20000 },
+];
 ```
 
-Expected Output:
+Create a new array where:
+
+- Every product has a new property `discountPrice`
+- Discount is 10%
+
+Expected:
 
 ```jsx
-4500
-```
-
----
-
-### 13. Nested Object Access
-
-Print:
-
-- city
-- pincode
-
-```jsx
-const user = {
-  name: "Anubhav",
-  address: {
-    city: "Bhopal",
-    pincode: 462001
-  }
-}
-```
-
----
-
-### 14. Object Method Practice
-
-Create an object with:
-
-- name
-- marks
-- method called `getResult`
-
-If marks > 40:
-
-```jsx
-"Pass"
-```
-
-else:
-
-```jsx
-"Fail"
-```
-
----
-
-### 15. Convert Array to Object
-
-Convert this array into an object.
-
-```jsx
-const arr = ["name", "Anubhav", "age", 24]
-```
-
-Expected Output:
-
-```jsx
-{
-  name: "Anubhav",
-  age: 24
-}
-```
-
----
-
-# Harder Practice Questions
-
-### 16. Frequency Counter
-
-Count frequency of each character.
-
-Input:
-
-```jsx
-"banana"
-```
-
-Expected Output:
-
-```jsx
-{
-  b:1,
-  a:3,
-  n:2
-}
-```
-
----
-
-### 17. Group By Property
-
-Group users by age.
-
-```jsx
-const users = [
-  { name: "A", age: 20 },
-  { name: "B", age: 21 },
-  { name: "C", age: 20 }
+[
+  { name: "Laptop", price: 50000, discountPrice: 45000 }
 ]
 ```
 
+### Hint
+
+- Return a new object from `map()`
+- Formula:
+
+```jsx
+price - (price * 10 / 100)
+```
+
+---
+
+# 3. `filter()`
+
+### Intermediate Question
+
+Filter all even numbers.
+
+```jsx
+let nums = [1,2,3,4,5,6,7,8];
+```
+
+Expected Output:
+
+```jsx
+[2,4,6,8]
+```
+
+### Hint
+
+- `filter()` keeps elements when condition is `true`.
+
+---
+
+### Hard Question
+
+You are given users.
+
+```jsx
+let users = [
+  { name: "Anubhav", active: true },
+  { name: "Rahul", active: false },
+  { name: "Aman", active: true },
+];
+```
+
+Return only active users.
+
+### Hint
+
+- Check `active === true`
+- Return condition directly.
+
+---
+
+# 4. `reduce()`
+
+### Intermediate Question
+
+Find total sum of array.
+
+```jsx
+let nums = [10,20,30,40];
+```
+
+Expected Output:
+
+```jsx
+100
+```
+
+### Hint
+
+- `reduce()` needs:
+    - accumulator
+    - current value
+
+---
+
+### Hard Question
+
+Count frequency of elements.
+
+```jsx
+let fruits = ["apple", "banana", "apple", "orange", "banana", "apple"];
+```
+
 Expected Output:
 
 ```jsx
 {
-  20: [
-    { name: "A", age: 20 },
-    { name: "C", age: 20 }
-  ],
-  21: [
-    { name: "B", age: 21 }
-  ]
+  apple: 3,
+  banana: 2,
+  orange: 1
 }
 ```
 
----
+### Hint
 
-### 18. Deep Property Check
-
-Check whether this property exists:
-
-```jsx
-"user.address.city"
-```
-
-inside an object dynamically.
-
-Hint:
-
-Use:
-
-```jsx
-split(".")
-```
+- Create an empty object `{}` as initial value.
+- Increase count if already exists.
 
 ---
 
-### 19. Object Comparison
+# 5. `find()`
 
-Check if two objects have same keys and values.
+### Intermediate Question
 
-Example:
+Find first number greater than 50.
 
 ```jsx
-{a:1,b:2}
-{a:1,b:2}
+let nums = [20, 35, 60, 80];
+```
+
+Expected Output:
+
+```jsx
+60
+```
+
+### Hint
+
+- `find()` returns first matching element.
+
+---
+
+### Hard Question
+
+Find a user with username `"admin"`.
+
+```jsx
+let users = [
+  { username: "rahul" },
+  { username: "admin" },
+  { username: "aman" }
+];
+```
+
+### Hint
+
+- Compare inside callback:
+
+```jsx
+user.username === "admin"
+```
+
+---
+
+# 6. `findIndex()`
+
+### Intermediate Question
+
+Find index of number `90`.
+
+```jsx
+let nums = [10, 40, 90, 50];
+```
+
+### Hint
+
+- `findIndex()` returns index number.
+
+---
+
+### Hard Question
+
+Find index of first failed student.
+
+```jsx
+let students = [
+  { name: "A", marks: 90 },
+  { name: "B", marks: 30 },
+  { name: "C", marks: 70 },
+];
+```
+
+Condition:
+
+- Failed if marks < 40
+
+### Hint
+
+- Use condition directly inside callback.
+
+---
+
+# 7. `some()`
+
+### Intermediate Question
+
+Check if any number is negative.
+
+```jsx
+let nums = [10, 20, -5, 40];
 ```
 
 Expected Output:
@@ -366,27 +299,77 @@ Expected Output:
 true
 ```
 
+### Hint
+
+- `some()` returns true if at least one condition matches.
+
 ---
 
-### 20. Remove Duplicate Objects
+### Hard Question
 
-Remove duplicate objects from array based on `id`.
+Check if any product is out of stock.
 
 ```jsx
-[
-  {id:1,name:"A"},
-  {id:2,name:"B"},
-  {id:1,name:"A"}
-]
+let products = [
+  { name: "Laptop", stock: 5 },
+  { name: "Phone", stock: 0 },
+];
+```
+
+### Hint
+
+- Check:
+
+```jsx
+stock === 0
+```
+
+---
+
+# 8. `every()`
+
+### Intermediate Question
+
+Check if all numbers are positive.
+
+```jsx
+let nums = [10, 20, 30, 40];
 ```
 
 Expected Output:
 
 ```jsx
-[
-  {id:1,name:"A"},
-  {id:2,name:"B"}
-]
+true
 ```
 
-end
+### Hint
+
+- `every()` checks all elements.
+
+---
+
+### Hard Question
+
+Check if all students passed.
+
+```jsx
+let students = [
+  { name: "A", marks: 80 },
+  { name: "B", marks: 45 },
+  { name: "C", marks: 60 },
+];
+```
+
+Passing marks:
+
+```jsx
+40
+```
+
+### Hint
+
+- Return condition:
+
+```jsx
+marks >= 40
+```

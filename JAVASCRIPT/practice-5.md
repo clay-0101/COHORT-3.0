@@ -1,238 +1,392 @@
-# 🚀 JavaScript Practice Task – Beginner Friendly
+# 📑JavaScript Beginner Practice Questions (Phase -2 ) Sheet - 4
+
+## Beginner Level
+
+### 1. Create an Object
+
+Create an object for a student with:
+
+- name
+- age
+- course
+
+Then print all values.
 
 ---
 
-### 📌 Instructions
+### 2. Access Properties
 
-- Create a single file named `practice.js`.
-- Solve all questions in the same file.
-- Add comments before every question.
-- Run your code and verify the output.
-
----
-
-# Part 1: Variables, Functions & Conditions
-
-### Q1. Create a function that returns the sum of two numbers.
+Given:
 
 ```jsx
-add(10, 20);
+const car = {
+  brand: "BMW",
+  model: "M4",
+  year: 2022
+}
+```
 
-// Output: 30
+Print:
+
+- brand
+- model
+
+using both:
+
+- dot notation
+- bracket notation
+
+---
+
+### 3. Update Object Value
+
+Change the age of a user from 20 to 25.
+
+```jsx
+const user = {
+  name: "Anubhav",
+  age: 20
+}
 ```
 
 ---
 
-### Q2. Create a function that returns the square of a number.
+### 4. Add New Property
+
+Add a new property:
 
 ```jsx
-square(5);
+isAdmin: true
+```
 
-// Output: 25
+to this object.
+
+---
+
+### 5. Delete Property
+
+Remove the `password` property from the object.
+
+```jsx
+const account = {
+  username: "john",
+  password: "12345"
+}
 ```
 
 ---
 
-### Q3. Create a function that checks whether a number is Even or Odd.
+# Intermediate Level
 
-```jsx
-checkEvenOdd(7);
+### 6. Count Properties
 
-// Output: Odd
-```
-
----
-
-### Q4. Create a function that returns the larger number among two numbers.
-
-```jsx
-max(10, 20);
-
-// Output: 20
-```
-
----
-
-### Q5. Create a function that checks if a person is eligible to vote.
-
-```jsx
-isEligible(18);
-
-// Output: Eligible
-```
-
----
-
-# Part 2: Loops
-
-### Q6. Print numbers from 1 to 50 using a loop.
-
----
-
-### Q7. Print all even numbers between 1 and 100.
-
----
-
-### Q8. Find the sum of numbers from 1 to 100.
-
-Output:
-
-```jsx
-5050
-```
-
----
-
-### Q9. Print the multiplication table of a number.
+Write a function that returns how many properties an object has.
 
 Example:
 
 ```jsx
-table(5);
+countProperties({a:1,b:2,c:3})
+// 3
 ```
 
-Output:
+Hint:
+
+Use:
 
 ```jsx
-5 x 1 = 5
-5 x 2 = 10
-...
-5 x 10 = 50
+Object.keys()
 ```
 
 ---
 
-### Q10. Count how many digits are present in a number.
+### 7. Loop Through Object
 
-Example:
+Print all keys and values from this object.
 
 ```jsx
-countDigits(12345);
+const person = {
+  name: "Rahul",
+  age: 22,
+  city: "Delhi"
+}
+```
 
-// Output: 5
+Hint:
+
+Use:
+
+```jsx
+for...in
 ```
 
 ---
 
-# Part 3: Strings
+### 8. Check Property Exists
 
-### Q11. Reverse a string.
+Check whether `"email"` exists inside an object or not.
+
+Hint:
+
+Use:
 
 ```jsx
-reverseString("hello");
-
-// Output: olleh
+in
 ```
 
 ---
 
-### Q12. Count vowels in a string.
+### 9. Merge Two Objects
+
+Merge these two objects into one.
 
 ```jsx
-countVowels("javascript");
+const obj1 = { a: 1, b: 2 }
+const obj2 = { c: 3, d: 4 }
+```
 
-// Output: 3
+Hint:
+
+Use:
+
+```jsx
+spread operator
 ```
 
 ---
 
-### Q13. Check whether a string is a palindrome.
+### 10. Convert Object to Array
+
+Convert this object into an array of key-value pairs.
 
 ```jsx
-isPalindrome("madam");
+const user = {
+  name: "Aman",
+  age: 21
+}
+```
 
-// Output: true
+Hint:
+
+Use:
+
+```jsx
+Object.entries()
 ```
 
 ---
 
-### Q14. Convert the first letter of every word to uppercase.
+# Problem Solving Level
+
+### 11. Find Highest Value
+
+Find the student with highest marks.
 
 ```jsx
-capitalize("hello world");
+const marks = {
+  Anubhav: 95,
+  Rahul: 82,
+  Aman: 90
+}
+```
 
-// Output: Hello World
+Expected Output:
+
+```jsx
+"Anubhav"
 ```
 
 ---
 
-### Q15. Count how many times a character appears in a string.
+### 12. Sum of Object Values
+
+Find total salary.
 
 ```jsx
-countChar("javascript", "a");
+const salaries = {
+  john: 1000,
+  alex: 2000,
+  bob: 1500
+}
+```
 
-// Output: 2
+Expected Output:
+
+```jsx
+4500
 ```
 
 ---
 
-# Part 4: Arrays
+### 13. Nested Object Access
 
-### Q16. Find the largest number in an array.
+Print:
+
+- city
+- pincode
 
 ```jsx
-[10, 20, 30, 40, 50]
-
-// Output: 50
+const user = {
+  name: "Anubhav",
+  address: {
+    city: "Bhopal",
+    pincode: 462001
+  }
+}
 ```
 
 ---
 
-### Q17. Find the smallest number in an array.
+### 14. Object Method Practice
+
+Create an object with:
+
+- name
+- marks
+- method called `getResult`
+
+If marks > 40:
 
 ```jsx
-[10, 20, 30, 40, 50]
+"Pass"
+```
 
-// Output: 10
+else:
+
+```jsx
+"Fail"
 ```
 
 ---
 
-### Q18. Find the sum of all array elements.
+### 15. Convert Array to Object
+
+Convert this array into an object.
 
 ```jsx
-[1,2,3,4,5]
+const arr = ["name", "Anubhav", "age", 24]
+```
 
-// Output: 15
+Expected Output:
+
+```jsx
+{
+  name: "Anubhav",
+  age: 24
+}
 ```
 
 ---
 
-### Q19. Return only even numbers from an array.
+# Harder Practice Questions
 
-```jsx
-[1,2,3,4,5,6]
+### 16. Frequency Counter
 
-// Output: [2,4,6]
-```
-
----
-
-### Q20. Remove duplicate values from an array.
-
-```jsx
-[1,2,2,3,4,4,5]
-
-// Output: [1,2,3,4,5]
-```
-
----
-
-### 🎯 Bonus Task (For Fast Learners)
-
-Build a **Student Marks Calculator**.
+Count frequency of each character.
 
 Input:
 
 ```jsx
-[50, 60, 70, 80, 90]
+"banana"
 ```
 
-Output:
+Expected Output:
 
 ```jsx
-Highest Marks: 90
-Lowest Marks: 50
-Average Marks: 70
-Total Marks: 350
+{
+  b:1,
+  a:3,
+  n:2
+}
 ```
+
+---
+
+### 17. Group By Property
+
+Group users by age.
+
+```jsx
+const users = [
+  { name: "A", age: 20 },
+  { name: "B", age: 21 },
+  { name: "C", age: 20 }
+]
+```
+
+Expected Output:
+
+```jsx
+{
+  20: [
+    { name: "A", age: 20 },
+    { name: "C", age: 20 }
+  ],
+  21: [
+    { name: "B", age: 21 }
+  ]
+}
+```
+
+---
+
+### 18. Deep Property Check
+
+Check whether this property exists:
+
+```jsx
+"user.address.city"
+```
+
+inside an object dynamically.
+
+Hint:
+
+Use:
+
+```jsx
+split(".")
+```
+
+---
+
+### 19. Object Comparison
+
+Check if two objects have same keys and values.
+
+Example:
+
+```jsx
+{a:1,b:2}
+{a:1,b:2}
+```
+
+Expected Output:
+
+```jsx
+true
+```
+
+---
+
+### 20. Remove Duplicate Objects
+
+Remove duplicate objects from array based on `id`.
+
+```jsx
+[
+  {id:1,name:"A"},
+  {id:2,name:"B"},
+  {id:1,name:"A"}
+]
+```
+
+Expected Output:
+
+```jsx
+[
+  {id:1,name:"A"},
+  {id:2,name:"B"}
+]
+```
+
+end
