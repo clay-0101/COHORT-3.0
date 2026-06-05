@@ -1245,5 +1245,3 @@ console.log(copy.address.city);     // Bhopal
 ---
 
 *Happy coding! Doubt ho toh batch me poochna. Async JS practice se hi clear hota hai — code likho, output predict karo, fir run karke check karo. 🚀*
-
-🗒️Phase 5
