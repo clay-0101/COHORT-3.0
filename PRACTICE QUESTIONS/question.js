@@ -138,3 +138,184 @@
 
 // let temp = students.every(val => val.marks >= 40)
 // console.log(temp);
+
+
+// ARRAYS
+
+// let prices= [100,250,500,150,700];
+
+// let expensive = prices.filter((price , idx) => {
+//     if(price > 300){
+//         return idx
+//     }
+// })
+// console.log(expensive);
+
+
+// let students= ["Aman","Ritik","Priya","Rahul"];
+// console.log(students[students.length - 1]);
+
+
+// let products= ["Laptop","Mouse","Keyboard"];
+// products.push('Monitor')
+// console.log(products);
+
+
+// let notifications= [
+// "Order Placed",
+// "Order Shipped",
+// "Order Delivered"
+// ];
+// notifications.pop(notifications.length - 1)
+// console.log(notifications);
+
+
+// let users= ["Aman","Ritik","Priya"];
+// console.log(users.includes('Ritik'));
+
+
+// let marks= [80,90,70];
+// let percent = marks.map(mark =>{
+//     return mark+'%'
+// })
+// console.log(percent);
+
+
+// let cart= [
+// "Mouse",
+// "Keyboard",
+// "Monitor",
+// "Laptop"
+// ];
+// console.log(cart.length);
+
+
+// MODERATE LEVEL Array
+
+// let marks= [80,90,70,85,95];
+// let sum = marks.reduce((acc, curr)=>{
+//     return acc + curr
+// })
+// let average = Math.floor(sum / marks.length)
+// console.log(average);
+
+
+// let numbers= [1,2,3,4,5,6,7,8];
+// let even = numbers.filter(num => num % 2 == 0)
+// console.log(even);
+
+
+// let products= [
+// "Laptop",
+// "Mouse",
+// "Keyboard",
+// "Monitor"
+// ];
+// let idx = products.indexOf('Keyboard',0)
+
+// console.log(idx);
+
+
+// let sales= [500,700,1000,300];
+// let sum = sales.reduce((acc , curr)=>{
+//     return acc + curr
+// })
+// console.log(sum);
+
+
+// let users= ["ritik","aman","priya"];
+// let uprCase = users.map(name=>{
+//     return name.toUpperCase()
+// })
+// console.log(uprCase);
+
+// let ages= [12,15,17,19,22];
+// let firAdult = ages.find(val => val >= 18)
+// console.log(firAdult);
+
+
+// let nums= [5,8,10,3];
+// let result = nums.every(val => val > 0)
+// console.log(result);
+
+
+// let numbers= [1,2,3,2,4,2,5,1,1,1];
+// let obj = {}
+// let max = 0 ;
+// let idx;
+// for(let i  of numbers){
+//     obj[i] = (obj[i] || 0) + 1
+// }
+// for(let key in obj){
+//     if(obj[key] > max){
+//         max = obj[key]
+//         idx = key
+//     }
+// }
+// console.log(idx , max);
+
+
+// let nums = [10,50,20,80,40];
+// nums.sort((a,b)=> a-b)
+// console.log(nums[(nums.length-1)-1]);
+
+
+// let ids= [1,2,2,3,4,4,5,5];
+
+// for(let i = 0 ; i < (ids.length-1) ; i++){
+//     for(let j = i+1 ; j < ids.length ; j++){
+//         if(ids[j] == ids[i]){
+//             ids.splice(j,1)
+//             j--
+//         }
+//     }
+// }
+// console.log(JSON.stringify(ids));
+
+
+
+// let words= [
+// "JavaScript",
+// "HTML",
+// "CSS",
+// "Programming"
+// ];
+// let max = 0
+// let word ;
+// for(let str of words){
+//     if(str.length > max){
+//         max = str.length
+//         word = str
+//     }
+// }
+// console.log(word);
+
+
+// let nums= [1,2,3,4,5];
+// let last = nums[nums.length-1]
+// nums.pop()
+// nums.unshift(last)
+// console.log(nums);
+
+
+// let sales= [
+// "Mouse",
+// "Keyboard",
+// "Mouse",
+// "Laptop",
+// "Mouse",
+// "Keyboard"
+// ];
+// let obj = {}
+
+// let max = 0, idx;
+// for(let i of sales){
+//     obj[i] = ( obj[i] || 0) + 1
+// }
+// for(let i in obj){
+//     if(obj[i] > max){
+//         max = obj[i]
+//         idx = i
+//     }
+// }
+// console.log(idx)
