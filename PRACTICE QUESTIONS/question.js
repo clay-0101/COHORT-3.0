@@ -319,3 +319,230 @@
 //     }
 // }
 // console.log(idx)
+
+
+// OBJECT QUESTION
+
+// let user = {
+// name:"Ritik",
+// age:21,
+// city:"Bhopal"
+// };
+// console.log(user.name);
+
+
+// let user = {
+// name:"Ritik",
+// age:21
+// };
+// user.age = 22
+// console.log(user);
+
+
+// let user= {
+// name:"Ritik",
+// city:"Bhopal"
+// };
+// user['country'] = 'India'
+// console.log(user);
+
+
+// let user= {
+// name:"Ritik",
+// age:21,
+// password:"12345"
+// };
+// delete user.password
+// console.log(user);
+
+
+// let product= {
+// name:"Laptop",
+// price:60000
+// };
+// console.log(product.hasOwnProperty('price'));
+// console.log('price' in product)
+
+
+// let car= {
+// brand:"BMW",
+// model:"X5",
+// year:2025
+// };
+
+// console.log(Object.keys(car));
+
+
+// let car= {
+// brand:"BMW",
+// model:"X5",
+// year:2025
+// };
+
+// console.log(Object.values(car));
+
+
+// let user= {
+// name:"Ritik",
+// age:21,
+// city:"Bhopal"
+// };
+
+// for(let i of Object.entries(user)){
+//     console.log(`${i[0]} : ${i[1]}`);
+    
+// }
+
+
+
+// let employee= {
+// name:"Aman",
+// salary:50000
+// };
+// let inSal = employee.salary + (0.10 * employee.salary)
+// employee.salary = inSal
+// console.log(employee);
+
+
+// let user= {
+// name:"Ritik",
+// address: {
+// city:"Bhopal",
+// state:"MP"
+// }
+// };
+// console.log(user.address.city);
+
+
+// let student= {
+// name:"Priya",
+// age:20,
+// course:"BCA"
+// };
+
+// let {name , age} = student
+// console.log(name);
+// console.log(age);
+
+
+// let student= {
+// name:"Priya",
+// age:20
+// };
+
+// let {name:studentName , age:studentAge} = student
+// console.log(studentName, studentAge);
+
+
+// let user= {
+// name:"Ritik",
+// age:21
+// };
+// let address= {
+// city:"Bhopal",
+// state:"MP"
+// };
+// let combine = {...user,...address}
+// console.log(combine);
+
+
+
+// let user= {
+// name:"Ritik",
+// age:21,
+// city:"Bhopal",
+// country:"India"
+// };
+
+// console.log(Object.keys(user).length);
+
+
+// let employees= {
+// aman:25000,
+// ritik:50000,
+// priya:45000
+// };
+
+// let max = 0 ;
+// let idx;
+// for(let key in employees){
+//     if(employees[key] > max){
+//         max  = employees[key]
+//         idx = key
+//     }
+// }
+// console.log(idx);
+
+
+// let votes= {
+// JavaScript:25,
+// Python:30,
+// Java:15,
+// Cpp:10
+// };
+// let max = 0;
+// let idx;
+// for(let i of Object.entries(votes)){
+//     if(i[1] > max){
+//         max = i[1]
+//         idx = i[0]
+//     }
+// }
+// console.log(idx)
+
+
+// let countries= {
+// India:"Delhi",
+// Japan:"Tokyo",
+// France:"Paris"
+// };
+// let swapCountry = {}
+// for(let key in countries){
+//     let value =  countries[key]
+
+//     swapCountry[value] = key
+// }
+// console.log(swapCountry);
+
+
+// let mark = {
+//     math: 90,
+//     science : 80,
+//     english : 85
+// };
+
+// let sum = Object.values(mark).reduce((acc , value)=>{
+//     return acc + value
+// },0)
+// console.log(sum);
+
+
+// let user= {
+// name:"Ritik",
+// age:21
+// };
+
+// if(!user.hasOwnProperty('email')){
+//     user['email'] = 'Not Provided'
+//     console.log('Added!')
+//     console.log(user)
+// }else{
+//     console.log('Already Exist');
+// }
+
+
+let inventory= {
+mouse:25,
+keyboard:10,
+monitor:5,
+laptop:2
+};
+
+let arr = Object.values(inventory)
+let totalStock = arr.reduce((acc, val)=>{
+    return acc + val
+})
+arr.sort((a,b) => a - b)
+console.log(`Total item in Stock : ${totalStock}`)
+console.log(`Product with Highest Stock : ${arr[arr.length-1]}`)
+console.log(`Product with Lowest Stock : ${arr[0]}`)
