@@ -530,19 +530,53 @@
 //     console.log('Already Exist');
 // }
 
+// let numbers= [1,2,3,2,4,2,5,1,1,1];
+// let frequentNum;
+// let maxFrequency = 0 ;
+// let obj = {};
+// for(let num of numbers){
+//     obj[num] = ((obj[num] || 0) +1);
 
-let inventory= {
-mouse:25,
-keyboard:10,
-monitor:5,
-laptop:2
-};
+//     if(obj[num] > maxFrequency){
+//         maxFrequency = obj[num];
+//         frequentNum = num;
+//     }
+// }
 
-let arr = Object.values(inventory)
-let totalStock = arr.reduce((acc, val)=>{
-    return acc + val
-})
-arr.sort((a,b) => a - b)
-console.log(`Total item in Stock : ${totalStock}`)
-console.log(`Product with Highest Stock : ${arr[arr.length-1]}`)
-console.log(`Product with Lowest Stock : ${arr[0]}`)
+
+
+// let nums= [10,50,20,80,40];
+// nums = nums.sort();
+// console.log(nums[nums.length-2]);
+
+
+
+// let ids= [1,2,2,3,4,4,5,5];
+// let newIds = ids.filter(function(a , indx){
+//     for(let i = 0; i< ids.length; i++){
+//         if( indx == i){
+//             continue;
+//         }
+//         if( a !== ids[i]){
+//             return a;
+//         }
+//     }
+// })
+// console.log(newIds);
+
+
+// let inventory= {
+// mouse:25,
+// keyboard:10,
+// monitor:5,
+// laptop:2
+// };
+
+// let arr = Object.values(inventory)
+// let totalStock = arr.reduce((acc, val)=>{
+//     return acc + val
+// })
+// arr.sort((a,b) => a - b)
+// console.log(`Total item in Stock : ${totalStock}`)
+// console.log(`Product with Highest Stock : ${arr[arr.length-1]}`)
+// console.log(`Product with Lowest Stock : ${arr[0]}`)
