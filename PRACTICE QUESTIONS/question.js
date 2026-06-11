@@ -531,18 +531,45 @@
 // }
 
 
-let inventory= {
-mouse:25,
-keyboard:10,
-monitor:5,
-laptop:2
-};
+// let inventory= {
+// mouse:25,
+// keyboard:10,
+// monitor:5,
+// laptop:2
+// };
 
-let arr = Object.values(inventory)
-let totalStock = arr.reduce((acc, val)=>{
-    return acc + val
-})
-arr.sort((a,b) => a - b)
-console.log(`Total item in Stock : ${totalStock}`)
-console.log(`Product with Highest Stock : ${arr[arr.length-1]}`)
-console.log(`Product with Lowest Stock : ${arr[0]}`)
+// let arr = Object.values(inventory)
+// let totalStock = arr.reduce((acc, val)=>{
+//     return acc + val
+// })
+// arr.sort((a,b) => a - b)
+// console.log(`Total item in Stock : ${totalStock}`)
+// console.log(`Product with Highest Stock : ${arr[arr.length-1]}`)
+// console.log(`Product with Lowest Stock : ${arr[0]}`)
+
+
+
+// FUNCTIONS
+
+// let greet = (name)=>{
+//     console.log(`Hello`,name);
+    
+// }
+// greet('carry')
+
+
+// let a = Number(prompt('Enter Your Number : '))
+// let b = Number(prompt('Enter Your Number : '))
+
+// let add = (a,b)=>{
+//     return a+b
+// }
+// console.log(add(a,b));
+
+
+// let num = Number(prompt('Enter Your Number : '))
+// let sq = (num)=>{
+//     return num * num 
+// }
+
+// console.log(sq(num));
