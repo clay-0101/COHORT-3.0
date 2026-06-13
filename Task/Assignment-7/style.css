@@ -103,3 +103,6 @@ p {
     background-color: rgb(247, 178, 5);
     color: white;
 }
+[contenteditable='true']:focus{
+    outline: none;
+}
