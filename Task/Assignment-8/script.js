@@ -135,7 +135,7 @@ const addImg = (idx) => {
     let url = prompt('Enter Another URL..')
     if (url.trim() == "") return
     USERS[idx].dp_url = url
-    addUser()
+
 }
 
 // Edit Buttons
