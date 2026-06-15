@@ -546,3 +546,174 @@
 // console.log(`Total item in Stock : ${totalStock}`)
 // console.log(`Product with Highest Stock : ${arr[arr.length-1]}`)
 // console.log(`Product with Lowest Stock : ${arr[0]}`)
+
+// OBJECT QUESTIONS
+// const user = {
+//     name : "Ritik",
+//     greet(){
+//         console.log(this.name)
+//     }
+// }
+// user.greet()
+
+
+
+
+
+
+// function show(){
+//     console.log(this);
+// }
+// show()
+
+
+
+
+
+// function introduce() {
+//     console.log(this.name)
+// }
+// const person = {
+//     name : 'Ritik'
+// }
+// introduce.call(person)
+
+
+
+
+
+
+// function introduce(city, country){
+//     console.log(`${this.name} from ${city} , ${country}`)
+// }
+// const person = {
+//     name : 'Carry'
+// }
+// introduce.apply(person, ['FarrukhNagar','India'])
+
+
+
+
+
+// const user = {
+//     name : "Carry",
+//     greet(){
+//         console.log(this.name); 
+//     }
+// }
+// const fn=user.greet.bind(user);
+// fn()
+
+
+
+
+
+// const animal = {
+//     eats : true
+// };
+// const dog = Object.create(animal)
+// console.log(dog.eats);
+
+
+
+
+
+// function Person(name) {
+// this.name=name;
+// }
+// Person.prototype.greet = ()=>{
+//     console.log(`Hello Bro , ${this.name}`);
+// }
+
+// const person1 = new Person('Carry')
+// person1.greet()
+
+
+
+
+
+
+
+// class Students{
+//     constructor(name, marks){
+//         this.name = name;
+//         this.marks = marks;
+//     }
+//     getGrade(){
+//         if(this.marks >= 90) return 'A'
+//         else if(this.marks >=75) return 'B'
+//         else if(this.marks >=60) return 'C'
+//         else return `Fail ho gya tu ${this.name}`
+//     }
+// }
+// const stu1 = new Students('Carry',90)
+// const stu2 = new Students('tony',65)
+// const stu3 = new Students('lary',20)
+// const stu4 = new Students('pony',75)
+
+// console.log(stu1.getGrade());
+// console.log(stu2.getGrade());
+// console.log(stu3.getGrade());
+// console.log(stu4.getGrade());
+
+
+
+
+
+
+
+// class Employee{
+//     constructor(name, salary){
+//         this.name = name;
+//         this.salary = salary;
+//     }
+//     work(){
+//         console.log(`You Are Working ${this.name}`); 
+//     }
+// }
+
+// class Developer extends Employee{
+//     constructor(name, salary){
+//         super(name, salary)
+//     }
+//     code(){
+//         console.log(`Yor Are Doing Coding ${this.name}`)
+//     }
+// }
+
+// const dev = new Developer('Carry', '5CR')
+// dev.work()
+// dev.code()
+
+
+
+
+
+
+// class BankAccount {
+//     #balance = 0
+//     // constructor(amount){
+//     //     this.amount = amount;
+//     // }
+//     deposit(amount){
+//         if(amount >= 0){
+//             this.#balance += amount
+//         }else{
+//             console.log('Aukat me rho...');   
+//         }
+//     }
+//     withdraw(amount){
+//         if(amount <= this.#balance){
+//             this.#balance -= amount
+//         }else{
+//             console.log("Insufficient Balance")
+//         }
+//     }
+//     getBalance(){
+//         console.log(this.#balance)
+//     }
+// }
+// const acc1 = new BankAccount()
+// acc1.deposit(1000)
+// acc1.withdraw(300)
+// acc1.getBalance()
