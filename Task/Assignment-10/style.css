@@ -139,7 +139,8 @@ form button:active {
     padding: 2px 8px;
     border-radius: 15px;
     color: #3266ad;
-    background-color: #d6e4f6
+    background-color: #d6e4f6;
+
 }
 
 .btnDiv {
@@ -178,4 +179,5 @@ form button:active {
     border-radius: 50%;
     pointer-events: none;
     display: none;
+    
 }
