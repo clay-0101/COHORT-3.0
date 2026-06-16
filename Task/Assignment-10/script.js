@@ -14,8 +14,8 @@ function addNewTask() {
                     <div class="checkbox-child"></div>
                 </div>
                 <div class="textPart">
-                    <h1>${title.value}</h1>
-                    <p>${category.value}</p>
+                    <h1 class='titleText'>${title.value}</h1>
+                    <p class='categoryValue'>${category.value}</p>
                 </div>
                 <p>${date.value}</p>
                 <div class="btnDiv">
@@ -36,9 +36,10 @@ form.addEventListener('submit', (event) => {
 
     addNewTask()
 
-    title.value = ''
-    date.value = ''
-    category.value = ''
+    // title.value = ''
+    // date.value = ''
+    // category.value = ''
+    form.reset()
 })
 taskList.addEventListener('click', (e) => {
     let li = e.target.closest('.li')
@@ -55,12 +56,19 @@ taskList.addEventListener('click', (e) => {
         if (chkBox == false) {
             glowDot.style.display = 'block'
             chkBox = true
-            
+            li.querySelector('.titleText').style.textDecoration = 'line-through'
+            li.querySelector('.titleText').style.color = 'rgba(128, 128, 128, 0.564)'
+            li.querySelector('.categoryValue').style.color = 'rgba(128, 128, 128, 0.564)'
+            li.querySelector('.categoryValue').style.textDecoration = 'line-through'
 
         } else {
             glowDot.style.display = 'none'
             chkBox = false
-            
+            li.querySelector('.titleText').style.textDecoration = 'none'
+            li.querySelector('.categoryValue').style.textDecoration = 'none'
+            li.querySelector('.titleText').style.color = 'rgb(0, 0, 0)'
+            li.querySelector('.categoryValue').style.color = '#3266ad'
+
         }
     }
 })
