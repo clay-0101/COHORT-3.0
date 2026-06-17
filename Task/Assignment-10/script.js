@@ -17,23 +17,26 @@ let chkBox = false
 let currentLi = null
 
 // function use for adding tasks in taskContainer
-
+const tasks = []
 function addNewTask() {
-    taskContainer.innerHTML += `            
-            <div class="li" data-id="${Date.now()}" data-status="${chkBox === false ? 'incomplete' : 'complete'}" data-category= ${category.value}>
+    tasks.forEach((e) => {
+        taskContainer.innerHTML += `            
+            <div class="li" data-id="${Date.now()}" data-status="${chkBox === false ? 'incomplete' : 'complete'}" data-category= ${e.category}>
                 <div class="checkBox">
                     <div class="checkbox-child"></div>
                 </div>
                 <div class="textPart">
-                    <h1 class='titleText'>${title.value}</h1>
-                    <p class='categoryValue'>${category.value}</p>
+                    <h1 class='titleText'>${e.title}</h1>
+                    <p class='categoryValue'>${e.category}</p>
                 </div>
-                <p class="date">${date.value}</p>
+                <p class="date">${e.date}</p>
                 <div class="btnDiv">
                     <button class="deleteBtn"><i class="ri-delete-bin-5-line"></i></button>
                     <button class="editBtn"><i class="ri-pencil-fill"></i></button>
                 </div>
             </div>`
+    })
+
 }
 
 // eventListener on form that will create tasks
@@ -48,6 +51,11 @@ form.addEventListener('submit', (event) => {
     taskContainer.style.display = 'flex'
     emptyOverlay.style.display = 'none'
 
+    tasks.push({
+        title : title.value,
+        category : category.value,
+        date : date.value,
+    })
     addNewTask()
 
     form.reset()                //always reset all input values after submitting
@@ -94,7 +102,7 @@ taskList.addEventListener('click', (e) => {
             if (document.querySelector('main').getAttribute("class") === "light") {
                 li.querySelector('.titleText').style.color = 'rgb(0, 0, 0)'
                 li.querySelector('.categoryValue').style.color = '#3266ad'
-            }else{
+            } else {
                 li.querySelector('.titleText').style.color = 'white'
                 li.querySelector('.categoryValue').style.color = 'white'
             }
@@ -113,6 +121,8 @@ taskList.addEventListener('click', (e) => {
         editTitle.value = li.querySelector('.titleText').textContent
         editDate.value = li.querySelector('.date').textContent
         editCategory.value = li.querySelector('.categoryValue').textContent
+
+        
     }
 })
 
@@ -142,7 +152,7 @@ editForm.addEventListener('submit', function (e) {              //after doing al
     //check if the updated data and the data before updatation is same or not.
 
 
-    if(editTitle.value === currentLi.querySelector('.titleText').textContent && editDate.value === currentLi.querySelector('.date').textContent && editCategory.value === currentLi.querySelector('.categoryValue').textContent){
+    if (editTitle.value === currentLi.querySelector('.titleText').textContent && editDate.value === currentLi.querySelector('.date').textContent && editCategory.value === currentLi.querySelector('.categoryValue').textContent) {
         alert("Please make any changes first...")
         return
     }
