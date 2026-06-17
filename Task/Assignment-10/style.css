@@ -3,12 +3,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    user-select: none;
 }
 
 html,
 body {
     height: 100%;
     width: 100%;
+    position: relative;
 }
 
 main {
@@ -23,7 +25,7 @@ main {
 }
 
 form {
-    height: 30%;
+    /* height: 30%; */
     width: 60%;
     background-color: rgb(245, 244, 237);
     display: flex;
@@ -111,7 +113,7 @@ form button:active {
 }
 
 .li {
-    height: 13%;
+    /* height: 13%; */
     width: 100%;
     background-color: rgba(186, 196, 191, 0.459);
     display: flex;
@@ -130,13 +132,16 @@ form button:active {
 }
 
 .textPart h1 {
+    margin: 8px 0 0 0;
     font-size: 1.3rem;
     font-weight: 500;
 }
 
 .textPart p {
+    font-size: 0.8rem;
     width: fit-content;
     padding: 2px 8px;
+    margin: 0 0 8px 0;
     border-radius: 15px;
     color: #3266ad;
     background-color: #d6e4f6;
@@ -179,5 +184,62 @@ form button:active {
     border-radius: 50%;
     pointer-events: none;
     display: none;
-    
+}
+
+.edit-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: -20px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(2px);
+    z-index: 1000;
+}
+
+.edit-div {
+    width: 50%;
+    padding: 10px;
+    background: rgb(234, 238, 213);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.border {
+    height: 90%;
+    width: 95%;
+    color: rgb(51, 51, 51);
+    border: 0.5px dashed grey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.edit-div form {
+    margin: 20px;
+    width: 95%;
+}
+
+.toasterContainer {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toasterMessage {
+    padding: 2vh 8vh;
+    color: rgb(27, 27, 27);
+    border-radius: 10px;
+    background-color: #F5F4ED;
 }

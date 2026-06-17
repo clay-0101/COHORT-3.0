@@ -13,9 +13,9 @@
     <main>
 
         <form action="">
-            <input type="text" id="title" placeholder="Task Title" required maxlength="45">
-            <input type="date" id="date" required>
-            <select name="Category" id="category" required>
+            <input type="text" class="title" placeholder="Task Title" required maxlength="45">
+            <input type="date" class="date" required>
+            <select name="Category" class="category" required>
                 <option value="" disabled selected>Select Category</option>
                 <option value="Work">💼 Work </option>
                 <option value="Personal">👤 Personal </option>
@@ -28,7 +28,7 @@
                 <option value="Social">👥 Social </option>
                 <option value="Urgent">🚨 Urgent</option>
             </select>
-            <button id="addBtn">+ Add Task</button>
+            <button class="addBtn">+ Add Task</button>
         </form>
 
         <div id="task-list">
@@ -39,6 +39,35 @@
             </div>
 
         </div>
+
+        <div class="edit-container">
+            <div class="edit-div">
+                <div class="border">
+                    <form action="">
+                        <input type="text" class="title" placeholder="Task Title" required maxlength="45">
+                        <input type="date" class="date" required>
+                        <select name="Category" class="category" required>
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="Work">💼 Work </option>
+                            <option value="Personal">👤 Personal </option>
+                            <option value="Shopping">🛒 Shopping</option>
+                            <option value="Health & Fitness">❤️ Health & Fitness</option>
+                            <option value="Finance">💰 Finance</option>
+                            <option value="Education">📚 Education</option>
+                            <option value="Travel">✈️ Travel </option>
+                            <option value="Home">🏠 Home</option>
+                            <option value="Social">👥 Social </option>
+                            <option value="Urgent">🚨 Urgent</option>
+                        </select>
+                        <button class="addBtn">Update Task</button>
+                        <button type="button" class="cancel">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="toasterContainer">
+        </div>
+
     </main>
     <script src="script.js"></script>
 </body>
