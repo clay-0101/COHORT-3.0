@@ -20,7 +20,7 @@ let currentLi = null
 
 function addNewTask() {
     taskContainer.innerHTML += `            
-            <div class="li">
+            <div class="li" data-id="${Date.now()}" data-status="${chkBox === false ? 'incomplete' : 'complete'}" data-category= ${category.value}>
                 <div class="checkBox">
                     <div class="checkbox-child"></div>
                 </div>
@@ -75,18 +75,33 @@ taskList.addEventListener('click', (e) => {
         if (chkBox == false) {
             glowDot.style.display = 'block'
             chkBox = true
+            if (document.querySelector('main').getAttribute("class") === "light") {
+                li.querySelector('.titleText').style.color = 'rgba(128, 128, 128, 0.564)'
+                li.querySelector('.categoryValue').style.color = 'rgba(128, 128, 128, 0.564)'
+            } else {
+                li.querySelector('.titleText').style.color = 'rgb(162, 162, 162)'
+                li.querySelector('.categoryValue').style.color = 'rgb(203, 203, 203)'
+
+            }
             li.querySelector('.titleText').style.textDecoration = 'line-through'
-            li.querySelector('.titleText').style.color = 'rgba(128, 128, 128, 0.564)'
-            li.querySelector('.categoryValue').style.color = 'rgba(128, 128, 128, 0.564)'
             li.querySelector('.categoryValue').style.textDecoration = 'line-through'
+            li.setAttribute('data-status', chkBox === false ? 'incomplete' : 'completed')
+
 
         } else {
             glowDot.style.display = 'none'
             chkBox = false
+            if (document.querySelector('main').getAttribute("class") === "light") {
+                li.querySelector('.titleText').style.color = 'rgb(0, 0, 0)'
+                li.querySelector('.categoryValue').style.color = '#3266ad'
+            }else{
+                li.querySelector('.titleText').style.color = 'white'
+                li.querySelector('.categoryValue').style.color = 'white'
+            }
+
             li.querySelector('.titleText').style.textDecoration = 'none'
             li.querySelector('.categoryValue').style.textDecoration = 'none'
-            li.querySelector('.titleText').style.color = 'rgb(0, 0, 0)'
-            li.querySelector('.categoryValue').style.color = '#3266ad'
+            li.setAttribute('data-status', chkBox === false ? 'incomplete' : 'completed')
 
         }
     }
@@ -116,8 +131,19 @@ cancelButton.addEventListener('click', function () {            //if the user ch
 editForm.addEventListener('submit', function (e) {              //after doing all updated use update button for updating task
     e.preventDefault()
 
+    // check if any input is blank or contains only blankspaces
+
     if (editTitle.value.trim() == '' || editDate.value.trim() == '' || editCategory.value.trim() == '') {
         alert('Please fill all the fields....')
+        return
+    }
+
+
+    //check if the updated data and the data before updatation is same or not.
+
+
+    if(editTitle.value === currentLi.querySelector('.titleText').textContent && editDate.value === currentLi.querySelector('.date').textContent && editCategory.value === currentLi.querySelector('.categoryValue').textContent){
+        alert("Please make any changes first...")
         return
     }
 
@@ -126,6 +152,7 @@ editForm.addEventListener('submit', function (e) {              //after doing al
     currentLi.querySelector('.titleText').textContent = editTitle.value
     currentLi.querySelector('.date').textContent = editDate.value
     currentLi.querySelector('.categoryValue').textContent = editCategory.value
+    currentLi.setAttribute('data-category', editCategory.value)
 
     editContainer.style.display = 'none'
     editForm.reset()
@@ -143,3 +170,54 @@ function toasterCall(message) {                                 //toaster functi
         toasterContainer.removeChild(messageDiv)
     }, 2000)
 }
+
+//Create toggle DARK and LIGHT mode 
+
+(function toggleTheme() {
+    let toggle = document.querySelector("#toggleBtn");
+
+    function setDarkOrLight() {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.querySelector('main').classList.add("dark");
+            document.querySelector('main').classList.remove("light");
+
+        } else {
+            document.querySelector('main').classList.add("light");
+            document.querySelector('main').classList.remove("dark");
+        };
+    };
+
+
+    let savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+        document.querySelector('main').classList.add(savedTheme);
+        if (savedTheme === "dark") {
+            document.querySelector('main').classList.remove("light");
+
+        } else {
+            document.querySelector('main').classList.remove("dark");
+        }
+    } else {
+        setDarkOrLight();
+    };
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", function () {
+        if (!localStorage.getItem("theme")) {
+            setDarkOrLight();
+        }
+    });
+
+    toggle.addEventListener('click', function () {
+        if (document.querySelector('main').classList.contains('light')) {
+            document.querySelector('main').classList.add("dark");
+            document.querySelector('main').classList.remove("light");
+            localStorage.setItem("theme", "dark");
+
+        } else {
+            document.querySelector('main').classList.add("light");
+            document.querySelector('main').classList.remove("dark");
+            localStorage.setItem("theme", "light");
+        };
+    });
+})()
