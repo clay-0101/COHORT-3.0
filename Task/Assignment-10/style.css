@@ -312,7 +312,8 @@ main.dark .textPart h1{
     display:block;
 }
 
-.completed .titleText{
+.completed .titleText,
+.completed .categoryValue{
     text-decoration: line-through;
 }
 
