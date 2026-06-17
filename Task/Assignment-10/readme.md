@@ -1,21 +1,24 @@
-
 # 📝 Task Manager App
 
-A simple and interactive Task Manager built using **HTML, CSS, and Vanilla JavaScript**. This project allows users to add, edit, delete, and manage tasks dynamically while exploring important DOM concepts and browser internals.
+A simple and interactive Task Manager built using **HTML, CSS, and Vanilla JavaScript**. This project allows users to add, edit, delete, and manage tasks dynamically while exploring important DOM concepts, browser internals, and Local Storage.
 
 ---
 
 ## 🚀 Features
 
-- ➕ Add New Tasks
-- ✏️ Edit Existing Tasks
-- 🗑️ Delete Tasks
-- ✅ Mark Tasks as Completed
-- 🔔 Toast Notifications
-- 📋 Empty State UI
-- 🎨 Responsive and Clean Interface
-- ⚡ Dynamic DOM Manipulation
-- 🎯 Event Delegation
+* ➕ Add New Tasks
+* ✏️ Edit Existing Tasks
+* 🗑️ Delete Tasks
+* ✅ Mark Tasks as Completed
+* 💾 Local Storage Support
+* 🌙 Dark / Light Theme Toggle
+* 🔔 Toast Notifications
+* 📋 Empty State UI
+* 🎨 Responsive and Clean Interface
+* ⚡ Dynamic DOM Manipulation
+* 🎯 Event Delegation
+* 🔄 Theme Persistence Across Refreshes
+* 📂 Category-Based Task Organization
 
 ---
 
@@ -40,8 +43,8 @@ When the browser receives HTML and CSS files, it reads them line by line and tri
 
 The browser understands:
 
-- `h1` is a heading
-- `p` is a paragraph
+* `h1` is a heading
+* `p` is a paragraph
 
 This understanding process is called **Parsing**.
 
@@ -59,9 +62,9 @@ While parsing, the browser breaks the code into smaller pieces called **Tokens**
 
 Becomes:
 
-- `<h1>`
-- `Hello`
-- `</h1>`
+* `<h1>`
+* `Hello`
+* `</h1>`
 
 These small pieces help the browser understand the structure of the code.
 
@@ -97,11 +100,12 @@ Every HTML element becomes a node inside the DOM Tree.
 
 In this project JavaScript interacts with the DOM to:
 
-- Add Tasks
-- Edit Tasks
-- Delete Tasks
-- Update Task Status
-- Show/Hide Elements
+* Add Tasks
+* Edit Tasks
+* Delete Tasks
+* Update Task Status
+* Show/Hide Elements
+* Toggle Themes
 
 Examples:
 
@@ -110,6 +114,7 @@ document.querySelector()
 createElement()
 appendChild()
 remove()
+classList.toggle()
 ```
 
 ---
@@ -138,8 +143,8 @@ This collection of styling rules is called the **CSSOM Tree**.
 
 The browser combines:
 
-- DOM Tree
-- CSSOM Tree
+* DOM Tree
+* CSSOM Tree
 
 and creates a new structure called the **Render Tree**.
 
@@ -234,26 +239,56 @@ taskList.addEventListener("click", function(e) {
 
 ### Why Event Delegation?
 
-- Less Code
-- Better Performance
-- Easier Maintenance
-- Works for Dynamically Added Elements
+* Less Code
+* Better Performance
+* Easier Maintenance
+* Works for Dynamically Added Elements
 
 ### Where I Used It
 
-- Delete Button
-- Edit Button
-- Checkbox Completion Feature
+* Delete Button
+* Edit Button
+* Checkbox Completion Feature
 
 Because all tasks are created dynamically using JavaScript.
 
 ---
 
+# 💾 Local Storage
+
+To improve the user experience, the application uses the browser's **Local Storage API**.
+
+### Why Local Storage?
+
+Without Local Storage, all tasks would disappear whenever the page is refreshed.
+
+### How It Is Used
+
+* Tasks are stored in Local Storage when created.
+* Edited tasks are updated in Local Storage.
+* Deleted tasks are removed from Local Storage.
+* Tasks are automatically restored when the page reloads.
+* Selected theme (Dark/Light Mode) is also saved and restored.
+
+### Example
+
+```javascript
+localStorage.setItem("tasks", JSON.stringify(tasks));
+
+let tasks =
+JSON.parse(localStorage.getItem("tasks")) || [];
+```
+
+This allows the application to persist data even after refreshing or reopening the browser.
+
+---
+
 # 🛠️ Technologies Used
 
-- HTML5
-- CSS3
-- JavaScript (ES6)
+* HTML5
+* CSS3
+* JavaScript (ES6)
+* Local Storage API
 
 ---
 
@@ -261,14 +296,16 @@ Because all tasks are created dynamically using JavaScript.
 
 While building this project, I learned:
 
-- How browsers parse HTML and CSS
-- What Tokenization means
-- How DOM Trees are created
-- How CSSOM Trees store styling information
-- How Render Trees are generated
-- How Event Bubbling works
-- How Event Delegation helps manage dynamic elements
-- How to manipulate the DOM using JavaScript
+* How browsers parse HTML and CSS
+* What Tokenization means
+* How DOM Trees are created
+* How CSSOM Trees store styling information
+* How Render Trees are generated
+* How Event Bubbling works
+* How Event Delegation helps manage dynamic elements
+* How Local Storage works
+* How Theme Persistence is implemented
+* How to manipulate the DOM using JavaScript
 
 This project improved my understanding of how websites work behind the scenes and strengthened my JavaScript DOM manipulation skills.
 

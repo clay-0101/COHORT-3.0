@@ -307,3 +307,21 @@ main.dark .textPart p {
 main.dark .textPart h1{
     color: white;
 }
+
+.completed .checkbox-child{
+    display:block;
+}
+
+.completed .titleText{
+    text-decoration: line-through;
+}
+
+main.light .completed .titleText,
+main.light .completed .categoryValue{
+    color: rgba(128,128,128,.6);
+}
+
+main.dark .completed .titleText,
+main.dark .completed .categoryValue{
+    color: rgb(205, 204, 204);
+}

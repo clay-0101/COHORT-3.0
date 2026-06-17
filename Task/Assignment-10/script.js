@@ -17,11 +17,24 @@ let chkBox = false
 let currentLi = null
 
 // function use for adding tasks in taskContainer
-const tasks = []
+let tasks = JSON.parse(localStorage.getItem("tasks")) || []
+
+
 function addNewTask() {
+    taskContainer.innerHTML = ""
+
+    if (tasks.length > 0) {
+        taskContainer.style.display = 'flex'
+        emptyOverlay.style.display = 'none'
+    } else {
+        taskContainer.style.display = 'none'
+        emptyOverlay.style.display = 'flex'
+    }
+
+
     tasks.forEach((e) => {
         taskContainer.innerHTML += `            
-            <div class="li" data-id="${Date.now()}" data-status="${chkBox === false ? 'incomplete' : 'complete'}" data-category= ${e.category}>
+            <div class="li" data-id="${e.id}" data-status="${chkBox === false ? 'incomplete' : 'complete'}" data-category= ${e.category}>
                 <div class="checkBox">
                     <div class="checkbox-child"></div>
                 </div>
@@ -38,6 +51,15 @@ function addNewTask() {
     })
 
 }
+addNewTask();
+
+//toggle task color function
+
+function toggleTaskStatus(li) {
+    li.classList.toggle("completed");
+    let isComplete = li.classList.contains("completed");
+    li.setAttribute("data-status", isComplete ? "completed" : "incomplete");
+}
 
 // eventListener on form that will create tasks
 
@@ -50,12 +72,17 @@ form.addEventListener('submit', (event) => {
     }
     taskContainer.style.display = 'flex'
     emptyOverlay.style.display = 'none'
+    var obj = {
+        id: Date.now(),
+        title: title.value,
+        category: category.value,
+        date: date.value,
+    }
 
-    tasks.push({
-        title : title.value,
-        category : category.value,
-        date : date.value,
-    })
+
+    tasks.push(obj)
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
     addNewTask()
 
     form.reset()                //always reset all input values after submitting
@@ -66,51 +93,25 @@ form.addEventListener('submit', (event) => {
 taskList.addEventListener('click', (e) => {
     let li = e.target.closest('.li')            //clicked div containing .li class will be selected here
 
-    if (e.target.closest('.deleteBtn')) {       //delete task functionality
-        if (confirm('Are you sure?')) {
-            li.remove()
-            toasterCall("Task Deleted")         //toaster notification call for delete functionality
-            if (taskContainer.innerHTML.trim() === '') {
-                emptyOverlay.style.display = 'flex'
-                taskContainer.style.display = 'none'
+    if (e.target.closest('.deleteBtn')) {
+        if (e.target.closest('.deleteBtn')) {
+            if (confirm('Are you sure?')) {
+                const taskId = li.dataset.id;
+                tasks = tasks.filter(task => String(task.id) !== taskId);
+
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+                addNewTask();
+                toasterCall("Task Deleted");
             }
         }
     }
 
-    if (e.target.closest('.checkBox')) {        //task complete functionality
-
+    if (e.target.closest('.checkBox')) {
         let glowDot = li.querySelector('.checkbox-child')
-        if (chkBox == false) {
-            glowDot.style.display = 'block'
-            chkBox = true
-            if (document.querySelector('main').getAttribute("class") === "light") {
-                li.querySelector('.titleText').style.color = 'rgba(128, 128, 128, 0.564)'
-                li.querySelector('.categoryValue').style.color = 'rgba(128, 128, 128, 0.564)'
-            } else {
-                li.querySelector('.titleText').style.color = 'rgb(162, 162, 162)'
-                li.querySelector('.categoryValue').style.color = 'rgb(203, 203, 203)'
+        let isComplete = li.getAttribute('data-status') === 'completed'
 
-            }
-            li.querySelector('.titleText').style.textDecoration = 'line-through'
-            li.querySelector('.categoryValue').style.textDecoration = 'line-through'
-            li.setAttribute('data-status', chkBox === false ? 'incomplete' : 'completed')
-
-
-        } else {
-            glowDot.style.display = 'none'
-            chkBox = false
-            if (document.querySelector('main').getAttribute("class") === "light") {
-                li.querySelector('.titleText').style.color = 'rgb(0, 0, 0)'
-                li.querySelector('.categoryValue').style.color = '#3266ad'
-            } else {
-                li.querySelector('.titleText').style.color = 'white'
-                li.querySelector('.categoryValue').style.color = 'white'
-            }
-
-            li.querySelector('.titleText').style.textDecoration = 'none'
-            li.querySelector('.categoryValue').style.textDecoration = 'none'
-            li.setAttribute('data-status', chkBox === false ? 'incomplete' : 'completed')
-
+        if (e.target.closest('.checkBox')) {
+            toggleTaskStatus(li);
         }
     }
 
@@ -122,7 +123,7 @@ taskList.addEventListener('click', (e) => {
         editDate.value = li.querySelector('.date').textContent
         editCategory.value = li.querySelector('.categoryValue').textContent
 
-        
+
     }
 })
 
@@ -155,6 +156,17 @@ editForm.addEventListener('submit', function (e) {              //after doing al
     if (editTitle.value === currentLi.querySelector('.titleText').textContent && editDate.value === currentLi.querySelector('.date').textContent && editCategory.value === currentLi.querySelector('.categoryValue').textContent) {
         alert("Please make any changes first...")
         return
+    }
+
+    //update localStorage first
+
+    const taskId = Number(currentLi.getAttribute('data-id'))
+    const index = tasks.findIndex(t => t.id === taskId)
+    if (index !== -1) {
+        tasks[index].title = editTitle.value
+        tasks[index].date = editDate.value
+        tasks[index].category = editCategory.value
+        localStorage.setItem("tasks", JSON.stringify(tasks))
     }
 
     //set the input values in html
@@ -231,3 +243,5 @@ function toasterCall(message) {                                 //toaster functi
         };
     });
 })()
+
+
