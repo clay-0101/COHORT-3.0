@@ -34,7 +34,7 @@ function addNewTask() {
 
     tasks.forEach((e) => {
         taskContainer.innerHTML += `            
-            <div class="li" data-id="${e.id}" data-status="${chkBox === false ? 'incomplete' : 'complete'}" data-category= ${e.category}>
+            <div class="li ${e.status === 'completed' ? 'completed' : ''}" data-id="${e.id}" data-status="${e.status}" data-category= ${e.category}>
                 <div class="checkBox">
                     <div class="checkbox-child"></div>
                 </div>
@@ -56,11 +56,19 @@ addNewTask();
 //toggle task color function
 
 function toggleTaskStatus(li) {
-    li.classList.toggle("completed");
-    let isComplete = li.classList.contains("completed");
-    li.setAttribute("data-status", isComplete ? "completed" : "incomplete");
-}
+    const taskId = li.dataset.id
+    const taskIndx = tasks.findIndex(task => String(task.id) === taskId)
 
+    if (taskIndx === -1) return
+    if (tasks[taskIndx].status === 'completed') {
+        tasks[taskIndx].status = 'incomplete'
+    }else {
+        tasks[taskIndx].status = 'completed'
+    }
+
+    localStorage.setItem("tasks",JSON.stringify(tasks))
+    addNewTask()
+}
 // eventListener on form that will create tasks
 
 form.addEventListener('submit', (event) => {
@@ -77,6 +85,7 @@ form.addEventListener('submit', (event) => {
         title: title.value,
         category: category.value,
         date: date.value,
+        status: 'incomplete'
     }
 
 
@@ -97,22 +106,18 @@ taskList.addEventListener('click', (e) => {
         if (e.target.closest('.deleteBtn')) {
             if (confirm('Are you sure?')) {
                 const taskId = li.dataset.id;
-                tasks = tasks.filter(task => String(task.id) !== taskId);
+                tasks = tasks.filter(task => String(task.id) !== taskId)
 
-                localStorage.setItem("tasks", JSON.stringify(tasks));
+                localStorage.setItem("tasks", JSON.stringify(tasks))
                 addNewTask();
-                toasterCall("Task Deleted");
+                toasterCall("Task Deleted")
             }
         }
     }
 
     if (e.target.closest('.checkBox')) {
-        let glowDot = li.querySelector('.checkbox-child')
-        let isComplete = li.getAttribute('data-status') === 'completed'
+        toggleTaskStatus(li);
 
-        if (e.target.closest('.checkBox')) {
-            toggleTaskStatus(li);
-        }
     }
 
     if (e.target.closest('.editBtn')) {             //edit functionality
