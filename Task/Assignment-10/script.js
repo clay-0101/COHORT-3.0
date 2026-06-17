@@ -1,3 +1,5 @@
+// select elements using DOM querySelector
+
 const form = document.querySelector('form')
 const title = document.querySelector('.title')
 const date = document.querySelector('.date')
@@ -6,13 +8,18 @@ const addBtn = document.querySelector('.addBtn')
 const taskList = document.querySelector('#task-list')
 const emptyOverlay = document.querySelector('.empty')
 const editContainer = document.querySelector('.edit-container')
-const toasterContainer = document.querySelector(".toasterContainer");
+const toasterContainer = document.querySelector('.toasterContainer');
+const taskContainer = document.querySelector('.task-container')
+
+// initial variables
 
 let chkBox = false
 let currentLi = null
 
+// function use for adding tasks in taskContainer
+
 function addNewTask() {
-    taskList.innerHTML += `            
+    taskContainer.innerHTML += `            
             <div class="li">
                 <div class="checkBox">
                     <div class="checkbox-child"></div>
@@ -28,6 +35,9 @@ function addNewTask() {
                 </div>
             </div>`
 }
+
+// eventListener on form that will create tasks
+
 form.addEventListener('submit', (event) => {
 
     event.preventDefault()
@@ -35,27 +45,32 @@ form.addEventListener('submit', (event) => {
         alert('Please fill all the fields....')
         return
     }
-
+    taskContainer.style.display = 'flex'
     emptyOverlay.style.display = 'none'
 
     addNewTask()
 
-    // title.value = ''
-    // date.value = ''
-    // category.value = ''
-    form.reset()
+    form.reset()                //always reset all input values after submitting
 })
-taskList.addEventListener('click', (e) => {
-    let li = e.target.closest('.li')
 
-    if (e.target.closest('.deleteBtn')) {
+// addEventListener that checks any click on the taskList and update accordingly
+
+taskList.addEventListener('click', (e) => {
+    let li = e.target.closest('.li')            //clicked div containing .li class will be selected here
+
+    if (e.target.closest('.deleteBtn')) {       //delete task functionality
         if (confirm('Are you sure?')) {
-            li.remove();
-            toasterCall("Task Deleted")
+            li.remove()
+            toasterCall("Task Deleted")         //toaster notification call for delete functionality
+            if (taskContainer.innerHTML.trim() === '') {
+                emptyOverlay.style.display = 'flex'
+                taskContainer.style.display = 'none'
+            }
         }
     }
 
-    if (e.target.closest('.checkBox')) {
+    if (e.target.closest('.checkBox')) {        //task complete functionality
+
         let glowDot = li.querySelector('.checkbox-child')
         if (chkBox == false) {
             glowDot.style.display = 'block'
@@ -76,8 +91,8 @@ taskList.addEventListener('click', (e) => {
         }
     }
 
-    if (e.target.closest('.editBtn')) {
-        currentLi = li
+    if (e.target.closest('.editBtn')) {             //edit functionality
+        currentLi = li                              //this will select the particular clicked .li containing div
         editContainer.style.display = 'flex'
 
         editTitle.value = li.querySelector('.titleText').textContent
@@ -86,23 +101,27 @@ taskList.addEventListener('click', (e) => {
     }
 })
 
+//selected Update form using querySelecter
+
 const editForm = editContainer.querySelector('form')
 const editTitle = editContainer.querySelector('.title')
 const editDate = editContainer.querySelector('.date')
 const editCategory = editContainer.querySelector('.category')
 const cancelButton = editContainer.querySelector('.cancel')
 
-cancelButton.addEventListener('click', function () {
+cancelButton.addEventListener('click', function () {            //if the user changed his/her mind for editing task, can click cancel.
     editContainer.style.display = 'none'
 })
 
-editForm.addEventListener('submit', function (e) {
+editForm.addEventListener('submit', function (e) {              //after doing all updated use update button for updating task
     e.preventDefault()
 
     if (editTitle.value.trim() == '' || editDate.value.trim() == '' || editCategory.value.trim() == '') {
         alert('Please fill all the fields....')
         return
     }
+
+    //set the input values in html
 
     currentLi.querySelector('.titleText').textContent = editTitle.value
     currentLi.querySelector('.date').textContent = editDate.value
@@ -111,11 +130,11 @@ editForm.addEventListener('submit', function (e) {
     editContainer.style.display = 'none'
     editForm.reset()
 
-    toasterCall("Updated Task");
+    toasterCall("Updated Task");                                //toaster function call for updated task
 
 })
 
-function toasterCall(message){
+function toasterCall(message) {                                 //toaster function defination
     let messageDiv = document.createElement("div")
     messageDiv.textContent = message
     messageDiv.classList.add("toasterMessage")
