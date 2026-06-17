@@ -100,6 +100,14 @@ form button:active {
     border-bottom-right-radius: 10px;
 }
 
+.task-container {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    gap: 20px;
+}
+
 .empty i {
     font-size: 5rem;
 }
@@ -242,4 +250,8 @@ form button:active {
     color: rgb(27, 27, 27);
     border-radius: 10px;
     background-color: #F5F4ED;
+}
+
+::-webkit-scrollbar {
+    width: 1px;
 }
