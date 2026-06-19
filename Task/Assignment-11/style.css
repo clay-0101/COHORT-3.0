@@ -60,7 +60,7 @@ nav {
 
 .nav-left-ele img {
     height: 4vw;
-    width:6vw;
+    width: 6vw;
     object-fit: contain;
 }
 
@@ -97,4 +97,58 @@ nav {
     border: 2px solid #611f69;
     color: #611f69;
     background-color: white;
+}
+
+#section-1 {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#section-1 h1 {
+    text-align: center;
+    font-size: 4rem;
+    line-height: 1.1;
+}
+
+#section-1 p {
+    font-size: 1.2rem;
+}
+
+#hero-btns button {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1vw 2.8vw;
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid #611f69;
+    color: #611f69;
+    background-color: white;
+}
+#logos-img{
+    padding:1.3vw 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+}
+#logos-img p{
+    font-size: 0.8rem;
+}
+#logos-img img{
+    height: 1.5vw;
+    filter:grayscale(100%)
+}
+#vdo-div{
+    height: 37vw;
+    width: 52vw;
+    border-radius: 10px;
+    overflow: hidden;
+}
+#vdo-div video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
