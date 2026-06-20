@@ -106,3 +106,160 @@
 //     return max
 // }
 // console.log(findMax(arr))
+
+
+
+
+//MEDIUM LEVEL
+
+// 6. Product Data Processor
+// You will work with an array of product objects, where each object has a name, a price, and
+// a category. First, use the map() method to make a new array that only contains the product
+// names. Second, use the filter() method to make another array that only contains products
+// from one specific category. Third, use the reduce() method to add up the prices of every
+// product and return the total.
+// Concepts: map, filter, reduce
+
+// ...CODE
+
+// const products = [
+//   { name: "Laptop", price: 45000, category: "Electronics" },
+//   { name: "T-Shirt", price: 800, category: "Clothing" },
+//   { name: "Headphones", price: 2500, category: "Electronics" },
+//   { name: "Jeans", price: 1500, category: "Clothing" },
+//   { name: "Smartwatch", price: 4000, category: "Electronics" },
+//   { name: "Running Shoes", price: 3200, category: "Footwear" },
+//   { name: "Keyboard", price: 1200, category: "Electronics" },
+//   { name: "Jacket", price: 2800, category: "Clothing" },
+//   { name: "Sneakers", price: 2200, category: "Footwear" },
+//   { name: "Power Bank", price: 1800, category: "Electronics" }
+// ];
+
+// let productNames = products.map((nam)=>{
+//     return nam.name
+// })
+// let electronicProducts = products.filter((product)=>product.category === 'Electronics')
+// let totalAmount = products.reduce((sum,value)=>{
+//     return sum + value.price
+// },0)
+
+// console.log(productNames);
+// console.log(electronicProducts);
+// console.log(totalAmount);
+
+
+
+
+// 7. Debounce Utility from Scratch
+// Write your own function called debounce that takes two inputs: another function (fn) and a
+// delay time in milliseconds. Your debounce function should return a new function that, every
+// time it is called, waits for the given delay before actually running fn. If it gets called again
+// before that delay finishes, it should cancel the earlier wait and start counting the delay again
+// from zero. This trick is useful for things like search boxes, where you don't want to run code
+// on every single keystroke.
+// Concepts: closures, setTimeout/clearTimeout, higher-order functions
+
+// ...CODE
+
+
+// function debounce(fn, t) {
+//     let timeOUt;
+
+//     function func(...arg) {
+//         console.log('TimeOut Cleared')
+//         clearTimeout(timeOUt)
+
+//         timeOUt = setTimeout(() => {
+//             fn(...arg)
+//         }, t)
+//     }
+//     return func
+// }
+// function greet(name) {
+//     console.log(`Hello, ${name}`)
+// }
+
+// let debounceGreet = debounce(greet,2000)
+
+// debounceGreet('Carry')
+// debounceGreet('vaibhav')
+// debounceGreet('ayush')
+// debounceGreet('rohit')
+// debounceGreet('mohit')
+
+
+
+
+// 8. Sequential Task Runner
+// Write three separate functions, where each one waits for a short delay (you can use a
+// Promise with setTimeout inside it) and then logs a different message to the console, such
+// as "Step 1 done", "Step 2 done", and "Step 3 done". Then write one more function that uses
+// async/await to run all three, one after another, so Step 2 never starts before Step 1 has fully
+// finished, and Step 3 never starts before Step 2 has fully finished.
+// Concepts: async/await, promises, sequencing
+
+// ...CODE
+
+
+// function step1(){
+//     return new Promise((resolve)=>{
+//         setTimeout(()=>{
+//             console.log('step 1 completed')
+//             resolve()
+//         },1000)
+//     })
+// }
+// function step2(){
+//     return new Promise((resolve)=>{
+//         setTimeout(()=>{
+//             console.log('step 2 completed')
+//             resolve()
+//         },1000)
+//     })
+// }
+// function step3(){
+//     return new Promise((resolve)=>{
+//         setTimeout(()=>{
+//             console.log('step 3 completed')
+//             resolve()
+//         },1000)
+//     })
+// }
+
+// async function runTask(){
+//     await step1()
+//     await step2()
+//     await step3()
+// }
+// runTask()
+
+
+
+
+// 9. API Data Cleaner
+// Write a function that uses fetch() to get data from a public API of your choice (for example,
+// JSONPlaceholder). Once the data arrives, pick out only the specific fields you actually need
+// (for example, just the title and the id) and return a new, simplified array or object built from
+// those fields only. Wrap your code in a try/catch block so that if the network request fails,
+// your function handles the error nicely instead of crashing.
+// Concepts: fetch, async/await, try/catch, data transformation
+
+// ...CODE
+
+// async function quotes() {
+//     try {
+//         let response = await fetch('https://dummyjson.com/quotes')
+
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! Status: ${response.status}`)
+//         }
+//         let data = await response.json()
+//         let arr = data.quotes.map((quote) => {
+//             return { author: quote.author, quote: quote.quote }
+//         })
+//         console.log(arr)
+//     } catch (err) {
+//         console.error(err.message);
+//     }
+// }
+// quotes()
