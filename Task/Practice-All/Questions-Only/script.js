@@ -277,40 +277,112 @@
 // Concepts: objects, functions as values, publish-subscribe pattern
 
 
-let EventEmitter = {
-    events : {},
-    on : function(eventName, callback){
-        if(!this.events[eventName]){
-            this.events[eventName] = []
-        }
-        this.events[eventName].push(callback)
-    },
+// ...CODE
 
-    emit : function(eventName , data){
-        if(this.events[eventName]){
-            this.events[eventName].forEach(callback =>{
-                callback(data)
-            })
-        }
-    },
-    off : function(eventName , callback){
-        if(this.events[eventName]){
-            this.events[eventName] = this.events[eventName].filter(cb => cb !== callback)
-        }
+// let EventEmitter = {
+//     events : {},
+//     on : function(eventName, callback){
+//         if(!this.events[eventName]){
+//             this.events[eventName] = []
+//         }
+//         this.events[eventName].push(callback)
+//     },
+
+//     emit : function(eventName , data){
+//         if(this.events[eventName]){
+//             this.events[eventName].forEach(callback =>{
+//                 callback(data)
+//             })
+//         }
+//     },
+//     off : function(eventName , callback){
+//         if(this.events[eventName]){
+//             this.events[eventName] = this.events[eventName].filter(cb => cb !== callback)
+//         }
+//     }
+// }
+
+// console.log(EventEmitter)
+
+// function greet(nam){
+//     console.log(`Hello, ${nam}`);
+// }
+
+// function bye(nam){
+//     console.log(`Bye, ${nam}`);
+// }
+
+// EventEmitter.on('carry',greet)
+// EventEmitter.on('carry',bye)
+// EventEmitter.off('carry',bye)
+// EventEmitter.emit('carry','carry')
+
+
+
+
+// 11. Memoization Utility
+// Write a function called memoize that takes another function (fn) as input and returns a new
+// version of it. This new version should remember (cache) the result every time it is called with
+// a particular set of arguments. If it is ever called again later with the exact same arguments,
+// it should return the saved result right away instead of running fn again. This is handy for
+// slow calculations that get called repeatedly with the same input.
+// Concepts: closures, caching, higher-order functions
+
+
+// ...CODE
+
+
+// const memorize = (fn)=>{
+//     let catche = {}
+
+//     return function(...arg){
+//         let key = JSON.stringify(arg);
+
+//         if(catche[key]){
+//             console.log(`Returning From the Catche : ${key}`)
+//             return catche[key]
+//         }
+
+//         let result = fn(...arg)
+//         catche[key] = result
+//         console.log(`Calculating and Catching : ${key}`)
+//         return result
+//     }
+// }
+
+// function calculateSum(n){
+//     console.log(`Heavy Calulation for : ${n}`)
+//     return n*n
+// }
+
+// let memorizedSquare = memorize(calculateSum)
+
+// console.log(memorizedSquare(5))
+// console.log(memorizedSquare(5))
+// console.log(memorizedSquare(4))
+// console.log(memorizedSquare(10))
+// console.log(memorizedSquare(4))
+
+
+
+
+// 12. Auto-Retry for Failing Promises
+// Write a function called retry that takes an async function and a number of attempts as inputs.
+// Your retry function should call the async function, and if it fails (throws an error or rejects), it
+// should automatically try calling it again, up to the number of attempts you chose. If every
+// attempt fails, retry should finally give up and reject with an error. Test it using a fake function
+// that fails the first couple of times and then succeeds.
+// Concepts: promises, loops/recursion, error handling
+
+
+// ...CODE
+
+
+function retry(fn,attempt){
+
+    try{
+        fn()
+    }catch(err){
+        console.error(`Error Caught : ${err.message}`)
     }
 }
-
-console.log(EventEmitter)
-
-function greet(nam){
-    console.log(`Hello, ${nam}`);
-}
-
-function bye(nam){
-    console.log(`Bye, ${nam}`);
-}
-
-EventEmitter.on('carry',greet)
-EventEmitter.on('carry',bye)
-EventEmitter.off('carry',bye)
-EventEmitter.emit('carry','carry')
