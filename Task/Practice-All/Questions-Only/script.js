@@ -263,3 +263,54 @@
 //     }
 // }
 // quotes()
+
+
+
+// 10. Mini Event Emitter
+
+// Build your own small object (you can call it an event emitter) with three methods:
+// on(eventName, callback) to register a function that should run when a named event
+// happens, emit(eventName, data) to actually trigger that event and run every function
+// registered for it, and off(eventName, callback) to remove a function you registered earlier.
+// This lets different parts of your code talk to each other through named events instead of
+// calling each other directly.
+// Concepts: objects, functions as values, publish-subscribe pattern
+
+
+let EventEmitter = {
+    events : {},
+    on : function(eventName, callback){
+        if(!this.events[eventName]){
+            this.events[eventName] = []
+        }
+        this.events[eventName].push(callback)
+    },
+
+    emit : function(eventName , data){
+        if(this.events[eventName]){
+            this.events[eventName].forEach(callback =>{
+                callback(data)
+            })
+        }
+    },
+    off : function(eventName , callback){
+        if(this.events[eventName]){
+            this.events[eventName] = this.events[eventName].filter(cb => cb !== callback)
+        }
+    }
+}
+
+console.log(EventEmitter)
+
+function greet(nam){
+    console.log(`Hello, ${nam}`);
+}
+
+function bye(nam){
+    console.log(`Bye, ${nam}`);
+}
+
+EventEmitter.on('carry',greet)
+EventEmitter.on('carry',bye)
+EventEmitter.off('carry',bye)
+EventEmitter.emit('carry','carry')
