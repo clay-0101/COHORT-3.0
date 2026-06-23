@@ -378,11 +378,36 @@
 // ...CODE
 
 
-function retry(fn,attempt){
+async function retry(fn, attempt) {
+    try {
+        return await fn()
+    } catch (err) {
+        if (attempt <= 1) {
+            throw new Error(`Final Attempt Failed : ${err.message}`)
+        }
+        console.log(`Attempt Failed Retrying Attempt left...: ${attempt - 1}`)
 
-    try{
-        fn()
-    }catch(err){
-        console.error(`Error Caught : ${err.message}`)
+
+        return await retry(fn, attempt - 1)
     }
+
 }
+let counter = 0;
+function fakeFn() {
+
+    return new Promise((resolve, reject) => {
+        counter++
+        if (counter < 3) {
+            reject(new Error(`Failed at Attempt : ${counter}`))
+        } else {
+            resolve(`Success Data Fetched!!`)
+        }
+    })
+}
+
+async function testRun() {
+
+    const result = await retry(fakeFn, 4)
+    console.log(result)
+}
+testRun()
