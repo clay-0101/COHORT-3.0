@@ -1,0 +1,41 @@
+*{
+    margin : 0 ;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+button{
+    padding: 10px 20px;
+    color: white;
+    background-color: black;
+    
+}
+/* img{
+    height: 20vw;
+    width: 20vw;
+    border-radius: 20px;
+} */
+ /* .dark{
+    color: white;
+    background-color: black;
+ } */
+
+#students{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+ #student{
+    height: 10vw;
+    width: 10Vw;
+    border-radius: 20px;
+    background-color: grey;
+    color: black;
+    padding: 20px;
+ }
