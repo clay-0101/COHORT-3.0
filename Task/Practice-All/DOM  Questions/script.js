@@ -155,42 +155,42 @@
 
 
 
-let name = document.querySelector('#name')
-let course = document.querySelector('#course')
-let btnAdd = document.querySelector('#addBtn')
-let students = document.querySelector('#students')
+// let name = document.querySelector('#name')
+// let course = document.querySelector('#course')
+// let btnAdd = document.querySelector('#addBtn')
+// let students = document.querySelector('#students')
 
-let arr = []
+// let arr = []
 
-function render() {
-    students.innerHTML = ''
-    arr.forEach((stu, idx) => {
+// function render() {
+//     students.innerHTML = ''
+//     arr.forEach((stu, idx) => {
 
-        students.innerHTML += `<div id="student">
-            <p>Name - ${stu.Usname}</p>
-            <p>Course - ${stu.Uscourse}</p>
-            <button onclick="deleteStu(${idx})" id="delete">Delete</button>
-        </div>`
-    })
+//         students.innerHTML += `<div id="student">
+//             <p>Name - ${stu.Usname}</p>
+//             <p>Course - ${stu.Uscourse}</p>
+//             <button onclick="deleteStu(${idx})" id="delete">Delete</button>
+//         </div>`
+//     })
 
-}
-render()
+// }
+// render()
 
-btnAdd.addEventListener('click', () => {
+// btnAdd.addEventListener('click', () => {
 
-    if (name.value.trim() == '' || course.value.trim() == '') return
+//     if (name.value.trim() == '' || course.value.trim() == '') return
 
-    arr.push({
-        Usname: name.value,
-        Uscourse: course.value,
-    })
-    render()
+//     arr.push({
+//         Usname: name.value,
+//         Uscourse: course.value,
+//     })
+//     render()
 
-    name.value = ''
-    course.value = ''
-})
+//     name.value = ''
+//     course.value = ''
+// })
 
-function deleteStu(idx){
-    arr.splice(idx , 1)
-    render()
-}
+// function deleteStu(idx){
+//     arr.splice(idx , 1)
+//     render()
+// }
