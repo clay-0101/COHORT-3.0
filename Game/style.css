@@ -1,0 +1,29 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#game{
+    height: 80%;
+    width: 80%;
+    background-color: #70c5ce;
+    overflow: hidden;
+    position: relative;
+}
+#modiBird{
+    height: 150px;
+    object-fit: cover;
+    position: absolute;
+}
+.pipe{
+    width: 80px;
+    background-color: green;
+    position: absolute;
+}
