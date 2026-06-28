@@ -121,3 +121,209 @@ main {
     box-shadow: 0px 0px 5px rgba(152, 151, 151, 0.178);
     /* display: none; */
 }
+
+
+#tracker {
+    height: 100%;
+    width: 100%;
+    background-color: #f8f9fb;
+    display: flex;
+}
+
+aside {
+    height: 100%;
+    width: 18%;
+    background-color: white;
+    border-right: 1px solid rgba(181, 180, 180, 0.361);
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#dash_set {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2vw;
+    gap: 10px;
+}
+
+#dashBtn {
+    padding: 10px 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    color: #1e40af;
+    background-color: #dbeafe;
+    border-radius: 10px;
+}
+
+
+
+#settingBtn {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: grey;
+    border-radius: 10px;
+}
+
+#dashBtn:hover {
+    color: #1e40af;
+    background-color: #dbeafe;
+}
+
+#settingBtn:hover {
+    color: #1e40af;
+    background-color: #dbeafe;
+}
+
+#dash_set h1 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+#addTransaction {
+    padding: 12px 50px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 0.9;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#addTransaction i {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+#dashboard {
+    min-height: 100%;
+    width: 85%;
+}
+
+nav {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: white;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: 1px solid rgba(181, 180, 180, 0.361);
+}
+
+nav p {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0 20px;
+    border-left: 1px solid rgba(128, 128, 128, 0.379);
+}
+
+nav button {
+    padding: 6px 20px;
+    border: 1px solid rgba(48, 48, 48, 0.354);
+    background-color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#hero-section {
+    min-height: 100%;
+    padding: 30px;
+    background-color: #f4f7f6;
+}
+
+#grid-part {
+    min-height: 80vh;
+    width: 100%;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.8fr 0.2fr 1fr;
+    grid-template-rows: repeat(4, 0.5fr);
+    grid-template-areas:
+        "first second third third forth"
+        "big big big ddark ddark"
+        "big big big . ."
+        "list list list . .";
+    gap: 20px;
+
+}
+
+#first {
+    /* background-color: #007bff; */
+    grid-area: first;
+    border-radius: 10px;
+}
+
+#second {
+    /* background-color: grey; */
+    grid-area: second;
+    border-radius: 10px;
+}
+
+#third {
+    /* background-color: #28a745; */
+    grid-area: third;
+    border-radius: 10px;
+}
+
+#forth {
+    /* background-color: red; */
+    grid-area: forth;
+    border-radius: 10px;
+}
+
+#big {
+    background-color: black;
+    grid-area: big;
+    border-radius: 10px;
+}
+
+#dark {
+    background-color: purple;
+    grid-area: ddark;
+    border-radius: 10px;
+}
+
+#list {
+    background-color: yellow;
+    grid-area: list;
+    border-radius: 10px;
+}
+
+.status {
+    border: 1px solid rgba(181, 180, 180, 0.361);
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+}
+
+.status .icons {
+    height: 35px;
+    width: 35px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status .icons i {
+    font-size: 1.3rem;
+}
+
+.status h1 {
+    font-size: 1.6rem;
+    line-height: 0.8;
+}

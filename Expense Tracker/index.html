@@ -7,11 +7,12 @@
     <title>$pendly</title>
     <link rel="shortcut icon" href="assests/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
     <main>
-        <section id="authPage">
+        <!-- <section id="authPage">
             <form id="loginAuth">
                 <div id="login" class="formFormat">
                     <h1>Welcome Back!</h1>
@@ -44,6 +45,76 @@
                             id="loginHere" class="logRes">Login here</span></span></p>
                 </div>
             </form>
+        </section> -->
+
+
+
+
+
+        <section id="tracker">
+            <aside>
+                <div>
+                    <div style="display: flex; align-items:center; gap:10px;">
+                        <div style="height: 40px; width: 40px;">
+                            <img src="./assests/favicon.png" style="height: 100%; width: 100%; object-fit: cover;"
+                                alt="">
+                        </div>
+                        <div>
+                            <h1 style="font-size: 1.3rem;">$pendly</h1>
+                            <p style="font-size: 0.8rem; color: grey;">Enterprise Finance</p>
+                        </div>
+                    </div>
+                    <div id="dash_set">
+                        <div id="dashBtn">
+                            <i class="ri-layout-grid-line"></i>
+                            <h1>Dashboard</h1>
+                        </div>
+                        <div id="settingBtn">
+                            <i class="ri-settings-3-fill"></i>
+                            <h1>Settings</h1>
+                        </div>
+                    </div>
+                </div>
+                <button id="addTransaction"><i class="ri-add-fill"></i> Add Transaction</button>
+            </aside>
+            <div id="dashboard">
+                <nav>
+                    <p id="user">User</p>
+                    <button id="logoutBtn"><i class="ri-logout-box-r-line"></i>&nbsp;Logout</button>
+                </nav>
+                <div id="hero-section">
+                    <div>
+                        <h1>Financial Overview</h1>
+                        <p>Real-time tracking application</p>
+                    </div>
+                    <div id="grid-part">
+
+                        <div id="first" class="status">
+                            <div class="icons" style="background-color: #dbeafe; color: #1e40af;"><i class="ri-bank-line"></i></div>
+                            <p>Current Balance</p>
+                            <h1><span class="currency">$0.00</span></h1>
+                        </div>
+                        <div id="second" class="status">
+                            <div class="icons" style="background-color: #dcfce7; color: #166534;"><i class="ri-wallet-3-fill"></i></div>
+                            <p>Total Income</p>
+                            <h1><span class="currency">$0.00</span></h1>
+                        </div>
+                        <div id="third" class="status">
+                            <div class="icons" style="background-color: #fee2e2;color: #991b1b;"><i class="ri-hand-coin-fill"></i></div>
+                            <p>Total Expense</p>
+                            <h1><span class="currency">$0.00</span></h1>
+                        </div>
+                        <div id="forth" class="status">
+                            <div class="icons" style="background-color: #dbeafe; color: #1e40af;"><i class="ri-receipt-fill"></i></div>
+                            <p>Total Transactions</p>
+                            <h1>0</h1>
+                        </div>
+                        <div id="big" style="color: grey;">1</div>
+                        <div id="dark" style="color: grey;">1</div>
+                        <div id="list" style="color: grey;">1</div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
