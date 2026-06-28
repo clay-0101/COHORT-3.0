@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$pendly</title>
+    <link rel="shortcut icon" href="assests/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <section id="authPage">
+            <form id="loginAuth">
+                <div id="login" class="formFormat">
+                    <h1>Welcome Back!</h1>
+                    <div id="loginToSpendly" class="greetTitle">
+                        <p>Login to $pendly</p>
+                        <img src="assests/favicon.png" alt="">
+                    </div>
+                    <label for="username">Username</label>
+                    <input type="text" id="username">
+                    <label for="password">Password</label>
+                    <input type="password" id="password">
+                    <button id="loginBtn">Login</button>
+                    <p style="text-align: center;font-size: 0.9rem; margin-top: 10px;">Don't have an account? <span
+                            id="goToRegistration" class="logRes">Register here</span></p>
+                </div>
+            </form>
+            <form id="registerAuth">
+                <div id="registration" class="formFormat">
+                    <h1>Create Account!</h1>
+                    <div id="registerToSpendly" class="greetTitle">
+                        <p>Join $pendly</p>
+                        <img src="assests/favicon.png" alt="">
+                    </div>
+                    <label for="Rusername">Choose a Username</label>
+                    <input type="text" id="Rusername">
+                    <label for="Rpassword">Password</label>
+                    <input type="password" id="Rpassword">
+                    <button id="registerBtn">Register</button>
+                    <p style="text-align: center;font-size: 0.9rem; margin-top: 10px;">Already have an account? <span
+                            id="loginHere" class="logRes">Login here</span></span></p>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
