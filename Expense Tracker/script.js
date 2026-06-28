@@ -6,7 +6,7 @@ const register_username = document.querySelector('#Rusername')
 const register_password = document.querySelector('#Rpassword')
 
 
-let users = []
+let users = JSON.parse(localStorage.getItem('All_Users')) || []
 
 
 function show_User() {
@@ -15,7 +15,7 @@ function show_User() {
     // })
     console.log(users)
 }
-show_User()
+
 
 
 // REGISTRATION FORM
@@ -27,7 +27,7 @@ register_Form.addEventListener('submit', (e) => {
     if (user_exists) {
         alert('This Username is already exists..')
     } else {
-        users.push({
+        let obj = {
             id: Date.now(),
             username: register_username.value,
             password: register_password.value,
@@ -35,7 +35,9 @@ register_Form.addEventListener('submit', (e) => {
             total_income: 0,
             total_expense: 0,
             total_transactions: 0
-        })
+        }
+        users.push(obj)
+        localStorage.setItem('All_Users',JSON.stringify(users))
         show_User()
     }
 
@@ -55,3 +57,4 @@ goToRegister_Form.addEventListener('click', () => {
     register_Form.style.display = 'block';
     login_Form.style.display = 'none';
 });
+localStorage.clear()
