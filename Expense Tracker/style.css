@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    background-color: #f4f7f6;
+}
+
+#authPage {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginAuth {
+    height: 48%;
+    width: 28%;
+    background-color: white;
+    padding: 30px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(152, 151, 151, 0.178);
+    display: none;
+}
+
+.formFormat {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.formFormat h1 {
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+.greetTitle {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.greetTitle img {
+    max-width: 25px;
+}
+
+#username,
+#password,
+#loginBtn,
+#Rusername,
+#Rpassword,
+#registerBtn {
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(126, 125, 125, 0.427)
+}
+
+#loginBtn {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+#loginBtn:hover {
+    background-color: #026ad8;
+}
+
+#loginBtn:active {
+    transform: scale(0.98);
+}
+
+.logRes {
+    color: #0056b3;
+    cursor: pointer;
+}
+
+.logRes:hover {
+    color: #007bff;
+}
+
+#registerBtn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    margin-top: 5px;
+    font-size: 1rem;
+}
+
+#registerBtn:hover {
+    background-color: #23c147;
+}
+
+#registerBtn:active {
+    transform: scale(0.98);
+}
+
+#registerAuth {
+    height: 48%;
+    width: 28%;
+    background-color: white;
+    padding: 30px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(152, 151, 151, 0.178);
+    /* display: none; */
+}
