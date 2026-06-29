@@ -8,11 +8,12 @@
     <link rel="shortcut icon" href="assests/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <main>
-        <!-- <section id="authPage">
+        <section id="authPage">
             <form id="loginAuth">
                 <div id="login" class="formFormat">
                     <h1>Welcome Back!</h1>
@@ -21,43 +22,36 @@
                         <img src="assests/favicon.png" alt="">
                     </div>
                     <label for="username">Username</label>
-                    <input type="text" id="username">
+                    <input type="text" id="username" required>
                     <label for="password">Password</label>
-                    <input type="password" id="password">
+                    <input type="password" id="password" required>
                     <button id="loginBtn">Login</button>
-                    <p style="text-align: center;font-size: 0.9rem; margin-top: 10px;">Don't have an account? <span
-                            id="goToRegistration" class="logRes">Register here</span></p>
+                    <p style="text-align: center;font-size: 0.9rem; margin-top: 10px;">Don't have an account? <span id="goToRegistration" class="logRes">Register here</span></p>
                 </div>
             </form>
             <form id="registerAuth">
-                <div id="registration" class="formFormat">
+                <div id="registration" class="formFormat" >
                     <h1>Create Account!</h1>
                     <div id="registerToSpendly" class="greetTitle">
                         <p>Join $pendly</p>
                         <img src="assests/favicon.png" alt="">
                     </div>
                     <label for="Rusername">Choose a Username</label>
-                    <input type="text" id="Rusername">
+                    <input type="text" id="Rusername" required>
                     <label for="Rpassword">Password</label>
-                    <input type="password" id="Rpassword">
+                    <input type="password" id="Rpassword" required>
                     <button id="registerBtn">Register</button>
-                    <p style="text-align: center;font-size: 0.9rem; margin-top: 10px;">Already have an account? <span
-                            id="loginHere" class="logRes">Login here</span></span></p>
+                    <p style="text-align: center;font-size: 0.9rem; margin-top: 10px;">Already have an account? <span id="loginHere" class="logRes">Login here</span></p>
                 </div>
             </form>
-        </section> -->
-
-
-
-
+        </section>
 
         <section id="tracker">
             <aside>
                 <div>
                     <div style="display: flex; align-items:center; gap:10px;">
                         <div style="height: 40px; width: 40px;">
-                            <img src="./assests/favicon.png" style="height: 100%; width: 100%; object-fit: cover;"
-                                alt="">
+                            <img src="./assests/favicon.png" style="height: 100%; width: 100%; object-fit: cover;" alt="">
                         </div>
                         <div>
                             <h1 style="font-size: 1.3rem;">$pendly</h1>
@@ -82,43 +76,143 @@
                     <p id="user">User</p>
                     <button id="logoutBtn"><i class="ri-logout-box-r-line"></i>&nbsp;Logout</button>
                 </nav>
-                <div id="hero-section">
-                    <div>
-                        <h1>Financial Overview</h1>
-                        <p>Real-time tracking application</p>
-                    </div>
-                    <div id="grid-part">
 
-                        <div id="first" class="status">
-                            <div class="icons" style="background-color: #dbeafe; color: #1e40af;"><i class="ri-bank-line"></i></div>
-                            <p>Current Balance</p>
-                            <h1><span class="currency">$0.00</span></h1>
+                <div id="dashboard-page">
+                    <div id="hero-section">
+                        <div>
+                            <h1>Financial Overview</h1>
+                            <p>Real-time tracking application</p>
                         </div>
-                        <div id="second" class="status">
-                            <div class="icons" style="background-color: #dcfce7; color: #166534;"><i class="ri-wallet-3-fill"></i></div>
-                            <p>Total Income</p>
-                            <h1><span class="currency">$0.00</span></h1>
+                        <div id="grid-part">
+                            <div id="first" class="status">
+                                <div class="icons" style="background-color: #dbeafe; color: #1e40af;"><i class="ri-bank-line"></i></div>
+                                <p>Current Balance</p>
+                                <h1><span class="currency">₹0.00</span></h1>
+                            </div>
+                            <div id="second" class="status">
+                                <div class="icons" style="background-color: #dcfce7; color: #166534;"><i class="ri-wallet-3-fill"></i></div>
+                                <p>Total Income</p>
+                                <h1><span class="currency">₹0.00</span></h1>
+                            </div>
+                            <div id="third" class="status">
+                                <div class="icons" style="background-color: #fee2e2;color: #991b1b;"><i class="ri-hand-coin-fill"></i></div>
+                                <p>Total Expense</p>
+                                <h1><span class="currency">₹0.00</span></h1>
+                            </div>
+                            <div id="forth" class="status">
+                                <div class="icons" style="background-color: #dbeafe; color: #1e40af;"><i class="ri-receipt-fill"></i></div>
+                                <p>Total Transactions</p>
+                                <h1>0</h1>
+                            </div>
+                            <div id="big">
+                                <h3 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 15px;">Cash Flow Analysis</h3>
+                                <div class="chart-container">
+                                    <canvas id="cashFlowChart"></canvas>
+                                </div>
+                            </div>
+                            <div id="dark">
+                                <h1>Preferences</h1>
+                                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(181, 180, 180, 0.361);padding: 10px 0;">
+                                    <p>Dark</p>
+                                    <div id="darkModeBtn">
+                                        <div id="innerBall"></div>
+                                    </div>
+                                </div>
+                                <button id="resetBtn"><i class="ri-delete-bin-5-fill"></i>&nbsp;Reset All Data</button>
+                            </div>
+                            <div id="list">
+                                <h1>All Transactions</h1>
+                                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                                    <div id="searchbar">
+                                        <i class="ri-search-line"></i>
+                                        <input id="search-Transaction" type="text" placeholder="Search Transaction...">
+                                    </div>
+                                    <select id="select-category">
+                                        <option value="All" selected>All Types</option>
+                                        <option value="income">Income Only</option>
+                                        <option value="expense">Expense Only</option>
+                                    </select>
+                                </div>
+                                <div id="list-head">
+                                    <p>DATE</p>
+                                    <p>DESCRIPTION</p>
+                                    <p>CATEGORY</p>
+                                    <p>AMOUNT</p>
+                                    <p>ACTIONS</p>
+                                </div>
+                                <div id="transaction-rows"></div>
+                            </div>
                         </div>
-                        <div id="third" class="status">
-                            <div class="icons" style="background-color: #fee2e2;color: #991b1b;"><i class="ri-hand-coin-fill"></i></div>
-                            <p>Total Expense</p>
-                            <h1><span class="currency">$0.00</span></h1>
-                        </div>
-                        <div id="forth" class="status">
-                            <div class="icons" style="background-color: #dbeafe; color: #1e40af;"><i class="ri-receipt-fill"></i></div>
-                            <p>Total Transactions</p>
-                            <h1>0</h1>
-                        </div>
-                        <div id="big" style="color: grey;">1</div>
-                        <div id="dark" style="color: grey;">1</div>
-                        <div id="list" style="color: grey;">1</div>
                     </div>
                 </div>
+
+                <div id="settings-page" style="display: none; padding: 30px;">
+                    <h1>Settings</h1>
+                    <p style="color: grey; margin-bottom: 20px;">Manage your account profile and app formatting.</p>
+                    <div id="settingBox">
+                        <h3>Profile Details</h3>
+                        <form id="settings_form" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+                            <div style="display: flex; gap: 20px;">
+                                <div style="display: flex; flex-direction: column; gap: 5px; flex: 1;">
+                                    <label>Full Name</label>
+                                    <input id="Susername" type="text" style="padding: 10px; border-radius: 5px; border: 1px solid rgba(126, 125, 125, 0.427);">
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 5px; flex: 1;">
+                                    <label>Primary Currency</label>
+                                    <select id="Scurrency" style="padding: 10px; border-radius: 5px; border: 1px solid rgba(126, 125, 125, 0.427);">
+                                        <option value="INR">INR (₹)</option>
+                                        <option value="USD">USD ($)</option>
+                                        <option value="EUR">EUR (€)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" style="background-color: black; color: white; padding: 10px 20px; border: none; border-radius: 5px; width: fit-content; cursor: pointer; margin-top: 10px;">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </section>
-    </main>
 
+        <section id="addTransaction_page">
+            <form id="addTransaction_form">
+                <div style="display: flex; justify-content: space-between;">
+                    <h1>Add Transaction</h1>
+                    <i id="crossIcon" class="ri-close-large-line" style="cursor: pointer;"></i>
+                </div>
+                <label for="type">Type</label>
+                <select id="type">
+                    <option selected value="expense">Expense</option>
+                    <option value="income">Income</option>
+                </select>
+                <label for="description">Description</label>
+                <input type="text" id="description" placeholder="e.g. Amazon, salary, coffee">
+                <div style="display: flex; gap: 10px;">
+                    <div>
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount">
+                    </div>
+                    <div>
+                        <label for="date">Date</label>
+                        <input type="date" id="date">
+                    </div>
+                </div>
+                <label for="category">Category</label>
+                <select id="category" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="Food & Dining">Food & Dining</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Recharge & Bills">Recharge & Bills</option>
+                    <option value="Petrol & Auto">Petrol & Auto</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Salary">Salary</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Other">Other</option>
+                </select>
+                <button>Save Transaction</button>
+            </form>
+        </section>
+    </main>
     <script src="script.js"></script>
 </body>
-
 </html>

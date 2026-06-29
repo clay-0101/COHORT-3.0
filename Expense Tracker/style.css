@@ -22,7 +22,7 @@ main {
 #authPage {
     height: 100%;
     width: 100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -139,6 +139,7 @@ aside {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
 }
 
 #dash_set {
@@ -205,6 +206,8 @@ aside {
 #dashboard {
     min-height: 100%;
     width: 85%;
+    overflow-y: auto;
+
 }
 
 nav {
@@ -239,21 +242,24 @@ nav button {
     min-height: 100%;
     padding: 30px;
     background-color: #f4f7f6;
+
 }
 
 #grid-part {
-    min-height: 80vh;
+    /* min-height: 80vh; */
     width: 100%;
     margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 0.8fr 0.2fr 1fr;
-    grid-template-rows: repeat(4, 0.5fr);
+    grid-template-rows: auto auto auto auto;
     grid-template-areas:
         "first second third third forth"
         "big big big ddark ddark"
         "big big big . ."
         "list list list . .";
     gap: 20px;
+    align-items: start;
+    align-content: start;
 
 }
 
@@ -288,15 +294,25 @@ nav button {
 }
 
 #dark {
-    background-color: purple;
+    background-color: white;
+    border: 1px solid rgba(181, 180, 180, 0.361);
     grid-area: ddark;
     border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
 }
 
 #list {
-    background-color: yellow;
+    background-color: white;
     grid-area: list;
     border-radius: 10px;
+    padding: 20px;
+    border: 1px solid rgba(181, 180, 180, 0.361);
+    overflow-y: auto;
+
 }
 
 .status {
@@ -326,4 +342,292 @@ nav button {
 .status h1 {
     font-size: 1.6rem;
     line-height: 0.8;
+}
+
+
+/* I made this graph with a little help from AI, but I didn’t understand it because… */
+#big {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+    grid-column: span 1 / span 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    #big {
+        grid-column: span 3 / span 3;
+    }
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    flex-grow: 1;
+}
+
+/* chartCode end */
+
+
+#darkModeBtn {
+    height: 25px;
+    width: 45px;
+    background-color: grey;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+}
+
+#innerBall {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: white;
+    transition: transform 0.3s ease;
+}
+
+#resetBtn {
+    padding: 7px 20px;
+    background-color: #fff5f5;
+    color: #991b1b;
+    border: 1px solid #be333370;
+    font-size: 0.8rem;
+    font-weight: 800;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#resetBtn i {
+    font-size: 0.9rem;
+}
+
+#searchbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    padding: 0 10px;
+    background-color: white;
+    border-radius: 5px;
+    background-color: #f8f9fb;
+}
+
+#search-Transaction {
+    width: 15vw;
+    border: none;
+    background-color: white;
+    outline: none;
+    background-color: #f8f9fb;
+    font-weight: 700;
+}
+
+#select-category {
+    height: 40px;
+    width: 30vw;
+    padding: 0.6vw 1vw;
+    border-radius: 5px;
+    border: 0.5px solid rgba(128, 128, 128, 0.21);
+    background-color: #f8f9fb;
+    font-weight: 700;
+    outline: none;
+}
+
+
+
+
+#list-head,
+.li {
+    display: grid;
+    grid-template-columns: 1.5fr 1.8fr 1.5fr 1.5fr 1fr;
+    align-items: center;
+    padding: 10px 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 15px 5px;
+    border-bottom: 0.5px solid rgba(162, 162, 162, 0.288);
+    color: grey;
+}
+
+.li div {
+    display: flex;
+    gap: 12px;
+    font-size: 1.1rem;
+}
+
+
+#addTransaction_page {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.224);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#addTransaction_form {
+    width: 26%;
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    font-size: 1rem;
+    font-weight: 600;
+
+}
+
+#addTransaction_form h1 {
+    font-size: 1.3rem;
+}
+
+#addTransaction_form input,
+select {
+    padding: 10px 20px;
+    background-color: #f8f9fb;
+    border: 1px solid rgba(179, 178, 178, 0.45);
+    border-radius: 5px;
+}
+
+#addTransaction_form button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+}
+
+
+body,
+main,
+aside,
+nav,
+#dashboard,
+.status,
+#list,
+#addTransaction_form {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.dark-mode #loginAuth, 
+.dark-mode #registerAuth {
+    background-color: #1c2541;
+}
+.dark-mode main,
+.dark-mode #tracker {
+    background-color: #0b1329;
+    color: #f4f7f6;
+}
+
+.dark-mode aside,
+.dark-mode nav {
+    background-color: #1c2541;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode #hero-section {
+    background-color: #0b1329;
+}
+
+.dark-mode #settingBtn {
+    color: #a0aec0;
+}
+
+.dark-mode nav p {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode nav button {
+    background-color: #0b1329;
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .status {
+    background-color: #1c2541;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.dark-mode #list {
+    background-color: #1c2541;
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.dark-mode #searchbar,
+.dark-mode #search-Transaction,
+.dark-mode #select-category {
+    background-color: #0b1329;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .li {
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+}
+
+.dark-mode .li p[style*="color: black;"] {
+    color: #ffffff !important;
+}
+
+.dark-mode #big {
+    background-color: #1c2541;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode #addTransaction_form {
+    background-color: #1c2541;
+    color: #ffffff;
+}
+
+.dark-mode #addTransaction_form input,
+.dark-mode #addTransaction_form select {
+    background-color: #0b1329;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode #dark {
+    background-color: #1c2541;
+}
+
+#innerBall {
+    transition: transform 0.3s ease;
+}
+
+.dark-mode #settings-page {
+    color: #ffffff;
+}
+
+.dark-mode #settings-page>div {
+    background-color: #1c2541;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode #settings_form input,
+.dark-mode #settings_form select {
+    background-color: #0b1329;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+#settingBox {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 50%;
+    border: 1px solid rgba(181, 180, 180, 0.361);
 }
