@@ -457,4 +457,4 @@ if (settingsForm) {
 }
 
 checkAuthStatus();
-applyDarkMode();
+applyDarkMode(); 
