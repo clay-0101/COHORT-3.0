@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Narnoor:wght@400;500;600;700;800&family=Orbitron:wght@400..900&family=Oxanium:wght@200..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sarpanch:wght@400;500;600;700;800;900&family=Science+Gothic:wght@100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Bricolage Grotesque", sans-serif;
+    user-select: none;
+    color: #babdb6;
+
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    /* background-color: black; */
+}
+
+section.home {
+    width: 100%;
+    height: 100%;
+    padding: 20px 30px;
+    position: relative;
+    background-image: url("https://media.512pixels.net/wp-content/uploads/2025/08/26-Tahoe-Beach-Day-thumb.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.4s ease;
+}
+
+/* 
+section.home:hover {
+    background-image: url("https://media.512pixels.net/wp-content/uploads/2025/08/26-Tahoe-Beach-Night-thumb.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+} */
+
+nav {
+    width: 100%;
+    min-height: 9vh;
+    background-color: rgba(53, 53, 53, 0.285);
+    backdrop-filter: blur(10px);
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+nav h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    color: #babdb6;
+}
+
+nav i {
+    font-size: 1.6rem;
+    color: #babdb6;
+    background-color: rgba(53, 53, 53, 0.395);
+    padding: 5px 6px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.weather {
+    margin-top: 20vh;
+    width: 50%;
+    height: 40%;
+    background-color: rgba(82, 81, 81, 0.285);
+    backdrop-filter: blur(10px);
+    border-radius: 11px;
+    border: 0.2px solid rgba(123, 123, 123, 0.395);
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.features {
+    position: absolute;
+    width: 8vw;
+    height: 80vh;
+    top: 15vh;
+    right: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+    background-color: rgba(82, 81, 81, 0.285);
+    backdrop-filter: blur(10px);
+    border-radius: 11px;
+    border: 0.2px solid rgba(123, 123, 123, 0.395);
+
+}
+
+.features div {
+    width: 5rem;
+    height: 5rem;
+    overflow: hidden;
+    border-radius: 50%;
+    /*background-color: orange; */
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.features div i {
+    font-size: 3rem;
+    color: #babdb6;
+    background-color: rgba(53, 53, 53, 0.395);
+    padding: 15px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.to-do-list {
+    position: absolute;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: green;
+}
