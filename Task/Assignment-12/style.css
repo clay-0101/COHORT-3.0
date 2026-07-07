@@ -33,6 +33,7 @@ section.home {
     background-size: cover;
     background-position: center;
     transition: all 0.4s ease;
+    overflow: hidden;
 }
 
 /* 
@@ -84,52 +85,209 @@ nav i {
 }
 
 .features {
-    position: absolute;
-    width: 8vw;
-    height: 80vh;
-    top: 15vh;
-    right: 2vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5vh;
+    height: 20vw;
+    width: 20vw;
     background-color: rgba(82, 81, 81, 0.285);
     backdrop-filter: blur(10px);
-    border-radius: 11px;
-    border: 0.2px solid rgba(123, 123, 123, 0.395);
-
-}
-
-.features div {
-    width: 5rem;
-    height: 5rem;
-    overflow: hidden;
     border-radius: 50%;
-    /*background-color: orange; */
-}
-
-img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.features div i {
-    font-size: 3rem;
-    color: #babdb6;
-    background-color: rgba(53, 53, 53, 0.395);
-    padding: 15px 16px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.to-do-list {
     position: absolute;
-    display: none;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background-color: green;
+    right: -14%;
+    top: 40%;
+    transition: all 0.3s ease;
+
+}
+
+#feature-list {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    position: relative;
+    background-color: rgba(82, 81, 81, 0.285);
+    backdrop-filter: blur(10px);
+}
+
+.card {
+    position: absolute;
+    width: 22vw;
+    height: 12vw;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+
+    top: 50%;
+    left: 50%;
+    transform-origin: center center;
+}
+
+.feature1 {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(12vw) rotate(-180deg);
+}
+
+.feature2 {
+    transform: translate(-50%, -50%) rotate(36deg) translateX(12vw) rotate(-180deg);
+}
+
+.feature3 {
+    transform: translate(-50%, -50%) rotate(72deg) translateX(12vw) rotate(-180deg);
+}
+
+.feature4 {
+    transform: translate(-50%, -50%) rotate(108deg) translateX(12vw) rotate(-180deg);
+}
+
+.feature5 {
+    transform: translate(-50%, -50%) rotate(144deg) translateX(12vw) rotate(-180deg);
+}
+
+.feature6 {
+    transform: translate(-50%, -50%) rotate(180deg) translateX(12vw) rotate(-180deg);
+}
+
+.feature7 {
+    transform: translate(-50%, -50%) rotate(216deg) translateX(12vw) rotate(-180deg);
+}
+
+.feature8 {
+    transform: translate(-50%, -50%) rotate(252deg) translateX(12vw) rotate(-180deg);
+}
+
+.feature9 {
+    transform: translate(-50%, -50%) rotate(288deg) translateX(12vw) rotate(-180deg);
+}
+
+.feature10 {
+    transform: translate(-50%, -50%) rotate(324deg) translateX(12vw) rotate(-180deg);
+}
+
+.todo-feature-card {
+  width: 22vw;
+  height: 12vw;
+  min-width: 260px;
+  min-height: 142px;
+
+  background: #161615;
+  border-radius: 14px;
+  padding: 1.4vw 1.6vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: transform 0.15s ease;
+
+}
+
+.feature1.todo-feature-card:hover {
+ transform: translate(-50%, -50%) rotate(0deg) translateX(12vw) rotate(-180deg) scale(1.05);
+ z-index: 99;
+}
+.feature6.todo-feature-card:hover {
+    transform: translate(-50%, -50%) rotate(180deg) translateX(12vw) rotate(-180deg) scale(1.05);
+    z-index: 99;
+}
+/* top row */
+.todo-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.todo-card-label {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: #8a8a86;
+  font-weight: 500;
+}
+
+.todo-card-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #e8482f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo-card-icon i {
+  font-size: 15px;
+  color: #161615;
+}
+
+/* bottom text */
+.todo-card-title {
+  margin: 0 0 4px 0;
+  font-size: clamp(20px, 2.6vw, 34px);
+  font-weight: 500;
+  color: #f2f1ec;
+  letter-spacing: -0.02em;
+   font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.todo-card-subtitle {
+  margin: 0;
+  font-size: clamp(11px, 0.9vw, 13px);
+  color: #8a8a86;
+  line-height: 1.4;
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+.feature2 , .feature7 { background: #f2f1ec; }
+.planner-label { color: #5f5e5a; }
+.planner-icon { background: #161615; }
+.planner-icon i { color: #f2f1ec; }
+.planner-title { color: #161615 ; }
+.planner-sub { color: #5f5e5a ; }
+
+.feature2.todo-feature-card:hover {
+    transform: translate(-50%, -50%) rotate(36deg) translateX(12vw) rotate(-180deg) scale(1.05);
+    z-index: 99;
+}
+.feature7.todo-feature-card:hover {
+    transform: translate(-50%, -50%) rotate(216deg) translateX(12vw) rotate(-180deg) scale(1.05);
+    z-index: 99;
+}
+.feature3, .feature8 { background: #e8482f; }
+.motivation-label { color: rgba(22,22,21,0.55); }
+.motivation-icon { background: #161615; }
+.motivation-icon i { color: #e8482f; }
+.motivation-title { color: #161615 !important; }
+.motivation-sub { color: rgba(22,22,21,0.65) !important; }
+
+.feature3.todo-feature-card:hover {
+    transform: translate(-50%, -50%) rotate(72deg) translateX(12vw) rotate(-180deg) scale(1.05);
+     z-index: 99;
+}
+.feature8.todo-feature-card:hover {
+     transform: translate(-50%, -50%) rotate(252deg) translateX(12vw) rotate(-180deg) scale(1.05);
+     z-index: 99;
+}
+.feature4, .feature9 { background: #1b2027; }
+.timer-label { color: #8b93a0; }
+.timer-icon { background: #e8482f; }
+.timer-icon i { color: #1b2027; }
+.timer-sub { color: #8b93a0 !important; }
+
+.feature4.todo-feature-card:hover {
+    transform: translate(-50%, -50%) rotate(108deg) translateX(12vw) rotate(-180deg) scale(1.05);
+      z-index: 99;
+}
+.feature9.todo-feature-card:hover {
+   transform: translate(-50%, -50%) rotate(288deg) translateX(12vw) rotate(-180deg) scale(1.05);
+      z-index: 99;
+}
+.feature5, .feature10 { background: #33392f; }
+.goals-label { color: #b7bcae; }
+.goals-icon { background: #d9c25a; }
+.goals-icon i { color: #33392f; }
+.goals-title { color: #f2f1ec !important; }
+.goals-sub { color: #b7bcae !important; }
+
+.feature5.todo-feature-card:hover {
+     transform: translate(-50%, -50%) rotate(144deg) translateX(12vw) rotate(-180deg) scale(1.05);
+     z-index: 99;
+}
+.feature10.todo-feature-card:hover {
+    transform: translate(-50%, -50%) rotate(324deg) translateX(12vw) rotate(-180deg) scale(1.05);
+     z-index: 99;
 }
