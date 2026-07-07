@@ -2,6 +2,17 @@
 let feature1 = document.querySelector('.feature-1')
 let toDoList = document.querySelector('.to-do-list')
 const features = document.querySelector('.features')
+const current_Time = document.querySelector('#current_Time')
+const current_Day = document.querySelector('#day')
+const current_Location = document.querySelector('#location')
+const current_Date = document.querySelector('#date')
+const current_Temperature = document.querySelector('#temperature')
+const weather_Messege = document.querySelector('#weather_messege')
+const heatHumiWind = document.querySelector('#hhw')
+// const heatIdx = document.querySelector('#heatIdx')
+// const humidity = document.querySelector('#humidity')
+// const wind = document.querySelector('#wind')
+
 
 
 // handling features
@@ -29,13 +40,22 @@ async function getWeather() {
 
         // city and State Name iniitalize
         let cityName = data.location.name;   
-        let stateName = data.location.region; 
+        let stateName= data.location.region;
         
-        console.log(`Perfect City: ${cityName}(${stateName})`);
+        let heat = data.current.heatindex_c
+        let humidity = data.current.humidity
+        let wind = data.current.wind_kph
+
+        current_Location.textContent = `${stateName} (${cityName})`
+        current_Temperature.textContent = `${data.current.temp_c}°C`
+        weather_Messege.textContent = data.current.condition.text
+        heatHumiWind.innerHTML = `Heat_Index : ${heat}% <br> Humidity : ${humidity}% <br> Wind : ${wind}km/h`
+        console.log(`Perfect City: ${cityName}(${stateName.innerText})`);
     
     
         
     });
+
 
 setInterval(() => {
     let now = new Date();
@@ -45,7 +65,14 @@ setInterval(() => {
         second: "numeric",
         hour12: true   
     });
-    
+    let dayNumber = now.getDate()
+    let yearNumber = now.getFullYear()
+    let monthName = now.toLocaleDateString("en-US", {month : 'long'})
+    current_Day.textContent = now.toLocaleDateString("en-US", { weekday: "long" });
+    current_Time.textContent = time
+    current_Date.textContent = `${monthName} ${dayNumber}th, ${yearNumber}`
+
+
 }, 1000);
 }
 
