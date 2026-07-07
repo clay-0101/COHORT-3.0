@@ -21,29 +21,143 @@
             </nav>
             <div class="weather">
                 <div class="time">
-                    <h6 style="font-size: 1.2rem;">July 7th, 2026</h6>
-                    <h3 style="font-size: 3.9rem; margin-bottom: 0.5rem;">Tuesday, <br> <span id="current_Time"></span>
+                    <h6 id="date" style="font-size: 1.2rem;">fetching..</h6>
+                    <h3 style="font-size: 3.4rem; margin-bottom: 0.5rem;"><span id="day">fetching..</span>, <br> <span
+                            id="current_Time">fetching..</span>
                     </h3>
-                    <h5 style="font-size: 1.8rem;">Haryana</h5>
+                    <h5 id="location" style="font-size: 1.8rem;">fetching..</h5>
                 </div>
                 <div class="forcasting">
-                    <h2>29.7°C</h2>
-                    <h3 style="font-size: 2rem; margin-bottom: 3.5rem;">Patchy rain <br> nearby</h3>
-                    <h6 style="font-size: 1rem;">Heat_Index: 34.1% <br>Humidity: 69%<br>Wind: 19.1km/h</h6>
+                    <h2 id="temperature">fetching..</h2>
+                    <h3 style=" width: 12vw; font-size: 1rem; margin-bottom: 3.5rem;"><span
+                            id="weather_messege">fetching..</span> <br> nearby</h3>
+                    <h6 id="hhw" style="font-size: 1rem;"><span id="heatIdx">fetching..</h6>
                 </div>
             </div>
             <div class="features">
-                <div class="feature-1">
-                    <img src="./assest/Checklist Icon.jpg" alt="">
+
+                <div id="feature-list">
+
+                    <!-- TODO LIST -->
+
+                    <div class="todo-feature-card card feature1">
+                        <div class="todo-card-top">
+                            <span class="todo-card-label">1.1&nbsp;&nbsp;FEATURE</span>
+                            <div class="todo-card-icon">
+                                <i class="ti ti-arrow-up-right"></i>
+                            </div>
+                        </div>
+
+                        <div class="todo-card-bottom">
+                            <h3 class="todo-card-title">To-do list</h3>
+                            <p class="todo-card-subtitle">Tap to open your tasks and stay on track.</p>
+                        </div>
+                    </div>
+
+                    <div class="todo-feature-card card feature2">
+                        <div class="todo-card-top">
+                            <span class="todo-card-label planner-label">3.2&nbsp;&nbsp;FEATURE</span>
+                            <div class="todo-card-icon planner-icon"><i class="ti ti-calendar"></i></div>
+                        </div>
+                        <div class="todo-card-bottom">
+                            <h3 class="todo-card-title planner-title">Daily planner</h3>
+                            <p class="todo-card-subtitle planner-sub">Organize your day, hour by hour.</p>
+                        </div>
+                    </div>
+
+                    <div class="todo-feature-card card feature3">
+                        <div class="todo-card-top">
+                            <span class="todo-card-label motivation-label">3.3&nbsp;&nbsp;FEATURE</span>
+                            <div class="todo-card-icon motivation-icon"><i class="ti ti-bulb"></i></div>
+                        </div>
+                        <div class="todo-card-bottom">
+                            <h3 class="todo-card-title motivation-title">Motivation</h3>
+                            <p class="todo-card-subtitle motivation-sub">A spark of energy, every morning.</p>
+                        </div>
+                    </div>
+
+                    <div class="todo-feature-card card feature4">
+                        <div class="todo-card-top">
+                            <span class="todo-card-label timer-label">3.4&nbsp;&nbsp;FEATURE</span>
+                            <div class="todo-card-icon timer-icon"><i class="ti ti-clock-hour-4"></i></div>
+                        </div>
+                        <div class="todo-card-bottom">
+                            <h3 class="todo-card-title">Study timer</h3>
+                            <p class="todo-card-subtitle timer-sub">Track focused hours, session by session.</p>
+                        </div>
+                    </div>
+
+                    <div class="todo-feature-card card feature5">
+                        <div class="todo-card-top">
+                            <span class="todo-card-label goals-label">3.5&nbsp;&nbsp;FEATURE</span>
+                            <div class="todo-card-icon goals-icon"><i class="ti ti-target-arrow"></i></div>
+                        </div>
+                        <div class="todo-card-bottom">
+                            <h3 class="todo-card-title goals-title">Daily goals</h3>
+                            <p class="todo-card-subtitle goals-sub">Set targets, watch them get checked off.</p>
+                        </div>
+                    </div>
+
+                    <div class="todo-feature-card card feature6">
+                        <div class="todo-card-top">
+                            <span class="todo-card-label">1.1&nbsp;&nbsp;FEATURE</span>
+                            <div class="todo-card-icon">
+                                <i class="ti ti-arrow-up-right"></i>
+                            </div>
+                        </div>
+
+                        <div class="todo-card-bottom">
+                            <h3 class="todo-card-title">To-do list</h3>
+                            <p class="todo-card-subtitle">Tap to open your tasks and stay on track.</p>
+                        </div>
+                    </div>
                     
+                    <div class="todo-feature-card card feature7">
+                        <div class="todo-card-top">
+                            <span class="todo-card-label planner-label">3.2&nbsp;&nbsp;FEATURE</span>
+                            <div class="todo-card-icon planner-icon"><i class="ti ti-calendar"></i></div>
+                        </div>
+                        <div class="todo-card-bottom">
+                            <h3 class="todo-card-title planner-title">Daily planner</h3>
+                            <p class="todo-card-subtitle planner-sub">Organize your day, hour by hour.</p>
+                        </div>
+                    </div>
+
+                    <div class="todo-feature-card card feature8">
+                        <div class="todo-card-top">
+                            <span class="todo-card-label motivation-label">3.3&nbsp;&nbsp;FEATURE</span>
+                            <div class="todo-card-icon motivation-icon"><i class="ti ti-bulb"></i></div>
+                        </div>
+                        <div class="todo-card-bottom">
+                            <h3 class="todo-card-title motivation-title">Motivation</h3>
+                            <p class="todo-card-subtitle motivation-sub">A spark of energy, every morning.</p>
+                        </div>
+                    </div>
+
+                    <div class="todo-feature-card card feature9">
+                        <div class="todo-card-top">
+                            <span class="todo-card-label timer-label">3.4&nbsp;&nbsp;FEATURE</span>
+                            <div class="todo-card-icon timer-icon"><i class="ti ti-clock-hour-4"></i></div>
+                        </div>
+                        <div class="todo-card-bottom">
+                            <h3 class="todo-card-title">Study timer</h3>
+                            <p class="todo-card-subtitle timer-sub">Track focused hours, session by session.</p>
+                        </div>
+                    </div>
+
+                    <div class="todo-feature-card card feature10">
+                        <div class="todo-card-top">
+                            <span class="todo-card-label goals-label">3.5&nbsp;&nbsp;FEATURE</span>
+                            <div class="todo-card-icon goals-icon"><i class="ti ti-target-arrow"></i></div>
+                        </div>
+                        <div class="todo-card-bottom">
+                            <h3 class="todo-card-title goals-title">Daily goals</h3>
+                            <p class="todo-card-subtitle goals-sub">Set targets, watch them get checked off.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-2">
-                    <img src="./assest/Calendrier pliant doodle dessiné à la main avec vecteur de style art dessin animé isolé _ Vecteur Premium.jpg" alt="">
-                </div>
-                <div class="feature-3"></div>
-                <div class="feature-4"></div>
-                <div class="feature-5"><i class="ri-hourglass-line"></i></div>
             </div>
+
         </section>
     </main>
     <script src="script.js"></script>
