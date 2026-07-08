@@ -131,15 +131,6 @@ getWeather()
 
 getWeather()
 
-
-feature1.addEventListener('click', () => {
-    toDoList.style.display = 'flex'
-})
-feature6.addEventListener('click', () => {
-    toDoList.style.display = 'flex'
-})
-
-
 let data = (JSON.parse(localStorage.getItem('data')) || [])
 
 function addTask(data) {
@@ -298,8 +289,12 @@ dateContainer.addEventListener('click', (e) => {
 })
 
 
-features.addEventListener('click',(e)=>{
-    if(e.target.classList.contains('feature2') || e.target.classList.contains('feature2')){
+features.addEventListener('click', (e) => {
+    if (e.target.closest('.feature1') || e.target.closest('.feature6')) {
+        toDoList.style.display = 'flex'
+    }
+
+    if (e.target.closest('.feature2') || e.target.closest('.feature7')) {
         taskManager.style.display = 'flex'
     }
 
