@@ -314,17 +314,17 @@ features.addEventListener('click', (e) => {
         focus_Timer_Section.style.display = "flex"
     }
 
-})
-
     if (e.target.closest('.feature5') || e.target.closest('.feature10')) {
         dailyGoals.style.display = "flex"
     }
 
-remove_quotes.addEventListener('click', () => {
-    motivation_quotes.style.display = "none"
-})
-remove_timerBtn.addEventListener('click', () => {
-    focus_Timer_Section.style.display = "none"
+
+    remove_quotes.addEventListener('click', () => {
+        motivation_quotes.style.display = "none"
+    })
+    remove_timerBtn.addEventListener('click', () => {
+        focus_Timer_Section.style.display = "none"
+    })
     backBtn.addEventListener('click', () => {
         toDoList.style.display = 'none'
     })
@@ -361,7 +361,7 @@ let timerInter;
 
 
 function timer() {
-    if(minutes === 0 && seconds < 10){
+    if (minutes === 0 && seconds < 10) {
         coundown.style.color = '#ff3b30'
     }
     if (minutes === 0 && seconds === 0) {
