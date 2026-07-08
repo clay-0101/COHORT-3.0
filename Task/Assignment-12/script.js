@@ -1,14 +1,4 @@
 // selection real html elements with querySelector
-const feature1 = document.querySelector('.feature1')
-const feature2 = document.querySelector('.feature2')
-const feature3 = document.querySelector('.feature3')
-const feature4 = document.querySelector('.feature4')
-const feature5 = document.querySelector('.feature5')
-const feature6 = document.querySelector('.feature6')
-const feature7 = document.querySelector('.feature7')
-const feature8 = document.querySelector('.feature8')
-const feature9 = document.querySelector('.feature9')
-const feature10 = document.querySelector('.feature10')
 const Home = document.querySelector('.home')
 const features = document.querySelector('.features')
 const current_Time = document.querySelector('#current_Time')
@@ -32,10 +22,13 @@ const noTask = document.querySelector('.no-task')
 const taskManager = document.querySelector('.task-manager')
 const taskManagerback = document.querySelector('.task-manager-nav span')
 const motivation_quotes = document.querySelector('#motivation_quotes')
-const remove_quotes  = document.querySelector('.remove-quotes')
+const remove_quotes = document.querySelector('.remove-quotes')
 const quote = document.querySelector('#quote')
 const author = document.querySelector('#author')
 const new_quote = document.querySelector('#new-quote')
+const taskManagerDiv = document.querySelector('.task-manager-div')
+const resetAllBtn = document.querySelector('.reset-all-btn')
+
 
 let now = new Date();
 let hours = now.getHours()
@@ -298,27 +291,112 @@ features.addEventListener('click', (e) => {
         taskManager.style.display = 'flex'
     }
 
-    if(e.target.closest('.feature8') || e.target.closest('.feature3')){
+    if (e.target.closest('.feature8') || e.target.closest('.feature3')) {
         motivation_quotes.style.display = "flex"
     }
-})
 
-backBtn.addEventListener('click', () => {
-    toDoList.style.display = 'none'
-})
 
-remove_quotes.addEventListener('click',()=>{
-      motivation_quotes.style.display = "none"
+    backBtn.addEventListener('click', () => {
+        toDoList.style.display = 'none'
+    })
+
+    remove_quotes.addEventListener('click', () => {
+        motivation_quotes.style.display = "none"
+    })
 })
 
 
 async function getQuote() {
-    
+
     let response = await fetch('https://dummyjson.com/quotes/random')
-    let data =  await  response.json()
-    
+    let data = await response.json()
+
     quote.textContent = data.quote
     author.textContent = data.author
 }
 getQuote()
 new_quote.addEventListener('click', getQuote)
+
+// daily planner code starts here
+let dayPlannerData = JSON.parse(localStorage.getItem('dayPlannerData')) || {}
+
+function loadPlannerData() {
+    const forms = document.querySelectorAll('.tasks-manager-container')
+
+    forms.forEach((form) => {
+        const label = form.querySelector('label').textContent
+        const input = form.querySelector('input')
+        const nullDiv = form.querySelector('div')
+        const button = form.querySelector('button')
+
+        const saved = dayPlannerData[label]
+        if (!saved) return
+
+        input.value = saved.value
+        nullDiv.textContent = saved.important ? 'important' : ''
+
+        if (saved.completed) {
+            input.style.textDecoration = 'line-through'
+            input.disabled = true
+            button.textContent = 'Completed'
+        }
+    })
+}
+loadPlannerData()
+
+taskManagerDiv.addEventListener('change', (e) => {
+    const input = e.target.closest('input')
+    if (!input) return
+
+    const form = input.closest('.tasks-manager-container')
+    const label = form.querySelector('label').textContent
+    const nullDiv = form.querySelector('div')
+    const isImportant = input.value.startsWith('!')
+
+    dayPlannerData[label] = {
+        value: input.value,
+        important: isImportant,
+        completed: false
+    }
+
+    nullDiv.textContent = isImportant ? 'important' : ''
+
+    localStorage.setItem('dayPlannerData', JSON.stringify(dayPlannerData))
+})
+
+taskManagerDiv.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const form = e.target
+    const label = form.querySelector('label').textContent
+    const input = form.querySelector('input')
+    const button = form.querySelector('button')
+
+    if (!dayPlannerData[label]) return  
+
+    dayPlannerData[label].completed = true
+    localStorage.setItem('dayPlannerData', JSON.stringify(dayPlannerData))
+
+    input.style.textDecoration = 'line-through'
+    input.disabled = true
+    button.textContent = 'Completed'
+    form.style.opacity = '0.3'
+})
+
+resetAllBtn.addEventListener('click', () => {
+    dayPlannerData = {}
+    localStorage.setItem('dayPlannerData', JSON.stringify(dayPlannerData))
+
+    document.querySelectorAll('.tasks-manager-container').forEach((form) => {
+        const input = form.querySelector('input')
+        const nullDiv = form.querySelector('div')
+        const completeBtn = form.querySelector('button[type="submit"]')
+
+        input.value = ''
+        input.disabled = false
+        input.style.textDecoration = 'none'
+        nullDiv.textContent = ''
+        completeBtn.textContent = 'Complete'
+        form.style.opacity = '1'
+    })
+})
