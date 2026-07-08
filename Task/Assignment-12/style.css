@@ -1166,3 +1166,177 @@ Focus Timer */
     background-color: #E05345;
     color: white;
 }
+
+
+
+/* ===================== DARK THEME ===================== */
+
+body.dark-theme nav {
+    background-color: rgba(14, 14, 14, 0.6);
+}
+
+body.dark-theme .weather {
+    background-color: rgba(14, 14, 14, 0.5);
+}
+
+body.dark-theme .to-do-list,
+body.dark-theme .task-manager,
+body.dark-theme .daily-goals {
+    background-color: #0e0e0e;
+}
+
+body.dark-theme .tasks {
+    background-color: #0e0e0e;
+}
+
+body.dark-theme .tasks h1 {
+    color: #f2f1ec;
+}
+
+body.dark-theme .tasks span {
+    background-color: #1b1b1a;
+    color: #E05345;
+}
+
+body.dark-theme .task-date {
+    background-color: #161615;
+    border: 1px solid #2a2a28;
+}
+
+body.dark-theme .task-date h6 {
+    color: #babdb6;
+}
+
+body.dark-theme .no-task {
+    background-color: #161615;
+    color: #f2f1ec;
+}
+
+body.dark-theme .task-div {
+    background-color: #161615;
+    border: 1px solid #2a2a28;
+}
+
+body.dark-theme .task-div.yes {
+    background-color: #241a17;
+    border: 1px solid #3a241f;
+}
+
+body.dark-theme .task-div p {
+    color: #f2f1ec !important;
+}
+
+body.dark-theme .checkbox {
+    background-color: #0e0e0e;
+    border: 2px solid #3a3a38;
+}
+
+body.dark-theme .description {
+    background-color: #161615;
+    color: #babdb6;
+    border: 1px solid #2a2a28;
+}
+
+body.dark-theme .dlt {
+    background-color: #2a2a28;
+    color: #babdb6;
+}
+
+body.dark-theme .add-tasks {
+    background-color: #161615;
+}
+
+body.dark-theme .add-tasks form input,
+body.dark-theme .add-tasks form select,
+body.dark-theme .add-tasks form textarea {
+    background-color: #0e0e0e;
+    border: 1px solid #2a2a28;
+    color: #f2f1ec;
+}
+
+body.dark-theme .add-tasks form input::placeholder,
+body.dark-theme .add-tasks form textarea::placeholder {
+    color: #babdb6;
+}
+
+body.dark-theme .add-tasks form option {
+    color: #f2f1ec;
+    background-color: #161615;
+}
+
+body.dark-theme .task-manager-nav h1,
+body.dark-theme .task-manager-nav span {
+    color: #f2f1ec;
+}
+
+body.dark-theme .task-manager-div {
+    background-color: #161615;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-theme .tasks-manager-container {
+    background-color: #0e0e0e;
+}
+
+body.dark-theme .tasks-manager-container input {
+    background-color: #241a17;
+    border: 1px solid #3a241f;
+    color: #f2f1ec;
+}
+
+body.dark-theme .tasks-manager-container input::placeholder {
+    color: #babdb6;
+}
+
+body.dark-theme #motivation_quotes,
+body.dark-theme #Focus-Timer-Section,
+body.dark-theme #Session-Complete-Section {
+    background-color: #0e0e0e;
+}
+
+body.dark-theme #quote-container,
+body.dark-theme #focus-timer,
+body.dark-theme #session-complete {
+    background: #161615;
+    border: 0.3px solid #2a2a28;
+}
+
+body.dark-theme #quote-heading,
+body.dark-theme #quote,
+body.dark-theme #timer-heading,
+body.dark-theme #coundown,
+body.dark-theme #coundown span,
+body.dark-theme #complete-heading,
+body.dark-theme #complete-title {
+    color: #f2f1ec;
+}
+
+body.dark-theme #quote-container p,
+body.dark-theme #session-name,
+body.dark-theme #complete-sub {
+    color: #babdb6;
+}
+
+body.dark-theme .remove-quotes,
+body.dark-theme #remove-FocusTimer {
+    color: #f2f1ec;
+}
+
+body.dark-theme .timer-btn {
+    background-color: #161615;
+    color: #f2f1ec;
+    border: 0.2px solid #3a3a38;
+}
+
+body.dark-theme .timer-start {
+    background-color: #f2f1ec;
+    color: #0e0e0e;
+}
+
+body.dark-theme .daily-goals-container {
+    background-color: #161615;
+}
+
+body.dark-theme ::-webkit-scrollbar-thumb {
+    background-color: #3a3a38;
+}

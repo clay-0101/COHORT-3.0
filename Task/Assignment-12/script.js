@@ -1,4 +1,3 @@
-// selection real html elements with querySelector
 const Home = document.querySelector('.home')
 const features = document.querySelector('.features')
 const current_Time = document.querySelector('#current_Time')
@@ -51,6 +50,10 @@ let hours = now.getHours()
 let ampm = hours >= 12 ? "PM" : "AM"
 
 function setBg(ampm) {
+    if (document.body.classList.contains('dark-theme')) {
+        Home.style.backgroundImage = "url('https://media.512pixels.net/wp-content/uploads/2025/08/26-Tahoe-Beach-Night-thumb.jpeg')"
+        return
+    }
 
     if (ampm === "AM") {
         if (hours < 6) {
@@ -72,10 +75,87 @@ function setBg(ampm) {
     }
 }
 
+const themeBtn = document.querySelector('#theme')
+
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark-theme')
+        themeBtn.classList.remove('ri-sun-line')
+        themeBtn.classList.add('ri-moon-line')
+    } else {
+        document.body.classList.remove('dark-theme')
+        themeBtn.classList.remove('ri-moon-line')
+        themeBtn.classList.add('ri-sun-line')
+    }
+    setBg(ampm)
+}
+
+let savedTheme = localStorage.getItem('theme') || 'light'
+applyTheme(savedTheme)
+
+themeBtn.addEventListener('click', () => {
+    let newTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark'
+    localStorage.setItem('theme', newTheme)
+    applyTheme(newTheme)
+})
+
+
+const sectionsMap = {
+    'todo': toDoList,
+    'planner': taskManager,
+    'quotes': motivation_quotes,
+    'timer': focus_Timer_Section,
+    'goals': dailyGoals
+}
+
+function openSection(key) {
+    sectionsMap[key].style.display = 'flex'
+    localStorage.setItem('activeSection', key)
+}
+
+function closeSection(key) {
+    sectionsMap[key].style.display = 'none'
+    localStorage.removeItem('activeSection')
+}
+
+let activeSection = localStorage.getItem('activeSection')
+if (activeSection && sectionsMap[activeSection]) {
+    sectionsMap[activeSection].style.display = 'flex'
+}
+
+
+backBtn.addEventListener('click', () => {
+    closeSection('todo')
+})
+
+taskManagerback.addEventListener('click', () => {
+    closeSection('planner')
+})
+
+remove_quotes.addEventListener('click', () => {
+    closeSection('quotes')
+})
+
+remove_timerBtn.addEventListener('click', () => {
+    // stop timer and fully reset focus timer state when exiting
+    clearInterval(timerInter)
+    minutes = 25
+    seconds = 0
+    timer_min.textContent = '25'
+    timer_sec.textContent = '00'
+    coundown.style.color = document.body.classList.contains('dark-theme') ? '#f2f1ec' : '#0e0e0e'
+    focus_timer.style.display = 'flex'
+    Session_Complete_Section.style.display = 'none'
+    closeSection('timer')
+})
+
+dailyGoalsBack.addEventListener('click', () => {
+    closeSection('goals')
+})
+
 let rotation = 0; // starting angle
 
 window.addEventListener('wheel', (e) => {
-
     rotation += e.deltaY * 0.2;
     features.style.transform = `rotate(${rotation}deg)`;
 });
@@ -84,17 +164,14 @@ var apiKey = '87cf32deedd9442793a70453250305';
 async function getWeather() {
 
     navigator.geolocation.getCurrentPosition(async (position) => {
-        // initialize latitude and longitude
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
 
-        //Get Weather Data According longitude and latitude 
         let response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}&aqi=no`);
         let data = await response.json();
 
         console.log(data);
 
-        // city and State Name iniitalize
         let cityName = data.location.name;
         let stateName = data.location.region;
 
@@ -106,14 +183,7 @@ async function getWeather() {
         current_Temperature.textContent = `${data.current.temp_c}°C`
         weather_Messege.textContent = data.current.condition.text
         heatHumiWind.innerHTML = `Heat_Index : ${heat}% <br> Humidity : ${humidity}% <br> Wind : ${wind}km/h`
-        console.log(`Perfect City: ${cityName}(${stateName.innerText})`);
-
-
-
     });
-
-
-
 
     setInterval(() => {
         let now = new Date();
@@ -132,12 +202,8 @@ async function getWeather() {
         current_Day.textContent = now.toLocaleDateString("en-US", { weekday: "long" });
         current_Time.textContent = time
         current_Date.textContent = `${monthName} ${dayNumber}th, ${yearNumber}`
-
-
     }, 1000);
 }
-getWeather()
-
 getWeather()
 
 let data = (JSON.parse(localStorage.getItem('data')) || [])
@@ -151,7 +217,6 @@ function addTask(data) {
                         <h1>NO TASK YET</h1>
                         <P>fill the form to add a new task...</P>
                     </div>`
-
     }
     data.forEach((obj, index) => {
         let dataDiv = document.querySelector(`.data.${obj.category} `);
@@ -164,7 +229,6 @@ function addTask(data) {
                         <p style="text-decoration: ${obj.checkBox ? 'line-through' : 'none'};color: ${obj.checkBox ? 'rgb(137, 137, 137)' : 'rgb(70, 70, 70)'};">${obj.task}</p>                        <div class="description">${obj.discription}</div>
                         <div class="dlt" data-index="${index}"><i class="ri-delete-bin-fill" style="color:rgb(38, 38, 38)"></i></div>
                     </div > `
-
         } else {
             taskContainer.innerHTML += `
                 <div class="data ${obj.category}" >
@@ -179,16 +243,12 @@ function addTask(data) {
                 </div > `
         }
     })
-
 }
 addTask(data)
 
 function addDate(data) {
-
     dateContainer.innerHTML = "";
-
     const days = ["SUN", "MON", "TUES", "WED", "THU", "FRI", "SAT"];
-
     const addedDates = new Set();
 
     if (dateContainer.innerHTML === '') {
@@ -200,9 +260,7 @@ function addDate(data) {
     }
 
     data.forEach((obj) => {
-
         if (addedDates.has(obj.date)) return;
-
         addedDates.add(obj.date);
         const inputDate = new Date(obj.date);
 
@@ -240,7 +298,6 @@ form.addEventListener('submit', (e) => {
     addDate(data)
 
     form.reset()
-
 })
 
 taskContainer.addEventListener('click', (e) => {
@@ -255,7 +312,6 @@ taskContainer.addEventListener('click', (e) => {
     }
 
     if (e.target.closest('.checkbox')) {
-
         const taskDiv = e.target.closest('.task-div');
         const index = Number(taskDiv.dataset.index);
 
@@ -300,50 +356,26 @@ dateContainer.addEventListener('click', (e) => {
 
 features.addEventListener('click', (e) => {
     if (e.target.closest('.feature1') || e.target.closest('.feature6')) {
-        toDoList.style.display = 'flex'
+        openSection('todo')
     }
 
     if (e.target.closest('.feature2') || e.target.closest('.feature7')) {
-        taskManager.style.display = 'flex'
+        openSection('planner')
     }
 
     if (e.target.closest('.feature8') || e.target.closest('.feature3')) {
-        motivation_quotes.style.display = "flex"
+        openSection('quotes')
     }
     if (e.target.closest('.feature4') || e.target.closest('.feature9')) {
-        focus_Timer_Section.style.display = "flex"
+        openSection('timer')
     }
 
     if (e.target.closest('.feature5') || e.target.closest('.feature10')) {
-        dailyGoals.style.display = "flex"
+        openSection('goals')
     }
-
-
-    remove_quotes.addEventListener('click', () => {
-        motivation_quotes.style.display = "none"
-    })
-    remove_timerBtn.addEventListener('click', () => {
-        focus_Timer_Section.style.display = "none"
-    })
-    backBtn.addEventListener('click', () => {
-        toDoList.style.display = 'none'
-    })
-
-    remove_quotes.addEventListener('click', () => {
-        motivation_quotes.style.display = "none"
-    })
-
-    taskManagerback.addEventListener('click', () => {
-        taskManager.style.display = 'none'
-    })
-
-    dailyGoalsBack.addEventListener('click', () => {
-        dailyGoals.style.display = 'none'
-    })
 })
 
 async function getQuote() {
-
     let response = await fetch('https://dummyjson.com/quotes/random')
     let data = await response.json()
 
@@ -353,12 +385,9 @@ async function getQuote() {
 getQuote()
 new_quote.addEventListener('click', getQuote)
 
-
-
 let minutes = 25
 let seconds = 0
 let timerInter;
-
 
 function timer() {
     if (minutes === 0 && seconds < 10) {
@@ -398,7 +427,7 @@ timer_reset.addEventListener('click', () => {
     timer_sec.textContent = '00'
     minutes = 25
     seconds = 0
-    coundown.style.color = '#0e0e0e'
+    coundown.style.color = document.body.classList.contains('dark-theme') ? '#f2f1ec' : '#0e0e0e'
     clearInterval(timerInter)
 })
 completed_done.addEventListener('click', () => {
@@ -406,11 +435,11 @@ completed_done.addEventListener('click', () => {
     timer_sec.textContent = '00'
     minutes = 25
     seconds = 0
-    coundown.style.color = '#0e0e0e'
+    coundown.style.color = document.body.classList.contains('dark-theme') ? '#f2f1ec' : '#0e0e0e'
     focus_timer.style.display = 'flex'
     Session_Complete_Section.style.display = 'none'
-
 })
+
 // daily planner code starts here
 let dayPlannerData = JSON.parse(localStorage.getItem('dayPlannerData')) || {}
 
@@ -579,8 +608,4 @@ dailyGoalsContainer.addEventListener('submit', (e) => {
     localStorage.setItem('dailyGoalsData', JSON.stringify(dailyGoalsData))
 
     addGoals()
-})
-
-dailyGoalsBack.addEventListener('click', () => {
-    dailyGoals.style.display = 'none'
 })
