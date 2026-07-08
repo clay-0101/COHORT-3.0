@@ -28,7 +28,12 @@ const author = document.querySelector('#author')
 const new_quote = document.querySelector('#new-quote')
 const taskManagerDiv = document.querySelector('.task-manager-div')
 const resetAllBtn = document.querySelector('.reset-all-btn')
-
+const dailyGoals = document.querySelector('.daily-goals')
+const dailyGoalsBack = document.querySelector('.daily-goals span')
+const dailyGoalsContainer = document.querySelector('.daily-goals-container')
+const dailyGoalsDiv = document.querySelector('.daily-goals-div')
+const dailyGoalsform = document.querySelector('.daily-goals form')
+const goalsStatus = document.querySelector('#goals-status')
 
 let now = new Date();
 let hours = now.getHours()
@@ -295,6 +300,9 @@ features.addEventListener('click', (e) => {
         motivation_quotes.style.display = "flex"
     }
 
+    if (e.target.closest('.feature5') || e.target.closest('.feature10')) {
+        dailyGoals.style.display = "flex"
+    }
 
     backBtn.addEventListener('click', () => {
         toDoList.style.display = 'none'
@@ -302,6 +310,14 @@ features.addEventListener('click', (e) => {
 
     remove_quotes.addEventListener('click', () => {
         motivation_quotes.style.display = "none"
+    })
+
+    taskManagerback.addEventListener('click', () => {
+        taskManager.style.display = 'none'
+    })
+
+    dailyGoalsBack.addEventListener('click', () => {
+        dailyGoals.style.display = 'none'
     })
 })
 
@@ -372,7 +388,7 @@ taskManagerDiv.addEventListener('submit', (e) => {
     const input = form.querySelector('input')
     const button = form.querySelector('button')
 
-    if (!dayPlannerData[label]) return  
+    if (!dayPlannerData[label]) return
 
     dayPlannerData[label].completed = true
     localStorage.setItem('dayPlannerData', JSON.stringify(dayPlannerData))
@@ -399,4 +415,95 @@ resetAllBtn.addEventListener('click', () => {
         completeBtn.textContent = 'Complete'
         form.style.opacity = '1'
     })
+})
+
+let dailyGoalsData = JSON.parse(localStorage.getItem('dailyGoalsData')) || [];
+let index = 0
+let pastelColors = ["#FFF3B0", "#D8F3DC", "#D6EAF8", "#FADADD", "#FFD8A8", "#E9D8FD", "#FDE2E4", "#CDE7F0", "#E8F5E9", "#FCECC9", "#FFE5B4", "#DFF6FF", "#E4F9E0", "#F9E2AF", "#F3D5B5", "#EAD7D1", "#D4F4EC", "#E7E6F7", "#FFF8DC", "#F8EDEB"];
+
+function addGoals() {
+    dailyGoalsContainer.innerHTML = ''
+    index = 0
+
+    dailyGoalsContainer.innerHTML += `
+                <div class="daily-goals-div" data-index="${index}" style="justify-content: center; align-items: center; background-color: ${pastelColors[index]};">
+                    <h1 style="font-size: 4rem; font-weight: 400;">+</h1>
+                </div>`
+
+    index++
+
+    dailyGoalsData.forEach((data, goalIndex) => {
+        dailyGoalsContainer.innerHTML += `
+                    <div class="daily-goals-div" data-index="${index}" data-goal-index="${goalIndex}" style="background-color: ${data.checkBox ? 'transparent' : pastelColors[index]}; opacity : ${data.checkBox ? 0.2 : 1};">
+                        <h1 style="text-decoration: ${data.checkBox ? 'line-through' : 'none'};">${data.heading}</h1>
+                        <p>${data.paragraph}</p>
+                        <div class="goal-dlt" data-goal-index="${goalIndex}"><i class="ri-delete-bin-fill"></i></div>
+                        <div class="checkbox">
+                            <div class="checkbox-tick" style="display: ${data.checkBox ? 'block' : 'none'}"></div>
+                        </div>
+                    </div>`
+
+        index++
+        if (index >= pastelColors.length) index = 1
+    })
+
+    const completed = dailyGoalsData.filter((data) => data.checkBox).length
+    goalsStatus.textContent = `${completed} of ${dailyGoalsData.length} task completed`
+}
+addGoals()
+
+dailyGoalsContainer.addEventListener('click', (e) => {
+    let box = e.target.closest('.daily-goals-div')
+    if (!box) return
+
+    if (e.target.closest('.cancel-btn')) {
+        addGoals()
+        return
+    }
+
+    // ✅ delete button
+    if (e.target.closest('.goal-dlt')) {
+        const goalIndex = Number(e.target.closest('.goal-dlt').dataset.goalIndex)
+        dailyGoalsData.splice(goalIndex, 1)
+        localStorage.setItem('dailyGoalsData', JSON.stringify(dailyGoalsData))
+        addGoals()
+        return
+    }
+
+    if (e.target.closest('.checkbox')) {
+        const goalIndex = Number(box.dataset.goalIndex)
+        dailyGoalsData[goalIndex].checkBox = !dailyGoalsData[goalIndex].checkBox
+        localStorage.setItem('dailyGoalsData', JSON.stringify(dailyGoalsData))
+        addGoals()
+        return
+    }
+
+    if (box.dataset.index === '0' && !box.querySelector('form')) {
+        box.innerHTML = `
+            <form>
+                <input type="text" class="heading" placeholder="Enter Task Heading">
+                <input type="text" class="discription" placeholder="Enter Task Description">
+                <button type="submit">ADD TASK</button>
+                <button type="button" class="cancel-btn">Cancel</button>
+            </form>`
+    }
+})
+
+dailyGoalsContainer.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const form = e.target
+    const heading = form.querySelector('.heading').value
+    const discription = form.querySelector('.discription').value
+
+    if (!heading || !discription) return
+
+    dailyGoalsData.push({ heading, paragraph: discription, checkBox: false })
+    localStorage.setItem('dailyGoalsData', JSON.stringify(dailyGoalsData))
+
+    addGoals()
+})
+
+dailyGoalsBack.addEventListener('click', () => {
+    dailyGoals.style.display = 'none'
 })

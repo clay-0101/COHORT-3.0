@@ -218,8 +218,7 @@
             <div class="task-manager-div">
                 <form class="tasks-manager-container">
                     <label for="task-time">6:00 AM to 7:00 AM</label>
-                    <input type="text"
-                        placeholder="task starting with '!' will marked as important">
+                    <input type="text" placeholder="task starting with '!' will marked as important">
                     <div
                         style="width: 15vw; display: flex; align-items: center; justify-content: center; color: #E05345;">
                     </div>
@@ -347,7 +346,15 @@
                 </form>
             </div>
         </section>
-
+        <section class="daily-goals">
+            <div class="task-manager-nav" style="width: 90%;">
+                <h1>DAILY GOALS</h1>
+                <p id="goals-status" style="font-size: 1rem; color: #718096;"></p>
+                <span><i class="ri-close-line"></i></span>
+            </div>
+            <div class="daily-goals-container">
+            </div>
+        </section>
         <!-- Motivational Quotes -->
         <section id="motivation_quotes">
             <button class="remove-quotes" style="position: absolute; top:0; left: 0;">Back</button>
@@ -355,14 +362,15 @@
             <div id="quote-container">
                 <h1 id="quote-heading"><span style="font-size: 25px; color: #ffc629">“</span>Motivational Quote</h1>
                 <h1 id="quote">Talk is cheap , Show me the code</h1>
-                <p style="font-size: 16px; text-align: start;background-color: #ff3b30; width: fit-content;" >_<span id="author">Unknow</span></p>
+                <p style="font-size: 16px; text-align: start;background-color: #ff3b30; width: fit-content;">_<span
+                        id="author">Unknow</span></p>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <p style="font-size: 13px;">DAILY DOSE</p>
                     <button id="new-quote">New Quote</button>
                 </div>
             </div>
-            
-            
+
+
         </section>
 
     </main>
