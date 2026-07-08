@@ -32,7 +32,7 @@ const noTask = document.querySelector('.no-task')
 const taskManager = document.querySelector('.task-manager')
 const taskManagerback = document.querySelector('.task-manager-nav span')
 const motivation_quotes = document.querySelector('#motivation_quotes')
-const remove_quotes  = document.querySelector('.remove-quotes')
+const remove_quotes = document.querySelector('.remove-quotes')
 
 let now = new Date();
 let hours = now.getHours()
@@ -127,15 +127,6 @@ async function getWeather() {
 getWeather()
 
 getWeather()
-
-
-feature1.addEventListener('click', () => {
-    toDoList.style.display = 'flex'
-})
-feature6.addEventListener('click', () => {
-    toDoList.style.display = 'flex'
-})
-
 
 let data = (JSON.parse(localStorage.getItem('data')) || [])
 
@@ -295,12 +286,16 @@ dateContainer.addEventListener('click', (e) => {
 })
 
 
-features.addEventListener('click',(e)=>{
-    if(e.target.classList.contains('feature2') || e.target.classList.contains('feature2')){
+features.addEventListener('click', (e) => {
+    if (e.target.closest('.feature1') || e.target.closest('.feature6')) {
+        toDoList.style.display = 'flex'
+    }
+
+    if (e.target.closest('.feature2') || e.target.closest('.feature7')) {
         taskManager.style.display = 'flex'
     }
 
-    if(e.target.classList.contains('feature8') || e.target.classList.contains('feature3')){
+    if (e.target.classList.contains('feature8') || e.target.classList.contains('feature3')) {
         motivation_quotes.style.display = "block"
     }
 })
@@ -309,7 +304,11 @@ backBtn.addEventListener('click', () => {
     toDoList.style.display = 'none'
 })
 
-remove_quotes.addEventListener('click',()=>{
+taskManagerback.addEventListener('click', () => {
+    taskManager.style.display = 'none'
+})
+
+remove_quotes.addEventListener('click', () => {
     console.log('hello')
-      motivation_quotes.style.display = "none"
+    motivation_quotes.style.display = "none"
 })
