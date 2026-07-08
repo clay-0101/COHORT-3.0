@@ -222,16 +222,43 @@
             <div id="quote-container">
                 <h1 id="quote-heading"><span style="font-size: 25px; color: #ffc629">“</span>Motivational Quote</h1>
                 <h1 id="quote">Talk is cheap , Show me the code</h1>
-                <p style="font-size: 16px; text-align: start;background-color: #ff3b30; width: fit-content;" >_<span id="author">Unknow</span></p>
+                <p style="font-size: 16px; text-align: start;background-color: #ff3b30; width: fit-content;">_<span
+                        id="author">Unknow</span></p>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <p style="font-size: 13px;">DAILY DOSE</p>
                     <button id="new-quote">New Quote</button>
                 </div>
             </div>
-            
-            
         </section>
 
+        <section id="Focus-Timer-Section">
+            <button id="remove-FocusTimer">Back</button>
+            <div id="focus-timer">
+                <div style="display: flex; flex-direction: column; align-items: center; gap:2vw;">
+                    <p id="timer-heading"><span style="font-size: 25px; color: #ffc629">“</span>FOCUS TIMER</p>
+                    <P id="session-name">Deep Work Session</P>
+                    <h1 id="coundown"><span id="timer_min">25</span>:<span id="timer_sec">00</span></h1>
+                </div>
+                <div>
+                    <button class="timer-start timer-btn">Start</button>
+                    <button class="timer-pause timer-btn">Pause</button>
+                    <button class="timer-reset timer-btn">Reset</button>
+                </div>
+            </div>
+            <section id="Session-Complete-Section">
+                <div id="session-complete">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap:1.5vw;">
+                        <p id="complete-heading"><span style="font-size: 25px; color: #ffc629">“</span>SESSION COMPLETE
+                        </p>
+                        <h1 id="complete-title">Well Done.</h1>
+                        <P id="complete-sub">You focused for <span id="complete-time">25:00</span></P>
+                    </div>
+                    <div>
+                        <button class="complete-done timer-btn">Done</button>
+                    </div>
+                </div>
+            </section>
+        </section>
     </main>
     <script src="script.js"></script>
 </body>
