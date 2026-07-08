@@ -16,7 +16,7 @@ let hours = now.getHours()
 let ampm = hours >= 12 ? "PM" : "AM"
 
 function setBg(ampm) {
-    console.log(hours)
+
     if (ampm === "AM") {
         if (hours < 6) {
             Home.style.backgroundImage = "url('https://media.512pixels.net/wp-content/uploads/2025/08/26-Tahoe-Beach-Dusk-thumb.jpeg')"
@@ -108,3 +108,4 @@ async function getWeather() {
 }
 
 getWeather()
+
