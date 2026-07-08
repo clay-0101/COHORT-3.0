@@ -76,6 +76,7 @@ nav i {
     display: flex;
     justify-content: space-between;
     padding: 2rem;
+    color: #e2e5de;
 }
 
 .features {
@@ -762,6 +763,7 @@ Motivational Quotes */
 #new-quote:hover {
     background-color: #ff3b30;
 }
+
 #new-quote:active {
     transform: scale(0.9);
 }
@@ -779,4 +781,188 @@ Motivational Quotes */
 
 .remove-quotes:hover {
     color: #ff3b30;
+}
+
+/* 
+Focus Timer */
+
+#Focus-Timer-Section {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+#remove-FocusTimer {
+    border: none;
+    background: transparent;
+    color: #0e0e0e;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.9em;
+    padding: 1em 1.2em;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#remove-FocusTimer:hover {
+    color: #ff3b30;
+}
+
+#focus-timer {
+    width: 27vw;
+    min-width: 320px;
+    padding: 2.5em 2em;
+    border: 0.3px solid rgba(0, 0, 0, 0.414);
+    border-radius: 20px;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4vw;
+    background: #fff;
+}
+
+#coundown {
+    font-family: "Anton", sans-serif;
+    font-size: 5em;
+    line-height: 1.05;
+    letter-spacing: 0.5px;
+    color: #0e0e0e;
+}
+
+#coundown span {
+    font-family: "Anton", sans-serif;
+}
+
+#timer-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #0e0e0e;
+}
+
+#session-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.85em;
+    color: #7a7a7a;
+}
+
+.timer-btn {
+    padding: 10px 15px;
+    font-weight: 500;
+    font-size: 0.9em;
+    border: 0.2px solid rgba(0, 0, 0, 0.332);
+    border-radius: 20px;
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+.timer-start {
+    background-color: #0e0e0e;
+    color: white;
+    border: none;
+}
+
+.timer-start:hover {
+    background-color: #ff3b30;
+}
+
+.timer-pause:hover {
+    color: #ff3b30;
+    border: 0.2px solid #ff3b30;
+}
+
+.timer-reset {
+    color: grey;
+    border: 0.2px solid grey;
+}
+
+.timer-reset:hover {
+    color: #ff3b30;
+    border: 0.2px solid #ff3b30;
+}
+.timer-btn:active{
+    transform: scale(0.97);
+}
+
+/* session completed */
+#Session-Complete-Section {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+#session-complete {
+    width: 27vw;
+    min-width: 320px;
+    padding: 2.5em 2em;
+    border: 0.3px solid rgba(0, 0, 0, 0.414);
+    border-radius: 20px;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4vw;
+    background: #fff;
+}
+
+#complete-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #0e0e0e;
+}
+
+#complete-title {
+    font-family: "Anton", sans-serif;
+    font-size: 2.2em;
+    line-height: 1.05;
+    letter-spacing: 0.5px;
+    color: #0e0e0e;
+}
+
+#complete-sub {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.85em;
+    color: #7a7a7a;
+    text-align: center;
+}
+
+#complete-sub span {
+    color: #ff3b30;
+    font-weight: 600;
+}
+
+.complete-done {
+    background-color: #0e0e0e;
+    color: white;
+    border: none;
+}
+
+.complete-done:hover {
+    background-color: #ff3b30;
 }
