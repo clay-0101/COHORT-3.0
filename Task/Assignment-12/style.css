@@ -678,19 +678,78 @@ nav i {
     top: 0;
     left: 0;
     background-color: #F2F5F9;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .task-manager-nav {
     width: 100%;
-    height: 10vh;
+    height: 15vh;
     display: flex;
     justify-content: space-between;
     padding: 0 2rem;
     align-items: center;
 }
 
+.task-manager-div {
+    width: 98%;
+    height: 85vh;
+    background-color: white;
+    border-radius: 12px;
+    overflow-y: scroll;
+    box-shadow: 1px 1px 10px rgb(156, 156, 156);
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
 
+}
 
+.tasks-manager-container {
+    width: 93%;
+    height: 10vh;
+    background-color: #F7FAFC;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    justify-content: space-between;
+}
+
+.tasks-manager-container label {
+    color: #E05345;
+    font-size: 1.1rem;
+}
+
+.tasks-manager-container input {
+    padding: 1rem;
+    width: 30vw;
+    border: none;
+    transition: all 0.3s ease;
+    background-color: #FFF5F2;
+    border: 1px solid #FFDDD6;
+    border-radius: 12px;
+    display: flex;
+    font-weight: 700;
+    align-items: center;
+}
+
+.tasks-manager-container input::placeholder{
+    font-weight: 400;
+    color: grey;
+}
+
+.tasks-manager-container button,
+.task-manager-nav button {
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 12px;
+    background-color: #C84336;
+    color: white;
+}
 
 /* 
 Motivational Quotes */
