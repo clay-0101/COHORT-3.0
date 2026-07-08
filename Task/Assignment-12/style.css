@@ -1025,3 +1025,144 @@ Focus Timer */
 .complete-done:hover {
     background-color: #ff3b30;
 }
+
+/* daily goals css starts from here */
+
+.daily-goals{
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #F2F5F9;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.daily-goals-container{
+    width: 90%;
+    height: 80vh;
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow-y: scroll;
+    gap: 2rem;
+
+}
+
+.daily-goals-div{
+    width: 18vw;
+    height: 45vh;
+    border-radius: 12px;
+    padding: 1rem;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+}
+
+.daily-goals-div h1{
+    font-size: 1.2rem;
+}
+
+.daily-goals-div p{
+    font-size: 1rem;
+}
+
+/* Daily goals - add new goal form */
+
+.daily-goals-div form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.daily-goals-div form input,
+.daily-goals-div form textarea {
+    padding: 0.8rem 1rem;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    background-color: #F7FAFC;
+    color: #2D3748;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.daily-goals-div form input:focus {
+    border-color: #E05345;
+    background-color: #FFFFFF;
+}
+
+.daily-goals-div form input::placeholder {
+    color: #A0AEC0;
+}
+
+.daily-goals-div form button {
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.daily-goals-div form button[type="submit"] {
+    background-color: #E05345;
+    color: #FFFFFF;
+}
+
+.daily-goals-div form button[type="submit"]:hover {
+    background-color: #C84336;
+}
+
+.daily-goals-div form .cancel {
+    background-color: #EDF2F7;
+    color: #718096;
+}
+
+.daily-goals-div form .cancel:hover {
+    background-color: #E2E8F0;
+    color: #2D3748;
+}
+
+.daily-goals-div .checkbox{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 10;
+}
+.daily-goals-div {
+    position: relative;
+}
+
+.goal-dlt {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #718096;
+    transition: all 0.2s ease;
+}
+
+.goal-dlt:hover {
+    background-color: #E05345;
+    color: white;
+}
