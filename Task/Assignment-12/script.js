@@ -26,8 +26,19 @@ const remove_quotes = document.querySelector('.remove-quotes')
 const quote = document.querySelector('#quote')
 const author = document.querySelector('#author')
 const new_quote = document.querySelector('#new-quote')
+const focus_Timer_Section = document.querySelector('#Focus-Timer-Section')
+const remove_timerBtn = document.querySelector('#remove-FocusTimer')
 const taskManagerDiv = document.querySelector('.task-manager-div')
 const resetAllBtn = document.querySelector('.reset-all-btn')
+const timer_min = document.querySelector('#timer_min')
+const timer_sec = document.querySelector('#timer_sec')
+const timer_start = document.querySelector('.timer-start')
+const timer_reset = document.querySelector('.timer-reset')
+const timer_pause = document.querySelector('.timer-pause')
+const focus_timer = document.querySelector('#focus-timer')
+const coundown = document.querySelector('#coundown')
+const completed_done = document.querySelector('.complete-done')
+const Session_Complete_Section = document.querySelector('#Session-Complete-Section')
 const dailyGoals = document.querySelector('.daily-goals')
 const dailyGoalsBack = document.querySelector('.daily-goals span')
 const dailyGoalsContainer = document.querySelector('.daily-goals-container')
@@ -299,11 +310,21 @@ features.addEventListener('click', (e) => {
     if (e.target.closest('.feature8') || e.target.closest('.feature3')) {
         motivation_quotes.style.display = "flex"
     }
+    if (e.target.closest('.feature4') || e.target.closest('.feature9')) {
+        focus_Timer_Section.style.display = "flex"
+    }
+
+})
 
     if (e.target.closest('.feature5') || e.target.closest('.feature10')) {
         dailyGoals.style.display = "flex"
     }
 
+remove_quotes.addEventListener('click', () => {
+    motivation_quotes.style.display = "none"
+})
+remove_timerBtn.addEventListener('click', () => {
+    focus_Timer_Section.style.display = "none"
     backBtn.addEventListener('click', () => {
         toDoList.style.display = 'none'
     })
@@ -321,7 +342,6 @@ features.addEventListener('click', (e) => {
     })
 })
 
-
 async function getQuote() {
 
     let response = await fetch('https://dummyjson.com/quotes/random')
@@ -333,6 +353,64 @@ async function getQuote() {
 getQuote()
 new_quote.addEventListener('click', getQuote)
 
+
+
+let minutes = 25
+let seconds = 0
+let timerInter;
+
+
+function timer() {
+    if(minutes === 0 && seconds < 10){
+        coundown.style.color = '#ff3b30'
+    }
+    if (minutes === 0 && seconds === 0) {
+        timer_min.textContent = '00'
+        timer_sec.textContent = '00'
+        focus_timer.style.display = 'none'
+        Session_Complete_Section.style.display = 'flex'
+        clearInterval(timerInter)
+        return
+    }
+
+    timer_min.textContent = minutes.toString().padStart(2, '0')
+    timer_sec.textContent = seconds.toString().padStart(2, '0')
+
+    seconds--
+
+    if (seconds < 0 && minutes > 0) {
+        minutes--
+        seconds = 59
+    }
+}
+
+timer_start.addEventListener('click', () => {
+    clearInterval(timerInter)
+    timerInter = setInterval(() => {
+        timer()
+    }, 1000)
+})
+timer_pause.addEventListener('click', () => {
+    clearInterval(timerInter)
+})
+timer_reset.addEventListener('click', () => {
+    timer_min.textContent = '25'
+    timer_sec.textContent = '00'
+    minutes = 25
+    seconds = 0
+    coundown.style.color = '#0e0e0e'
+    clearInterval(timerInter)
+})
+completed_done.addEventListener('click', () => {
+    timer_min.textContent = '25'
+    timer_sec.textContent = '00'
+    minutes = 25
+    seconds = 0
+    coundown.style.color = '#0e0e0e'
+    focus_timer.style.display = 'flex'
+    Session_Complete_Section.style.display = 'none'
+
+})
 // daily planner code starts here
 let dayPlannerData = JSON.parse(localStorage.getItem('dayPlannerData')) || {}
 
@@ -461,7 +539,6 @@ dailyGoalsContainer.addEventListener('click', (e) => {
         return
     }
 
-    // ✅ delete button
     if (e.target.closest('.goal-dlt')) {
         const goalIndex = Number(e.target.closest('.goal-dlt').dataset.goalIndex)
         dailyGoalsData.splice(goalIndex, 1)
