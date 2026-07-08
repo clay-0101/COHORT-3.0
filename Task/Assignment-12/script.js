@@ -33,6 +33,9 @@ const taskManager = document.querySelector('.task-manager')
 const taskManagerback = document.querySelector('.task-manager-nav span')
 const motivation_quotes = document.querySelector('#motivation_quotes')
 const remove_quotes  = document.querySelector('.remove-quotes')
+const quote = document.querySelector('#quote')
+const author = document.querySelector('#author')
+const new_quote = document.querySelector('#new-quote')
 
 let now = new Date();
 let hours = now.getHours()
@@ -300,8 +303,8 @@ features.addEventListener('click',(e)=>{
         taskManager.style.display = 'flex'
     }
 
-    if(e.target.classList.contains('feature8') || e.target.classList.contains('feature3')){
-        motivation_quotes.style.display = "block"
+    if(e.target.closest('.feature8') || e.target.closest('.feature3')){
+        motivation_quotes.style.display = "flex"
     }
 })
 
@@ -310,6 +313,17 @@ backBtn.addEventListener('click', () => {
 })
 
 remove_quotes.addEventListener('click',()=>{
-    console.log('hello')
       motivation_quotes.style.display = "none"
 })
+
+
+async function getQuote() {
+    
+    let response = await fetch('https://dummyjson.com/quotes/random')
+    let data =  await  response.json()
+    
+    quote.textContent = data.quote
+    author.textContent = data.author
+}
+getQuote()
+new_quote.addEventListener('click', getQuote)

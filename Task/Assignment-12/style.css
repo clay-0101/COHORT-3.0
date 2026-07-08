@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Martel+Sans:wght@200;300;400;600;700;800;900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Narnoor:wght@400;500;600;700;800&family=Orbitron:wght@400..900&family=Oxanium:wght@200..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sarpanch:wght@400;500;600;700;800;900&family=Science+Gothic:wght@100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
 * {
     margin: 0;
@@ -169,6 +170,7 @@ nav i {
     box-sizing: border-box;
     transition: transform 0.15s ease;
 
+
 }
 
 .feature1.todo-feature-card:hover {
@@ -266,6 +268,7 @@ nav i {
 .feature3,
 .feature8 {
     background: #e8482f;
+    cursor: pointer;
 }
 
 .motivation-label {
@@ -666,8 +669,8 @@ nav i {
 
 /* daily planner starts from here */
 
-.task-manager{
-    display:none;
+.task-manager {
+    display: none;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -676,7 +679,7 @@ nav i {
     background-color: #F2F5F9;
 }
 
-.task-manager-nav{
+.task-manager-nav {
     width: 100%;
     height: 10vh;
     display: flex;
@@ -686,9 +689,7 @@ nav i {
 }
 
 
-/* Motivational Quotes */ 
-
-/* #motivation_quotes{
+/* Motivational Quotes */
 #motivation_quotes {
     height: 100%;
     width: 100%;
@@ -696,9 +697,82 @@ nav i {
     position: absolute;
     top: 0;
     left: 0;
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+#quote-container {
+    width: 30vw;
+    min-width: 320px;
+    padding: 2.5em 2em;
+    border: 0.3px solid rgba(0, 0, 0, 0.414);
+    border-radius: 20px;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 4vw;
+    background: #fff;
+}
+
+#quote-heading {
+    font-size: 0.9em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #0e0e0e;
+    margin: 0 0 1.5em 0;
 }
 
 #quote {
-    font-family: "Passion One", sans-serif;
+    font-family: "Anton", sans-serif;
+    font-size: 2em;
+    line-height: 1.05;
+    letter-spacing: 0.5px;
+    color: #0e0e0e;
+    font-weight: 300;
+}
+
+#quote-container p {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: black;
+
+}
+
+#new-quote {
+    border: none;
+    background: #0e0e0e;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.85em;
+    padding: 0.8em 1.6em;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+
+}
+
+#new-quote:hover {
+    background-color: #ff3b30;
+}
+#new-quote:active {
+    transform: scale(0.9);
+}
+
+.remove-quotes {
+    border: none;
+    background: transparent;
+    color: #0e0e0e;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.9em;
+    padding: 1em 1.2em;
+    cursor: pointer;
+}
+
+.remove-quotes:hover {
+    color: #ff3b30;
 }
