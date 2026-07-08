@@ -112,7 +112,7 @@
                             <p class="todo-card-subtitle">Tap to open your tasks and stay on track.</p>
                         </div>
                     </div>
-                    
+
                     <div class="todo-feature-card card feature7">
                         <div class="todo-card-top">
                             <span class="todo-card-label planner-label">1.5&nbsp;&nbsp;FEATURE</span>
@@ -159,6 +159,58 @@
                 </div>
             </div>
         </section>
+        <section class="to-do-list">
+            <div class="tasks">
+                <h1>
+                    <span class="back">
+                        <i class="ri-arrow-left-s-fill"></i>
+                    </span>
+                    TASKS
+                </h1>
+                <div class="date-container">
+                </div>
+                <div class="task-container">
+                </div>
+            </div>
+
+            <div class="add-tasks">
+                <form>
+                    <label for="task">ADD TASK</label>
+                    <input type="text" placeholder="Enter Your Task Here" id="task">
+
+                    <label for="task-desc">ADD DESCRIPTION</label>
+                    <textarea placeholder="Describe Your Task Here" id="task-desc" rows="6" cols="40"></textarea>
+
+                    <label for="type">SELECT CATEGORY</label>
+                    <select class="category" name="Category" id="type">
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="Home">Home</option>
+                        <option value="Business">Business</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Education">Education</option>
+                        <option value="Heath & Fitness">Health & Fitness</option>
+                        <option value="Finance">Finance</option>
+                    </select>
+
+                    <label for="due-date">DUE DATE</label>
+                    <input type="date" id="due-date">
+
+                    <label for="important">MARK AS IMPORTANT</label>
+                    <select class="important" id="important">
+                        <option value="" disabled selected>Select</option>
+                        <option value="yes">YES</option>
+                        <option value="no">NO</option>
+                    </select>
+
+                    <button type="submit">ADD</button>
+                </form>
+            </div>
+        </section>
+        <section class="task-manager">
+            
+        </section>
+
     </main>
     <script src="script.js"></script>
 </body>
