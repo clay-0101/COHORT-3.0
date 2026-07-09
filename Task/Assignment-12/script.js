@@ -88,6 +88,10 @@ function applyTheme(theme) {
         themeBtn.classList.add('ri-sun-line')
     }
     setBg(ampm)
+
+    if (coundown.style.color !== '#ff3b30') {
+        coundown.style.color = theme === 'dark' ? '#f2f1ec' : '#0e0e0e'
+    }
 }
 
 let savedTheme = localStorage.getItem('theme') || 'light'
@@ -137,7 +141,6 @@ remove_quotes.addEventListener('click', () => {
 })
 
 remove_timerBtn.addEventListener('click', () => {
-    // stop timer and fully reset focus timer state when exiting
     clearInterval(timerInter)
     minutes = 25
     seconds = 0
@@ -153,7 +156,7 @@ dailyGoalsBack.addEventListener('click', () => {
     closeSection('goals')
 })
 
-let rotation = 0; // starting angle
+let rotation = 0;
 
 window.addEventListener('wheel', (e) => {
     rotation += e.deltaY * 0.2;
@@ -376,11 +379,21 @@ features.addEventListener('click', (e) => {
 })
 
 async function getQuote() {
-    let response = await fetch('https://dummyjson.com/quotes/random')
-    let data = await response.json()
+    try {
+        let response = await fetch('https://dummyjson.com/quotes/random')
 
-    quote.textContent = data.quote
-    author.textContent = data.author
+        if (!response.ok) {
+            throw new Error('Failed to fetch quote')
+        }
+
+        let data = await response.json()
+
+        quote.textContent = data.quote
+        author.textContent = data.author
+    } catch (error) {
+        quote.textContent = "Talk is cheap , Show me the code"
+        author.textContent = "Unknown"
+    }
 }
 getQuote()
 new_quote.addEventListener('click', getQuote)
@@ -440,7 +453,6 @@ completed_done.addEventListener('click', () => {
     Session_Complete_Section.style.display = 'none'
 })
 
-// daily planner code starts here
 let dayPlannerData = JSON.parse(localStorage.getItem('dayPlannerData')) || {}
 
 function loadPlannerData() {
@@ -541,7 +553,7 @@ function addGoals() {
 
     dailyGoalsData.forEach((data, goalIndex) => {
         dailyGoalsContainer.innerHTML += `
-                    <div class="daily-goals-div" data-index="${index}" data-goal-index="${goalIndex}" style="background-color: ${data.checkBox ? 'transparent' : pastelColors[index]}; opacity : ${data.checkBox ? 0.2 : 1};">
+                    <div class="daily-goals-div" data-index="${index}" data-goal-index="${goalIndex}" style="background-color: ${pastelColors[index]}; opacity : ${data.checkBox ? 0.45 : 1};">
                         <h1 style="text-decoration: ${data.checkBox ? 'line-through' : 'none'};">${data.heading}</h1>
                         <p>${data.paragraph}</p>
                         <div class="goal-dlt" data-goal-index="${goalIndex}"><i class="ri-delete-bin-fill"></i></div>
