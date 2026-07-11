@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
 
-const Form = ({ setFormData, setToggle,updatedFormData ,setUpdateFormData }) => {
+const Form = ({formData, setFormData, setToggle,updatedFormData ,setUpdateFormData }) => {
 
     const {
         register,
@@ -26,13 +26,15 @@ const Form = ({ setFormData, setToggle,updatedFormData ,setUpdateFormData }) => 
              
                 onSubmit={handleSubmit((data) => {
                     if(updatedFormData){
-                        setFormData((prev)=>{
-                            return prev.map((val)=>{
+                        let editedData = formData.map((val)=>{
                                 return val.id == updatedFormData.id ? {...data} : val
                             })
-                        })
+                        setFormData(editedData)
+                        localStorage.setItem('users', JSON.stringify(editedData))
                     }else{
-                        setFormData((prev) => [...prev, {...data, id:uuidv4()}])
+                        let incomingData =  [...formData, {...data, id:uuidv4()}]
+                        setFormData(incomingData)
+                        localStorage.setItem('users',JSON.stringify(incomingData))
                     }
                     setToggle((prev) => !prev)
                     reset()
