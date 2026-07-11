@@ -7,18 +7,35 @@ import Card from './components/Card'
 const App = () => {
   const [formData, setFormData] = useState([])
   const [toggle, setToggle] = useState(false)
+  const [updatedFormData, setUpdateFormData] = useState(null)
+  
+  function removeCard(id){
+    let filteredData = formData.filter((val)=>{
+      return val.id !== id
+    })
+    setFormData(filteredData)
+  }
   console.log(formData)
-
   return (
     <div className='min-h-screen bg-gray-700 text-white px-[3vw] py-1.5'>
       <Nav setToggle={setToggle} />
 
       {toggle ?
-        <Form setFormData={setFormData} setToggle={setToggle}/>
+        <Form 
+        setFormData={setFormData} 
+        setToggle={setToggle}
+        updatedFormData={updatedFormData}
+        setUpdateFormData={setUpdateFormData}/>
         :
         <div className='mt-5 flex flex-wrap gap-3'>
          {formData.map((val)=>{
-          return <Card val={val} />
+          return <Card 
+          key={val.id} 
+          val={val} 
+          removeCard={removeCard} 
+          setToggle={setToggle}
+          setUpdateFormData={setUpdateFormData}
+          />
          })}
         </div>}
 
