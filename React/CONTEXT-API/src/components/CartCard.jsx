@@ -1,7 +1,10 @@
 import React from 'react'
 import { Trash2, Minus, Plus } from 'lucide-react'
+import { useState } from 'react'
 
-const CartCard = ({product}) => {
+const CartCard = ({ product, removeFromCart, setCartItems }) => {
+    let [count, setCount] = useState(product.quantity)
+
     return (
         <div className="flex w-full max-w-[500px] items-center gap-4 border border-stone-200 bg-[#FBFAF7] p-3 rounded-[2px]">
             {/* Image */}
@@ -29,13 +32,25 @@ const CartCard = ({product}) => {
 
                 {/* Quantity (UI only) */}
                 <div className="mt-1 flex items-center gap-2">
-                    <button className="flex h-6 w-6 items-center justify-center border border-stone-300 text-stone-600">
+                    <button
+                        onClick={() => {
+                            if (count > 1) {
+                                setCount(--count)
+                                product.quantity = count
+                            }
+                        }}
+                        className="flex h-6 w-6 items-center justify-center border border-stone-300 text-stone-600">
                         <Minus size={12} />
                     </button>
                     <span className="w-6 text-center text-[13px] text-stone-900">
                         {product.quantity || 1}
                     </span>
-                    <button className="flex h-6 w-6 items-center justify-center border border-stone-300 text-stone-600">
+                    <button
+                        onClick={() => {
+                            setCount(++count)
+                            product.quantity = count
+                        }}
+                        className="flex h-6 w-6 items-center justify-center border border-stone-300 text-stone-600">
                         <Plus size={12} />
                     </button>
                 </div>
@@ -43,7 +58,11 @@ const CartCard = ({product}) => {
 
             {/* Right side: subtotal + remove */}
             <div className="flex h-full flex-col items-end justify-between">
-                <button aria-label="Remove item" className="text-stone-400 hover:text-rose-600">
+                <button
+                    onClick={() => {
+                        removeFromCart(product.id)
+                    }}
+                    aria-label="Remove item" className="text-stone-400 hover:text-rose-600">
                     <Trash2 size={16} />
                 </button>
                 <span className="font-serif text-base text-stone-900">
