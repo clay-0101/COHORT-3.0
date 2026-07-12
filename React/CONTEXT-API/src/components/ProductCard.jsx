@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Star, ShoppingBag, Heart } from 'lucide-react'
+import { Shop } from '../context/MyContext'
 
-const ProductCard = ({ product, setCartItems, cartItems }) => {
+const ProductCard = ({ product }) => {
+    let {setCartItems,cartItems} = useContext(Shop)
     function isPresetnInData(){
-      return   cartItems.find((card)=> card.id === product.id)
+      return  cartItems.find((card)=> card.id === product.id)
     }
 
     return (
@@ -59,11 +61,12 @@ const ProductCard = ({ product, setCartItems, cartItems }) => {
                                 })
                                 console.log(product.quantity || 1)
                                 setCartItems(addQuantity)
+                                localStorage.setItem('saved', JSON.stringify(addQuantity))
                             }else{
-                                setCartItems([...cartItems,{...product, quantity : 1}])
+                                let newUserAdd = [...cartItems,{...product, quantity : 1}]
+                                setCartItems(newUserAdd)
+                                localStorage.setItem('saved',JSON.stringify(newUserAdd))
                             }
-
-                            
 
                         }}
                         className="flex items-center gap-1.5 rounded-[2px] bg-stone-800 px-3 py-2 text-[11px] font-medium uppercase tracking-[0.08em] text-white transition-opacity hover:opacity-90 active:opacity-80">
