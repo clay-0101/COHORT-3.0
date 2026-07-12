@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Trash2, Minus, Plus } from 'lucide-react'
 import { useState } from 'react'
+import { Shop } from '../context/MyContext'
 
-const CartCard = ({ product, removeFromCart, setCartItems }) => {
+const CartCard = ({ product, removeFromCart }) => {
     let [count, setCount] = useState(product.quantity)
+    let { cartItems } = useContext(Shop)
 
     return (
         <div className="flex w-full max-w-[500px] items-center gap-4 border border-stone-200 bg-[#FBFAF7] p-3 rounded-[2px]">
@@ -37,6 +39,10 @@ const CartCard = ({ product, removeFromCart, setCartItems }) => {
                             if (count > 1) {
                                 setCount(--count)
                                 product.quantity = count
+                                let quntityInc = cartItems.map((card) => {
+                                    return card.id === product.id ? { ...card, quantity: count } : card
+                                })
+                                localStorage.setItem('saved', JSON.stringify(quntityInc))
                             }
                         }}
                         className="flex h-6 w-6 items-center justify-center border border-stone-300 text-stone-600">
@@ -49,6 +55,10 @@ const CartCard = ({ product, removeFromCart, setCartItems }) => {
                         onClick={() => {
                             setCount(++count)
                             product.quantity = count
+                            let quntityInc = cartItems.map((card) => {
+                                return card.id === product.id ? { ...card, quantity: count } : card
+                            })
+                            localStorage.setItem('saved', JSON.stringify(quntityInc))
                         }}
                         className="flex h-6 w-6 items-center justify-center border border-stone-300 text-stone-600">
                         <Plus size={12} />

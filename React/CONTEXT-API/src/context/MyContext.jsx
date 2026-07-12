@@ -245,7 +245,9 @@ export const ContextProvider = ({ children }) => {
             }
         }
     ]
-    const [data, setData] = useState("Hello this the first Data")
+ const [cartItems, setCartItems] = useState(()=>{
+    return JSON.parse(localStorage.getItem('saved')) || []
+ })
 
-    return <Shop.Provider value={products}>{children}</Shop.Provider>
+    return <Shop.Provider value={{products, cartItems , setCartItems}}>{children}</Shop.Provider>
 }
