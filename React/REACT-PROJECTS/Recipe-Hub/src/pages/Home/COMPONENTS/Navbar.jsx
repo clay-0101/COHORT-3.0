@@ -3,7 +3,7 @@ import { Search, ShoppingCart } from 'lucide-react'
 
 const Navbar = () => {
     return (
-        <div className='flex justify-center items-center gap-[5vw] bg-white py-2 border-b border-[#aca7a79e]'>
+        <div className='flex w-full justify-center items-center gap-[5vw] bg-white py-2 border-b border-[#aca7a79e]'>
             <h1 className='text-2xl font-bold text-[#fd6800]'>🍽️&nbsp;RecipeHub</h1>
             <div className='flex items-center border-2 rounded-3xl px-3 gap-3'>
                 <Search size={20} />
