@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { MyStore } from '../../../Context/MyContext'
 
 const RecipeCard = ({cardData}) => {
+  let {setCartData,setCartQuantity} = useContext(MyStore)
   return (
     <div className="w-full bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
       {/* Image with price badge */}
@@ -37,7 +39,10 @@ const RecipeCard = ({cardData}) => {
             </p>
           </div>
           <button
-            type="button"
+          onClick={()=>{
+            setCartData((prev)=>[...prev,cardData])
+            setCartQuantity((prev)=> prev+1)
+          }}
             className="bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold px-3.5 py-2 rounded-md transition-colors"
           >
             Add To Cart
