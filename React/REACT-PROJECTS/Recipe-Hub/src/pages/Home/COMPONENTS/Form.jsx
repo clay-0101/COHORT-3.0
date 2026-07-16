@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { nanoid } from 'nanoid'
 import { useForm } from 'react-hook-form'
+import { MyStore } from '../../../Context/MyContext'
 
-const Form = ({setRecipeData}) => {
+const Form = () => {
+   let {recipeData, setRecipeData, } = useContext(MyStore)
 
     let { handleSubmit, register, formState: { errors }, reset } = useForm({ mode: "onChange" })
 
     function addRecipeData(data) {
-        setRecipeData((prev)=>[...prev , {...data, id : nanoid()}])
+        let newData = [...recipeData , {...data, id : nanoid()}]
+
+        setRecipeData(newData)
+        localStorage.setItem('AllRecipe', JSON.stringify(newData))
+
         reset()
     }
 

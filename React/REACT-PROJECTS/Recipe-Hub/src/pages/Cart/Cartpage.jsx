@@ -1,7 +1,10 @@
+import { useContext } from "react"
 import CartCard from "./Components/CartCard"
 import {CircleX} from "lucide-react"
+import { MyStore } from "../../Context/MyContext"
 
 const CartPage = () => {
+  let {setOnHome, cartData} = useContext(MyStore)
   return (
     <div className="h-[90vh] overflow-y-auto w-full bg-[#fdfaf5] px-6 py-10 overflow-x-hidden">
       <div className="max-w-6xl mx-auto">
@@ -13,15 +16,19 @@ const CartPage = () => {
               Review your items before checkout.
             </p>
           </div>
-        <CircleX className="cursor-pointer hover:text-orange-600" />
+        <CircleX 
+        onClick={()=>{
+          setOnHome(true)
+        }}
+        className="cursor-pointer hover:text-orange-600" />
         </div>
         {/* Two column layout */}
         <div className="flex flex-col lg:flex-row gap-6 items-start">
           {/* Left side - Cart Items */}
-          <div className="w-full lg:flex-1 space-y-4 max-h-[70vh] overflow-y-auto pr-1">
-            <CartCard />
-            <CartCard />
-            <CartCard />
+          <div className="w-full lg:flex-1 space-y-4 max-h-[70vh] overflow-y-auto pr-1 scrollbar-thin">
+            {cartData.map((item)=>{
+              return <CartCard key={item.id} itemData={item}/>
+            })}
           </div>
 
           {/* Right side - Order Summary */}
