@@ -1,0 +1,47 @@
+/* Extralight (200) */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/Fonts/ClashDisplay-Extralight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+/* Light (300) */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/Fonts/ClashDisplay-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Regular (400) */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/Fonts/ClashDisplay-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Medium (500) */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/Fonts/ClashDisplay-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Semibold (600) */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/Fonts/ClashDisplay-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Bold (700) */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/Fonts/ClashDisplay-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}

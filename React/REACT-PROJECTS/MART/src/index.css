@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+@import '../public/Fonts/fonts.css';
+
+*{
+    font-family: 'Clash Display';
+}
