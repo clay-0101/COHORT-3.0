@@ -5,7 +5,14 @@ import { useState } from "react";
 export let MyStore = createContext();
 
 export let ContextProvider = ({ children }) => {
-    const [userData, setUserData] = useState([])
+    // STORE ALL REGISTERED DATA
+    const [userData, setUserData] = useState(()=>{
+        return JSON.parse(localStorage.getItem('registeredUser')) || []
+    })
+    // STORE THE WHICH USER PROFILE IS LOGED IN
+    const [profile, setProfile] = useState(()=>{
+        return JSON.parse(localStorage.getItem('userProfile')) || null
+    })
 
-    return <MyStore.Provider value={{userData, setUserData}}>{children}</MyStore.Provider>
+    return <MyStore.Provider value={{ userData, setUserData , profile, setProfile}}>{children}</MyStore.Provider>
 }

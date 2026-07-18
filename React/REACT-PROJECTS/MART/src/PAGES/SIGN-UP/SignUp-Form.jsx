@@ -75,9 +75,9 @@ const SignUpForm = () => {
           alert("Password Not Matched...!")
           return
         }
-          let newUserData = [...userData , {...data , isAuthenticated : true }]
+          let newUserData = [...userData , data]
           setUserData(newUserData)
-          console.log(newUserData)
+          localStorage.setItem('registeredUser', JSON.stringify(newUserData))
           reset()
           setPassword('')
       })} 
