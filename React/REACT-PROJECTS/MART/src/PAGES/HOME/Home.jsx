@@ -31,7 +31,7 @@ let {cartToggle} = useContext(MyStore)
                 <CategoryGrid />
             </div>
 
-            <div className='product-lists-section px-[10vw] pt-[2.5vw] grid grid-cols-2 gap-6'>
+            <div className='product-lists-section px-[10vw] pt-[2.5vw] grid lg:grid-cols-2 md:grid-cols-1 gap-6'>
                 <TopRated />
                 <NewArrivals />
             </div>

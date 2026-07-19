@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Zap, ShoppingCart, LogOut } from 'lucide-react'
 import { MyStore } from '../../../Context/MyContext'
+import { NavLink } from 'react-router'
 
 const Navbar = () => {
     let { setProfile, setCartToggle } = useContext(MyStore)
@@ -14,10 +15,25 @@ const Navbar = () => {
                     Sky <span className="text-[#c8f400]">Mart</span>
                 </span>
             </div>
-            <div className='flex gap-6 text-[#bbbbbb] text-[14px] font-[500]'>
-                <p>Home</p>
-                <p>Shop</p>
-                <p>Product</p>
+            <div className='flex gap-6  text-[14px] font-[500]'>
+                <NavLink 
+                to='/home'
+                className={({isActive})=>{
+                  return  isActive ? 'text-[#c8f400]' : 'text-[#bbbbbb]'
+                }}
+                 >Home</NavLink>
+                <NavLink
+                to='/shop'
+                className={({isActive})=>{
+                     return  isActive ? 'text-[#c8f400]' : 'text-[#bbbbbb]'
+                }}
+                >Shop</NavLink>
+                <NavLink 
+                to='/about'
+                className={({isActive})=>{
+                    return  isActive ? 'text-[#c8f400]' : 'text-[#bbbbbb]'
+                }}
+                >About</NavLink>
             </div>
             <div className='flex items-center gap-3'>
                 <div className=' px-2 py-2 rounded-xl text-[12px] flex justify-center items-center font-[500] gap-2 bg-[#1b1b1b] text-[#bbbbbb] border-[0.1px] border-[#ffffff4e] flex '>

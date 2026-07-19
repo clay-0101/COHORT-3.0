@@ -3,7 +3,8 @@ import { Package, TrendingUp, Star, Tag } from 'lucide-react'
 
 const StatCards = () => {
     return (
-        <div className='px-[10vw] pt-[1.5vw] grid grid-cols-4 gap-4'>
+        <div className='px-[10vw] pt-[1.5vw] grid  gap-4 
+                       lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1'>
 
             <div className='bg-[#0d0d0d] border-[0.1px] border-[#ffffff1f] rounded-2xl p-5 flex items-center gap-4'>
                 <div className='w-11 h-11 bg-[#2a2a1a] rounded-xl flex items-center justify-center'>
