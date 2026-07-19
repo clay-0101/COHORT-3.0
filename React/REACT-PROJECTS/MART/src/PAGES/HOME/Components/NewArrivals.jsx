@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Zap, ArrowRight, ShoppingBag, Headphones, Pen, Shirt, Image, FlaskConical } from 'lucide-react'
+import { MyStore } from '../../../Context/MyContext'
 
 const NewArrivals = () => {
+   let {productsData} = useContext(MyStore)
+
+  let newArrival = [...productsData]
+  .sort((a, b) => new Date(b.meta.createdAt) - new Date(a.meta.createdAt))
+  .slice(0, 8);
+  console.log(newArrival)  // sort top 8 new arrivals 
+
     return (
         <div className='bg-white rounded-2xl p-6'>
 
