@@ -82,7 +82,7 @@ export default function SignInForm() {
           {/* Sign in button */}
           <button
 
-            className="mt-2 w-full flex items-center justify-center gap-2 rounded-xl bg-[#c8f400] hover:bg-lime-300 transition-colors py-4 font-bold text-black"
+            className="mt-2 w-full flex items-center justify-center gap-2 rounded-xl bg-[#c8f400] hover:bg-lime-300 transition-colors py-4 font-medium text-black"
           >
             Sign in
             <ArrowRight className="h-5 w-5" />

@@ -14,5 +14,7 @@ export let ContextProvider = ({ children }) => {
         return JSON.parse(localStorage.getItem('userProfile')) || null
     })
 
+    const [cartToggle, setCartToggle] = useState('none')
+
     return <MyStore.Provider value={{ userData, setUserData , profile, setProfile}}>{children}</MyStore.Provider>
 }

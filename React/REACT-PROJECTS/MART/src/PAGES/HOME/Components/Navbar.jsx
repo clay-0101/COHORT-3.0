@@ -1,7 +1,9 @@
-import React from 'react'
-import { Zap , ShoppingCart, LogOut} from 'lucide-react'
+import React, { useContext } from 'react'
+import { Zap, ShoppingCart, LogOut } from 'lucide-react'
+import { MyStore } from '../../../Context/MyContext'
 
 const Navbar = () => {
+    let { setProfile } = useContext(MyStore)
     return (
         <div className='bg-[#0d0d0d] flex justify-between items-center px-[10vw] py-[0.8vw]'>
             <div className="flex items-center justify-center gap-2.5 ">
@@ -23,11 +25,18 @@ const Navbar = () => {
                     <p>ramesh</p>
                 </div>
                 <div className='px-2 py-2 rounded-xl bg-[#1b1b1b] border-[0.1px] border-[#ffffff4e] text-[#bbbbbb] flex justify-center items-center'>
-                    <ShoppingCart size={18} />
+                    <ShoppingCart
+                        className='hover:text-[#c8f400]'
+                        size={18} />
                 </div>
-                <div className='px-2 py-2 rounded-xl bg-[#1b1b1b] border-[0.1px] border-[#ffffff4e] text-[#bbbbbb]  flex justify-center items-center'>
-                    <LogOut 
-                    size={18}
+                <div
+                    onClick={() => {
+                        setProfile(null)
+                        localStorage.setItem('userProfile', null)
+                    }}
+                    className='hover:text-[#f31a1a87] hover:bg-[#ff51513e] px-2 py-2 rounded-xl bg-[#1b1b1b] border-[0.1px] border-[#ffffff4e] text-[#bbbbbb]  flex justify-center items-center'>
+                    <LogOut
+                        size={18}
                     />
                 </div>
             </div>
