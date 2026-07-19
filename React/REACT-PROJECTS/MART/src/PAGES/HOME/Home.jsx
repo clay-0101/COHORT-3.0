@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from './Components/Navbar'
 import WelcomeBanner from './Components/WelcomeBanner'
 import StatCards from './Components/StatCards'
@@ -7,24 +7,27 @@ import TopRated from './Components/Toprated'
 import NewArrivals from './Components/NewArrivals'
 import FeatureStrip from './Components/FeatureStrip'
 import Footer from './Components/Footer'
+import Cart from './Components/Cart'
+import { MyStore } from '../../Context/MyContext'
 
 const Home = () => {
+let {cartToggle} = useContext(MyStore)
     return (
-        <div className='bg-black overflow-y-auto h-screen scrollbar-thin scrollbar-thumb-[#2f2e2e] scrollbar-track-[#0d0d0d] '>
-
-            <div className='navbar-section'>
+        <div className='bg-black overflow-y-auto h-screen scrollbar-thin scrollbar-thumb-[#2f2e2e] scrollbar-track-[#0d0d0d] relative'>
+           {cartToggle && <Cart/>}
+            <div>
                 <Navbar />
             </div>
 
-            <div className='welcome-section'>
+            <div className='mt-15'>
                 <WelcomeBanner />
             </div>
 
-            <div className='stats-section'>
+            <div>
                 <StatCards />
             </div>
 
-            <div className='category-section'>
+            <div>
                 <CategoryGrid />
             </div>
 
@@ -33,11 +36,11 @@ const Home = () => {
                 <NewArrivals />
             </div>
 
-            <div className='feature-section'>
+            <div >
                 <FeatureStrip />
             </div>
 
-            <div className='footer-section'>
+            <div >
                 <Footer />
             </div>
         </div>

@@ -3,9 +3,9 @@ import { Zap, ShoppingCart, LogOut } from 'lucide-react'
 import { MyStore } from '../../../Context/MyContext'
 
 const Navbar = () => {
-    let { setProfile } = useContext(MyStore)
+    let { setProfile, setCartToggle } = useContext(MyStore)
     return (
-        <div className='bg-[#0d0d0d] flex justify-between items-center px-[10vw] py-[0.8vw]'>
+        <div className='bg-[#0d0d0da4] backdrop-blur-[3px] flex justify-between items-center px-[10vw] py-[0.8vw] w-screen fixed top-0 z-10'>
             <div className="flex items-center justify-center gap-2.5 ">
                 <div className="w-8 h-8 bg-[#c8f400] rounded-lg flex items-center justify-center">
                     <Zap size={18} className="text-neutral-900" fill="currentColor" />
@@ -24,10 +24,12 @@ const Navbar = () => {
                     <div className='h-[1.5vw] w-[1.5vw] flex justify-center items-center text-black bg-[#c8f400] rounded-lg px-2 py-2 font-medium'>R</div>
                     <p>ramesh</p>
                 </div>
-                <div className='px-2 py-2 rounded-xl bg-[#1b1b1b] border-[0.1px] border-[#ffffff4e] text-[#bbbbbb] flex justify-center items-center'>
-                    <ShoppingCart
-                        className='hover:text-[#c8f400]'
-                        size={18} />
+                <div 
+                onClick={()=>{
+                    setCartToggle(true)
+                }}
+                className=' hover:text-[#c8f400] px-2 py-2 rounded-xl bg-[#1b1b1b] border-[0.1px] border-[#ffffff4e] text-[#bbbbbb] flex justify-center items-center'>
+                    <ShoppingCart size={18} />
                 </div>
                 <div
                     onClick={() => {
