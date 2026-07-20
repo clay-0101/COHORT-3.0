@@ -1,18 +1,10 @@
 import React, { useContext } from 'react'
-import products from '../../../Context/AllProducts'
 import { Laptop, Shirt, Armchair, Home, Dumbbell, Backpack, ArrowRight } from 'lucide-react'
 import { MyStore } from '../../../Context/MyContext'
 
 const CategoryGrid = () => {
-    let { productsData } = useContext(MyStore)
-    const categoryMap = {
-        Electronics: ["smartphones", "laptops", "tablets", "mobile-accessories"],
-        Clothing: ["mens-shirts", "mens-shoes", "tops", "womens-dresses", "womens-shoes"],
-        Furniture: ["furniture", "home-decoration"],
-        Home: ["kitchen-accessories", "groceries", "skin-care"],
-        Sports: ["sports-accessories", "motorcycle", "vehicle"],
-        Accessories: ["sunglasses", "womens-bags", "womens-jewellery", "mens-watches", "womens-watches", "fragrances", "beauty"],
-    };
+    let { productsData , categoryMap} = useContext(MyStore)
+ 
 
     let subCategoryCount = productsData.reduce((acc, curr)=>{
         let cat = curr.category
