@@ -1,6 +1,12 @@
 import { Star, ShoppingCart } from "lucide-react";
+import { useContext } from "react";
+import { MyStore } from "../../../Context/MyContext";
+import { useState } from "react";
 
-const ProductCard = ({product})=> {
+const ProductCard = ({ product }) => {
+  let { cartData, setCartData, setFilterData ,productsData ,setProductsData ,productQty, setProductQty } = useContext(MyStore)
+  
+
   return (
     <div className="group w-full max-w-[280px] overflow-hidden rounded-xl bg-neutral-900 transition-colors duration-300 hover:bg-neutral-800 sm:rounded-2xl">
       {/* Image */}
@@ -31,10 +37,25 @@ const ProductCard = ({product})=> {
           <span className="text-sm font-medium text-[#c8f400] sm:text-lg">
             ${product.price.toFixed(2)}
           </span>
-          <button className="flex items-center gap-1 rounded-full bg-[#c8f400] px-2.5 py-0.5 text-xs font-medium text-black transition-transform duration-200 hover:scale-105 sm:px-4 sm:py-2 sm:text-sm">
+          {product.added ? <button
+            onClick={() => {
+              let upDataCartData = [...cartData, {...product, quantity: (product.quantity || 0) + 1}]
+              let updateAllData = productsData.map((val)=>{
+                return val.id === product.id ? {...val , added : false} : val
+              })
+              
+              setCartData(upDataCartData)
+              setProductsData(updateAllData)
+              localStorage.setItem('savedProducts',JSON.stringify(updateAllData))
+              localStorage.setItem('cartItems', JSON.stringify(upDataCartData))
+              
+            }}
+            className="flex items-center gap-1 active:scale-98 rounded-full bg-[#c8f400] px-2.5 py-0.5 text-xs font-medium text-black transition-transform duration-200 hover:scale-105 sm:px-4 sm:py-2 sm:text-sm">
             <ShoppingCart className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             <span className=" xs:inline">Add</span>
-          </button>
+          </button> : <p className="text-green-400 text-[14px] rounded-xl px-3 border-[#02ea0654] bg-[#02ea0620] ">
+            Added!
+          </p>}
         </div>
       </div>
     </div>

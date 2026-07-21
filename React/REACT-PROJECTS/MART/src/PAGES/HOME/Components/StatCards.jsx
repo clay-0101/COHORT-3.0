@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Package, TrendingUp, Star, Tag } from 'lucide-react'
+import { MyStore } from '../../../Context/MyContext'
 
 const StatCards = () => {
+   let {cartData} =  useContext(MyStore)
     return (
         <div className='px-[10vw] pt-[1.5vw] grid  gap-4 
                        lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1'>
@@ -11,7 +13,7 @@ const StatCards = () => {
                     <Package size={20} className='text-[#c8f400]' />
                 </div>
                 <div>
-                    <p className='text-white text-[18px] font-[700]'>1</p>
+                    <p className='text-white text-[18px] font-[700]'>{cartData.length}</p>
                     <p className='text-[#dddddd] text-[13px] font-[500]'>Cart Items</p>
                     <p className='text-[#777777] text-[11px]'>In your bag</p>
                 </div>
@@ -22,7 +24,9 @@ const StatCards = () => {
                     <TrendingUp size={20} className='text-[#5aa9ff]' />
                 </div>
                 <div>
-                    <p className='text-white text-[18px] font-[700]'>$99.99</p>
+                    <p className='text-white text-[18px] font-[700]'>${cartData.reduce((acc , curr)=>{
+                        return acc + (curr.price + curr.quantity)
+                    },0).toFixed(2)}</p>
                     <p className='text-[#dddddd] text-[13px] font-[500]'>Cart Value</p>
                     <p className='text-[#777777] text-[11px]'>Ready to checkout</p>
                 </div>
