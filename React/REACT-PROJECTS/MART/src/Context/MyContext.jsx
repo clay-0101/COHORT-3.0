@@ -22,11 +22,20 @@ export let ContextProvider = ({ children }) => {
 
     // fetch Data from api
 
-    const [productsData, setProductsData] = useState([])
+
+    const [apiData, setapiData] = useState([])
+     const [productsData, setProductsData] = useState(JSON.parse(localStorage.getItem('savedProducts')) || [])
+
     async function ProductData() {
         try {
             let { data } = await axios.get("https://dummyjson.com/products?limit=0")
-            setProductsData(data.products)
+            let addPropertyData =  data.products.map((item)=> ({...item , added : true}))
+
+            setapiData(addPropertyData)
+
+            if(!localStorage.getItem('savedProducts')){
+                setProductsData(addPropertyData)
+            }
         } catch (error) {
             console.log('error -> ', error)
         }
@@ -34,6 +43,8 @@ export let ContextProvider = ({ children }) => {
     useEffect(() => {
         ProductData()
     }, [])
+
+   
 
 
     // catergory map
@@ -47,10 +58,14 @@ export let ContextProvider = ({ children }) => {
     };
     // FilteredData Accoring userInput
     const [filterData, setFilterData] = useState([])
-     useEffect(() => {
-       setFilterData(productsData)
-     }, [productsData])
-     
+    useEffect(() => {
+        setFilterData(productsData)
+    }, [productsData])
 
-    return <MyStore.Provider value={{ userData, setUserData, profile, setProfile, cartToggle, setCartToggle, productsData, categoryMap, filterData, setFilterData }}>{children}</MyStore.Provider>
+    //  For Cart
+    const [cartData, setCartData] = useState(JSON.parse(localStorage.getItem('cartItems')) || [])
+
+     const [productQty, setProductQty] = useState(1)
+
+    return <MyStore.Provider value={{ userData, setUserData, profile, setProfile, cartToggle, setCartToggle,setProductsData, productsData, categoryMap, filterData, setFilterData, cartData, setCartData }}>{children}</MyStore.Provider>
 }
