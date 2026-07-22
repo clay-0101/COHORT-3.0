@@ -15,8 +15,14 @@ const Cart = () => {
     let navigate = useNavigate()
 
     return (
-        <div className='h-screen w-screen fixed bg-[#00000071] backdrop-blur-[2px] flex justify-end z-20 animate-slidein'>
-            <div className='bg-[#111111] h-screen w-full sm:w-[70%] md:w-[45%] lg:w-[28%] border-[0.1px] border-[#f2f1f12d] flex flex-col'>
+        <div 
+        onClick={()=>setCartToggle(false)}
+        className='h-screen w-screen fixed bg-[#00000071] backdrop-blur-[2px] flex justify-end z-20 animate-slidein'>
+            <div
+            onClick={(e)=>{
+                e.stopPropagation()
+            }}
+             className='bg-[#111111] h-screen w-full sm:w-[70%] md:w-[45%] lg:w-[28%] border-[0.1px] border-[#f2f1f12d] flex flex-col'>
 
 
                 <div className='flex justify-between items-center text-white p-4.5 border-b-[0.1px] border-[#f2f1f1d4]'>

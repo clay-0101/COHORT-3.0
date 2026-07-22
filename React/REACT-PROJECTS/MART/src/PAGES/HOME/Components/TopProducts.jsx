@@ -32,7 +32,8 @@ const TopProducts = ({ item }) => {
             </div>
             {item.added ? <div className='w-8 h-8 bg-[#c8f40026] rounded-lg flex items-center justify-center text-[#8bb800] hover:bg-[#c8f400] hover:text-black cursor-pointer'>
                 <ShoppingBag
-                    onClick={() => {
+                    onClick={(e) => {
+                        e.stopPropagation()
                         addToCart()
                     }}
                     size={15} />
