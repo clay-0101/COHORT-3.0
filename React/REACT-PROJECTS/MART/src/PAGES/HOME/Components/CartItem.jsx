@@ -5,7 +5,16 @@ import { MyStore } from '../../../Context/MyContext'
 const CartItem = ({ item }) => {
     let { cartData, setCartData, productsData, setProductsData } = useContext(MyStore)
 
-
+    function delCartItem() {
+        let updatedCartData = cartData.filter((val) => val.id !== item.id)
+        let updateAllProduct = productsData.map((prod) => {
+            return prod.id === item.id ? { ...prod, added: true } : prod
+        })
+        setProductsData(updateAllProduct)
+        localStorage.setItem('savedProducts', JSON.stringify(updateAllProduct))
+        setCartData(updatedCartData)
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartData))
+    }
 
 
     return (
@@ -27,16 +36,7 @@ const CartItem = ({ item }) => {
                     </p>
                     <Trash2
                         onClick={() => {
-                            let updatedCartData = cartData.filter((val) => val.id !== item.id)
-                            let updateAllProduct = productsData.map((prod) => {
-                                return prod.id === item.id ? { ...prod, added: true } : prod
-                            })
-                            setProductsData(updateAllProduct)
-                            localStorage.setItem('savedProducts', JSON.stringify(updateAllProduct))
-                            setCartData(updatedCartData)
-                            localStorage.setItem('cartItems', JSON.stringify(updatedCartData))
-
-
+                            delCartItem()
                         }}
                         size={16}
                         className='text-gray-500 hover:text-red-500 cursor-pointer shrink-0 transition-colors duration-200 opacity-70 group-hover:opacity-100'
@@ -47,6 +47,18 @@ const CartItem = ({ item }) => {
 
                     <div className='flex items-center gap-2 sm:gap-3 bg-[#0d0d0d] border border-[#f2f1f11a] rounded-full px-2 py-1'>
                         <Minus
+                            onClick={() => {
+                                if (item.quantity === 1) {
+                                    delCartItem()
+                                    return
+                                }
+                                let UpdateQty = cartData.map((val) => {
+                                    return val.id === item.id ? { ...val, quantity: (val.quantity || 0) - 1 } : val
+                                })
+                                setCartData(UpdateQty)
+                                localStorage.setItem('cartItems', JSON.stringify(UpdateQty))
+
+                            }}
                             size={14}
                             className='text-gray-400 hover:text-[#c8f400] cursor-pointer transition-colors duration-200'
                         />
@@ -55,12 +67,12 @@ const CartItem = ({ item }) => {
                         </span>
                         <Plus
                             onClick={() => {
-                                
-                                let UpdateQty = cartData.map((val)=>{
-                                    return val.id === item.id ? {...val , quantity : (val.quantity || 0)+1} : val
+
+                                let UpdateQty = cartData.map((val) => {
+                                    return val.id === item.id ? { ...val, quantity: (val.quantity || 0) + 1 } : val
                                 })
                                 setCartData(UpdateQty)
-                                localStorage.setItem('cartItems',JSON.stringify(UpdateQty))
+                                localStorage.setItem('cartItems', JSON.stringify(UpdateQty))
 
                             }}
                             size={14}
