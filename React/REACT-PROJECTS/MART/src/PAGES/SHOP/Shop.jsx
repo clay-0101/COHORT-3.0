@@ -9,8 +9,8 @@ const Shop = () => {
     let { filterData, setFilterData, productsData } = useContext(MyStore)
     let location = useLocation()
     let isProductDetail = location.pathname.includes('/product/')
-     let newArrivals = location.state?.newArrivals 
-     let topRateProduct = location.state?.topProducts
+    let newArrivals = location.state?.newArrivals
+    let topRateProduct = location.state?.topProducts
 
 
     return (
@@ -32,7 +32,7 @@ const Shop = () => {
                         </div>
                         <div className='border-t border-neutral-800 my-6' />
                     </div>
-                ) :  topRateProduct ? (
+                ) : topRateProduct ? (
                     <div className='mt-6'>
                         <h2 className='text-white text-[18px] font-[600] mb-3'>Top Rated</h2>
                         <div className="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-4">

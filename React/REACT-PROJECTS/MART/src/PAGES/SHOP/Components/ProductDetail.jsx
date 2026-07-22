@@ -4,6 +4,7 @@ import { MyStore } from "../../../Context/MyContext";
 import ProductCard from "./ProductCard";
 import { useParams, useNavigate } from "react-router";
 import axios from "axios";
+import {toast} from 'react-toastify'
 
 const ProductDetail = () => {
   let { id } = useParams()
@@ -38,6 +39,7 @@ const ProductDetail = () => {
 
     localStorage.setItem('savedProducts', JSON.stringify(updateAllData))
     localStorage.setItem('cartItems', JSON.stringify(upDataCartData))
+    toast.success('Added to Cart🛒')
   }
 
   if (!singleProduct) {

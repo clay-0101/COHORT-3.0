@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { useRef } from "react";
 import { MyStore } from "../../../Context/MyContext";
+import { toast } from "react-toastify";
 
 
 export default function SignInForm() {
@@ -34,6 +35,7 @@ export default function SignInForm() {
             if (user) {
               setProfile(user)
               localStorage.setItem('userProfile',JSON.stringify(user))
+              toast.success('Used logged in..')
               navigate('/home')
             } else {
               alert('User Not Registerd')

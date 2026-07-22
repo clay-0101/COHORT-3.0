@@ -1,19 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ArrowRight, Package, Truck } from 'lucide-react'
 import { useNavigate } from 'react-router'
+import { MyStore } from '../../../Context/MyContext'
 
 const WelcomeBanner = () => {
     let navigate = useNavigate()
+    let { profile } = useContext(MyStore)
+
+    function greet() {
+        let time = new Date()
+        return time.getHours() < 12 ? 'Good Morning ' : time.getHours() < 17 ? 'Good Afternoon' : 'Good Evening'
+    }
+    greet()
     return (
         <div className='px-4 sm:px-6 md:px-10 lg:px-[10vw] pt-4 sm:pt-6 lg:pt-[2vw]'>
             <div className='relative overflow-hidden bg-[#0d0d0d] border-[0.1px] border-[#ffffff1f] rounded-2xl lg:rounded-[1.5vw] px-5 sm:px-8 lg:px-[3vw] py-6 sm:py-8 lg:py-[2.5vw] flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-6'>
 
                 <div className='w-full lg:max-w-[32vw]'>
-                    <p className='text-[#c8f400] text-[11px] sm:text-[12px] font-[600] tracking-[0.15em] uppercase mb-3'>Good morning 👋</p>
+                    <p className='text-[#c8f400] text-[11px] sm:text-[12px] font-[600] tracking-[0.15em] uppercase mb-3'>{greet()}👋</p>
                     <h1
                         className='text-white text-3xl sm:text-4xl lg:text-[2.8vw] font-[700] leading-[1.1]'>
                         Welcome back, <br />
-                        <span className='text-[#c8f400]'>ramesh!</span>
+                        <span className='text-[#c8f400]'>{profile.name}</span>
                     </h1>
                     <p className='text-[#999999] text-sm mt-4'>
                         Discover today's picks — hand-curated products across electronics, fashion, and more.
