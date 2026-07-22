@@ -3,21 +3,22 @@ import React, { useContext } from 'react'
 import { MyStore } from '../../../Context/MyContext'
 import CartItem from '../Components/CartItem'
 import { useNavigate } from 'react-router'
+import {toast} from "react-toastify"
 
 
 
 
 const Cart = () => {
-    let { setCartToggle, cartData, setCartData, productsData,setProductsData } = useContext(MyStore)
+    let { setCartToggle, cartData, setCartData, productsData, setProductsData } = useContext(MyStore)
 
     let isEmpty = cartData.length
-   let navigate = useNavigate()
+    let navigate = useNavigate()
 
     return (
         <div className='h-screen w-screen fixed bg-[#00000071] backdrop-blur-[2px] flex justify-end z-20 animate-slidein'>
             <div className='bg-[#111111] h-screen w-full sm:w-[70%] md:w-[45%] lg:w-[28%] border-[0.1px] border-[#f2f1f12d] flex flex-col'>
 
-                
+
                 <div className='flex justify-between items-center text-white p-4.5 border-b-[0.1px] border-[#f2f1f1d4]'>
                     <div className='flex items-center gap-5'>
                         <ShoppingBag className='text-[#c8f400]' size={22} />
@@ -43,12 +44,12 @@ const Cart = () => {
                             <p className='text-white text-lg font-[500]'>Cart is empty</p>
                             <p className='text-gray-500 text-sm mt-1'>Go shop something cool!</p>
                         </div>
-                        <button 
-                        onClick={()=>{
-                           setCartToggle(false) 
-                           navigate('/shop')
-                        }}
-                        className='mt-2 bg-[#c8f400] hover:bg-[#b5dd00] text-black font-[600] px-6 py-2.5 rounded-full transition-colors duration-200'>
+                        <button
+                            onClick={() => {
+                                setCartToggle(false)
+                                navigate('/shop')
+                            }}
+                            className='mt-2 bg-[#c8f400] hover:bg-[#b5dd00] text-black font-[600] px-6 py-2.5 rounded-full transition-colors duration-200'>
                             Browse Products
                         </button>
                     </div>
@@ -67,21 +68,34 @@ const Cart = () => {
                                     return acc + (curr.price * curr.quantity)
                                 }, 0).toFixed(2)}</p>
                             </div>
-                            <button className='w-full bg-[#c8f400] hover:bg-[#b5dd00] text-black font-[600] py-3 rounded-full flex items-center justify-center gap-2 transition-colors duration-200'>
+                            <button
+                                onClick={() => {
+                                    toast.success("Order Placed🛒")
+                                    let resetCart = productsData.map((val) => {
+                                        return { ...val, added: true }
+                                    })
+                                    setProductsData(resetCart)
+                                    setCartData([])
+                                    
+                                    localStorage.setItem('cartItems', JSON.stringify([]))
+                                    localStorage.setItem('savedProducts', JSON.stringify(resetCart))
+                                    setCartToggle(false)
+                                }}
+                                className='w-full bg-[#c8f400] hover:bg-[#b5dd00] text-black font-[600] py-3 rounded-full flex items-center justify-center gap-2 transition-colors duration-200'>
                                 Checkout →
                             </button>
-                            <p 
-                            onClick={()=>{
-                                let resetCart = productsData.map((val)=>{
-                                    return {...val, added : true}
-                                })
-                                setProductsData(resetCart)
-                                setCartData([])
+                            <p
+                                onClick={() => {
+                                    let resetCart = productsData.map((val) => {
+                                        return { ...val, added: true }
+                                    })
+                                    setProductsData(resetCart)
+                                    setCartData([])
 
-                                localStorage.setItem('cartItems', JSON.stringify([]))
-                                localStorage.setItem('savedProducts',JSON.stringify(resetCart))
-                            }}
-                            className='text-center text-gray-500 text-xs hover:text-white cursor-pointer transition-colors duration-200'>
+                                    localStorage.setItem('cartItems', JSON.stringify([]))
+                                    localStorage.setItem('savedProducts', JSON.stringify(resetCart))
+                                }}
+                                className='text-center text-gray-500 text-xs hover:text-white cursor-pointer transition-colors duration-200'>
                                 Clear cart
                             </p>
                         </div>

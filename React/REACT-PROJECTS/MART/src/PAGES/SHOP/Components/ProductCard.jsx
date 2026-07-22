@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { MyStore } from "../../../Context/MyContext";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 
 const ProductCard = ({ product }) => {
@@ -20,7 +21,7 @@ const ProductCard = ({ product }) => {
 
     localStorage.setItem('savedProducts', JSON.stringify(updateAllData))
     localStorage.setItem('cartItems', JSON.stringify(upDataCartData))
-
+    toast.success('Added to Cart🛒')
   }
 
   return (

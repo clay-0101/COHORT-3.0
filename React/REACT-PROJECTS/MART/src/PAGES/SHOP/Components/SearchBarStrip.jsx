@@ -4,12 +4,7 @@ import { MyStore } from "../../../Context/MyContext";
 import { X } from "lucide-react";
 
 export default function SearchBarStrip() {
-  const { productsData, categoryMap, setFilterData } = useContext(MyStore);
-
-
-  const [searchTerm, setSearchTerm] = useState('');
-  const [category, setCategory] = useState('All Categories');
-  const [selectedFeature, setSelectedFeature] = useState('Featured');
+  const { productsData, categoryMap, setFilterData , selectedFeature, setSelectedFeature,searchTerm, setSearchTerm, category, setCategory} = useContext(MyStore);
 
 
   useEffect(() => {
@@ -17,20 +12,20 @@ export default function SearchBarStrip() {
 
     let result = [...productsData];
 
-    // 1. Apply Search
+    //  Search
     if (searchTerm.trim() !== '') {
       result = result.filter((item) =>
         item.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
-    // 2. Apply Category
+    //  Category
     if (category !== 'All Categories') {
       result = result.filter((item) =>
         categoryMap[category]?.includes(item.category)
       );
     }
-    // 3. Apply Sorting
+    //  Sorting
     if (selectedFeature === 'Low to High') {
       result.sort((a, b) => a.price - b.price);
     } else if (selectedFeature === 'High to Low') {
@@ -96,7 +91,7 @@ export default function SearchBarStrip() {
         </div>
 
       </div>
-      {(category !== 'All Categories' || selectedFeature !== 'Featured' ) && (<div className="flex gap-3 mt-5 border-t border-white ">
+      {(category !== 'All Categories' || selectedFeature !== 'Featured' ) && (<div className="flex  gap-3 mt-5 border-t border-white ">
         {category !== 'All Categories' && <div className="border w-fit mt-3 flex gap-1 justify-center  items-center text-[12px] bg-[#c7f40030] text-[#c8f400] border-[#c8f400] px-3  rounded-full">
           <p>{category}</p>
           <X
@@ -113,6 +108,13 @@ export default function SearchBarStrip() {
             }}
             className="cursor-pointer" size={12} />
         </div>}
+        <div className="border w-fit mt-3 flex gap-1 justify-center  items-center text-[14px] bg-[#f4210030] text-[#f41800] border-[#f41400] px-3  rounded-full"><p>Clear All</p> <X
+        onClick={()=>{
+          setCategory('All Categories')
+          setSelectedFeature('Featured')
+        }}
+        className="cursor-pointer"
+         size={12}/></div>
       </div>)}
     </div>
   );

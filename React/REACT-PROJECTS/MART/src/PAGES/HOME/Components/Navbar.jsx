@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
 import { Zap, ShoppingCart, LogOut } from 'lucide-react'
 import { MyStore } from '../../../Context/MyContext'
-import { NavLink } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
+import { toast } from 'react-toastify'
 
 const Navbar = () => {
-    let { profile, setProfile, setCartToggle } = useContext(MyStore)
+  let navigate =  useNavigate()
+    let { profile, setProfile, setCartToggle, cartData } = useContext(MyStore)
 
     const navLinkClass = ({ isActive }) => isActive ? 'text-[#c8f400]' : 'text-[#bbbbbb]'
 
@@ -34,11 +36,16 @@ const Navbar = () => {
                 </div>
                 <div
                     onClick={() => setCartToggle(true)}
-                    className='hover:text-[#c8f400] cursor-pointer px-2 py-2 rounded-xl bg-[#1b1b1b] border-[0.1px] border-[#ffffff4e] text-[#bbbbbb] flex justify-center items-center'>
+                    className='hover:text-[#c8f400] relative cursor-pointer px-2 py-2 rounded-xl bg-[#1b1b1b] border-[0.1px] border-[#ffffff4e] text-[#bbbbbb] flex justify-center items-center'>
                     <ShoppingCart size={18} />
+                    <div 
+                    style={{backgroundColor : cartData.length ? "#c8f400" : 'transparent'}}
+                    className='h-5 w-5 flex justify-center items-center rounded-full text-[12px] font-medium text-black absolute -top-1.5 -right-2'>{cartData.length? cartData.length : ''}</div>
                 </div>
                 <div
                     onClick={() => {
+                        toast.error('User logged out')
+                        navigate('/')
                         setProfile(null)
                         localStorage.setItem('userProfile', null)
                     }}

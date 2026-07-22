@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { ShoppingBag } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { MyStore } from '../../../Context/MyContext'
+import { toast } from 'react-toastify'
 const TopProducts = ({ item }) => {
     let navigate = useNavigate()
     let { setCartToggle, cartData, setCartData, setFilterData, productsData, setProductsData, productQty, setProductQty } = useContext(MyStore)
@@ -17,6 +18,7 @@ const TopProducts = ({ item }) => {
 
         localStorage.setItem('savedProducts', JSON.stringify(updateAllData))
         localStorage.setItem('cartItems', JSON.stringify(upDataCartData))
+        toast.success('Added to Cart🛒')
     }
     return (
         <div

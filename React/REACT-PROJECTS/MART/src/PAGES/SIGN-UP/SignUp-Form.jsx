@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import { User, Mail, Lock, Eye, EyeOff, ArrowRight, Zap } from "lucide-react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { useForm } from "react-hook-form"
 import { useRef } from "react";
 import { MyStore } from "../../Context/MyContext";
+import { toast } from "react-toastify";
 
 
 // REGEX
@@ -29,17 +30,17 @@ function getPasswordStrength(value) {
 }
 
 const SignUpForm = () => {
+  let navigate = useNavigate()
+  let { reset, register, handleSubmit, formState: { errors } } = useForm({ mode: "onChange" })
+  let { userData, setUserData, setProfile } = useContext(MyStore)
 
-  let { reset, register, handleSubmit, formState: { errors } } = useForm({mode : "onChange"})
-  let {userData, setUserData} =  useContext(MyStore)
 
   // For CHECKING PASSWORD STRENGTH
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const confirm = useRef(null)
 
-  // USERS DATA 
- 
+  
 
   const level = password.length > 0 ? getPasswordStrength(password) : null;
 
@@ -69,19 +70,31 @@ const SignUpForm = () => {
       <h1 className="text-2xl font-medium text-white mb-1">Create account</h1>
       <p className="text-sm text-neutral-400 mb-6">Join SkyMart and start shopping</p>
 
-      <form 
-      onSubmit={handleSubmit((data)=>{
-        if(confirm.current.value !== password){
-          alert("Password Not Matched...!")
-          return
-        }
-          let newUserData = [...userData , data]
+      <form
+        onSubmit={handleSubmit((data) => {
+          if (confirm.current.value !== password) {
+            toast.error("Password Not Matched...!")
+            return
+          }
+          let isResgistered = userData.find((val) => {
+            return val.email === data.email 
+          })
+          if(isResgistered){
+            toast.error('Email already registered')
+            return
+          }
+          
+          toast.success(`${data.name} Logged in..`)
+          let newUserData = [...userData, data]
           setUserData(newUserData)
           localStorage.setItem('registeredUser', JSON.stringify(newUserData))
+          setProfile(data)
+          localStorage.setItem('userProfile',JSON.stringify(data))
+          navigate('/home')
           reset()
           setPassword('')
-      })} 
-      className="flex flex-col gap-3.5" >
+        })}
+        className="flex flex-col gap-3.5" >
         <div className="flex items-center gap-2.5 h-12 px-3.5 bg-neutral-800/60 border border-neutral-700 rounded-xl focus-within:border-[#c8f400]">
           <User size={16} className="text-neutral-500 shrink-0" />
           <input
@@ -113,7 +126,7 @@ const SignUpForm = () => {
         <div className="flex items-center gap-2.5 h-12 px-3.5 bg-neutral-800/60 border border-neutral-700 rounded-xl focus-within:border-[#c8f400]">
           <Lock size={16} className="text-neutral-500 shrink-0" />
           <input
-            {...register('password',{ required: "Password is required" })}
+            {...register('password', { required: "Password is required" })}
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
