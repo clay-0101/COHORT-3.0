@@ -14,7 +14,16 @@ const WelcomeBanner = () => {
     greet()
     return (
         <div className='px-4 sm:px-6 md:px-10 lg:px-[10vw] pt-4 sm:pt-6 lg:pt-[2vw]'>
-            <div className='relative overflow-hidden bg-[#0d0d0d] border-[0.1px] border-[#ffffff1f] rounded-2xl lg:rounded-[1.5vw] px-5 sm:px-8 lg:px-[3vw] py-6 sm:py-8 lg:py-[2.5vw] flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-6'>
+            <div
+                className='relative overflow-hidden bg-[#0d0d0d] border-[0.1px] border-[#ffffff1f] rounded-2xl lg:rounded-[1.5vw] px-5 sm:px-8 lg:px-[3vw] py-6 sm:py-8 lg:py-[2.5vw] flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-6'
+                style={{
+                    backgroundImage: `
+                        linear-gradient(to right, #c7f40008 1px, transparent 1px),
+                        linear-gradient(to bottom, #c7f40008 1px, transparent 1px)
+                    `,
+                    backgroundSize: '40px 40px'
+                }}
+            >
 
                 <div className='w-full lg:max-w-[32vw]'>
                     <p className='text-[#c8f400] text-[11px] sm:text-[12px] font-[600] tracking-[0.15em] uppercase mb-3'>{greet()}👋</p>
