@@ -19,7 +19,7 @@ const Shop = () => {
             {isProductDetail ? <div className='bg-black px-[10vw] pt-[2vw] mt-10'> <Outlet /> </div> : <div className='bg-black px-[10vw] pt-[2vw]'>
                 <div className='mt-15 '>
                     <h1 className='text-white text-[2.5rem] font-[500]'>All Products</h1>
-                    <p className='text-[#555555] text-[15px] font-medium'>50 products found</p>
+                    <p className='text-[#555555] text-[15px] font-medium'>{productsData.length} products found</p>
                 </div>
                 <SearchBarStrip />
                 {newArrivals ? (

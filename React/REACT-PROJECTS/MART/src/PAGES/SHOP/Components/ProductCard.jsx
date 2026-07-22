@@ -59,7 +59,8 @@ const ProductCard = ({ product }) => {
             ${product.price.toFixed(2)}
           </span>
           {product.added ? <button
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation()
               addToCart()
             }}
             className="flex items-center gap-1 active:scale-98 rounded-full bg-[#c8f400] px-2.5 py-0.5 text-xs font-medium text-black transition-transform duration-200 hover:scale-105 sm:px-4 sm:py-2 sm:text-sm">

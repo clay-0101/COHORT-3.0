@@ -3,6 +3,7 @@
 
 * {
   font-family: 'Clash Display';
+  user-select: none;
 }
 
 @keyframes slidein {
