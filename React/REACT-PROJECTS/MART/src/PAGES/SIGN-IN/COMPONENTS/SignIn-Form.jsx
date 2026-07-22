@@ -52,6 +52,7 @@ export default function SignInForm() {
             <input
               ref={getCredentials}
               type="email"
+              required
               name="email"
               placeholder="Email address"
               className="w-full rounded-xl bg-black border border-[#c8f400]/60 focus:border-[#c8f400] outline-none pl-12 pr-4 py-4 text-white placeholder-gray-500 transition-colors"
@@ -65,6 +66,7 @@ export default function SignInForm() {
               ref={getCredentials}
               type={showPassword ? "text" : "password"}
               name="password"
+              required
               placeholder="Password"
               className="w-full rounded-xl bg-black border border-gray-700 focus:border-[#c8f400] outline-none pl-12 pr-12 py-4 text-white placeholder-gray-500 transition-colors"
             />
