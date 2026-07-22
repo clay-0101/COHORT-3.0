@@ -10,10 +10,10 @@ const Shop = () => {
     let location = useLocation()
     let isProductDetail = location.pathname.includes('/product/')
     
-    // Read what view user wants from navigation state
-    let viewMode = location.state?.viewMode // 'newArrivals' | 'topRated' | null
 
-    // Derive live from productsData so "added" state stays in sync
+    let viewMode = location.state?.viewMode 
+
+  
     let newArrivals = useMemo(() => {
         return [...productsData]
             .sort((a, b) => new Date(b.meta?.createdAt || 0) - new Date(a.meta?.createdAt || 0))
