@@ -12,10 +12,9 @@ const NewArrivals = () => {
   .sort((a, b) => new Date(b.meta.createdAt) - new Date(a.meta.createdAt))
   .slice(0, 5);
 
-  function seeAllHandler() {
-    navigate('/shop', { state: { newArrivals: newArrival } })   
-  }
-
+function seeAllHandler() {
+    navigate('/shop', { state: { viewMode: 'newArrivals' } })   
+}
 
     return (
         <div className='bg-white rounded-2xl p-6'>

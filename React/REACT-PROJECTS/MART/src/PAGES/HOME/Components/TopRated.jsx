@@ -12,10 +12,9 @@ const TopRated = () => {
         .sort((a, b) => b.rating - a.rating)
         .slice(0, 5)
 
-    function seeAllHandler() {
-        navigate('/shop', { state: { topProducts: TopRatedProducts } })
-    }
-
+function seeAllHandler() {
+    navigate('/shop', { state: { viewMode: 'topRated' } })
+}
     return (
         <div className='bg-white rounded-2xl p-6'>
 
