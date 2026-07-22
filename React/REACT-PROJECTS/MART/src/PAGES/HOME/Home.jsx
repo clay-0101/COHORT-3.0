@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import WelcomeBanner from './Components/WelcomeBanner'
 import StatCards from './Components/StatCards'
 import CategoryGrid from './Components/CategoryGrid'
-import TopRated from './Components/Toprated'
+import TopRated from './Components/TopRated'
 import NewArrivals from './Components/NewArrivals'
 import FeatureStrip from './Components/FeatureStrip'
 
