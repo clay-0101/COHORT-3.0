@@ -13,7 +13,9 @@ const ProtectedRoute = () => {
         <div 
         id="app-scroll-container"
         className='bg-black overflow-y-auto h-screen scrollbar-thin scrollbar-thumb-[#2f2e2e] scrollbar-thumb-hover:green-500  scrollbar-track-[#0d0d0d] relative'>
+           
             {cartToggle && <Cart />}
+            
             <Navbar />
 
             {profile ? <Outlet /> : <Navigate to={"/"} />}
