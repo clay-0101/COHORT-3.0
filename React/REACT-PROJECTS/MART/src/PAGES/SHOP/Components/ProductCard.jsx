@@ -2,13 +2,33 @@ import { Star, ShoppingCart } from "lucide-react";
 import { useContext } from "react";
 import { MyStore } from "../../../Context/MyContext";
 import { useState } from "react";
+import { useNavigate } from "react-router";
+
 
 const ProductCard = ({ product }) => {
-  let { cartData, setCartData, setFilterData ,productsData ,setProductsData ,productQty, setProductQty } = useContext(MyStore)
-  
+ let navigate = useNavigate()
+  let { setCartToggle, cartData, setCartData, setFilterData, productsData, setProductsData, productQty, setProductQty } = useContext(MyStore)
+
+  function addToCart() {
+    let upDataCartData = [...cartData, { ...product, quantity: (product.quantity || 0) + 1 }]
+    let updateAllData = productsData.map((val) => {
+      return val.id === product.id ? { ...val, added: false } : val
+    })
+    setProductsData(updateAllData)
+    setCartData(upDataCartData)
+    setCartToggle(true)
+
+    localStorage.setItem('savedProducts', JSON.stringify(updateAllData))
+    localStorage.setItem('cartItems', JSON.stringify(upDataCartData))
+
+  }
 
   return (
-    <div className="group w-full max-w-[280px] overflow-hidden rounded-xl bg-neutral-900 transition-colors duration-300 hover:bg-neutral-800 sm:rounded-2xl">
+    <div 
+    onClick={()=>{
+      navigate(`/shop/product/${product.id}`)
+    }}
+    className="group w-full max-w-[280px] overflow-hidden rounded-xl bg-neutral-900 transition-colors duration-300 hover:bg-neutral-800 sm:rounded-2xl">
       {/* Image */}
       <div className="relative h-36 overflow-hidden bg-white xs:h-44 sm:h-64">
         <span className="absolute left-2 top-2 z-10 rounded-full bg-neutral-800/80 px-2 py-0.5 text-[10px] text-white sm:left-3 sm:top-3 sm:px-3 sm:py-1 sm:text-xs">
@@ -39,16 +59,7 @@ const ProductCard = ({ product }) => {
           </span>
           {product.added ? <button
             onClick={() => {
-              let upDataCartData = [...cartData, {...product, quantity: (product.quantity || 0) + 1}]
-              let updateAllData = productsData.map((val)=>{
-                return val.id === product.id ? {...val , added : false} : val
-              })
-              
-              setCartData(upDataCartData)
-              setProductsData(updateAllData)
-              localStorage.setItem('savedProducts',JSON.stringify(updateAllData))
-              localStorage.setItem('cartItems', JSON.stringify(upDataCartData))
-              
+              addToCart()
             }}
             className="flex items-center gap-1 active:scale-98 rounded-full bg-[#c8f400] px-2.5 py-0.5 text-xs font-medium text-black transition-transform duration-200 hover:scale-105 sm:px-4 sm:py-2 sm:text-sm">
             <ShoppingCart className="h-3.5 w-3.5 sm:h-4 sm:w-4" />

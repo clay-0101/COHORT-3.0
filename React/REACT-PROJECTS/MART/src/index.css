@@ -1,14 +1,16 @@
 @import 'tailwindcss';
 @import '../public/Fonts/fonts.css';
 
-*{
-    font-family: 'Clash Display';
+* {
+  font-family: 'Clash Display';
 }
+
 @keyframes slidein {
   from {
-    transform: translateX(100%); 
+    transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -17,4 +19,20 @@
 
 .animate-slidein {
   animation: slidein 0.4s ease-out;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
