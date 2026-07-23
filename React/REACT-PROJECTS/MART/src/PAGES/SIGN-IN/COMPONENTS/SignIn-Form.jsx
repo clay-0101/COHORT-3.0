@@ -38,7 +38,7 @@ export default function SignInForm() {
               toast.success('Used logged in..')
               navigate('/home')
             } else {
-              alert('User Not Registerd')
+              toast.error('Invalid credentials')
               navigate('/sign-up')
             }
 
