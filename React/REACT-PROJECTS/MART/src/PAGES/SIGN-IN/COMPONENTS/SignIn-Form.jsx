@@ -40,11 +40,11 @@ export default function SignInForm() {
               localStorage.setItem('userProfile',JSON.stringify(user))
               toast.success('Used logged in..')
               navigate('/home')
-            } else if(!user || !pass){
-              toast.error('Invalid credentials')
-            }else{
+            } else if(!user){
               toast.error('User not registerd')
               navigate('/sign-up')
+            }else{
+              toast.error('Invalid credentials')
             }
 
 
