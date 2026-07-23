@@ -126,11 +126,18 @@ const SignUpForm = () => {
         <div className="flex items-center gap-2.5 h-12 px-3.5 bg-neutral-800/60 border border-neutral-700 rounded-xl focus-within:border-[#c8f400]">
           <Lock size={16} className="text-neutral-500 shrink-0" />
           <input
-            {...register('password', { required: "Password is required" })}
+            {...register('password', {
+               required: "Password is required",
+               minLength :{
+                value : 6,
+                message : "Minimum 6 chars required"
+               }
+              
+              })}
             type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder="Password (min 6 chars)"
             className="flex-1 bg-transparent outline-none text-sm text-white placeholder-neutral-500"
           />
           <button
