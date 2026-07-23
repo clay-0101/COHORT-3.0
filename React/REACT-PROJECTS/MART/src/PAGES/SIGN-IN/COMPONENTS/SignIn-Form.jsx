@@ -29,16 +29,21 @@ export default function SignInForm() {
           onSubmit={(e) => {
             e.preventDefault()
             let user = userData.find((u) => {
-              return (u.email === myRef.current.email.value && u.password === myRef.current.password.value)
+              return (u.email === myRef.current.email.value)
+            })
+            let pass = userData.find((u) => {
+              return  u.password === myRef.current.password.value
             })
 
-            if (user) {
+            if (user && pass) {
               setProfile(user)
               localStorage.setItem('userProfile',JSON.stringify(user))
               toast.success('Used logged in..')
               navigate('/home')
-            } else {
+            } else if(!user || !pass){
               toast.error('Invalid credentials')
+            }else{
+              toast.error('User not registerd')
               navigate('/sign-up')
             }
 
