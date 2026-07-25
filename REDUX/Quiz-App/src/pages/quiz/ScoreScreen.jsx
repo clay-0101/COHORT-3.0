@@ -12,6 +12,18 @@ export default function ScoreScreen() {
     const score = value.reduce((acc, q, idx) => {
         return acc + (q.correctAnswer === selectedAnswers[idx] ? 1 : 0);
     }, 0);
+    const accuracy = Math.round((score / value.length) * 100);
+
+    let message = "";
+    if (accuracy === 100) {
+        message = "Perfect! You nailed every question.";
+    } else if (accuracy >= 80) {
+        message = "Great job! You scored really well.";
+    } else if (accuracy >= 50) {
+        message = "Not bad! Keep practicing to improve.";
+    } else {
+        message = "Don't worry, try again and you'll get better.";
+    }
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#1C2B1E]/40 px-6 backdrop-blur-sm">
@@ -32,7 +44,7 @@ export default function ScoreScreen() {
                 </h2>
 
                 <p className="mt-3 text-sm text-[#8A8879]">
-                    “Well done! You scored well in this quiz.”
+                   {message}
                 </p>
 
                 {/* Stats row */}
@@ -46,7 +58,7 @@ export default function ScoreScreen() {
                         <p className="mt-1 text-xs text-[#8A8879]">Wrong</p>
                     </div>
                     <div>
-                        <p className="text-lg font-bold text-[#1C2B1E]">{Math.round(((score / value.length) * 100))}%</p>
+                        <p className="text-lg font-bold text-[#1C2B1E]">{accuracy}%</p>
                         <p className="mt-1 text-xs text-[#8A8879]">Accuracy</p>
                     </div>
                 </div>
