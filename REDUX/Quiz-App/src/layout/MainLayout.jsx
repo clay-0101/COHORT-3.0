@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import { Home, PlayCircle, Bookmark, Menu, X } from "lucide-react";
 import HomePage from "../pages/home/HomePage"
 import { NavLink, Outlet, useNavigate } from "react-router"
+import { useSelector } from "react-redux";
+
 
 export default function MainLayout() {
   let navigate = useNavigate()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  let isQuizStarted = useSelector((state) => state.quiz.isQuizStarted)
 
-  const linkClass = ({ isActive }) => {
-    return isActive
-      ? 'flex items-center gap-3 rounded-xl bg-[#A6E65C] px-4 py-3 text-sm font-medium text-[#1C2B1E]'
-      : 'flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[#5E5C50] hover:bg-[#DAD7C7]'
-  }
+
 
   return (
     <div className="flex min-h-screen w-full bg-[#E7E4D5]">
@@ -39,7 +38,11 @@ export default function MainLayout() {
           <NavLink
             to={'/'}
             end
-            className={linkClass}
+            className={({ isActive }) => {
+              return isActive
+                ? 'flex items-center gap-3 rounded-xl bg-[#A6E65C] px-4 py-3 text-sm font-medium text-[#1C2B1E]'
+                : 'flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[#5E5C50] hover:bg-[#DAD7C7]'
+            }}
           >
             <Home size={18} />
             Home
@@ -47,15 +50,23 @@ export default function MainLayout() {
 
           <NavLink
             to={'/quiz'}
-            className={linkClass}
+            className={({ isActive }) => {
+              return isActive
+                ? 'flex items-center gap-3 rounded-xl bg-[#A6E65C] px-4 py-3 text-sm font-medium text-[#1C2B1E]'
+                : 'flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[#5E5C50] hover:bg-[#DAD7C7]'
+            }}
           >
             <PlayCircle size={18} />
             Start Quiz
           </NavLink>
 
           <NavLink
-            to={'/saved'}
-            className={linkClass}
+            to={isQuizStarted ? '/quiz' : '/saved'}
+            className={({ isActive }) => {
+              return isActive
+                ? !isQuizStarted ?'flex items-center gap-3 rounded-xl bg-[#A6E65C] px-4 py-3 text-sm font-medium text-[#1C2B1E]'
+                : 'flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium bg-[#e65c5c62] text-[#5E5C50] hover:bg-[#DAD7C7]' : 'flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium  text-[#5E5C50] hover:bg-[#DAD7C7]'
+            }}
           >
             <Bookmark size={18} />
             Saved
@@ -68,7 +79,7 @@ export default function MainLayout() {
         <div className="fixed inset-0 z-[5] bg-black/20 md:hidden" />
       )}
 
-    
+
       <main className="flex flex-1 flex-col pt-16 md:pt-0">
         <div className="flex justify-center items-center flex-1 bg-white md:m-4 md:rounded-3xl md:border md:border-[#DAD7C7]">
           <Outlet />

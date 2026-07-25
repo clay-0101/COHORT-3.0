@@ -4,6 +4,7 @@ import HomePage from '../pages/home/HomePage'
 import QuizPage from '../pages/quiz/QuizPage'
 import SavedPage from '../pages/saved/SavedPage'
 import QuizForm from '../pages/quiz/QuizForm'
+import ScoreScreen from '../pages/quiz/ScoreScreen'
 
 const AppRouter = () => {
     const router = createBrowserRouter([
@@ -25,6 +26,12 @@ const AppRouter = () => {
                         }
                     ]
                 },
+                
+                {
+                    path: "score",
+                    element: <ScoreScreen />,
+                },
+                
                 {
                     path: "saved",
                     element: <SavedPage />,
