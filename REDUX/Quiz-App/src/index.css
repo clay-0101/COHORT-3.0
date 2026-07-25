@@ -1,1 +1,10 @@
-@import 'tailwindcss'
+@import 'tailwindcss';
+
+*{
+    user-select: none;
+}
+
+::-webkit-scrollbar{
+    width: 1px;
+    color: white;
+}

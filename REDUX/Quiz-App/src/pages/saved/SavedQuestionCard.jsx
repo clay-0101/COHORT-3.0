@@ -1,78 +1,127 @@
 import React, { useState } from "react";
-import { CheckCircle2, Layers, Trash2, ChevronDown } from "lucide-react";
+import { CheckCircle2, HelpCircle, Trash2, RotateCw } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { saveToLocal } from "../../features/saveQuiz"
-import {getQuestionData} from "../../features/quizSlice"
+import { getQuestionData } from "../../features/quizSlice"
 
-export default function SavedQuestionCard({ item }) {
+const PALETTE = [
+    { bg: "#EAF3DE", text: "#3B6D11" },
+    { bg: "#FBEFE3", text: "#B5713B" },
+    { bg: "#E8F0FB", text: "#2C5AA0" },
+    { bg: "#F5E9F7", text: "#7A3E91" },
+];
+
+export default function SavedQuestionCard({ item, index }) {
     const [showAnswer, setShowAnswer] = useState(false);
     let savedCards = useSelector((state) => state.saveQuiz.value)
     let value = useSelector((state) => state.quiz.value)
     let dispatch = useDispatch()
+    const accent = PALETTE[index % PALETTE.length];
+
     return (
-        <div className="w-full rounded-2xl border border-[#DAD7C7] bg-white px-5 py-4 transition-colors hover:border-[#A6E65C]">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                {/* Question */}
-                <div className="flex items-center gap-3 sm:flex-1">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EAF3DE] text-[#3B6D11]">
-                        <Layers size={16} />
-                    </span>
-                    <p className="text-sm font-medium text-[#1C2B1E] sm:text-base">
-                        {item.question}
-                    </p>
-                </div>
+        <div
+            className="sqc-sans sqc-enter [perspective:1400px]"
+            style={{ animationDelay: `${Math.min(index, 10) * 0.06}s` }}
+        >
+            <style>{`
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+                .sqc-sans { font-family: 'Inter', sans-serif; }
 
-                {/* Meta info + actions */}
-                <div className="flex flex-wrap items-center gap-2 sm:shrink-0">
-                    <span className="rounded-full border border-[#DAD7C7] px-3 py-1 text-xs font-medium text-[#5E5C50]">
-                        {item.category}
-                    </span>
+                @keyframes sqcEnter {
+                    from { opacity: 0; transform: translateY(16px) scale(0.96); }
+                    to { opacity: 1; transform: translateY(0) scale(1); }
+                }
+                .sqc-enter { animation: sqcEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
-                    <span className="rounded-full border border-[#DAD7C7] px-3 py-1 text-xs font-medium text-[#5E5C50]">
-                        {item.type}
-                    </span>
+                .sqc-inner {
+                    position: relative;
+                    transform-style: preserve-3d;
+                    transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+                }
+                .sqc-inner.flipped { transform: rotateY(180deg); }
+                .sqc-inner:not(.flipped):hover { transform: translateY(-4px); }
+                .sqc-face {
+                    position: absolute;
+                    inset: 0;
+                    backface-visibility: hidden;
+                    -webkit-backface-visibility: hidden;
+                    transition: box-shadow 0.25s ease;
+                }
+                .sqc-back { transform: rotateY(180deg); }
 
-                    <button
-                        onClick={() => setShowAnswer(!showAnswer)}
-                        className="flex items-center gap-1 rounded-full border border-[#DAD7C7] px-3 py-1 text-xs font-medium text-[#5E5C50] hover:bg-[#F1EFE8]"
-                    >
-                        Answer
-                        <ChevronDown
-                            size={13}
-                            className={`transition-transform ${showAnswer ? "rotate-180" : ""}`}
-                        />
-                    </button>
+                @media (prefers-reduced-motion: reduce) {
+                    .sqc-enter, .sqc-inner, .sqc-inner:hover { animation: none; transition: none; }
+                }
+            `}</style>
 
-                    <button
-
-                        className="flex h-7 w-7 items-center justify-center rounded-full text-[#8A8879] hover:bg-[#FBE7E4] hover:text-[#C0392B]"
-                    >
-                        <Trash2
-                            onClick={() => {
+            <div
+                onClick={() => setShowAnswer(!showAnswer)}
+                className={`sqc-inner relative h-60 w-full cursor-pointer ${showAnswer ? "flipped" : ""}`}
+            >
+                {/* FRONT — question */}
+                <div className="sqc-face flex flex-col justify-between rounded-2xl border border-[#E3E1D5] bg-white p-5 shadow-[0_10px_30px_-18px_rgba(28,43,30,0.3)] hover:shadow-[0_16px_36px_-16px_rgba(28,43,30,0.35)]">
+                    <div className="flex items-start justify-between">
+                        <span
+                            className="flex h-9 w-9 items-center justify-center rounded-full"
+                            style={{ backgroundColor: accent.bg, color: accent.text }}
+                        >
+                            <HelpCircle size={17} />
+                        </span>
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
                                 let bookMarkOff = value.map((val) => {
                                     return val.id === item.id ? { ...val, saved: false } : val
                                 })
                                 let removeFromLocal = savedCards.filter((val) => {
                                     return val.id !== item.id
                                 })
-
                                 dispatch(getQuestionData(bookMarkOff))
                                 dispatch(saveToLocal(removeFromLocal))
                             }}
-                            size={15} />
-                    </button>
-                </div>
-            </div>
+                            className="flex h-8 w-8 items-center justify-center rounded-full text-[#C7C4B6] transition-colors hover:bg-[#FBE7E4] hover:text-[#C0392B]"
+                        >
+                            <Trash2 size={14} />
+                        </button>
+                    </div>
 
-            {/* Answer reveal */}
-            {showAnswer && (
-                <div className="mt-4 flex items-center gap-2 rounded-xl bg-[#EAF3DE] px-4 py-3">
-                    <CheckCircle2 size={16} className="shrink-0 text-[#3B6D11]" />
-                    <p className="text-sm font-medium text-[#3B6D11]">
+                    <p className="line-clamp-4 text-sm font-semibold leading-snug text-[#1C2B1E] sm:text-base">
+                        {item.question}
+                    </p>
+
+                    <div className="flex items-center justify-between">
+                        <span
+                            className="rounded-full px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider"
+                            style={{ backgroundColor: accent.bg, color: accent.text }}
+                        >
+                            {item.category}
+                        </span>
+                        <span className="flex items-center gap-1 text-[11px] font-medium text-[#B4B2A9]">
+                            <RotateCw size={11} />
+                            Tap to flip
+                        </span>
+                    </div>
+                </div>
+
+                {/* BACK — answer */}
+                <div
+                    className="sqc-face sqc-back flex flex-col items-center justify-center gap-3 rounded-2xl border p-5 text-center shadow-[0_10px_30px_-18px_rgba(28,43,30,0.3)]"
+                    style={{ backgroundColor: accent.bg, borderColor: accent.bg }}
+                >
+                    <span
+                        className="flex h-9 w-9 items-center justify-center rounded-full bg-white/70"
+                        style={{ color: accent.text }}
+                    >
+                        <CheckCircle2 size={18} />
+                    </span>
+                    <p className="font-mono text-[10px] font-semibold uppercase tracking-widest" style={{ color: accent.text }}>
+                        Correct answer
+                    </p>
+                    <p className="text-base font-bold leading-snug" style={{ color: accent.text }}>
                         {item.correctAnswer}
                     </p>
                 </div>
-            )}
+            </div>
         </div>
     );
 }
