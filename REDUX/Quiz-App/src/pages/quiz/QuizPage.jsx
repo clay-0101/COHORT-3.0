@@ -11,8 +11,8 @@ const QuizPage = () => {
   let questionNum = useSelector((state) => state.quiz.questionNum)
 
   return (
-    <div className='flex justify-center items-center'>
-      {!isQuizStarted ? <Outlet /> : value.length > 0 && <QuestionCard question={value[questionNum-1]} />}
+    <div className='flex w-full flex-1 items-center justify-center px-3 sm:px-6'>
+      {!isQuizStarted ? <Outlet /> : value.length > 0 && <QuestionCard question={value[questionNum - 1]} />}
 
     </div>
   )
