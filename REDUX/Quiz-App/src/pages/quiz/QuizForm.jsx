@@ -105,4 +105,3 @@ export default function QuizForm() {
         </div>
     );
 }
-localStorage.clear()
