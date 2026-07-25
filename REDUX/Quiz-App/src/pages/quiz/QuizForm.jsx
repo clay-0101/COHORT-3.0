@@ -29,6 +29,7 @@ export default function QuizForm() {
                     onSubmit={handleSubmit((data) => {
                         getQuiz(data, dispatch)
                         dispatch(setQuizStarted(true))
+                        reset()
                     })}
                     className="mt-8 flex flex-col gap-6">
                     {/* Number of questions */}
@@ -61,24 +62,28 @@ export default function QuizForm() {
                             Difficulty
                         </label>
                         <select
-                            {...register('difficulty')}
+                            {...register('difficulty',{
+                                required : 'Please select difficulty level'
+                            })}
                             className="w-full rounded-xl border border-[#DAD7C7] bg-white px-4 py-3 text-sm text-[#1C2B1E] outline-none focus:border-[#A6E65C] focus:ring-2 focus:ring-[#A6E65C]/40">
-                            <option value="all">Select difficulty</option>
+                            <option value="">Select difficulty</option>
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
                             <option value="hard">Hard</option>
                         </select>
                     </div>
-
+                     {errors.difficulty && <p className="text-[12px] text-red-600">{errors.difficulty.message}</p>}
                     {/* Category */}
                     <div>
                         <label className="mb-2 block text-sm font-medium text-[#1C2B1E]">
                             Category
                         </label>
                         <select
-                            {...register('category')}
+                            {...register('category', {
+                                required : "Please select a category"
+                            })}
                             className="w-full rounded-xl border border-[#DAD7C7] bg-white px-4 py-3 text-sm text-[#1C2B1E] outline-none focus:border-[#A6E65C] focus:ring-2 focus:ring-[#A6E65C]/40">
-                            <option value="mix">Select category</option>
+                            <option value="">Select category</option>
                             <option value="general">General knowledge</option>
                             <option value="science">Science</option>
                             <option value="history">History</option>
@@ -88,6 +93,7 @@ export default function QuizForm() {
                             <option value="music">Music</option>
                         </select>
                     </div>
+                    {errors.category && <p className="text-[12px] text-red-600">{errors.category.message}</p>}
                     <button
                         type="submit"
                         className="mt-4 w-full rounded-2xl bg-[#A6E65C] px-8 py-3 text-base font-semibold text-[#1C2B1E] shadow-sm transition-transform active:scale-95 hover:brightness-95"
@@ -99,3 +105,4 @@ export default function QuizForm() {
         </div>
     );
 }
+localStorage.clear()
