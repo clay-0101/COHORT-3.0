@@ -105,7 +105,7 @@ export default function MainLayout() {
 
 
       <main className="flex min-h-0 flex-1 flex-col overflow-y-auto pt-16 md:pt-0">
-        <div className="flex min-h-0 flex-1 items-center justify-center overflow-y-auto bg-white md:m-4 md:rounded-3xl md:border md:border-[#DAD7C7] md:shadow-[0_20px_50px_-24px_rgba(28,43,30,0.18)]">
+        <div className="flex min-h-0 flex-1 items-start justify-center overflow-y-auto bg-white md:m-4 md:rounded-3xl md:border md:border-[#DAD7C7] md:shadow-[0_20px_50px_-24px_rgba(28,43,30,0.18)]">
           <Outlet />
         </div>
       </main>
