@@ -1,14 +1,18 @@
 import React from 'react'
 import SavedQuestionCard from './SavedQuestionCard'
 import { useSelector } from "react-redux"
-import { useNavigate } from "react-router"
+import { useNavigate, Navigate } from "react-router"
 import { Bookmark, Sparkles, ArrowRight } from "lucide-react"
 
 const SavedPage = () => {
   const savedCards = useSelector((state) => state.saveQuiz.value) || []
+  const isQuizStarted = useSelector((state) => state.quiz.isQuizStarted)
   const navigate = useNavigate()
 
-  // 1. Conditional Rendering: Empty State Screen — mirrors the HomePage hero
+  if (isQuizStarted) {
+    return <Navigate to="/quiz" replace />
+  }
+
   if (savedCards.length === 0) {
     return (
       <div className="relative flex min-h-[70vh] w-full flex-col items-center justify-center overflow-hidden px-6 py-16 text-center">
