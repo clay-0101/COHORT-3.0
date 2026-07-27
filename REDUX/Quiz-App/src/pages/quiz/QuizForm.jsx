@@ -10,84 +10,52 @@ import { Sparkles, ListChecks, ArrowRight } from "lucide-react";
 export default function QuizForm() {
     let dispatch = useDispatch()
 
-
     let { reset, handleSubmit, register, formState: { errors } } = useForm({ mode: 'onChange' })
     return (
         <div className="relative flex min-h-[80vh] w-full flex-1 items-center justify-center overflow-hidden px-6 py-14 sm:px-6">
-            <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap');
-                .qf-serif { font-family: 'Fraunces', serif; }
-                .qf-sans { font-family: 'Inter', sans-serif; }
-
-                @keyframes qfFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-                @keyframes qfFloat { 0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-10px) rotate(var(--r, 0deg)); } }
-                .qf-in { animation: qfFadeUp 0.7s ease both; }
-                .qf-float { animation: qfFloat 5s ease-in-out infinite; }
-
-                .qf-cta { position: relative; overflow: hidden; }
-                .qf-cta::after {
-                    content: '';
-                    position: absolute;
-                    top: 0; left: -75%;
-                    width: 50%; height: 100%;
-                    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
-                    transform: skewX(-20deg);
-                    transition: left 0.6s ease;
-                }
-                .qf-cta:hover::after { left: 130%; }
-
-                @media (prefers-reduced-motion: reduce) { .qf-in, .qf-float { animation: none; } }
-            `}</style>
-
             {/* ambient dot-grid backdrop */}
             <div
-                className="pointer-events-none absolute inset-0 opacity-[0.35]"
-                style={{
-                    backgroundImage: "radial-gradient(#DAD7C7 1px, transparent 1px)",
-                    backgroundSize: "22px 22px",
-                    maskImage: "radial-gradient(ellipse 60% 55% at 50% 35%, black 40%, transparent 100%)",
-                    WebkitMaskImage: "radial-gradient(ellipse 60% 55% at 50% 35%, black 40%, transparent 100%)",
-                }}
+                className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:radial-gradient(#DAD7C7_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_60%_55%_at_50%_35%,black_40%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_60%_55%_at_50%_35%,black_40%,transparent_100%)]"
             />
 
             {/* floating decorative cards */}
             <div
-                className="qf-float pointer-events-none absolute left-[6%] top-[14%] hidden w-36 rounded-2xl border border-[#DAD7C7] bg-white p-3.5 text-left shadow-[0_10px_30px_-12px_rgba(28,43,30,0.25)] lg:block"
+                className="pointer-events-none absolute left-[6%] top-[14%] hidden w-36 animate-[float-y_5s_ease-in-out_infinite] rounded-2xl border border-[#DAD7C7] bg-white p-3.5 text-left shadow-[0_10px_30px_-12px_rgba(28,43,30,0.25)] motion-reduce:animate-none lg:block"
                 style={{ "--r": "-7deg", animationDelay: "0.2s" }}
             >
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#EAF3DE] text-[#3B6D11]">
                     <ListChecks size={13} />
                 </span>
-                <p className="qf-sans mt-2 text-[11px] font-medium text-[#8A8879]">10–50 questions</p>
+                <p className="font-body mt-2 text-[11px] font-medium text-[#8A8879]">10–50 questions</p>
             </div>
 
             <div
-                className="qf-float pointer-events-none absolute right-[6%] top-[22%] hidden w-36 rounded-2xl border border-[#DAD7C7] bg-white p-3.5 text-left shadow-[0_10px_30px_-12px_rgba(28,43,30,0.25)] lg:block"
+                className="pointer-events-none absolute right-[6%] top-[22%] hidden w-36 animate-[float-y_5s_ease-in-out_infinite] rounded-2xl border border-[#DAD7C7] bg-white p-3.5 text-left shadow-[0_10px_30px_-12px_rgba(28,43,30,0.25)] motion-reduce:animate-none lg:block"
                 style={{ "--r": "6deg", animationDelay: "0.6s" }}
             >
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#F5E9F7] text-[#7A3E91]">
                     <Sparkles size={13} />
                 </span>
-                <p className="qf-sans mt-2 text-[11px] font-medium text-[#8A8879]">Pick your difficulty</p>
+                <p className="font-body mt-2 text-[11px] font-medium text-[#8A8879]">Pick your difficulty</p>
             </div>
 
             <div className="relative w-full max-w-md">
                 {/* eyebrow */}
-                <span className="qf-in qf-sans mb-5 inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/30 bg-[#EAF3DE] px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#3B6D11]">
+                <span className="font-body mb-5 inline-flex animate-[fade-up-14_0.7s_ease_both] items-center gap-1.5 rounded-full border border-[#C9A227]/30 bg-[#EAF3DE] px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#3B6D11] motion-reduce:animate-none">
                     <Sparkles size={12} className="text-[#C9A227]" />
                     Setup
                 </span>
 
                 {/* headline */}
                 <h1
-                    className="qf-in qf-serif text-3xl font-semibold leading-[1.15] text-[#1C2B1E] sm:text-4xl"
+                    className="font-display animate-[fade-up-14_0.7s_ease_both] text-3xl font-semibold leading-[1.15] text-[#1C2B1E] motion-reduce:animate-none sm:text-4xl"
                     style={{ animationDelay: "0.08s" }}
                 >
                     Set up your <span className="text-[#C9A227]">quiz.</span>
                 </h1>
 
                 <p
-                    className="qf-in qf-sans mt-3 max-w-sm text-sm leading-relaxed text-[#8A8879] sm:text-base"
+                    className="font-body mt-3 max-w-sm animate-[fade-up-14_0.7s_ease_both] text-sm leading-relaxed text-[#8A8879] motion-reduce:animate-none sm:text-base"
                     style={{ animationDelay: "0.16s" }}
                 >
                     Customize the quiz according to your preference, then start.
@@ -99,7 +67,7 @@ export default function QuizForm() {
                         dispatch(setQuizStarted(true))
                         reset()
                     })}
-                    className="qf-in qf-sans mt-8 flex flex-col gap-5"
+                    className="font-body mt-8 flex animate-[fade-up-14_0.7s_ease_both] flex-col gap-5 motion-reduce:animate-none"
                     style={{ animationDelay: "0.24s" }}
                 >
                     {/* Number of questions */}
@@ -168,7 +136,7 @@ export default function QuizForm() {
 
                     <button
                         type="submit"
-                        className="qf-cta group mt-2 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#A6E65C] to-[#8FD84A] px-8 py-3 text-base font-semibold text-[#1C2B1E] shadow-[0_12px_24px_-8px_rgba(166,230,92,0.65)] transition-transform duration-200 active:scale-95 hover:-translate-y-0.5 hover:shadow-[0_16px_30px_-8px_rgba(166,230,92,0.8)]"
+                        className="group relative mt-2 flex w-full items-center justify-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-[#A6E65C] to-[#8FD84A] px-8 py-3 text-base font-semibold text-[#1C2B1E] shadow-[0_12px_24px_-8px_rgba(166,230,92,0.65)] transition-transform duration-200 active:scale-95 hover:-translate-y-0.5 hover:shadow-[0_16px_30px_-8px_rgba(166,230,92,0.8)] after:absolute after:left-[-75%] after:top-0 after:h-full after:w-1/2 after:[background:linear-gradient(120deg,transparent,rgba(255,255,255,0.55),transparent)] after:skew-x-[-20deg] after:transition-[left] after:duration-500 after:ease-in-out after:content-[''] hover:after:left-[130%]"
                     >
                         Start Quiz
                         <ArrowRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" />

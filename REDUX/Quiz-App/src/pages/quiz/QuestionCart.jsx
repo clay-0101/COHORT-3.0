@@ -15,72 +15,24 @@ export default function QuestionCard({ question }) {
 
     return (
         <div className="relative flex h-full max-h-full w-full items-center justify-center px-4 py-4 sm:px-6 sm:py-6">
-            <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
-                .qc-serif { font-family: 'Fraunces', serif; }
-                .qc-sans { font-family: 'Inter', sans-serif; }
-
-                @keyframes qcFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-                @keyframes qcFloat { 0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-10px) rotate(var(--r, 0deg)); } }
-                @keyframes qcOptionIn { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
-                @keyframes qcPop { 0% { transform: scale(0); } 60% { transform: scale(1.25); } 100% { transform: scale(1); } }
-                @keyframes qcGlow { 0%, 100% { box-shadow: 0 0 0 0 rgba(28,43,30,0.35); } 50% { box-shadow: 0 0 0 4px rgba(28,43,30,0); } }
-                .qc-in { animation: qcFadeUp 0.6s ease both; }
-                .qc-float { animation: qcFloat 5s ease-in-out infinite; }
-                .qc-option-in { animation: qcOptionIn 0.4s ease both; }
-                .qc-pop { animation: qcPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
-                .qc-glow { animation: qcGlow 1.8s ease-in-out infinite; }
-
-                .qc-cta { position: relative; overflow: hidden; }
-                .qc-cta::after {
-                    content: '';
-                    position: absolute;
-                    top: 0; left: -75%;
-                    width: 50%; height: 100%;
-                    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
-                    transform: skewX(-20deg);
-                    transition: left 0.6s ease;
-                }
-                .qc-cta:hover::after { left: 130%; }
-
-                .qc-option:hover { transform: translateX(2px); }
-                .qc-option { transition: transform 0.15s ease, background-color 0.15s ease; }
-
-                .qc-close:hover { transform: rotate(90deg); }
-                .qc-close { transition: transform 0.25s ease, background-color 0.15s ease, color 0.15s ease; }
-
-                .qc-bookmark:active { transform: scale(0.85); }
-                .qc-bookmark { transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease; }
-
-                @media (prefers-reduced-motion: reduce) {
-                    .qc-in, .qc-float, .qc-option-in, .qc-pop, .qc-glow { animation: none; }
-                }
-            `}</style>
-
             {/* ambient dot-grid backdrop */}
             <div
-                className="pointer-events-none absolute inset-0 opacity-[0.35]"
-                style={{
-                    backgroundImage: "radial-gradient(#DAD7C7 1px, transparent 1px)",
-                    backgroundSize: "22px 22px",
-                    maskImage: "radial-gradient(ellipse 60% 55% at 50% 35%, black 40%, transparent 100%)",
-                    WebkitMaskImage: "radial-gradient(ellipse 60% 55% at 50% 35%, black 40%, transparent 100%)",
-                }}
+                className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:radial-gradient(#DAD7C7_1px,transparent_1px)] [background-size:22px_22px] [mask-image:radial-gradient(ellipse_60%_55%_at_50%_35%,black_40%,transparent_100%)] [-webkit-mask-image:radial-gradient(ellipse_60%_55%_at_50%_35%,black_40%,transparent_100%)]"
             />
 
-            {/* floating decorative cards, echoing the setup screen */}
+            {/* floating decorative card, echoing the setup screen */}
             <div
-                className="qc-float pointer-events-none absolute left-[5%] top-[12%] hidden w-32 rounded-2xl border border-[#DAD7C7] bg-white p-3 text-left shadow-[0_10px_30px_-12px_rgba(28,43,30,0.25)] lg:block"
+                className="pointer-events-none absolute left-[5%] top-[12%] hidden w-32 animate-[float-y_5s_ease-in-out_infinite] rounded-2xl border border-[#DAD7C7] bg-white p-3 text-left shadow-[0_10px_30px_-12px_rgba(28,43,30,0.25)] motion-reduce:animate-none lg:block"
                 style={{ "--r": "-6deg", animationDelay: "0.2s" }}
             >
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#EAF3DE] text-[#3B6D11]">
                     <Sparkles size={12} />
                 </span>
-                <p className="qc-sans mt-2 text-[10px] font-medium text-[#8A8879]">Stay sharp</p>
+                <p className="font-body mt-2 text-[10px] font-medium text-[#8A8879]">Stay sharp</p>
             </div>
 
             {/* Main card — width grows with the question text up to a cap, so short questions stay compact and long ones expand sideways before wrapping */}
-            <div key={questionNum} className="qc-in qc-sans relative flex h-full max-h-full w-fit min-w-[320px] max-w-[92vw] flex-col rounded-[28px] border border-[#E3E1D5] bg-white p-5 shadow-[0_16px_40px_-20px_rgba(28,43,30,0.25)] sm:min-w-[420px] sm:max-w-2xl sm:p-8">
+            <div key={questionNum} className="font-body relative flex h-full max-h-full w-fit min-w-[320px] max-w-[92vw] animate-[fade-up-14_0.6s_ease_both] flex-col rounded-[28px] border border-[#E3E1D5] bg-white p-5 shadow-[0_16px_40px_-20px_rgba(28,43,30,0.25)] motion-reduce:animate-none sm:min-w-[420px] sm:max-w-2xl sm:p-8">
 
                 {/* Progress + close — fixed, never scrolls */}
                 <div className="flex shrink-0 items-center gap-3">
@@ -92,7 +44,7 @@ export default function QuestionCard({ question }) {
                                     i < questionNum - 1
                                         ? "bg-[#1C2B1E]"
                                         : i === questionNum - 1
-                                        ? "qc-glow scale-y-125 bg-[#1C2B1E]"
+                                        ? "scale-y-125 animate-[glow-pulse_1.8s_ease-in-out_infinite] bg-[#1C2B1E] motion-reduce:animate-none"
                                         : "bg-[#E3E1D5]"
                                 }`}
                             />
@@ -103,7 +55,7 @@ export default function QuestionCard({ question }) {
                             dispatch(resetQuiz());
                             navigate("/");
                         }}
-                        className="qc-close flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#EDEBE0] text-[#8A8879] hover:bg-[#DAD7C7] hover:text-[#1C2B1E]"
+                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#EDEBE0] text-[#8A8879] transition-all duration-200 ease-in-out hover:rotate-90 hover:bg-[#DAD7C7] hover:text-[#1C2B1E]"
                     >
                         <X size={16} />
                     </button>
@@ -113,7 +65,7 @@ export default function QuestionCard({ question }) {
                 <div className="mt-6 min-h-0 flex-1 overflow-y-auto pr-1">
                     {/* Eyebrow: question number + category */}
                     <div className="flex items-center justify-between">
-                        <span className="qc-sans inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/30 bg-[#EAF3DE] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#3B6D11]">
+                        <span className="font-body inline-flex items-center gap-1.5 rounded-full border border-[#C9A227]/30 bg-[#EAF3DE] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#3B6D11]">
                             Question {String(questionNum).padStart(2, "0")}
                         </span>
                         <span className="font-mono text-[11px] uppercase tracking-widest text-[#B4B2A9]">
@@ -122,7 +74,11 @@ export default function QuestionCard({ question }) {
                     </div>
 
                     {/* Question text */}
-                    <h2 key={`q-${questionNum}`} className="qc-serif qc-in mt-4 text-2xl font-semibold leading-[1.2] text-[#1C2B1E] sm:text-[28px]" style={{ animationDelay: "0.08s" }}>
+                    <h2
+                        key={`q-${questionNum}`}
+                        className="font-display mt-4 animate-[fade-up-14_0.6s_ease_both] text-2xl font-semibold leading-[1.2] text-[#1C2B1E] motion-reduce:animate-none sm:text-[28px]"
+                        style={{ animationDelay: "0.08s" }}
+                    >
                         {question.question}
                     </h2>
 
@@ -136,7 +92,7 @@ export default function QuestionCard({ question }) {
                             return (
                                 <label
                                     key={`${questionNum}-${idx}`}
-                                    className={`qc-option qc-option-in flex cursor-pointer items-center gap-3.5 rounded-xl px-2 py-2.5 ${
+                                    className={`flex cursor-pointer animate-[option-in_0.4s_ease_both] items-center gap-3.5 rounded-xl px-2 py-2.5 transition-transform duration-150 hover:translate-x-0.5 motion-reduce:animate-none ${
                                         isSelected ? "bg-[#F6F9F0]" : "hover:bg-[#FAFAF7]"
                                     }`}
                                     style={{ animationDelay: `${0.08 + idx * 0.06}s` }}
@@ -156,7 +112,9 @@ export default function QuestionCard({ question }) {
                                             isSelected ? "border-[#1C2B1E]" : "border-[#C7C4B6]"
                                         }`}
                                     >
-                                        {isSelected && <span className="qc-pop h-2.5 w-2.5 rounded-full bg-[#1C2B1E]" />}
+                                        {isSelected && (
+                                            <span className="h-2.5 w-2.5 animate-[pop-in_0.35s_cubic-bezier(0.34,1.56,0.64,1)_both] rounded-full bg-[#1C2B1E] motion-reduce:animate-none" />
+                                        )}
                                     </span>
                                     <span className="text-base text-[#1C2B1E]">{choice}</span>
                                 </label>
@@ -170,7 +128,7 @@ export default function QuestionCard({ question }) {
                     <p className="text-[11px] leading-relaxed text-[#B4B2A9]">
                         Unanswered questions won't count toward your score.
                     </p>
-                    <button className="qc-bookmark flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[#B4B2A9] hover:bg-[#EDEBE0] hover:text-[#1C2B1E]">
+                    <button className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[#B4B2A9] transition-all duration-150 hover:bg-[#EDEBE0] hover:text-[#1C2B1E] active:scale-[0.85]">
                         {question.saved ? (
                             <BookmarkOff
                                 size={16}
@@ -209,14 +167,14 @@ export default function QuestionCard({ question }) {
                     {questionNum === value.length ? (
                         <button
                             onClick={() => navigate("/score")}
-                            className="qc-cta group flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#A6E65C] to-[#8FD84A] px-7 py-2.5 text-sm font-semibold text-[#1C2B1E] shadow-[0_10px_20px_-8px_rgba(166,230,92,0.65)] transition-transform duration-200 active:scale-95 hover:-translate-y-0.5"
+                            className="group relative flex items-center gap-1.5 overflow-hidden rounded-full bg-gradient-to-r from-[#A6E65C] to-[#8FD84A] px-7 py-2.5 text-sm font-semibold text-[#1C2B1E] shadow-[0_10px_20px_-8px_rgba(166,230,92,0.65)] transition-transform duration-200 active:scale-95 hover:-translate-y-0.5 after:absolute after:left-[-75%] after:top-0 after:h-full after:w-1/2 after:[background:linear-gradient(120deg,transparent,rgba(255,255,255,0.55),transparent)] after:skew-x-[-20deg] after:transition-[left] after:duration-500 after:ease-in-out after:content-[''] hover:after:left-[130%]"
                         >
                             Submit
                         </button>
                     ) : (
                         <button
                             onClick={() => dispatch(nextPage())}
-                            className="qc-cta group flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#A6E65C] to-[#8FD84A] px-7 py-2.5 text-sm font-semibold text-[#1C2B1E] shadow-[0_10px_20px_-8px_rgba(166,230,92,0.65)] transition-transform duration-200 active:scale-95 hover:-translate-y-0.5"
+                            className="group relative flex items-center gap-1.5 overflow-hidden rounded-full bg-gradient-to-r from-[#A6E65C] to-[#8FD84A] px-7 py-2.5 text-sm font-semibold text-[#1C2B1E] shadow-[0_10px_20px_-8px_rgba(166,230,92,0.65)] transition-transform duration-200 active:scale-95 hover:-translate-y-0.5 after:absolute after:left-[-75%] after:top-0 after:h-full after:w-1/2 after:[background:linear-gradient(120deg,transparent,rgba(255,255,255,0.55),transparent)] after:skew-x-[-20deg] after:transition-[left] after:duration-500 after:ease-in-out after:content-[''] hover:after:left-[130%]"
                         >
                             Next
                         </button>

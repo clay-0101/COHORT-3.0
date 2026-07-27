@@ -20,46 +20,17 @@ export default function SavedQuestionCard({ item, index }) {
 
     return (
         <div
-            className="sqc-sans sqc-enter [perspective:1400px]"
+            className="font-body animate-[card-enter_0.5s_cubic-bezier(0.16,1,0.3,1)_both] [perspective:1400px] motion-reduce:animate-none motion-reduce:[transition:none]"
             style={{ animationDelay: `${Math.min(index, 10) * 0.06}s` }}
         >
-            <style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-                .sqc-sans { font-family: 'Inter', sans-serif; }
-
-                @keyframes sqcEnter {
-                    from { opacity: 0; transform: translateY(16px) scale(0.96); }
-                    to { opacity: 1; transform: translateY(0) scale(1); }
-                }
-                .sqc-enter { animation: sqcEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
-
-                .sqc-inner {
-                    position: relative;
-                    transform-style: preserve-3d;
-                    transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
-                }
-                .sqc-inner.flipped { transform: rotateY(180deg); }
-                .sqc-inner:not(.flipped):hover { transform: translateY(-4px); }
-                .sqc-face {
-                    position: absolute;
-                    inset: 0;
-                    backface-visibility: hidden;
-                    -webkit-backface-visibility: hidden;
-                    transition: box-shadow 0.25s ease;
-                }
-                .sqc-back { transform: rotateY(180deg); }
-
-                @media (prefers-reduced-motion: reduce) {
-                    .sqc-enter, .sqc-inner, .sqc-inner:hover { animation: none; transition: none; }
-                }
-            `}</style>
-
             <div
                 onClick={() => setShowAnswer(!showAnswer)}
-                className={`sqc-inner relative h-60 w-full cursor-pointer ${showAnswer ? "flipped" : ""}`}
+                className={`relative h-60 w-full cursor-pointer [transform-style:preserve-3d] transition-transform duration-[550ms] [transition-timing-function:cubic-bezier(0.4,0.2,0.2,1)] motion-reduce:transition-none ${
+                    showAnswer ? "[transform:rotateY(180deg)]" : "hover:[transform:translateY(-4px)]"
+                }`}
             >
                 {/* FRONT — question */}
-                <div className="sqc-face flex flex-col justify-between rounded-2xl border border-[#E3E1D5] bg-white p-5 shadow-[0_10px_30px_-18px_rgba(28,43,30,0.3)] hover:shadow-[0_16px_36px_-16px_rgba(28,43,30,0.35)]">
+                <div className="absolute inset-0 flex flex-col justify-between rounded-2xl border border-[#E3E1D5] bg-white p-5 shadow-[0_10px_30px_-18px_rgba(28,43,30,0.3)] transition-shadow duration-[250ms] ease-in-out [backface-visibility:hidden] [-webkit-backface-visibility:hidden] hover:shadow-[0_16px_36px_-16px_rgba(28,43,30,0.35)]">
                     <div className="flex items-start justify-between">
                         <span
                             className="flex h-9 w-9 items-center justify-center rounded-full"
@@ -105,7 +76,7 @@ export default function SavedQuestionCard({ item, index }) {
 
                 {/* BACK — answer */}
                 <div
-                    className="sqc-face sqc-back flex flex-col items-center justify-center gap-3 rounded-2xl border p-5 text-center shadow-[0_10px_30px_-18px_rgba(28,43,30,0.3)]"
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-3 rounded-2xl border p-5 text-center shadow-[0_10px_30px_-18px_rgba(28,43,30,0.3)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:rotateY(180deg)]"
                     style={{ backgroundColor: accent.bg, borderColor: accent.bg }}
                 >
                     <span
