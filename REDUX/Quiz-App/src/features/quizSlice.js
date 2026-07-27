@@ -10,6 +10,7 @@ const quizSlice = createSlice({
         selectedAnswers: [],
         
     },
+  
     reducers: {
         getQuestionData: (state, action) => {
             state.value = action.payload;
