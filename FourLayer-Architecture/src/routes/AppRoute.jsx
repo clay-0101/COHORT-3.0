@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import PublicRoute from "./PublicRoute";
-import LoginPage from "../features/auth/ui/pages/LoginPage";
+import LoginPage from '../features/auth/ui/pages/LoginPage'
 import RegisterPage from "../features/auth/ui/pages/RegisterPage";
 import AuthLayout from "../app/Layout/AuthLayout";
 
