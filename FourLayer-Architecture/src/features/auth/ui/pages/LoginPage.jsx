@@ -2,7 +2,13 @@ import { useNavigate } from "react-router";
 import useAuth from "../../hooks/authHooks";
 
 const Login = () => {
-  let {navigate} = useAuth()
+  let { navigate,
+    register,
+    handleSubmit,
+    reset,
+    errors,
+    loginSubmit } = useAuth()
+
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-zinc-900 rounded-2xl shadow-2xl p-8">
@@ -17,7 +23,9 @@ const Login = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form 
+        onSubmit={handleSubmit(loginSubmit)}
+        className="space-y-5">
           {/* Username */}
           <div>
             <label className="block text-gray-300 mb-2">
@@ -25,11 +33,20 @@ const Login = () => {
             </label>
 
             <input
-              type="text"
-              placeholder="Enter your username"
+            {...register('email',{
+              required : 'Email is required',
+              pattern : {
+                value : /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message : 'Invalid Email'
+              }
+            })}
+              type="email"
+              placeholder="Enter your email"
               className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-red-600 transition"
             />
+            
           </div>
+          {errors.email && <p className="text-red-500 text-[12px]">{errors.email.message}</p>}
 
           {/* Password */}
           <div>
@@ -38,11 +55,19 @@ const Login = () => {
             </label>
 
             <input
+            {...register('password',{
+              message : 'Password is required',
+              minLength : {
+                value : 6,
+                message : 'Minumum 6 letter required'
+              }
+            })}
               type="password"
               placeholder="Enter your password"
               className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-red-600 transition"
             />
           </div>
+          {errors.password && <p className="text-red-500 text-[12px]">{errors.password.message}</p>}
 
           {/* Login Button */}
           <button
@@ -64,7 +89,7 @@ const Login = () => {
         <p className="text-center text-gray-400">
           Don't have an account?{" "}
           <button
-          onClick={()=> navigate('/register')}
+            onClick={() => navigate('/register')}
             type="button"
             className="text-red-500 hover:text-red-400 font-semibold"
           >
