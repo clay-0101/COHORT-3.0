@@ -11,18 +11,18 @@ let logedInUser = createSlice({
     reducers: {
         setUser: (state, action) => {
             state.user = action.payload
-            isAuthenticated = true
-            isLoading = false
+            state.isAuthenticated = true
+            state.isLoading = false
         },
         removeUser: (state, action) => {
             state.user = null
-            isAuthenticated = false
-            isLoading = true
+            state.isAuthenticated = false
+            state.isLoading = true
         }
 
     }
 
 })
 
-export const {setUser, removeUser} = logedInUser.actions;
+export const { setUser, removeUser } = logedInUser.actions;
 export default logedInUser.reducer

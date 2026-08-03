@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import PublicRoute from "./PublicRoute";
+import ProtectedRoute from './ProtectedRoute'
 import LoginPage from '../features/auth/ui/pages/LoginPage'
 import RegisterPage from "../features/auth/ui/pages/RegisterPage";
 import AuthLayout from "../app/Layout/AuthLayout";
-
+import Home from '../features/home/ui/Home';
+import MainLayout from "../app/Layout/MainLayout";
 
 
 
@@ -30,6 +32,22 @@ const AppRoute = () => {
                     ]
                 }
 
+            ]
+        },
+        {
+            path : '/home',
+            element : <ProtectedRoute/>,
+            children:[
+                {
+                    path : '',
+                    element : <MainLayout/>,
+                    children:[
+                        {
+                            path : '',
+                            element : <Home/>
+                        }
+                    ]
+                }
             ]
         }
 
