@@ -7,6 +7,7 @@ import RegisterPage from "../features/auth/ui/pages/RegisterPage";
 import AuthLayout from "../app/Layout/AuthLayout";
 import Home from '../features/home/ui/Home';
 import MainLayout from "../app/Layout/MainLayout";
+import MusicPlayerCard from "../features/home/ui/pages/MusicPlayer";
 
 
 
@@ -45,6 +46,10 @@ const AppRoute = () => {
                         {
                             path : '',
                             element : <Home/>
+                        },
+                        {
+                            path : 'play/:id',
+                            element : <MusicPlayerCard/>
                         }
                     ]
                 }

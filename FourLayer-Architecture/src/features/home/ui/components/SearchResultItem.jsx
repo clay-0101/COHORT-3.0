@@ -1,8 +1,18 @@
 import { Play } from "lucide-react";
+import { playTrackAction } from "../../api/searchApi";
+import useHome from "../../hooks/homeHooks";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 
-export default function SearchResultItem({track}) {
+export default function SearchResultItem({ track }) {
+    let dispatch = useDispatch()
+    let navigate = useNavigate()
     return (
-        <div className="flex items-center justify-between gap-3 bg-[#17171C] hover:bg-[#1E1E24] border border-white/5 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 w-full transition-colors cursor-pointer">
+        <div
+            onClick={() => {
+                navigate(`play/${track.id}`)
+            }}
+            className="flex items-center justify-between gap-3 bg-[#17171C] hover:bg-[#1E1E24] border border-white/5 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 w-full transition-colors cursor-pointer">
             {/* left: art + text */}
             <div className="flex items-center gap-3 min-w-0">
                 <img
@@ -21,7 +31,8 @@ export default function SearchResultItem({track}) {
             </div>
 
             {/* right: play button */}
-            <button className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 flex items-center justify-center rounded-full bg-[#FF2D46] hover:bg-[#ff4560] transition-colors">
+            <button
+                className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 flex items-center justify-center rounded-full bg-[#FF2D46] hover:bg-[#ff4560] transition-colors">
                 <Play size={14} fill="white" className="text-white translate-x-[1px]" />
             </button>
         </div>
