@@ -41,14 +41,15 @@ const useHome = () => {
         if (data) {
             dispatch(setSongsData(data))
         }
-    }, [data, dispatch])
+    }, [data])
 
     return {
+    
         data,
         isPending,
         error,
         setTrackName,
-
+        
     }
 
 }
