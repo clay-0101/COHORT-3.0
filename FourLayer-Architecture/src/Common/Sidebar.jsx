@@ -92,48 +92,6 @@ function Sidebar({ isOpen, onClose }) {
           </a>
         </nav>
 
-        {/* Who's listening */}
-        <p className="px-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/35 mb-3">
-          Who&apos;s Listening
-        </p>
-        <div className="flex flex-col gap-1">
-          <a
-            href="#"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-white/70 hover:text-white hover:bg-white/[0.04] transition-colors"
-          >
-            <span className="w-8 h-8 rounded-md bg-[#3A2E6E] flex items-center justify-center text-xs font-bold text-white">
-              SH
-            </span>
-            Sharma
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-white/70 hover:text-white hover:bg-white/[0.04] transition-colors"
-          >
-            <span className="w-8 h-8 rounded-md bg-[#7A4E1D] flex items-center justify-center text-xs font-bold text-white">
-              DB
-            </span>
-            Divi boo
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-white/70 hover:text-white hover:bg-white/[0.04] transition-colors"
-          >
-            <span className="w-8 h-8 rounded-md bg-[#1D6E5C] flex items-center justify-center text-xs font-bold text-white">
-              AD
-            </span>
-            Adhi
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-white/70 hover:text-white hover:bg-white/[0.04] transition-colors"
-          >
-            <span className="w-8 h-8 rounded-md bg-[#1D4E8F] flex items-center justify-center text-xs font-bold text-white">
-              HA
-            </span>
-            Harsha
-          </a>
-        </div>
 
         <div className="mt-auto pt-6">
           <a
