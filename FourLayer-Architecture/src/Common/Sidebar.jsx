@@ -93,15 +93,6 @@ function Sidebar({ isOpen, onClose }) {
         </nav>
 
 
-        <div className="mt-auto pt-6">
-          <a
-            href="#"
-            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-white/60 hover:text-white hover:bg-white/[0.04] transition-colors"
-          >
-            <Settings size={18} />
-            Settings
-          </a>
-        </div>
       </aside>
     </>
   );
