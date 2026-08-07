@@ -8,11 +8,12 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import Pagination from './Pagination.jsx'
+import InfiniteScroll from './InfiniteScroll.jsx'
 
 const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')).render(
 <QueryClientProvider client={queryClient}>
-  <Pagination/>
+  <InfiniteScroll/>
 </QueryClientProvider>
 )
