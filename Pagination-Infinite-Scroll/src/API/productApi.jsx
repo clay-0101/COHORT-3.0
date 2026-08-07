@@ -1,9 +1,9 @@
 import axios from "axios"
 
-  export async function getApiData(page, limit) {
+  export async function getApiData(pageParam, limit) {
         try {
-            console.log('api calling...')
-            let res = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${limit * page}`)
+           console.log('run')
+            let res = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${pageParam}`)
             return res.data
         } catch (error) {
             console.log(error)
