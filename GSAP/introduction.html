@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motion on the Web — GSAP, Lenis &amp; Locomotive Scroll</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0D10;
+    --bg-raised:#14171B;
+    --bg-card:#181B20;
+    --line:#262B32;
+    --text:#E8E9EA;
+    --text-dim:#9AA1AA;
+    --text-faint:#5D646E;
+    --gsap:#8DD400;
+    --gsap-dim:#3A4A0E;
+    --lenis:#FF7A52;
+    --lenis-dim:#4A2C21;
+    --loco:#8C8CFF;
+    --loco-dim:#2C2C4A;
+    --code-bg:#0F1114;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Sora',sans-serif;letter-spacing:-0.01em;margin:0;}
+  a{color:inherit;}
+  code, pre, .mono{font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- Top nav ---------- */
+  .topnav{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 40px;
+    background:rgba(11,13,16,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav .brand{font-weight:700;font-size:14px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text);}
+  .topnav .brand span{color:var(--gsap);}
+  .topnav nav{display:flex;gap:28px;}
+  .topnav nav a{
+    font-size:13px;font-weight:500;color:var(--text-dim);text-decoration:none;
+    transition:color .2s ease;
+  }
+  .topnav nav a:hover{color:var(--text);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:110px 40px 90px;
+    max-width:900px;margin:0 auto;
+    text-align:left;
+  }
+  .hero .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--gsap);margin-bottom:22px;
+  }
+  .hero .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gsap);display:inline-block;}
+  .hero h1{
+    font-size:52px;font-weight:800;line-height:1.08;color:var(--text);
+    max-width:820px;
+  }
+  .hero h1 em{font-style:normal;color:var(--gsap);}
+  .hero p{
+    margin-top:22px;font-size:17px;color:var(--text-dim);max-width:640px;
+  }
+
+  /* ---------- Roadmap ---------- */
+  .roadmap{
+    max-width:1100px;margin:0 auto;padding:0 40px 100px;
+  }
+  .roadmap-title{font-size:13px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:24px;}
+  .roadmap-track{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;
+  }
+  .roadmap-track::before{
+    content:"";position:absolute;top:23px;left:6%;right:6%;height:1px;
+    background:linear-gradient(90deg, var(--gsap), var(--lenis), var(--loco), var(--text-faint));
+    opacity:0.4;
+  }
+  .stage{position:relative;padding-right:18px;}
+  .stage .dot{
+    width:46px;height:46px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:15px;
+    background:var(--bg-card);border:1.5px solid var(--line);
+    position:relative;z-index:2;margin-bottom:18px;
+  }
+  .stage.s1 .dot{border-color:var(--gsap);color:var(--gsap);}
+  .stage.s2 .dot{border-color:var(--lenis);color:var(--lenis);}
+  .stage.s3 .dot{border-color:var(--loco);color:var(--loco);}
+  .stage.s4 .dot{border-color:var(--text-dim);color:var(--text-dim);}
+  .stage h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;}
+  .stage p{font-size:13px;color:var(--text-dim);margin:0;padding-right:8px;}
+
+  /* ---------- Section shell ---------- */
+  section.lib{
+    padding:90px 40px;border-top:1px solid var(--line);
+  }
+  .lib-inner{max-width:900px;margin:0 auto;}
+  .lib-head{margin-bottom:48px;}
+  .lib-tag{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+    padding:5px 12px;border-radius:20px;margin-bottom:18px;
+  }
+  #gsap-section .lib-tag{background:var(--gsap-dim);color:var(--gsap);}
+  #lenis-section .lib-tag{background:var(--lenis-dim);color:var(--lenis);}
+  #loco-section .lib-tag{background:var(--loco-dim);color:var(--loco);}
+  .lib-head h2{font-size:34px;font-weight:800;margin-bottom:14px;}
+  .lib-head p{font-size:16px;color:var(--text-dim);max-width:680px;}
+
+  .info-box{
+    background:var(--bg-raised);border:1px solid var(--line);border-radius:10px;
+    padding:22px 26px;margin:26px 0 8px;
+  }
+  .info-box h4{font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;}
+  .info-box p{margin:0 0 10px;font-size:14.5px;color:var(--text-dim);}
+  .info-box p:last-child{margin-bottom:0;}
+
+  /* ---------- Topic card ---------- */
+  .topic{
+    margin-top:56px;padding-top:8px;
+  }
+  .topic-head{display:flex;align-items:baseline;gap:14px;margin-bottom:12px;}
+  .topic-num{
+    font-family:'Sora',sans-serif;font-weight:800;font-size:14px;color:var(--text-faint);
+  }
+  .topic h3{font-size:21px;font-weight:700;color:var(--text);}
+  .topic .lede{font-size:15px;color:var(--text-dim);margin:10px 0 20px;max-width:680px;}
+
+  pre{
+    background:var(--code-bg);border:1px solid var(--line);border-radius:8px;
+    padding:18px 20px;overflow-x:auto;font-size:13px;line-height:1.7;color:#D6E8B8;
+    position:relative;
+  }
+  #lenis-section pre{color:#F3D2C2;}
+  #loco-section pre{color:#D3D3FF;}
+  pre code{font-family:'JetBrains Mono',monospace;background:none;}
+  .code-label{
+    font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--text-faint);margin:18px 0 8px;
+  }
+
+  .project-idea{
+    margin-top:18px;border-left:3px solid var(--gsap);padding:14px 18px;
+    background:rgba(141,212,0,0.05);border-radius:0 8px 8px 0;
+  }
+  #lenis-section .project-idea{border-color:var(--lenis);background:rgba(255,122,82,0.06);}
+  #loco-section .project-idea{border-color:var(--loco);background:rgba(140,140,255,0.06);}
+  .project-idea .label{
+    font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--text-dim);margin-bottom:6px;
+  }
+  .project-idea p{margin:0;font-size:14.5px;color:var(--text);}
+
+  /* ---------- Syllabus ---------- */
+  #syllabus{padding:90px 40px;border-top:1px solid var(--line);}
+  #syllabus .lib-head h2{font-size:34px;}
+  .syllabus-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;
+  }
+  .syl-col h4{
+    font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+    padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid var(--line);
+  }
+  .syl-col.g h4{color:var(--gsap);}
+  .syl-col.l h4{color:var(--lenis);}
+  .syl-col.c h4{color:var(--loco);}
+  .syl-col ol{list-style:none;margin:0;padding:0;counter-reset:syl;}
+  .syl-col li{
+    counter-increment:syl;
+    display:flex;gap:10px;font-size:14px;color:var(--text-dim);padding:9px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .syl-col li::before{
+    content:counter(syl);
+    font-family:'Sora',sans-serif;font-weight:700;font-size:12px;color:var(--text-faint);
+    min-width:18px;
+  }
+  .syl-col li:last-child{border-bottom:none;}
+
+  /* ---------- Capstone ---------- */
+  #capstone{padding:90px 40px 60px;border-top:1px solid var(--line);}
+  #capstone .lib-head h2{font-size:34px;}
+  .capstone-box{
+    margin-top:32px;background:var(--bg-card);border:1px solid var(--line);border-radius:12px;
+    padding:34px;
+  }
+  .capstone-box h3{font-size:19px;margin-bottom:12px;}
+  .capstone-box p{font-size:15px;color:var(--text-dim);margin-bottom:18px;max-width:700px;}
+  .chip-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .chip{
+    font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:20px;
+    border:1px solid var(--line);color:var(--text-dim);
+  }
+  .chip.g{border-color:var(--gsap);color:var(--gsap);}
+  .chip.l{border-color:var(--lenis);color:var(--lenis);}
+  .chip.c{border-color:var(--loco);color:var(--loco);}
+
+  footer{
+    padding:40px;text-align:center;font-size:13px;color:var(--text-faint);
+    border-top:1px solid var(--line);
+  }
+
+  @media (max-width:820px){
+    .hero h1{font-size:36px;}
+    .roadmap-track{grid-template-columns:1fr 1fr;gap:28px 0;}
+    .roadmap-track::before{display:none;}
+    .syllabus-grid{grid-template-columns:1fr;}
+    .topnav nav{display:none;}
+    section.lib, #syllabus, #capstone{padding:60px 22px;}
+    .hero{padding:70px 22px 50px;}
+    .roadmap{padding:0 22px 70px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <div class="brand">Motion&nbsp;Curriculum <span>·</span> Mini&nbsp;Hackathon&nbsp;Cohort</div>
+  <nav>
+    <a href="#syllabus">Syllabus</a>
+    <a href="#gsap-section">GSAP</a>
+    <a href="#lenis-section">Lenis</a>
+    <a href="#loco-section">Locomotive</a>
+    <a href="#capstone">Capstone</a>
+  </nav>
+</div>
+
+<section class="hero">
+  <div class="eyebrow">Self-paced · Vanilla JS · No frameworks</div>
+  <h1>Learn to move things on the web — <em>properly</em>.</h1>
+  <p>This is a complete, self-paced curriculum for learning GSAP, Lenis, and Locomotive Scroll in plain HTML, CSS, and JavaScript — no React, no build tools. By the end, you'll be able to plan, code, and ship your own scroll-driven, animated web experiences from scratch.</p>
+</section>
+
+<div class="roadmap">
+  <div class="roadmap-title">The Roadmap</div>
+  <div class="roadmap-track">
+    <div class="stage s1">
+      <div class="dot">01</div>
+      <h3>GSAP Core</h3>
+      <p>Tweens, easing, timelines, stagger, ScrollTrigger, hover, SVG &amp; text motion.</p>
+    </div>
+    <div class="stage s2">
+      <div class="dot">02</div>
+      <h3>Lenis</h3>
+      <p>Buttery smooth scrolling and syncing it with GSAP.</p>
+    </div>
+    <div class="stage s3">
+      <div class="dot">03</div>
+      <h3>Locomotive Scroll</h3>
+      <p>Data-attribute driven scrolling and parallax.</p>
+    </div>
+    <div class="stage s4">
+      <div class="dot">04</div>
+      <h3>Capstone</h3>
+      <p>Combine everything into one motion-driven page.</p>
+    </div>
+  </div>
+</div>
+
+<section id="syllabus">
+  <div class="lib-inner">
+    <div class="lib-head">
+      <h2>Syllabus</h2>
+      <p>The full topic list, in the order you should learn it. Keep this page open as a checklist — tick off each topic as you complete its project idea below.</p>
+    </div>
+    <div class="syllabus-grid">
+      <div class="syl-col g">
+        <h4>GSAP</h4>
+        <ol>
+          <li>Setup &amp; connecting the CDN</li>
+          <li>Basic tweens — to(), from(), fromTo()</li>
+          <li>Easing &amp; duration</li>
+          <li>Timelines — sequencing animations</li>
+          <li>Stagger — animating groups</li>
+          <li>ScrollTrigger — scroll-based animation</li>
+          <li>Hover &amp; interactive animation</li>
+          <li>SVG stroke animation</li>
+          <li>Text reveal animation</li>
+        </ol>
+      </div>
+      <div class="syl-col l">
+        <h4>Lenis</h4>
+        <ol>
+          <li>What Lenis does &amp; basic setup</li>
+          <li>Configuring the scroll feel</li>
+          <li>Syncing Lenis with GSAP ScrollTrigger</li>
+        </ol>
+      </div>
+      <div class="syl-col c">
+        <h4>Locomotive Scroll</h4>
+        <ol>
+          <li>Setup &amp; data-scroll attributes</li>
+          <li>Parallax with data-scroll-speed</li>
+          <li>Combining Locomotive Scroll with GSAP</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- GSAP SECTION -->
+<!-- ============================================================ -->
+<section class="lib" id="gsap-section">
+  <div class="lib-inner">
+    <div class="lib-head">
+      <span class="lib-tag">Library 01 · GSAP</span>
+      <h2>GreenSock Animation Platform (GSAP)</h2>
+      <p>GSAP is a JavaScript library that animates almost any property of almost any element — position, rotation, scale, opacity, colors, even SVG shapes — smoothly and with precise control over timing. It works the same way in plain HTML/JS as it does in any framework, which is exactly why it's the best place to start.</p>
+    </div>
+
+    <div class="info-box">
+      <h4>Getting the CDN &amp; connecting it</h4>
+      <p>Add the GSAP script tag in your <code>&lt;head&gt;</code>, or right before your closing <code>&lt;/body&gt;</code> tag — either works, since GSAP doesn't need to wait for the page to load. What matters is that <strong>your own script</strong> (the one that calls <code>gsap.to()</code> etc.) is loaded <strong>after</strong> the GSAP script tag, so the <code>gsap</code> object already exists when your code runs.</p>
+    </div>
+
+    <div class="code-label">index.html — where to place it</div>
+    <pre><code>&lt;head&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div class="box"&gt;&lt;/div&gt;
+
+  &lt;!-- your own file, loaded LAST, after the elements exist --&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+    <div class="code-label">script.js — confirm the connection</div>
+    <pre><code>console.log(gsap);
+// If this prints the GSAP object (not "undefined"), you're connected.</code></pre>
+
+    <!-- Topic 1 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">01</span><h3>Basic Tweens — to(), from(), fromTo()</h3></div>
+      <p class="lede">A "tween" is a single animation from one state to another. <code>gsap.to()</code> animates from the element's current state to the values you give it. <code>gsap.from()</code> does the reverse — it starts at the values you give it and animates to the current state. <code>gsap.fromTo()</code> lets you set both the start and end explicitly.</p>
+      <div class="code-label">script.js</div>
+      <pre><code>gsap.to(".box", {
+  x: 300,
+  rotation: 360,
+  duration: 1.5,
+  ease: "power2.out"
+});</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>A single square that slides across the screen and spins once, the moment the page loads. Try swapping <code>gsap.to()</code> for <code>gsap.from()</code> and see how the animation direction flips.</p>
+      </div>
+    </div>
+
+    <!-- Topic 2 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">02</span><h3>Easing &amp; Duration</h3></div>
+      <p class="lede">The <code>ease</code> property controls the "personality" of the motion — a linear move feels robotic, <code>"power2.out"</code> feels natural, <code>"bounce.out"</code> feels playful, <code>"elastic.out"</code> feels springy. <code>duration</code> controls how many seconds the tween takes.</p>
+      <div class="code-label">script.js</div>
+      <pre><code>gsap.to(".ball", {
+  y: 300,
+  duration: 1,
+  ease: "bounce.out"
+});</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>Drop three balls down the same distance, each with a different <code>ease</code> (<code>"power1.in"</code>, <code>"bounce.out"</code>, <code>"elastic.out"</code>) so you can visually compare how each one feels.</p>
+      </div>
+    </div>
+
+    <!-- Topic 3 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">03</span><h3>Timelines — Sequencing Animations</h3></div>
+      <p class="lede">A timeline lets you chain multiple tweens so they play in order (or overlap on purpose). This is how you build multi-step animations like an intro sequence, instead of nesting callbacks.</p>
+      <div class="code-label">script.js</div>
+      <pre><code>const tl = gsap.timeline({ defaults: { duration: 1, ease: "power2.out" } });
+
+tl.to(".logo", { opacity: 1, y: 0 })
+  .to(".headline", { opacity: 1, y: 0 }, "-=0.5")   // starts 0.5s before the previous ends
+  .to(".cta-button", { opacity: 1, scale: 1 });</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>An "intro sequence" for a page: a logo fades in first, then a headline slides up, then a button pops in last — all in one connected flow.</p>
+      </div>
+    </div>
+
+    <!-- Topic 4 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">04</span><h3>Stagger — Animating Groups of Elements</h3></div>
+      <p class="lede">When you animate a group of elements (like a set of cards), <code>stagger</code> adds a small delay between each one, so they animate one after another instead of all at once.</p>
+      <div class="code-label">script.js</div>
+      <pre><code>gsap.to(".card", {
+  y: 0,
+  opacity: 1,
+  duration: 0.6,
+  stagger: 0.15,
+  ease: "power2.out"
+});</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>A grid of 6–8 cards that starts invisible and slightly lower, and staggers into place one by one when the page loads.</p>
+      </div>
+    </div>
+
+    <!-- Topic 5 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">05</span><h3>ScrollTrigger — Scroll-Based Animation</h3></div>
+      <p class="lede">ScrollTrigger is an official GSAP plugin that ties an animation's progress to the scrollbar — instead of playing once, the tween plays (or scrubs) as the user scrolls through a section.</p>
+      <div class="code-label">index.html — add the plugin's CDN, after the core GSAP script</div>
+      <pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;</code></pre>
+      <div class="code-label">script.js</div>
+      <pre><code>gsap.registerPlugin(ScrollTrigger);
+
+gsap.to(".panel", {
+  x: -200,
+  scrollTrigger: {
+    trigger: ".panel",
+    start: "top center",   // when panel's top hits viewport center
+    end: "bottom center",
+    scrub: true             // ties progress directly to scroll position
+  }
+});</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>Three full-height sections that each fade and slide into view as they're scrolled into the middle of the screen.</p>
+      </div>
+    </div>
+
+    <!-- Topic 6 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">06</span><h3>Hover &amp; Interactive Animation</h3></div>
+      <p class="lede">GSAP tweens can be triggered by any JavaScript event, not just page load or scroll — including <code>mouseenter</code> and <code>mouseleave</code>, to make buttons and cards feel responsive.</p>
+      <div class="code-label">script.js</div>
+      <pre><code>const btn = document.querySelector(".hover-btn");
+
+btn.addEventListener("mouseenter", () => {
+  gsap.to(btn, { scale: 1.08, duration: 0.3, ease: "power2.out" });
+});
+
+btn.addEventListener("mouseleave", () => {
+  gsap.to(btn, { scale: 1, duration: 0.3, ease: "power2.out" });
+});</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>A row of buttons or icon cards that gently scale up and lift on hover, and settle back down on mouse-leave.</p>
+      </div>
+    </div>
+
+    <!-- Topic 7 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">07</span><h3>SVG Stroke Animation</h3></div>
+      <p class="lede">Using an SVG's <code>stroke-dasharray</code> and <code>stroke-dashoffset</code>, you can make a line or path look like it's being drawn — GSAP simply animates the offset from full-hidden to zero.</p>
+      <div class="code-label">style.css</div>
+      <pre><code>.line-path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+}</code></pre>
+      <div class="code-label">script.js</div>
+      <pre><code>gsap.to(".line-path", {
+  strokeDashoffset: 0,
+  duration: 2,
+  ease: "power1.inOut",
+  scrollTrigger: { trigger: ".line-path", start: "top 80%" }
+});</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>A simple SVG icon, underline, or squiggly line that "draws itself" the moment it scrolls into view.</p>
+      </div>
+    </div>
+
+    <!-- Topic 8 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">08</span><h3>Text Reveal Animation</h3></div>
+      <p class="lede">To animate individual letters, split the text into one <code>&lt;span&gt;</code> per character with plain JavaScript, then stagger-animate all those spans together.</p>
+      <div class="code-label">script.js</div>
+      <pre><code>const heading = document.querySelector(".reveal-text");
+
+heading.innerHTML = heading.textContent
+  .split("")
+  .map(ch => `&lt;span&gt;${ch === " " ? "&amp;nbsp;" : ch}&lt;/span&gt;`)
+  .join("");
+
+gsap.from(".reveal-text span", {
+  y: 40,
+  opacity: 0,
+  duration: 0.6,
+  stagger: 0.03,
+  ease: "power3.out"
+});</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>A big heading that reveals itself letter-by-letter the moment the page loads, instead of just appearing instantly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- LENIS SECTION -->
+<!-- ============================================================ -->
+<section class="lib" id="lenis-section">
+  <div class="lib-inner">
+    <div class="lib-head">
+      <span class="lib-tag">Library 02 · Lenis</span>
+      <h2>Lenis — Smooth Scroll</h2>
+      <p>Lenis is a small library that replaces the browser's default, slightly jerky scroll with a smoothed, "weighted" scroll feel — the kind you notice on high-end agency sites. It doesn't animate anything by itself; it just changes how scrolling <em style="color:inherit;font-style:normal;">feels</em>, and it pairs naturally with GSAP's ScrollTrigger.</p>
+    </div>
+
+    <div class="info-box">
+      <h4>Getting the CDN &amp; connecting it</h4>
+      <p>Add the stylesheet in <code>&lt;head&gt;</code> and the script wherever you load GSAP — right before your own <code>script.js</code>, at the bottom of <code>&lt;body&gt;</code>, so <code>Lenis</code> already exists when your code runs.</p>
+    </div>
+
+    <div class="code-label">index.html</div>
+    <pre><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="https://unpkg.com/lenis@1.3.25/dist/lenis.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  ...
+  &lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://unpkg.com/lenis@1.3.25/dist/lenis.min.js"&gt;&lt;/script&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+    <!-- Topic 1 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">01</span><h3>What Lenis Does &amp; Basic Setup</h3></div>
+      <p class="lede">Lenis needs to run its own update loop alongside the browser's animation frame, so it can smooth out each scroll event before the page reacts to it.</p>
+      <div class="code-label">script.js</div>
+      <pre><code>const lenis = new Lenis();
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>Build a long single page with 4–5 tall sections, add Lenis, and scroll it with your mouse wheel and trackpad to feel the difference against a page without Lenis.</p>
+      </div>
+    </div>
+
+    <!-- Topic 2 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">02</span><h3>Configuring the Scroll Feel</h3></div>
+      <p class="lede">Lenis exposes a few options that shape how "weighted" the scroll feels: <code>duration</code> (how long it takes to settle), <code>easing</code> (the curve it settles with), and <code>wheelMultiplier</code> (how far one scroll notch moves the page).</p>
+      <div class="code-label">script.js</div>
+      <pre><code>const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true,
+  wheelMultiplier: 1
+});</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>Two buttons — "Snappy" and "Floaty" — that re-create the Lenis instance with two very different <code>duration</code>/<code>easing</code> combinations, so you can feel the range Lenis can produce.</p>
+      </div>
+    </div>
+
+    <!-- Topic 3 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">03</span><h3>Syncing Lenis with GSAP ScrollTrigger</h3></div>
+      <p class="lede">Since Lenis changes how scroll position updates, ScrollTrigger needs to be told to recalculate on every Lenis scroll tick — and Lenis's own update loop should run through GSAP's ticker so everything stays in sync.</p>
+      <div class="code-label">script.js</div>
+      <pre><code>gsap.registerPlugin(ScrollTrigger);
+
+const lenis = new Lenis();
+
+lenis.on("scroll", ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+gsap.ticker.lagSmoothing(0);</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>Take your ScrollTrigger project from the GSAP section and add Lenis on top of it — the fade-in sections should now scroll with a smoother, weightier feel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- LOCOMOTIVE SCROLL SECTION -->
+<!-- ============================================================ -->
+<section class="lib" id="loco-section">
+  <div class="lib-inner">
+    <div class="lib-head">
+      <span class="lib-tag">Library 03 · Locomotive Scroll</span>
+      <h2>Locomotive Scroll</h2>
+      <p>Locomotive Scroll solves a similar problem to Lenis — smooth scrolling — but takes a different approach: you mark up your HTML with <code>data-scroll</code> attributes, and the library handles smoothing and parallax based on those attributes directly.</p>
+      <div class="info-box" style="margin-top:24px;">
+        <h4>Lenis vs. Locomotive Scroll</h4>
+        <p>Both libraries do the same core job — smooth scrolling. You're learning both here so you know your options, but on a real project you would normally pick <strong>one</strong>, not run both at once. Lenis is lighter and pairs closely with GSAP; Locomotive Scroll is more "batteries-included," with built-in parallax via HTML attributes.</p>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h4>Getting the CDN &amp; connecting it</h4>
+      <p>Add the stylesheet in <code>&lt;head&gt;</code>, and the script before your own <code>script.js</code> at the bottom of <code>&lt;body&gt;</code> — same pattern as GSAP and Lenis.</p>
+    </div>
+
+    <div class="code-label">index.html</div>
+    <pre><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main data-scroll-container&gt;
+    ...your sections here...
+  &lt;/main&gt;
+
+  &lt;script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"&gt;&lt;/script&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+    <!-- Topic 1 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">01</span><h3>Setup &amp; Data Attributes</h3></div>
+      <p class="lede">Every page using Locomotive Scroll needs one wrapping element with <code>data-scroll-container</code>. The library then looks inside that container for any element tagged with <code>data-scroll</code>.</p>
+      <div class="code-label">script.js</div>
+      <pre><code>const scroll = new LocomotiveScroll({
+  el: document.querySelector("[data-scroll-container]"),
+  smooth: true
+});</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>Rebuild your Lenis long-scroll page using Locomotive Scroll instead, and compare how the default "feel" differs out of the box.</p>
+      </div>
+    </div>
+
+    <!-- Topic 2 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">02</span><h3>Parallax with data-scroll-speed</h3></div>
+      <p class="lede"><code>data-scroll-speed</code> makes an element move faster or slower than the actual scroll — a positive number moves it in one direction relative to scroll, a negative number moves it the opposite way. Bigger numbers mean a more dramatic effect.</p>
+      <div class="code-label">index.html</div>
+      <pre><code>&lt;div data-scroll-container&gt;
+  &lt;section class="hero" data-scroll-section&gt;
+    &lt;div class="bg-shape" data-scroll data-scroll-speed="4"&gt;&lt;/div&gt;
+    &lt;h1 data-scroll data-scroll-speed="-2"&gt;Hello&lt;/h1&gt;
+  &lt;/section&gt;
+&lt;/div&gt;</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>A hero section with 2–3 layered shapes (circles, blobs, or icons) moving at different <code>data-scroll-speed</code> values to create a sense of depth as the user scrolls.</p>
+      </div>
+    </div>
+
+    <!-- Topic 3 -->
+    <div class="topic">
+      <div class="topic-head"><span class="topic-num">03</span><h3>Combining Locomotive Scroll with GSAP</h3></div>
+      <p class="lede">Locomotive Scroll emits its own <code>scroll</code> event with the current scroll position, which you can feed straight into a GSAP tween for extra control that plain data attributes can't give you.</p>
+      <div class="code-label">script.js</div>
+      <pre><code>scroll.on("scroll", (instance) => {
+  gsap.to(".floating-icon", {
+    y: instance.scroll.y * 0.1,
+    ease: "none",
+    overwrite: true
+  });
+});</code></pre>
+      <div class="project-idea">
+        <div class="label">Project idea</div>
+        <p>A small floating icon or shape that drifts downward at a fraction of the scroll speed, driven by GSAP but positioned using Locomotive Scroll's scroll value.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CAPSTONE -->
+<!-- ============================================================ -->
+<section id="capstone">
+  <div class="lib-inner">
+    <div class="lib-head">
+      <span class="lib-tag" style="background:#20242A;color:var(--text-dim);">Final Step</span>
+      <h2>Capstone Project Idea</h2>
+      <p>Once every topic above has its own small project working, combine them into a single scrolling page. This is the project that proves you can plan and build a motion-driven page from a blank file — use it as the base for anything you build next.</p>
+    </div>
+
+    <div class="capstone-box">
+      <h3>"One Long Scroll" — a single-page motion experience</h3>
+      <p>Structure one page as 4–5 full-height sections and bring in a technique from each topic you've learned: a text-reveal headline in the first section, a staggered card grid in the second, an SVG line that draws itself in the third, and scroll-triggered fades throughout — all wrapped in smooth scrolling from either Lenis or Locomotive Scroll (pick one). Add hover interactions to any buttons or cards along the way.</p>
+      <div class="chip-row">
+        <span class="chip g">Text reveal</span>
+        <span class="chip g">Stagger grid</span>
+        <span class="chip g">ScrollTrigger</span>
+        <span class="chip g">SVG draw-on</span>
+        <span class="chip g">Hover states</span>
+        <span class="chip l">Lenis</span>
+        <span class="chip c">or Locomotive Scroll</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Motion Curriculum · GSAP · Lenis · Locomotive Scroll — build one topic at a time, in order.
+</footer>
+
+</body>
+</html>
