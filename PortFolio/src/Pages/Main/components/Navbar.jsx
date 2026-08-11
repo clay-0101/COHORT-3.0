@@ -106,14 +106,6 @@ const Navbar = () => {
             About
           </NavLink>
 
-          <button
-            type="button"
-            onClick={handleProcessClick}
-            className="text-[13px] font-medium text-black/80 transition-all duration-300 hover:opacity-50"
-          >
-            Process
-          </button>
-
           <NavLink
             to="/projects"
             onClick={handleNavClick}
@@ -189,14 +181,6 @@ const Navbar = () => {
           >
             About
           </NavLink>
-
-          <button
-            type="button"
-            onClick={handleProcessClick}
-            className="border-b border-black/10 py-4 text-left text-sm font-medium text-black/80"
-          >
-            Process
-          </button>
 
           <NavLink
             to="/projects"

@@ -5,155 +5,162 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const RotatingWords = () => {
-    const heroRef = useRef(null);
-    const phrase1Ref = useRef(null);
-    const phrase2Ref = useRef(null);
+  const heroRef = useRef(null);
+  const phrase1Ref = useRef(null);
+  const phrase2Ref = useRef(null);
 
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            function buildPhrase(el, text) {
-                el.innerHTML = "";
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      function buildPhrase(el, text) {
+        el.innerHTML = "";
 
-                text.split(" ").forEach((word) => {
-                    const wordSpan = document.createElement("span");
+        text.split(" ").forEach((word) => {
+          const wordSpan = document.createElement("span");
+          wordSpan.className = "flex mr-[0.28em]";
 
-                    wordSpan.className = "flex mr-[0.28em]";
+          [...word].forEach((ch) => {
+            const charSpan = document.createElement("span");
+            charSpan.className =
+              "char inline-block will-change-transform origin-[50%_100%]";
+            charSpan.textContent = ch;
+            wordSpan.appendChild(charSpan);
+          });
 
-                    [...word].forEach((ch) => {
-                        const charSpan = document.createElement("span");
+          el.appendChild(wordSpan);
+        });
 
-                        charSpan.className =
-                            "char inline-block will-change-transform origin-[50%_100%]";
+        return el.querySelectorAll(".char");
+      }
 
-                        charSpan.textContent = ch;
-                        wordSpan.appendChild(charSpan);
-                    });
+      const chars1 = buildPhrase(
+        phrase1Ref.current,
+        "SKILL ENGINE"
+      );
 
-                    el.appendChild(wordSpan);
-                });
+      const chars2 = buildPhrase(
+        phrase2Ref.current,
+        "PASSION DRIVE"
+      );
 
-                return el.querySelectorAll(".char");
-            }
+      gsap.set(chars1, {
+        opacity: 0,
+        yPercent: 70,
+        rotateX: -70,
+        transformPerspective: 800,
+      });
 
-            const chars1 = buildPhrase(
-                phrase1Ref.current,
-                "SKILL ENGINE"
-            );
+      gsap.set(chars2, {
+        opacity: 0,
+        yPercent: 70,
+        rotateX: -70,
+        transformPerspective: 800,
+      });
 
-            const chars2 = buildPhrase(
-                phrase2Ref.current,
-                "PASSION DRIVE"
-            );
+      gsap.set(phrase2Ref.current, {
+        autoAlpha: 0,
+      });
 
-            gsap.set(chars1, {
-                opacity: 0,
-                yPercent: 70,
-                rotateX: -70,
-                transformPerspective: 800,
-            });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top 65%",
+          end: "+=215%",
+          scrub: 1,
+        },
+      });
 
-            gsap.set(chars2, {
-                opacity: 0,
-                yPercent: 70,
-                rotateX: -70,
-                transformPerspective: 800,
-            });
+      ScrollTrigger.create({
+        trigger: heroRef.current,
+        start: "top top",
+        end: "+=150%",
+        pin: true,
+        anticipatePin: 1,
+      });
 
-            gsap.set(phrase2Ref.current, {
-                autoAlpha: 0,
-            });
+      tl.to(chars1, {
+        opacity: 1,
+        yPercent: 0,
+        rotateX: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.035,
+      })
+        .to({}, {
+          duration: 0.45,
+        })
+        .to(chars1, {
+          opacity: 0,
+          yPercent: -70,
+          rotateX: 75,
+          transformPerspective: 800,
+          duration: 0.8,
+          ease: "power2.in",
+          stagger: 0.035,
+        })
+        .set(
+          phrase2Ref.current,
+          {
+            autoAlpha: 1,
+          },
+          "<0.4"
+        )
+        .to(
+          chars2,
+          {
+            opacity: 1,
+            yPercent: 0,
+            rotateX: 0,
+            transformPerspective: 800,
+            duration: 0.8,
+            ease: "power3.out",
+            stagger: 0.035,
+          },
+          "<0.4"
+        )
+        .to({}, {
+          duration: 0.5,
+        })
+        .to(chars2, {
+          opacity: 0,
+          yPercent: -70,
+          rotateX: 75,
+          transformPerspective: 800,
+          duration: 0.8,
+          ease: "power2.in",
+          stagger: 0.035,
+        })
+        .set(phrase2Ref.current, {
+          autoAlpha: 0,
+        });
+    }, heroRef);
 
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: heroRef.current,
-                    start: "top top",
-                    end: "+=210%",
-                    scrub: 1,
-                    pin: true,
-                    anticipatePin: 1,
-                },
-            });
+    return () => ctx.revert();
+  }, []);
 
-            tl.to(chars1, {
-                opacity: 1,
-                yPercent: 0,
-                rotateX: 0,
-                duration: 1,
-                ease: "power3.out",
-                stagger: 0.045,
-            })
-                .to({}, {
-                    duration: 0.45,
-                })
-                .to(chars1, {
-                    opacity: 0,
-                    yPercent: -70,
-                    rotateX: 75,
-                    transformPerspective: 800,
-                    duration: 0.8,
-                    ease: "power2.in",
-                    stagger: 0.035,
-                })
-                .set(
-                    phrase2Ref.current,
-                    {
-                        autoAlpha: 1,
-                    },
-                    "<0.4"
-                )
-                .to(
-                    chars2,
-                    {
-                        opacity: 1,
-                        yPercent: 0,
-                        rotateX: 0,
-                        transformPerspective: 800,
-                        duration: 1,
-                        ease: "power3.out",
-                        stagger: 0.045,
-                    },
-                    "<0.4"
-                )
-                .to({}, {
-                    duration: 0.5,
-                })
-                .to(chars2, {
-                    opacity: 0,
-                    yPercent: -70,
-                    rotateX: 75,
-                    transformPerspective: 800,
-                    duration: 0.8,
-                    ease: "power2.in",
-                    stagger: 0.035,
-                })
-                .set(phrase2Ref.current, {
-                    autoAlpha: 0,
-                });
-        }, heroRef);
+  return (
+    <main className="bg-black min-h-screen w-full overflow-x-hidden font-sans m-0 p-0">
+      <section
+        ref={heroRef}
+        className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black"
+      >
+        <div className="relative w-full h-screen flex items-center justify-center">
+          
+          {/* SKILL ENGINE */}
+          <h1
+            ref={phrase1Ref}
+            className="avenir absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-[clamp(60px,13vw,195px)] tracking-[-0.04em] leading-none whitespace-nowrap flex flex-row justify-center items-center text-[#f5f5f5] m-0 p-0"
+          />
 
-        return () => ctx.revert();
-    }, []);
+          {/* PASSION DRIVE */}
+          <h1
+            ref={phrase2Ref}
+            className="avenir absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-[clamp(60px,13vw,195px)] tracking-[-0.04em] leading-none whitespace-nowrap flex flex-row justify-center items-center text-[#5B8DEF] m-0 p-0"
+          />
 
-    return (
-        <main className="bg-black min-h-screen w-full overflow-x-hidden font-sans m-0 p-0">
-            <section
-                ref={heroRef}
-                className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black"
-            >
-                <div className="relative w-full h-screen flex items-center justify-center">
-                    <h1
-                        ref={phrase1Ref}
-                        className="avenir absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-[clamp(60px,15vw,220px)] tracking-[-0.04em] leading-none whitespace-nowrap flex flex-row justify-center items-center text-[#f5f5f5] m-0 p-0"
-                    />
-
-                    <h1
-                        ref={phrase2Ref}
-                        className="avenir absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-[clamp(60px,15vw,220px)] tracking-[-0.04em] leading-none whitespace-nowrap flex flex-row justify-center items-center text-[#e8531f] m-0 p-0"
-                    />
-                </div>
-            </section>
-        </main>
-    );
+        </div>
+      </section>
+    </main>
+  );
 };
 
 export default RotatingWords;
