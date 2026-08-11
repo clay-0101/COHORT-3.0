@@ -24,7 +24,6 @@ const CardsGrid = () => {
     }
   };
 
-
   const topImages = [
     "https://picsum.photos/seed/carry1/600/500",
     "https://picsum.photos/seed/carry2/600/500",
@@ -52,26 +51,24 @@ const CardsGrid = () => {
         },
       });
 
-
       tl.to(topRowRefs.current, {
         y: 0,
         opacity: 1,
-        duration: 1,
+        duration: 0.8,
         ease: "power3.out",
-        stagger: 0.18,
+        stagger: 0.15,
       });
-
 
       tl.to(
         bottomRowRefs.current,
         {
           y: 0,
           opacity: 1,
-          duration: 1,
+          duration: 0.8,
           ease: "power3.out",
-          stagger: 0.25,
+          stagger: 0.2,
         },
-        "-=0.5" 
+        "-=0.4"
       );
     }, sectionRef);
 
@@ -81,7 +78,7 @@ const CardsGrid = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-black px-5 py-16 sm:px-10 sm:py-24 lg:px-16"
+      className="w-full bg-black px-5 pt-16 pb-0 sm:px-10 sm:pt-20 lg:px-16 lg:pt-24"
     >
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {topImages.map((img, i) => (

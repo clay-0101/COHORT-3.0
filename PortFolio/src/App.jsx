@@ -6,16 +6,23 @@ import CardsGrid from './Pages/Second/components/CardGrid'
 import Bio from './Pages/Bio/Bio'
 import About from './Pages/About/About'
 import { Outlet } from 'react-router'
+import RotatingWords from './Pages/Third/RotatingWords'
+import ShowCase from './Pages/Project/ShowCase'
+import Footer from './Pages/Main/Footer'
 
 
 const App = () => {
+
+
 
     return (
         <div >
             <Main />
             <SecondPage />
-            <Bio/>
-       
+            <RotatingWords />
+            <Bio />
+            <Footer />
+
         </div>
     )
 }

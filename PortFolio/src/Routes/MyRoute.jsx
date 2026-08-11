@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import App from "../App";
 import About from "../Pages/About/About";
 import Lenis from 'lenis'
-import ProjectShowcase from "../Pages/Project/ShowCase";
+import ShowCase from "../Pages/Project/ShowCase";
+import Bio from "../Pages/Bio/Bio";
 
 
 const MyRoute = () => {
@@ -34,8 +35,8 @@ const MyRoute = () => {
             path: '/about',
             element: <About />
         },{
-            path : '/project',
-            element : <ProjectShowcase/>
+            path : '/projects',
+            element : <ShowCase/>
         }
     ])
     return <RouterProvider router={router} />
