@@ -74,12 +74,12 @@ const Navbar = () => {
             About
           </button>
 
-          <a
-            href="#work"
+          <button
+            onClick={()=>navigate('/project')}
             className="text-[13px] font-medium text-black/80 transition-opacity duration-300 hover:opacity-50"
           >
             Work
-          </a>
+          </button>
 
           <a
             href="#process"
