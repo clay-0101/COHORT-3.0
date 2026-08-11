@@ -104,8 +104,8 @@ function SecondPage() {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "top top",
-                    end: "+=11000",
-                    scrub: 2,
+                    end: "+=6000", // 11000 se kam karke 6000 kiya
+                    scrub: 1,      // 2 se kam karke 1 kiya taaki delay na ho
                     pin: true,
                     anticipatePin: 1,
                 },
@@ -205,38 +205,20 @@ function SecondPage() {
                 {
                     x: (index) => {
                         const positions = [
-                            -300,
-                            -250,
-                            140,
-                            260,
-                            600,
-                            750,
+                            -300, -250, 140, 260, 600, 750,
                         ];
-
                         return positions[index];
                     },
                     y: (index) => {
                         const positions = [
-                            -220,
-                            80,
-                            -220,
-                            80,
-                            -220,
-                            80,
+                            -220, 80, -220, 80, -220, 80,
                         ];
-
                         return positions[index];
                     },
                     scale: (index) => {
                         const scales = [
-                            0.85,
-                            1,
-                            0.9,
-                            1.05,
-                            0.88,
-                            0.95,
+                            0.85, 1, 0.9, 1.05, 0.88, 0.95,
                         ];
-
                         return scales[index];
                     },
                     rotation: 0,
