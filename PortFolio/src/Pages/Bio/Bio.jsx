@@ -5,28 +5,28 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const HEADING_TEXT =
-  "For Developers, Founders, Agencies, and Teams That Need the Site to Feel as Premium as the Product.";
+  "A Frontend Developer Who Turns Static Screens Into Interfaces That Move, Respond, and Feel Alive.";
 
 const CARDS = [
   {
-    title: "Creative Front-End Developers",
-    text: "Build highly engaging web experiences with ready-to-use animations and components without spending days on physics and math.",
+    title: "React & Component Architecture",
+    text: "Reusable, accessible UI built with hooks and clean state boundaries — nothing tangled, nothing repeated.",
   },
   {
-    title: "Tech Stack",
-    text: "Make your launch page feel more premium without hiring a full motion team. Use Vault to speed up build cycles, and raise perceived product quality.",
+    title: "State Management (Redux)",
+    text: "Predictable app state through actions and reducers, kept lean so data flow is always easy to trace.",
   },
   {
-    title: "Learning Path",
-    text: "Deliver premium sites to your clients faster. Use our library to build high-end award-winning websites with minimal effort.",
+    title: "GSAP & Motion Design",
+    text: "Scroll-triggered reveals, micro-interactions, and page transitions that make an interface feel intentional.",
   },
   {
-    title: "Work Showcase",
-    text: "Empower your teams to build faster and maintain high UI/UX standards across all company products without heavy technical debt.",
+    title: "Tailwind CSS & Responsive Design",
+    text: "Interfaces that hold up on any screen size, styled fast without sacrificing a polished, custom look.",
   },
   {
-    title: "Connect Me",
-    text: "Increase conversions with landing pages that feel expensive and premium. Capture your audience's attention instantly.",
+    title: "Video Editing & Post-Production",
+    text: "Cutting, grading, and exporting clips — the same eye for timing that goes into every UI transition.",
   },
 ];
 
@@ -61,9 +61,9 @@ const Bio = () => {
           headerOffset;
 
         const baseHeight = totalAvailableHeight / count;
-        const activeHeight = baseHeight * 1.75;
+        const activeHeight = Math.max(baseHeight * 1.75, 160);
         const remainingHeight = totalAvailableHeight - activeHeight;
-        const smallHeight = remainingHeight / (count - 1);
+        const smallHeight = Math.max(remainingHeight / (count - 1), 44);
 
         return {
           activeHeight,
@@ -105,30 +105,25 @@ const Bio = () => {
 
       setCardsInitialState();
 
-      // ==========================================
-      // 1. HEADING DOWNWARD SCROLL ANIMATION
-      // Ye text ko scroll ke sath neeche move karega aur end par rok dega
-      // ==========================================
-      gsap.to(heading, {
-        y: () => {
-          // Window ki height me se text ki height aur thodi margin (100px) minus kar di
-          // Taaki text screen ke bottom se bahar na chala jaye
-          const maxMove = window.innerHeight - heading.offsetHeight - 100;
-          return maxMove > 0 ? maxMove : 0;
-        },
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1, // Scroll ke sath smoothly chalne ke liye
-          invalidateOnRefresh: true,
-        },
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 1024px)", () => {
+        gsap.to(heading, {
+          y: () => {
+            const maxMove = window.innerHeight - heading.offsetHeight - 100;
+            return maxMove > 0 ? maxMove : 0;
+          },
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1,
+            invalidateOnRefresh: true,
+          },
+        });
       });
 
-      // ==========================================
-      // 2. CARDS ACCORDION ANIMATION
-      // ==========================================
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -139,7 +134,7 @@ const Bio = () => {
         },
       });
 
-      timeline.to({}, { duration: 0.5 }); // Starting buffer
+      timeline.to({}, { duration: 0.5 });
 
       cards.forEach((card, index) => {
         if (index === cards.length - 1) return;
@@ -212,31 +207,24 @@ const Bio = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative z-20 min-h-[320vh] w-full bg-black font-['Inter'] text-white"
-    >
+    <section ref={sectionRef} className="relative z-20 min-h-[320vh] w-full bg-black font-['Inter'] text-white">
       <div className="sticky top-0 flex h-screen w-full items-center overflow-hidden bg-black px-4 sm:px-6 md:px-8 lg:px-10 xl:px-[56px]">
         <div className="relative h-full w-full">
           <div className="grid h-full w-full grid-cols-1 gap-6 lg:grid-cols-[40%_60%] lg:gap-6 xl:gap-8">
-            {/* Left Side - Text */}
-            <div className="relative flex flex-col justify-start pt-6 lg:pt-[7%]">
+            <div className="relative flex flex-col justify-start pb-4 pt-6 lg:pb-0 lg:pt-[7%]">
               <h1
                 ref={headingRef}
                 className="text-[34px] font-[400] leading-[1.08] tracking-[-1.8px] sm:text-[40px] sm:tracking-[-2px] md:text-[46px] md:tracking-[-2.2px] lg:max-w-[520px] lg:text-[48px] xl:text-[54px] xl:tracking-[-2.5px] will-change-transform"
               >
                 {HEADING_TEXT.split(" ").map((word, wi, arr) => (
                   <Fragment key={wi}>
-                    <span className="inline-block whitespace-nowrap">
-                      {word}
-                    </span>
+                    <span className="inline-block whitespace-nowrap">{word}</span>
                     {wi < arr.length - 1 ? " " : ""}
                   </Fragment>
                 ))}
               </h1>
             </div>
 
-            {/* Right Side - Cards */}
             <div className="cards-wrapper relative z-10 flex h-full flex-col justify-center gap-2">
               {CARDS.map((card, i) => (
                 <div
@@ -250,16 +238,7 @@ const Bio = () => {
 
                   <div className="card-content overflow-hidden">
                     <div className="relative z-10 mt-3 flex flex-col gap-5 sm:mt-5 lg:gap-8">
-                      <p className="max-w-[85%] text-[15px] leading-[1.5] opacity-80 sm:text-[16px] lg:text-[18px]">
-                        {card.text}
-                      </p>
-
-                      <a
-                        href="#"
-                        className="w-max border-b border-current pb-0.5 text-[13px] font-[500] tracking-wide sm:text-[14px]"
-                      >
-                        Start with Free Effects ↗
-                      </a>
+                      <p className="max-w-[85%] text-[15px] leading-[1.5] opacity-80 sm:text-[16px] lg:text-[18px]">{card.text}</p>
                     </div>
                   </div>
                 </div>
