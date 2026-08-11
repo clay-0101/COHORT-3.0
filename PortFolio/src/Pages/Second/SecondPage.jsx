@@ -313,12 +313,6 @@ function SecondPage() {
                     </p>
                 </div>
             </section>
-
-            <section className="flex h-screen w-full items-center justify-center bg-[#111]">
-                <h1 className="text-6xl font-bold">
-                    My Projects
-                </h1>
-            </section>
         </main>
     );
 }

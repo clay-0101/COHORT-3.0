@@ -24,7 +24,7 @@ const CardsGrid = () => {
     }
   };
 
-  // Placeholder random images - replace with your own later
+
   const topImages = [
     "https://picsum.photos/seed/carry1/600/500",
     "https://picsum.photos/seed/carry2/600/500",
@@ -52,7 +52,7 @@ const CardsGrid = () => {
         },
       });
 
-      // Top row - apna stagger
+
       tl.to(topRowRefs.current, {
         y: 0,
         opacity: 1,
@@ -61,7 +61,7 @@ const CardsGrid = () => {
         stagger: 0.18,
       });
 
-      // Bottom row - thodi delay ke baad shuru, apna alag stagger
+
       tl.to(
         bottomRowRefs.current,
         {
@@ -71,7 +71,7 @@ const CardsGrid = () => {
           ease: "power3.out",
           stagger: 0.25,
         },
-        "-=0.5" // thoda overlap taaki randomness feel aaye, poora sequential na lage
+        "-=0.5" 
       );
     }, sectionRef);
 
