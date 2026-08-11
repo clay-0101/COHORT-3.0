@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef, useState } from "react";
+import { NavLink } from "react-router";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Eye, Code2, X, ArrowUpRight } from "lucide-react";
+import { Eye, Code2, X, ArrowUpRight, Home } from "lucide-react";
 
 import productiveDashBoardImg from "../../assets/das.png";
 import spendly from "../../assets/spendly.png";
@@ -24,7 +25,7 @@ const projects = [
     github:
       "https://github.com/clay-0101/COHORT-3.0/tree/main/React/REACT-PROJECTS/MART",
   },
-    {
+  {
     id: 2,
     title: "SUNDOWN",
     number: "02",
@@ -33,7 +34,6 @@ const projects = [
     live: "https://clay-0101.github.io/Sundown-Studio-Clone/",
     github: "https://github.com/clay-0101/Sundown-Studio-Clone",
   },
-
   {
     id: 3,
     title: "Expense Tracker",
@@ -81,12 +81,11 @@ const projects = [
     category: "Managment",
     image: emstool,
     live: "https://emstool.vercel.app/",
-    github:
-      "https://github.com/clay-0101/EMS",
+    github: "https://github.com/clay-0101/EMS",
   },
 ];
 
-const ProjectShowcase = () => {
+const ShowCase = () => {
   const sectionRef = useRef(null);
   const movingRef = useRef(null);
   const markerRefs = useRef([]);
@@ -120,7 +119,7 @@ const ProjectShowcase = () => {
     const top =
       total === 1
         ? 50
-        : 4 + (index / (total - 1)) * 92;
+        : 4 + (index / (total - 1)) * 84;
 
     return {
       left: `${left}%`,
@@ -128,10 +127,7 @@ const ProjectShowcase = () => {
     };
   };
 
-  const pathHeight = Math.max(
-    300,
-    projects.length * 48
-  );
+  const pathHeight = Math.max(300, projects.length * 48);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -210,15 +206,8 @@ const ProjectShowcase = () => {
           `;
         }
 
-        guideLineRef.current?.setAttribute(
-          "d",
-          d
-        );
-
-        drawLineRef.current?.setAttribute(
-          "d",
-          d
-        );
+        guideLineRef.current?.setAttribute("d", d);
+        drawLineRef.current?.setAttribute("d", d);
 
         if (drawLineRef.current) {
           const length =
@@ -253,10 +242,7 @@ const ProjectShowcase = () => {
           "path"
         );
 
-      motionPath.setAttribute(
-        "d",
-        pathData
-      );
+      motionPath.setAttribute("d", pathData);
 
       const totalLength =
         motionPath.getTotalLength();
@@ -400,10 +386,6 @@ const ProjectShowcase = () => {
       }
 
       const handleResize = () => {
-        if (animationTimeline) {
-          animationTimeline.kill();
-        }
-
         ScrollTrigger.refresh();
       };
 
@@ -488,6 +470,19 @@ const ProjectShowcase = () => {
         ref={sectionRef}
         className="project-showcase relative overflow-hidden bg-[#070707] text-white"
       >
+        {/* HOME BUTTON */}
+        <NavLink
+          to="/"
+          className="group absolute left-6 top-6 z-[80] flex items-center gap-2 rounded-full border border-white/15 bg-black/50 px-4 py-2.5 text-xs font-medium text-white/75 backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white hover:text-black sm:left-10 sm:top-8"
+        >
+          <Home
+            size={14}
+            strokeWidth={1.8}
+            className="transition-transform duration-300 group-hover:-translate-x-0.5"
+          />
+          <span>Home</span>
+        </NavLink>
+
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 opacity-[0.13] [background-image:linear-gradient(rgba(255,255,255,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:80px_80px]" />
 
@@ -554,7 +549,7 @@ const ProjectShowcase = () => {
           </span>
         </div>
 
-        <div className="relative z-30 flex h-[20vh] min-h-[150px] flex-col items-center justify-center text-center">
+        <div className="relative z-30 flex h-[20vh] min-h-[150px] flex-col items-center justify-center px-5 text-center">
           <p className="mb-3 text-[10px] font-medium uppercase tracking-[0.45em] text-white/35 sm:text-xs">
             Selected Work
           </p>
@@ -620,8 +615,7 @@ const ProjectShowcase = () => {
               >
                 <button
                   ref={(element) => {
-                    markerRefs.current[index] =
-                      element;
+                    markerRefs.current[index] = element;
                   }}
                   onClick={() =>
                     setSelectedProject(project)
@@ -712,7 +706,7 @@ const ProjectShowcase = () => {
           </div>
         </div>
 
-        <div className="relative z-30 flex h-[20vh] min-h-[150px] items-center justify-center text-center">
+        <div className="relative z-30 flex h-[20vh] min-h-[150px] items-center justify-center px-5 text-center">
           <div>
             <p className="text-[9px] uppercase tracking-[0.35em] text-white/25">
               End of collection
@@ -803,4 +797,4 @@ const ProjectShowcase = () => {
   );
 };
 
-export default ProjectShowcase;
+export default ShowCase;
