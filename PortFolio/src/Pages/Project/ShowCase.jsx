@@ -99,7 +99,7 @@ const ShowCase = () => {
   const getPosition = (index) => {
     const total = projects.length;
 
-    const sidePattern = [
+    const desktopPattern = [
       63,
       20,
       82,
@@ -114,11 +114,27 @@ const ShowCase = () => {
       25,
     ];
 
-    const left = sidePattern[index % sidePattern.length];
+    const mobilePattern = [
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+    ];
+
+    const isMobile = window.innerWidth <= 700;
+
+    const pattern = isMobile ? mobilePattern : desktopPattern;
+
+    const left = pattern[index % pattern.length];
 
     const top =
       total === 1
         ? 50
+        : isMobile
+        ? 5 + (index / (total - 1)) * 90
         : 4 + (index / (total - 1)) * 84;
 
     return {
@@ -127,7 +143,10 @@ const ShowCase = () => {
     };
   };
 
-  const pathHeight = Math.max(300, projects.length * 48);
+  const pathHeight = Math.max(
+    300,
+    projects.length * 48
+  );
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -259,9 +278,7 @@ const ShowCase = () => {
 
       intro.fromTo(
         sectionRef.current,
-        {
-          opacity: 0,
-        },
+        { opacity: 0 },
         {
           opacity: 1,
           duration: 0.7,
@@ -470,7 +487,6 @@ const ShowCase = () => {
         ref={sectionRef}
         className="project-showcase relative overflow-hidden bg-[#070707] text-white"
       >
-        {/* HOME BUTTON */}
         <NavLink
           to="/"
           className="group absolute left-6 top-6 z-[80] flex items-center gap-2 rounded-full border border-white/15 bg-black/50 px-4 py-2.5 text-xs font-medium text-white/75 backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white hover:text-black sm:left-10 sm:top-8"
@@ -489,37 +505,26 @@ const ShowCase = () => {
           <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.15)_1px,transparent_1px)] [background-size:20px_20px]" />
 
           <div className="absolute left-[20%] top-[15%] h-[450px] w-[450px] rounded-full bg-violet-500/[0.08] blur-[120px]" />
-
           <div className="absolute right-[5%] top-[38%] h-[500px] w-[500px] rounded-full bg-cyan-400/[0.06] blur-[140px]" />
-
           <div className="absolute bottom-[10%] left-[30%] h-[400px] w-[400px] rounded-full bg-pink-500/[0.05] blur-[130px]" />
-
           <div className="absolute right-[22%] top-[62%] h-[380px] w-[380px] rounded-full bg-[#FFC24B]/[0.05] blur-[130px]" />
-
           <div className="absolute left-[6%] top-[85%] h-[340px] w-[340px] rounded-full bg-[#E4572E]/[0.05] blur-[120px]" />
 
           <div className="absolute left-[8%] top-0 h-full w-px bg-white/[0.06]" />
-
           <div className="absolute right-[8%] top-0 h-full w-px bg-white/[0.06]" />
 
           <div className="absolute left-[8%] top-[18%] h-2 w-2 rounded-full bg-cyan-400/50" />
-
           <div className="absolute right-[8%] top-[48%] h-2 w-2 rounded-full bg-violet-400/50" />
 
           <div className="absolute left-[14%] top-[75%] h-1.5 w-1.5 rounded-full bg-[#FFC24B]/50" />
-
           <div className="absolute right-[16%] top-[82%] h-1.5 w-1.5 rounded-full bg-[#E4572E]/50" />
 
           <div className="absolute left-0 top-[30%] h-px w-[18%] bg-gradient-to-r from-transparent to-white/10" />
-
           <div className="absolute right-0 top-[70%] h-px w-[18%] bg-gradient-to-l from-transparent to-white/10" />
 
           <div className="absolute left-6 top-6 h-9 w-9 border-l border-t border-white/20 sm:left-10 sm:top-10" />
-
           <div className="absolute right-6 top-6 h-9 w-9 border-r border-t border-white/20 sm:right-10 sm:top-10" />
-
           <div className="absolute bottom-6 left-6 h-9 w-9 border-b border-l border-white/20 sm:bottom-10 sm:left-10" />
-
           <div className="absolute bottom-6 right-6 h-9 w-9 border-b border-r border-white/20 sm:bottom-10 sm:right-10" />
 
           <div className="ps-scanline absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-transparent via-white/[0.04] to-transparent" />
@@ -620,7 +625,7 @@ const ShowCase = () => {
                   onClick={() =>
                     setSelectedProject(project)
                   }
-                  className="group relative h-[300px] w-[500px] overflow-hidden rounded-2xl border border-white/[0.15] bg-[#111] text-left shadow-[0_22px_60px_rgba(0,0,0,0.65)] transition-all duration-500 hover:-translate-y-2 hover:border-white/35 hover:shadow-[0_30px_75px_rgba(0,0,0,0.8)] max-[700px]:h-[150px] max-[700px]:w-[240px] max-[420px]:h-[125px] max-[420px]:w-[200px]"
+                  className="group relative h-[300px] w-[500px] overflow-hidden rounded-2xl border border-white/[0.15] bg-[#111] text-left shadow-[0_22px_60px_rgba(0,0,0,0.65)] transition-all duration-500 hover:-translate-y-2 hover:border-white/35 hover:shadow-[0_30px_75px_rgba(0,0,0,0.8)] max-[700px]:h-[150px] max-[700px]:w-[min(82vw,340px)] max-[420px]:h-[125px] max-[420px]:w-[min(84vw,300px)]"
                 >
                   <img
                     src={project.image}
@@ -659,7 +664,7 @@ const ShowCase = () => {
 
           <div
             ref={movingRef}
-            className="pointer-events-none absolute left-[63%] top-[4%] z-30 h-14 w-14 -translate-x-1/2 sm:h-16 sm:w-16"
+            className="pointer-events-none absolute left-[63%] top-[4%] z-30 h-14 w-14 -translate-x-1/2 sm:h-16 sm:w-16 max-[700px]:left-1/2"
           >
             <div className="relative flex h-full w-full items-center justify-center">
               <div className="absolute h-10 w-10 rounded-full bg-[#E4572E]/25 blur-xl sm:h-12 sm:w-12" />

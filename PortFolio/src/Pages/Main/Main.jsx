@@ -4,9 +4,7 @@ import Navbar from './components/Navbar'
 import HeroText from './components/HeroText'
 import BuildingBadge from './components/RightText'
 
-const Main = () => {
-    console.log(window.scrollY)
-  
+const Main = () => {  
   return (
     <div className="relative w-full h-screen overflow-hidden">
         <Navbar/>
