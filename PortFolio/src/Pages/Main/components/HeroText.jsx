@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { NavLink } from "react-router";
 
 const HeroText = () => {
   const line1Ref = useRef(null);
@@ -72,14 +73,14 @@ const HeroText = () => {
       </p>
 
       <div>
-        <a
+        <NavLink
           ref={btnRef}
-          href="#work"
+          to="/projects"
           className="font-mono pointer-events-auto inline-block rounded-full bg-white px-5 py-2.5 text-xs font-medium text-black shadow-sm hover:shadow-md sm:px-6 sm:py-3 sm:text-[13px]"
         
         >
           Explore my work
-        </a>
+        </NavLink>
       </div>
     </div>
   );
