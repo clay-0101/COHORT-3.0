@@ -21,6 +21,7 @@ function SecondPage() {
         "https://i.pinimg.com/736x/cb/03/24/cb0324304d5cb614994c1ec030e8f36c.jpg",
         img,
     ];
+
     const images2 = [
         "https://i.pinimg.com/736x/e9/33/c1/e933c15f2574ece0173d2de717320d1f.jpg",
         "https://i.pinimg.com/736x/14/61/03/1461039350a80710ca888d87a2075134.jpg",
@@ -44,28 +45,30 @@ function SecondPage() {
                 opacity: 1,
             });
 
-            const split = SplitText.create(text, {
-                type: "chars",
-            });
-
-            const chars = split.chars;
-
-            gsap.set(text, {
-                y: 20,
-                opacity: 0,
-            });
-
-            gsap.set(chars, {
-                x: 120,
-                opacity: 0,
-            });
-
             gsap.set(sideCards, {
                 x: "120vw",
                 y: 0,
                 scale: 0.8,
                 rotation: 0,
                 opacity: 1,
+            });
+
+            const split = SplitText.create(text, {
+                type: "words,chars",
+                wordsClass: "paragraph-word",
+                charsClass: "paragraph-char",
+            });
+
+            const chars = split.chars;
+
+            gsap.set(text, {
+                opacity: 0,
+                y: 0,
+            });
+
+            gsap.set(chars, {
+                color: "#4d4d4d",
+                opacity: 0.35,
             });
 
             const radiusX = 430;
@@ -101,8 +104,8 @@ function SecondPage() {
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "top top",
-                    end: "+=10000",
-                    scrub: 3,
+                    end: "+=11000",
+                    scrub: 2,
                     pin: true,
                     anticipatePin: 1,
                 },
@@ -115,9 +118,9 @@ function SecondPage() {
                     y: (index) => circlePositions[index].y,
                     scale: 1,
                     rotation: 0,
-                    duration: 3,
+                    duration: 2.5,
                     stagger: {
-                        each: 0.12,
+                        each: 0.08,
                     },
                     ease: "power2.inOut",
                 },
@@ -127,46 +130,123 @@ function SecondPage() {
             tl.to(
                 {},
                 {
-                    duration: 1.5,
+                    duration: 0.7,
                 }
             );
 
-            tl.to(cards, {
-                duration: 6,
-                motionPath: {
-                    path: snakePath,
-                    curviness: 1.5,
-                    autoRotate: false,
+            tl.addLabel("loopStart");
+
+            tl.to(
+                cards,
+                {
+                    duration: 4.5,
+                    motionPath: {
+                        path: snakePath,
+                        curviness: 1.5,
+                        autoRotate: false,
+                    },
+                    scale: 1,
+                    rotation: 0,
+                    stagger: {
+                        each: 0.28,
+                    },
+                    ease: "none",
                 },
-                scale: 1,
-                rotation: 0,
-                stagger: {
-                    each: 0.5,
-                },
-                ease: "none",
-            });
+                "loopStart"
+            );
 
             tl.to(
                 text,
                 {
-                    y: 0,
                     opacity: 1,
-                    duration: 1.5,
+                    duration: 0.35,
                     ease: "power2.out",
                 },
-                "-=1.5"
+                "loopStart+=2.25"
             );
 
             tl.to(
                 chars,
                 {
-                    x: 0,
-                    opacity: 1,
-                    duration: 1.2,
-                    ease: "power3.out",
-                    stagger: 0.06,
+                    keyframes: [
+                        {
+                            color: "#E4572E",
+                            opacity: 1,
+                            duration: 0.08,
+                        },
+                        {
+                            color: "#ffffff",
+                            opacity: 1,
+                            duration: 0.12,
+                        },
+                    ],
+                    stagger: 0.01,
+                    ease: "none",
                 },
-                "-=0.5"
+                "loopStart+=2.35"
+            );
+
+            tl.to(
+                {},
+                {
+                    duration: 0.5,
+                }
+            );
+
+            tl.to(text, {
+                y: -30,
+                opacity: 0,
+                duration: 0.7,
+                ease: "power3.inOut",
+            });
+
+            tl.to(
+                sideCards,
+                {
+                    x: (index) => {
+                        const positions = [
+                            -300,
+                            -250,
+                            140,
+                            260,
+                            600,
+                            750,
+                        ];
+
+                        return positions[index];
+                    },
+                    y: (index) => {
+                        const positions = [
+                            -220,
+                            80,
+                            -220,
+                            80,
+                            -220,
+                            80,
+                        ];
+
+                        return positions[index];
+                    },
+                    scale: (index) => {
+                        const scales = [
+                            0.85,
+                            1,
+                            0.9,
+                            1.05,
+                            0.88,
+                            0.95,
+                        ];
+
+                        return scales[index];
+                    },
+                    rotation: 0,
+                    duration: 3,
+                    stagger: {
+                        each: 0.35,
+                    },
+                    ease: "power3.out",
+                },
+                "-=0.15"
             );
 
             tl.to(
@@ -176,87 +256,31 @@ function SecondPage() {
                 }
             );
 
-            tl.to(
-                text,
-                {
-                    y: -30,
-                    opacity: 0,
-                    duration: 1,
-                    ease: "power3.inOut",
-                }
-            );
-            tl.to(
-                sideCards,
-                {
-                    x: (index) => {
-
-                        const positions = [
-                            -300,
-                            -250,
-                            140,
-                            260,
-                            600,
-                            750
-                        ];
-                        return positions[index];
-                    },
-                    y: (index) => {
-                        const positions = [
-                            -220, 80, -220, 80, -220, 80
-                        ];
-                        return positions[index];
-                    },
-                    scale: (index) => {
-                        const scales = [
-                            0.85, 1, 0.9, 1.05, 0.88, 0.95
-                        ];
-                        return scales[index];
-                    },
-                    rotation: 0,
-                    duration: 3.9,
-                    stagger: {
-                        each: 0.5,
-                    },
-                    ease: "power3.out",
+            tl.to(sideCards, {
+                y: "120vh",
+                rotation: "random(-25, 25)",
+                scale: 0.85,
+                duration: 1.8,
+                stagger: {
+                    from: "end",
+                    each: 0.12,
                 },
-                "-=0.2"
-            );
-
-            tl.to(
-                {},
-                {
-                    duration: 1.5,
-                }
-            );
-
-            tl.to(
-                sideCards,
-                {
-                    y: "120vh",
-                    rotation: "random(-25, 25)",
-                    scale: 0.85,
-                    duration: 2.5,
-                    stagger: {
-                        from: "end",
-                        each: 0.15,
-                    },
-                    ease: "power3.in",
-                }
-            );
+                ease: "power3.in",
+            });
 
             tl.to(
                 cards,
                 {
                     y: "120vh",
                     rotation: "random(-25, 25)",
-                    duration: 2,
+                    duration: 1.5,
                     stagger: {
                         from: "end",
-                        each: 0.12,
+                        each: 0.1,
                     },
                     ease: "power3.in",
                 },
-                "-=1.5"
+                "-=1.1"
             );
         }, sectionRef);
 
@@ -298,21 +322,32 @@ function SecondPage() {
 
                     <p
                         ref={textRef}
-                        className="betania-patmos-in-gdl-regular relative z-20 w-[85vw] max-w-[650px] break-words text-center text-[1.5rem] font-medium leading-[1.8] tracking-wide text-white"
+                        className="avenir relative z-20 mx-auto w-[80vw] text-center text-[2.2rem] font-medium leading-[1.35] tracking-wide text-white"
+                        style={{
+                            overflowWrap: "normal",
+                            wordBreak: "normal",
+                        }}
                     >
                         I’m Carry, a frontend developer passionate about building
-                        modern, responsive, and user-focused digital experiences. With
-                        expertise in React, Tailwind CSS, GSAP animations, and emerging
-                        web technologies, I specialize in transforming ideas into
-                        interactive products that feel intuitive and inspiring. My
-                        approach blends clean code with creative design, ensuring every
-                        project is not just functional but also visually engaging.
+                        modern, responsive, and user-focused digital experiences.
+                        With expertise in React, Tailwind CSS, GSAP animations, and
+                        emerging web technologies, I specialize in transforming ideas
+                        into interactive products that feel intuitive and inspiring.
+                        My approach blends clean code with creative design, ensuring
+                        every project is not just functional but also visually engaging.
                         Driven by curiosity, I constantly experiment with new
                         frameworks and tools, turning challenges into opportunities to
                         innovate and share meaningful stories through technology.
                     </p>
                 </div>
             </section>
+
+            <style>{`
+                .paragraph-word {
+                    display: inline-block;
+                    white-space: nowrap;
+                }
+            `}</style>
         </main>
     );
 }
