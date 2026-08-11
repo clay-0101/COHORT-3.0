@@ -29,7 +29,6 @@ const HeroText = () => {
           },
           "-=0.4"
         )
-        // ✅ Button animation fixed
     
         .from(
           btnRef.current,
@@ -46,7 +45,7 @@ const HeroText = () => {
   }, []);
 
   return (
-    <div className="absolute left-0 top-0 z-10 flex h-full w-full flex-col justify-center gap-4 px-5 sm:gap-6 sm:px-10 lg:max-w-2xl lg:px-16">
+    <div className="pointer-events-none absolute left-0 top-0 z-10 flex h-full w-full flex-col justify-center gap-4 px-5 sm:gap-6 sm:px-10 lg:max-w-2xl lg:px-16">
       <h1 className="max-w-[85%] text-4xl font-semibold leading-[1.05] tracking-tight text-black xs:text-5xl sm:max-w-none sm:text-6xl md:text-7xl lg:text-[80px] xl:text-[88px]">
         <span className="block overflow-hidden">
           <span ref={line1Ref} className="block">

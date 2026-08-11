@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import {useNavigate} from 'react-router'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef(null);
+  let navigate = useNavigate()
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -65,12 +67,12 @@ const Navbar = () => {
 
         {/* DESKTOP LINKS */}
         <div className="absolute left-[20%] hidden items-center gap-9 md:flex lg:left-[21%]">
-          <a
-            href="#about"
+          <button
+            onClick={()=>navigate('/about')}
             className="text-[13px] font-medium text-black/80 transition-opacity duration-300 hover:opacity-50"
           >
             About
-          </a>
+          </button>
 
           <a
             href="#work"
@@ -96,7 +98,7 @@ const Navbar = () => {
 
         {/* CONTACT BUTTON */}
         <a
-          href="#contact"
+          href="https://www.linkedin.com/in/sainicarry/"
           className="hidden rounded-full bg-white px-6 py-3 text-[13px] font-medium text-black shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md md:block"
         >
           Let's talk
