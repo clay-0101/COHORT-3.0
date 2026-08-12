@@ -39,59 +39,18 @@ function SecondPage() {
 
             const mm = gsap.matchMedia();
 
-            const setupAnimation = ({
-                radiusX,
-                radiusY,
-                snakePath,
-                sideX,
-                sideY,
-                sideScale,
-                scrollLength,
-                textSize,
-            }) => {
-                const split = SplitText.create(text, {
-                    type: "words,chars",
-                    wordsClass: "paragraph-word",
-                    charsClass: "paragraph-char",
-                });
-
+            const setupAnimation = ({ radiusX, radiusY, snakePath, sideX, sideY, sideScale, scrollLength, textSize }) => {
+                const split = SplitText.create(text, { type: "words,chars", wordsClass: "paragraph-word", charsClass: "paragraph-char" });
                 const chars = split.chars;
 
-                gsap.set(cards, {
-                    x: 0,
-                    y: 0,
-                    scale: 1,
-                    rotation: 0,
-                    opacity: 1,
-                });
-
-                gsap.set(sideCards, {
-                    x: "120vw",
-                    y: 0,
-                    scale: 0.7,
-                    rotation: 0,
-                    opacity: 1,
-                });
-
-                gsap.set(text, {
-                    opacity: 0,
-                    y: 0,
-                    fontSize: textSize,
-                });
-
-                gsap.set(chars, {
-                    color: "#4d4d4d",
-                    opacity: 0.35,
-                });
+                gsap.set(cards, { x: 0, y: 0, scale: 1, rotation: 0, opacity: 1 });
+                gsap.set(sideCards, { x: "120vw", y: 0, scale: 0.7, rotation: 0, opacity: 1 });
+                gsap.set(text, { opacity: 0, y: 0, fontSize: textSize });
+                gsap.set(chars, { color: "#4d4d4d", opacity: 0.35 });
 
                 const circlePositions = cards.map((_, index) => {
-                    const angle =
-                        (index / cards.length) * Math.PI * 2 - Math.PI / 2;
-
-                    return {
-                        x: Math.cos(angle) * radiusX,
-                        y: Math.sin(angle) * radiusY,
-                    };
+                    const angle = (index / cards.length) * Math.PI * 2 - Math.PI / 2;
+                    return { x: Math.cos(angle) * radiusX, y: Math.sin(angle) * radiusY };
                 });
 
                 const timeline = gsap.timeline({
@@ -107,140 +66,18 @@ function SecondPage() {
                     },
                 });
 
-                timeline.to(
-                    cards,
-                    {
-                        x: (index) => circlePositions[index].x,
-                        y: (index) => circlePositions[index].y,
-                        scale: 1,
-                        rotation: 0,
-                        duration: 2,
-                        stagger: 0.08,
-                        ease: "power2.inOut",
-                    },
-                    0
-                );
-
-                timeline.to(
-                    {},
-                    {
-                        duration: 0.5,
-                    }
-                );
-
+                timeline.to(cards, { x: (index) => circlePositions[index].x, y: (index) => circlePositions[index].y, scale: 1, rotation: 0, duration: 2, stagger: 0.08, ease: "power2.inOut" }, 0);
+                timeline.to({}, { duration: 0.5 });
                 timeline.addLabel("loopStart");
-
-                timeline.to(
-                    cards,
-                    {
-                        duration: 4,
-                        motionPath: {
-                            path: snakePath,
-                            curviness: 1.5,
-                            autoRotate: false,
-                        },
-                        scale: 1,
-                        rotation: 0,
-                        stagger: {
-                            each: 0.25,
-                        },
-                        ease: "none",
-                    },
-                    "loopStart"
-                );
-
-                timeline.to(
-                    text,
-                    {
-                        opacity: 1,
-                        duration: 0.4,
-                        ease: "power2.out",
-                    },
-                    "loopStart+=2"
-                );
-
-                timeline.to(
-                    chars,
-                    {
-                        keyframes: [
-                            {
-                                color: "#E4572E",
-                                opacity: 1,
-                                duration: 0.08,
-                            },
-                            {
-                                color: "#ffffff",
-                                opacity: 1,
-                                duration: 0.12,
-                            },
-                        ],
-                        stagger: 0.008,
-                        ease: "none",
-                    },
-                    "loopStart+=2.1"
-                );
-
-                timeline.to(
-                    {},
-                    {
-                        duration: 0.4,
-                    }
-                );
-
-                timeline.to(text, {
-                    y: -25,
-                    opacity: 0,
-                    duration: 0.6,
-                    ease: "power3.inOut",
-                });
-
-                timeline.to(
-                    sideCards,
-                    {
-                        x: (index) => sideX[index],
-                        y: (index) => sideY[index],
-                        scale: (index) => sideScale[index],
-                        rotation: 0,
-                        duration: 2.5,
-                        stagger: 0.25,
-                        ease: "power3.out",
-                    },
-                    "-=0.1"
-                );
-
-                timeline.to(
-                    {},
-                    {
-                        duration: 0.5,
-                    }
-                );
-
-                timeline.to(sideCards, {
-                    y: "120vh",
-                    rotation: "random(-20, 20)",
-                    scale: 0.8,
-                    duration: 1.4,
-                    stagger: {
-                        from: "end",
-                        each: 0.1,
-                    },
-                    ease: "power3.in",
-                });
-
-                timeline.to(
-                    cards,
-                    {
-                        y: "120vh",
-                        rotation: "random(-20, 20)",
-                        duration: 1.2,
-                        stagger: {
-                            from: "end",
-                            each: 0.08,
-                        },
-                        ease: "power3.in",
-                    },
-                    "-=0.9"
-                );
+                timeline.to(cards, { duration: 4, motionPath: { path: snakePath, curviness: 1.5, autoRotate: false }, scale: 1, rotation: 0, stagger: { each: 0.25 }, ease: "none" }, "loopStart");
+                timeline.to(text, { opacity: 1, duration: 0.4, ease: "power2.out" }, "loopStart+=2");
+                timeline.to(chars, { keyframes: [{ color: "#E4572E", opacity: 1, duration: 0.08 }, { color: "#ffffff", opacity: 1, duration: 0.12 }], stagger: 0.008, ease: "none" }, "loopStart+=2.1");
+                timeline.to({}, { duration: 0.4 });
+                timeline.to(text, { y: -25, opacity: 0, duration: 0.6, ease: "power3.inOut" });
+                timeline.to(sideCards, { x: (index) => sideX[index], y: (index) => sideY[index], scale: (index) => sideScale[index], rotation: 0, duration: 2.5, stagger: 0.25, ease: "power3.out" }, "-=0.1");
+                timeline.to({}, { duration: 0.5 });
+                timeline.to(sideCards, { y: "120vh", rotation: "random(-20, 20)", scale: 0.8, duration: 1.4, stagger: { from: "end", each: 0.1 }, ease: "power3.in" });
+                timeline.to(cards, { y: "120vh", rotation: "random(-20, 20)", duration: 1.2, stagger: { from: "end", each: 0.08 }, ease: "power3.in" }, "-=0.9");
 
                 return () => {
                     split.revert();
@@ -254,26 +91,9 @@ function SecondPage() {
                     radiusY: 90,
                     scrollLength: 4200,
                     textSize: "1.25rem",
-
-                    snakePath: [
-                        { x: 115, y: -90 },
-                        { x: 170, y: -135 },
-                        { x: 240, y: -100 },
-                        { x: 285, y: -10 },
-                        { x: 240, y: 90 },
-                        { x: 150, y: 135 },
-                        { x: 40, y: 155 },
-                        { x: -80, y: 125 },
-                        { x: -180, y: 70 },
-                        { x: -250, y: 0 },
-                        { x: -285, y: -100 },
-                        { x: -320, y: -200 },
-                    ],
-
-                    sideX: [-90, -55, 45, 80, 140, 175],
-
+                    snakePath: [{ x: 115, y: -90 }, { x: 170, y: -135 }, { x: 240, y: -100 }, { x: 285, y: -10 }, { x: 240, y: 90 }, { x: 150, y: 135 }, { x: 40, y: 155 }, { x: -80, y: 125 }, { x: -180, y: 70 }, { x: -250, y: 0 }, { x: -285, y: -100 }, { x: -320, y: -200 }],
+                    sideX: [-225, -135, -45, 45, 135, 225],
                     sideY: [-105, 75, -105, 75, -105, 75],
-
                     sideScale: [0.55, 0.65, 0.6, 0.7, 0.58, 0.62],
                 });
             });
@@ -284,26 +104,9 @@ function SecondPage() {
                     radiusY: 180,
                     scrollLength: 5000,
                     textSize: "1.7rem",
-
-                    snakePath: [
-                        { x: 260, y: -180 },
-                        { x: 390, y: -270 },
-                        { x: 550, y: -190 },
-                        { x: 680, y: -20 },
-                        { x: 580, y: 160 },
-                        { x: 410, y: 270 },
-                        { x: 180, y: 320 },
-                        { x: -100, y: 270 },
-                        { x: -350, y: 150 },
-                        { x: -530, y: -10 },
-                        { x: -650, y: -220 },
-                        { x: -730, y: -430 },
-                    ],
-
-                    sideX: [-190, -140, 70, 140, 320, 400],
-
+                    snakePath: [{ x: 260, y: -180 }, { x: 390, y: -270 }, { x: 550, y: -190 }, { x: 680, y: -20 }, { x: 580, y: 160 }, { x: 410, y: 270 }, { x: 180, y: 320 }, { x: -100, y: 270 }, { x: -350, y: 150 }, { x: -530, y: -10 }, { x: -650, y: -220 }, { x: -730, y: -430 }],
+                    sideX: [-290, -240, -30, 40, 220, 300],
                     sideY: [-150, 90, -150, 90, -150, 90],
-
                     sideScale: [0.7, 0.82, 0.76, 0.9, 0.72, 0.8],
                 });
             });
@@ -314,27 +117,9 @@ function SecondPage() {
                     radiusY: 300,
                     scrollLength: 6000,
                     textSize: "2.2rem",
-
-                    snakePath: [
-                        { x: 430, y: -300 },
-                        { x: 620, y: -420 },
-                        { x: 850, y: -300 },
-                        { x: 1050, y: -50 },
-                        { x: 900, y: 250 },
-                        { x: 650, y: 430 },
-                        { x: 300, y: 500 },
-                        { x: -100, y: 400 },
-                        { x: -500, y: 220 },
-                        { x: -800, y: -50 },
-                        { x: -1000, y: -350 },
-                        { x: -1150, y: -700 },
-                        { x: -1300, y: -1000 },
-                    ],
-
-                    sideX: [-300, -250, 140, 260, 600, 750],
-
+                    snakePath: [{ x: 430, y: -300 }, { x: 620, y: -420 }, { x: 850, y: -300 }, { x: 1050, y: -50 }, { x: 900, y: 250 }, { x: 650, y: 430 }, { x: 300, y: 500 }, { x: -100, y: 400 }, { x: -500, y: 220 }, { x: -800, y: -50 }, { x: -1000, y: -350 }, { x: -1150, y: -700 }, { x: -1300, y: -1000 }],
+                    sideX: [-500, -450, -60, 60, 400, 550],
                     sideY: [-220, 80, -220, 80, -220, 80],
-
                     sideScale: [0.85, 1, 0.9, 1.05, 0.88, 0.95],
                 });
             });
