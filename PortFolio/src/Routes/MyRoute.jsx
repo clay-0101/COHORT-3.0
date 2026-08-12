@@ -8,11 +8,13 @@ import Bio from "../Pages/Bio/Bio";
 
 
 const MyRoute = () => {
-        useEffect(() => {
+    useEffect(() => {
         const lenis = new Lenis({
             duration: 1.5,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             smoothWheel: true,
+            smoothTouch: false, 
+            touchMultiplier: 2,
         });
 
         function raf(time) {
@@ -34,9 +36,9 @@ const MyRoute = () => {
         }, {
             path: '/about',
             element: <About />
-        },{
-            path : '/projects',
-            element : <ShowCase/>
+        }, {
+            path: '/projects',
+            element: <ShowCase />
         }
     ])
     return <RouterProvider router={router} />

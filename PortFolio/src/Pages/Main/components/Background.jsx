@@ -24,7 +24,6 @@ function Background() {
         />
       </picture>
 
-      {/* Grid Lines Overlay */}
 <div
   className="
     pointer-events-none

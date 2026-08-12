@@ -92,7 +92,7 @@ function SecondPage() {
                     scrollLength: 4200,
                     textSize: "1.25rem",
                     snakePath: [{ x: 115, y: -90 }, { x: 170, y: -135 }, { x: 240, y: -100 }, { x: 285, y: -10 }, { x: 240, y: 90 }, { x: 150, y: 135 }, { x: 40, y: 155 }, { x: -80, y: 125 }, { x: -180, y: 70 }, { x: -250, y: 0 }, { x: -285, y: -100 }, { x: -320, y: -200 }],
-                    sideX: [-225, -135, -45, 45, 135, 225],
+                    sideX: ["-55vw", "-33vw", "-11vw", "11vw", "33vw", "55vw"],
                     sideY: [-105, 75, -105, 75, -105, 75],
                     sideScale: [0.55, 0.65, 0.6, 0.7, 0.58, 0.62],
                 });
@@ -165,11 +165,7 @@ function SecondPage() {
                     {images2.map((image, index) => (
                         <div
                             key={`side-${index}`}
-                            className="side-card absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[10px] bg-[#222] shadow-[0_20px_60px_rgba(0,0,0,0.45)] will-change-transform sm:rounded-[12px] lg:rounded-[14px]"
-                            style={{
-                                width: "clamp(165px, 30vw, 420px)",
-                                height: "clamp(110px, 18vw, 250px)",
-                            }}
+                            className="side-card absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-sm:w-[clamp(85px,40vw,170px)] max-sm:h-[clamp(58px,26vw,115px)] sm:w-[clamp(165px,30vw,420px)] sm:h-[clamp(110px,18vw,250px)] overflow-hidden rounded-[10px] bg-[#222] shadow-[0_20px_60px_rgba(0,0,0,0.45)] will-change-transform sm:rounded-[12px] lg:rounded-[14px]"
                         >
                             <img
                                 src={image}
