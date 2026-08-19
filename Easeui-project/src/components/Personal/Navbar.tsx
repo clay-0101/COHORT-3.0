@@ -38,8 +38,6 @@ const Navbar = () => {
         >
           Components
         </li>
-        <li className="cursor-pointer hover:text-black">About</li>
-        <li className="cursor-pointer hover:text-black">Templates</li>
         {mode === "dark" && (
           <li
             className="cursor-pointer p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
