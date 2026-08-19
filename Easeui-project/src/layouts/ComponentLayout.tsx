@@ -18,7 +18,6 @@ const ComponentLayout = ({}: Props) => {
     "Navbar",
     "Carousel",
     "Tooltip",
-    "Layout",
   ];
 
   return (

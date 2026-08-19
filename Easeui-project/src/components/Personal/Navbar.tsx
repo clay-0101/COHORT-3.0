@@ -33,7 +33,7 @@ const Navbar = () => {
 
       <ul className="hidden md:flex items-center gap-6 text-gray-500">
         <li
-          onClick={() => navigate("components")}
+          onClick={() => navigate("components/button")}
           className="cursor-pointer hover:text-black"
         >
           Components
