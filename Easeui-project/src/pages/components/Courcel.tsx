@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+
 import ComponentDemo from '../ComponentsDemo'
 import CarouselOne from '@/components/Carousels/CarouselOne'
 import CarouselTwo from '@/components/Carousels/CarouselTwo'
@@ -6,9 +6,9 @@ import CarouselThree from '@/components/Carousels/CaroselThree'
 import useCarousel from '@/components/Carousels/CodeUsage'
 import PropsTable from '@/components/Personal/PropsTable'
 
-type Props = {}
 
-const Courcel = (props: Props) => {
+
+const Courcel = () => {
   let { carouselOneCode, carouselTwoCode, carouselThreeCode, propsData } = useCarousel()
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-12">

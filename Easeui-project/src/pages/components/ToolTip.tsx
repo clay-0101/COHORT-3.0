@@ -1,12 +1,10 @@
-import React from 'react'
 import ComponentDemo from '../ComponentsDemo'
-import { Button } from '@/components'
 import { useState } from 'react'
 import PropsTable from '@/components/Personal/PropsTable'
 
-type Props = {}
 
-const ToolTip = (props: Props) => {
+
+const ToolTip = () => {
     const [showFade, setShowFade] = useState(false);
     const [showFlip, setShowFlip] = useState(false);
     const [showFullscreen, setShowFullscreen] = useState(false);
