@@ -40,7 +40,7 @@ const ComponentLayout = ({}: Props) => {
               key={item}
               className={`cursor-pointer hover:text-black text-md hover:translate-x-1 transition-all duration-200 ease-in-out ${
                 location.pathname === `/components/${item.toLowerCase()}`
-                  ? "text-black"
+                  ? "text-indigo-600"
                   : "text-gray-400"
               }`}
             >
