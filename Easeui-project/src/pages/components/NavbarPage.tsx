@@ -1,6 +1,5 @@
 
 import ComponentDemo from "../ComponentsDemo";
-import { useState } from "react";
 import NavbarOne from "@/components/navbar/Navbar1";
 import NavbarTwo from "@/components/navbar/Navbar2";
 import NavbarThree from "@/components/navbar/Navbar3";

@@ -4,7 +4,6 @@ import { cn } from "@/libs/utils";
 
 const inputVariants = cva(
   "w-full rounded-md focus:outline-none shadow-sm transition-all duration-150 bg-white placeholder:text-gray-400",
-  // w-full bg-transparent border-b border-gray-500 pb-2 pt-6 focus:outline-none transition-all
   {
     variants: {
       size: {
@@ -32,14 +31,16 @@ const inputVariants = cva(
   }
 );
 
+// Yahan humne "size" aur "disabled" dono ko default input attributes se Omit kar diya hai
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "disabled">,
     VariantProps<typeof inputVariants> {
   label?: string;
   hint?: string;
   error?: string;
   id?: string;
   size?: "sm" | "md" | "lg";
+  disabled?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(

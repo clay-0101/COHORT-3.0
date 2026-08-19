@@ -1,18 +1,6 @@
 import { useState } from "react";
 
-/**
- * EaseUi — Homepage
- * -----------------------------------------------------------------------
- * Renders below the existing <Navbar />. Tailwind CSS only, no external
- * icon or animation libraries — all icons are inline SVGs so this file
- * has zero new dependencies.
- *
- * Optional: for the exact type pairing used here, add to index.html:
- *   <link rel="preconnect" href="https://fonts.googleapis.com">
- *   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
- * If skipped, everything falls back to system sans-serif gracefully.
- * -----------------------------------------------------------------------
- */
+
 
 const display = "font-['Space_Grotesk',_sans-serif]";
 const mono = "font-['JetBrains_Mono',_monospace]";
@@ -534,11 +522,3 @@ function TooltipIcon({ className }: IconProps) {
   );
 }
 
-function LayoutIcon({ className }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className}>
-      <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.6" />
-      <path d="M9 3v18" stroke="currentColor" strokeWidth="1.6" />
-    </svg>
-  );
-}
