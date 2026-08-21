@@ -20,14 +20,9 @@ export default function HomePage() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Hero                                                                */
-/* ------------------------------------------------------------------ */
-
 function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-gray-100 dark:border-white/5">
-      {/* faint accent glow, kept subtle on purpose */}
       <div
         aria-hidden
         className="pointer-events-none absolute -top-40 right-[-10%] h-[520px] w-[520px] rounded-full bg-[#6D5EF8]/10 blur-3xl dark:bg-[#6D5EF8]/20"
