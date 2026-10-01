@@ -133,7 +133,7 @@ const Navbar = () => {
 
         <a
           type="button"
-          href="https://www.linkedin.com/in/sainicarry/"
+          href="https://www.linkedin.com/in/carry-saini-527a6543b/"
           className="hidden rounded-full bg-white px-6 py-3 text-[13px] font-medium text-black shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md md:block"
         >
           Let's talk
