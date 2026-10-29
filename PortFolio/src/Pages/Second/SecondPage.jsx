@@ -183,15 +183,15 @@ function SecondPage() {
                             wordBreak: "normal",
                         }}
                     >
-                        I’m Carry, a frontend developer passionate about building modern,
+                        I’m Carry, a MERN stack developer passionate about building modern,
                         responsive, and user-focused digital experiences. With expertise in React,
-                        Tailwind CSS, GSAP animations, and emerging web technologies, I specialize
-                        in transforming ideas into interactive products that feel intuitive and
-                        inspiring. My approach blends clean code with creative design, ensuring
-                        every project is not just functional but also visually engaging. Driven by
-                        curiosity, I constantly experiment with new frameworks and tools, turning
-                        challenges into opportunities to innovate and share meaningful stories
-                        through technology.
+                        Redux, Tailwind CSS, GSAP animations, Node.js, Express, and MongoDB, I specialize
+                        in transforming ideas into complete products, from interactive interfaces to
+                        secure and scalable APIs. My approach blends clean code with creative design,
+                        ensuring every project is not just functional but also fast, safe, and visually
+                        engaging. Driven by curiosity, I constantly experiment with new frameworks and
+                        tools, turning challenges into opportunities to innovate and share meaningful
+                        stories through technology.
                     </p>
                 </div>
             </section>

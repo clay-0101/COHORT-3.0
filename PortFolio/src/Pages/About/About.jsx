@@ -232,8 +232,8 @@ export default function About() {
 
         <div className="relative z-10 mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-6 sm:pb-32 sm:pt-14 md:px-10">
           <div className="ab-eyebrow mb-6 flex flex-wrap items-center gap-3">
-            <span className="rotate-[-3deg] rounded-sm bg-[#141414] px-3 py-1 fnt-mono text-[11px] uppercase tracking-widest text-[#F3F1EC]">Building Interfaces</span>
-            <span className="rotate-[2deg] rounded-sm border border-[#2F6F6B]/40 bg-[#DCEFEE] px-3 py-1 fnt-mono text-[11px] text-[#1F5451] shadow-sm">React · Redux · GSAP</span>
+            <span className="rotate-[-3deg] rounded-sm bg-[#141414] px-3 py-1 fnt-mono text-[11px] uppercase tracking-widest text-[#F3F1EC]">Building Full-Stack</span>
+            <span className="rotate-[2deg] rounded-sm border border-[#2F6F6B]/40 bg-[#DCEFEE] px-3 py-1 fnt-mono text-[11px] text-[#1F5451] shadow-sm">MongoDB · Express · React · Node</span>
             <span className="rotate-[-1deg] rounded-sm border border-[#E4572E]/30 bg-[#FDE3DA] px-3 py-1 fnt-mono text-[11px] text-[#B23A19] shadow-sm">Editing Reels & Clips</span>
           </div>
 
@@ -243,9 +243,9 @@ export default function About() {
           </div>
 
           <div className="ab-role mt-3 flex flex-wrap items-center gap-3 sm:gap-4">
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">Frontend Developer</h2>
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">MERN Stack Developer</h2>
             <span className="h-1 w-1 rounded-full bg-[#E4572E]" />
-            <p className="fnt-mono text-xs text-black/50 sm:text-sm">interfaces · motion · edits</p>
+            <p className="fnt-mono text-xs text-black/50 sm:text-sm">interfaces · apis · motion · edits</p>
           </div>
 
           <div className="relative mt-10 grid grid-cols-1 gap-8 sm:mt-14 sm:gap-10 md:grid-cols-[260px_1fr_260px] md:items-start lg:grid-cols-[280px_1fr_280px]">
@@ -261,10 +261,15 @@ export default function About() {
                 <li className="ab-stack-row group flex items-center justify-between rounded px-2 py-1.5 text-sm transition-colors duration-200 hover:bg-[#141414] hover:text-[#F3F1EC]"><span className="font-medium">JavaScript (ES6+)</span><span className="rounded-sm bg-[#FDF3D0] px-1.5 py-0.5 fnt-mono text-[10px] uppercase tracking-wide text-[#8A6D00] group-hover:bg-white/10 group-hover:text-white/60">core</span></li>
                 <li className="ab-stack-row group flex items-center justify-between rounded px-2 py-1.5 text-sm transition-colors duration-200 hover:bg-[#141414] hover:text-[#F3F1EC]"><span className="font-medium">CSS / Tailwind</span><span className="rounded-sm bg-[#FDE3DA] px-1.5 py-0.5 fnt-mono text-[10px] uppercase tracking-wide text-[#B23A19] group-hover:bg-white/10 group-hover:text-white/60">style</span></li>
                 <li className="ab-stack-row group flex items-center justify-between rounded px-2 py-1.5 text-sm transition-colors duration-200 hover:bg-[#141414] hover:text-[#F3F1EC]"><span className="font-medium">GSAP</span><span className="rounded-sm bg-[#DCEFEE] px-1.5 py-0.5 fnt-mono text-[10px] uppercase tracking-wide text-[#1F5451] group-hover:bg-white/10 group-hover:text-white/60">motion</span></li>
+                <li className="ab-stack-row group flex items-center justify-between rounded px-2 py-1.5 text-sm transition-colors duration-200 hover:bg-[#141414] hover:text-[#F3F1EC]"><span className="font-medium">Node.js</span><span className="rounded-sm bg-[#DCEAFB] px-1.5 py-0.5 fnt-mono text-[10px] uppercase tracking-wide text-[#1E4D8C] group-hover:bg-white/10 group-hover:text-white/60">runtime</span></li>
+                <li className="ab-stack-row group flex items-center justify-between rounded px-2 py-1.5 text-sm transition-colors duration-200 hover:bg-[#141414] hover:text-[#F3F1EC]"><span className="font-medium">Express.js</span><span className="rounded-sm bg-[#EBE1FB] px-1.5 py-0.5 fnt-mono text-[10px] uppercase tracking-wide text-[#5B2E9C] group-hover:bg-white/10 group-hover:text-white/60">server</span></li>
+                <li className="ab-stack-row group flex items-center justify-between rounded px-2 py-1.5 text-sm transition-colors duration-200 hover:bg-[#141414] hover:text-[#F3F1EC]"><span className="font-medium">MongoDB</span><span className="rounded-sm bg-[#FDF3D0] px-1.5 py-0.5 fnt-mono text-[10px] uppercase tracking-wide text-[#8A6D00] group-hover:bg-white/10 group-hover:text-white/60">database</span></li>
+                <li className="ab-stack-row group flex items-center justify-between rounded px-2 py-1.5 text-sm transition-colors duration-200 hover:bg-[#141414] hover:text-[#F3F1EC]"><span className="font-medium">JWT & OAuth</span><span className="rounded-sm bg-[#FDE3DA] px-1.5 py-0.5 fnt-mono text-[10px] uppercase tracking-wide text-[#B23A19] group-hover:bg-white/10 group-hover:text-white/60">auth</span></li>
+                <li className="ab-stack-row group flex items-center justify-between rounded px-2 py-1.5 text-sm transition-colors duration-200 hover:bg-[#141414] hover:text-[#F3F1EC]"><span className="font-medium">Redis & Socket.io</span><span className="rounded-sm bg-[#DCEFEE] px-1.5 py-0.5 fnt-mono text-[10px] uppercase tracking-wide text-[#1F5451] group-hover:bg-white/10 group-hover:text-white/60">cache</span></li>
                 <li className="ab-stack-row group flex items-center justify-between rounded px-2 py-1.5 text-sm transition-colors duration-200 hover:bg-[#141414] hover:text-[#F3F1EC]"><span className="font-medium">Video Editing</span><span className="rounded-sm bg-[#FADCEC] px-1.5 py-0.5 fnt-mono text-[10px] uppercase tracking-wide text-[#9C2E6B] group-hover:bg-white/10 group-hover:text-white/60">extra</span></li>
               </ul>
 
-              <div className="ab-sticky mt-4 -rotate-2 rounded-sm bg-[#FFE07D] px-3 py-2 text-xs font-medium leading-snug shadow-sm">Also edits videos — polish doesn't stop at the browser.</div>
+              <div className="ab-sticky mt-4 -rotate-2 rounded-sm bg-[#FFE07D] px-3 py-2 text-xs font-medium leading-snug shadow-sm">Also edits videos — polish doesn't stop at the browser or the server.</div>
 
               <div className="mt-4 flex items-end gap-1 rounded-md bg-[#141414] px-3 py-3">
                 <span className="eq-bar h-6 w-1.5 rounded-full bg-[#E4572E]" /><span className="eq-bar h-8 w-1.5 rounded-full bg-[#FFC24B]" /><span className="eq-bar h-4 w-1.5 rounded-full bg-[#2F6F6B]" /><span className="eq-bar h-9 w-1.5 rounded-full bg-[#5DC8FF]" /><span className="eq-bar h-5 w-1.5 rounded-full bg-[#8B5CF6]" /><span className="eq-bar h-7 w-1.5 rounded-full bg-[#FF7DB8]" /><span className="ml-2 fnt-mono text-[10px] text-white/40">audio.wav</span>
@@ -284,9 +289,9 @@ export default function About() {
               <span className="ab-pin absolute z-20 flex items-center gap-1 rounded-full bg-violet-500 px-2.5 py-1 text-[11px] font-medium text-white shadow-md" style={{ top: "40%", left: "2%" }}><span className="h-1.5 w-1.5 rounded-full bg-white/80" />JS</span>
               <span className="ab-pin absolute z-20 flex items-center gap-1 rounded-full bg-orange-500 px-2.5 py-1 text-[11px] font-medium text-white shadow-md" style={{ top: "48%", left: "82%" }}><span className="h-1.5 w-1.5 rounded-full bg-white/80" />REACT</span>
               <span className="ab-pin absolute z-20 flex items-center gap-1 rounded-full bg-emerald-500 px-2.5 py-1 text-[11px] font-medium text-white shadow-md" style={{ top: "62%", left: "0%" }}><span className="h-1.5 w-1.5 rounded-full bg-white/80" />GSAP</span>
-              <span className="ab-pin absolute z-20 flex items-center gap-1 rounded-full bg-pink-500 px-2.5 py-1 text-[11px] font-medium text-white shadow-md" style={{ top: "70%", left: "84%" }}><span className="h-1.5 w-1.5 rounded-full bg-white/80" />REDUX</span>
+              <span className="ab-pin absolute z-20 flex items-center gap-1 rounded-full bg-pink-500 px-2.5 py-1 text-[11px] font-medium text-white shadow-md" style={{ top: "70%", left: "84%" }}><span className="h-1.5 w-1.5 rounded-full bg-white/80" />REDUX</span><span className="ab-pin absolute z-20 flex items-center gap-1 rounded-full bg-blue-500 px-2.5 py-1 text-[11px] font-medium text-white shadow-md" style={{ top: "28%", left: "80%" }}><span className="h-1.5 w-1.5 rounded-full bg-white/80" />NODE</span><span className="ab-pin absolute z-20 flex items-center gap-1 rounded-full bg-teal-600 px-2.5 py-1 text-[11px] font-medium text-white shadow-md" style={{ top: "80%", left: "4%" }}><span className="h-1.5 w-1.5 rounded-full bg-white/80" />MONGO</span>
 
-              <div className="ab-sticky absolute -bottom-8 right-0 rotate-[3deg] rounded-sm bg-white px-3 py-2 fnt-mono text-[11px] text-black/60 shadow-md md:right-[-1rem]">Pixel perfect,<br />shipped fast.</div>
+              <div className="ab-sticky absolute -bottom-8 right-0 rotate-[3deg] rounded-sm bg-white px-3 py-2 fnt-mono text-[11px] text-black/60 shadow-md md:right-[-1rem]">Pixel perfect UI,<br />secure APIs.</div>
             </div>
 
             <div className="flex flex-col gap-6">
@@ -314,7 +319,7 @@ export default function About() {
 
               <div className="ab-panel rounded-md border border-black/10 bg-white/90 p-4 shadow-sm">
                 <div className="mb-3 flex items-center justify-between border-b border-black/10 pb-2 text-sm font-semibold"><span>Currently</span></div>
-                <p className="text-sm text-black/70">Shipping component libraries and dashboard UIs, one hover state at a time.</p>
+                <p className="text-sm text-black/70">Shipping full-stack apps — APIs, auth flows and dashboard UIs, one endpoint and one hover state at a time.</p>
                 <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-black/10"><div className="h-full w-[80%] rounded-full bg-gradient-to-r from-[#2F6F6B] to-[#5DC8FF]" /></div>
                 <span className="mt-1 block fnt-mono text-[10px] text-black/40">80% caffeinated</span>
               </div>
@@ -334,7 +339,7 @@ export default function About() {
               <div ref={playheadRef} className="absolute inset-y-0 left-0 w-[2px]" style={{ backgroundColor: accentColor }} />
             </div>
 
-            <div className="mt-3 flex justify-between fnt-mono text-[9px] text-black/40 sm:text-[10px]"><span>React JS</span><span>Redux</span><span>GSAP</span><span>Video Edit</span></div>
+            <div className="mt-3 flex justify-between fnt-mono text-[9px] text-black/40 sm:text-[10px]"><span>React · Redux</span><span>Node · Express</span><span>MongoDB · Auth</span><span>GSAP · Edit</span></div>
 
             <div className="mt-3 flex items-center justify-center gap-2">
               <span ref={dot1} className="h-2 w-2 rounded-full bg-[#d4d4d4]" />
@@ -344,17 +349,17 @@ export default function About() {
             </div>
 
             <div className="relative mt-6 h-40 overflow-hidden rounded-md border border-black/10 bg-[#FAF9F5] sm:h-36">
-              <div ref={card1} className="absolute inset-0 flex flex-col justify-center gap-2 border-l-4 border-[#FF5D5D] px-5 py-4"><span className="fnt-mono text-[10px] uppercase tracking-widest text-[#B23A19]">Clip 01 / Component Architecture</span><h3 className="text-lg font-semibold">React JS</h3><p className="max-w-md text-sm text-black/60">Reusable, accessible components built with hooks and clean state boundaries — nothing tangled, nothing repeated.</p></div>
-              <div ref={card2} className="absolute inset-0 flex flex-col justify-center gap-2 border-l-4 border-[#5DC8FF] px-5 py-4"><span className="fnt-mono text-[10px] uppercase tracking-widest text-[#1E5C87]">Clip 02 / Predictable State</span><h3 className="text-lg font-semibold">Redux</h3><p className="max-w-md text-sm text-black/60">Global state managed through actions and reducers, kept lean so the data flow stays easy to trace.</p></div>
-              <div ref={card3} className="absolute inset-0 flex flex-col justify-center gap-2 border-l-4 border-[#8B5CF6] px-5 py-4"><span className="fnt-mono text-[10px] uppercase tracking-widest text-[#5B2E9C]">Clip 03 / Motion & Micro-interactions</span><h3 className="text-lg font-semibold">GSAP</h3><p className="max-w-md text-sm text-black/60">Scroll-triggered reveals, hover feedback and orchestrated page-load sequences — this whole page runs on it.</p></div>
-              <div ref={card4} className="absolute inset-0 flex flex-col justify-center gap-2 border-l-4 border-[#FFC24B] px-5 py-4"><span className="fnt-mono text-[10px] uppercase tracking-widest text-[#8A6D00]">Clip 04 / Post-Production</span><h3 className="text-lg font-semibold">Video Editing</h3><p className="max-w-md text-sm text-black/60">Cutting, grading and exporting clips — the same eye for timing that goes into every UI transition.</p></div>
+              <div ref={card1} className="absolute inset-0 flex flex-col justify-center gap-2 border-l-4 border-[#FF5D5D] px-5 py-4"><span className="fnt-mono text-[10px] uppercase tracking-widest text-[#B23A19]">Clip 01 / Components & State</span><h3 className="text-lg font-semibold">React JS & Redux</h3><p className="max-w-md text-sm text-black/60">Reusable components built with hooks, and global state managed through actions and reducers — nothing tangled, nothing repeated.</p></div>
+              <div ref={card2} className="absolute inset-0 flex flex-col justify-center gap-2 border-l-4 border-[#5DC8FF] px-5 py-4"><span className="fnt-mono text-[10px] uppercase tracking-widest text-[#1E5C87]">Clip 02 / Server & APIs</span><h3 className="text-lg font-semibold">Node.js & Express</h3><p className="max-w-md text-sm text-black/60">RESTful APIs with clean routing, middleware and CRUD, file handling, ImageKit uploads, Redis caching and real-time with Socket.io.</p></div>
+              <div ref={card3} className="absolute inset-0 flex flex-col justify-center gap-2 border-l-4 border-[#8B5CF6] px-5 py-4"><span className="fnt-mono text-[10px] uppercase tracking-widest text-[#5B2E9C]">Clip 03 / Data & Security</span><h3 className="text-lg font-semibold">MongoDB, JWT & OAuth</h3><p className="max-w-md text-sm text-black/60">Mongoose schemas, aggregation and indexing, plus access/refresh tokens, Google OAuth and express-validator.</p></div>
+              <div ref={card4} className="absolute inset-0 flex flex-col justify-center gap-2 border-l-4 border-[#FFC24B] px-5 py-4"><span className="fnt-mono text-[10px] uppercase tracking-widest text-[#8A6D00]">Clip 04 / Motion & Post-Production</span><h3 className="text-lg font-semibold">GSAP & Video Editing</h3><p className="max-w-md text-sm text-black/60">Scroll-triggered reveals and micro-interactions — this whole page runs on GSAP — plus cutting, grading and exporting clips.</p></div>
             </div>
 
             <p className="mt-3 text-center fnt-mono text-[10px] text-black/30">scroll to move the playhead</p>
           </div>
 
           <div className="mt-6 flex flex-col items-start justify-between gap-8 border-t border-black/10 pt-8 sm:mt-8 md:flex-row md:items-end">
-            <p className="max-w-md text-base leading-snug text-black/70 sm:text-lg">"Clean code, clear motion, and a UI that explains itself before the user has to ask."</p>
+            <p className="max-w-md text-base leading-snug text-black/70 sm:text-lg">"Clean code, clear motion, secure APIs — a product that explains itself before the user has to ask."</p>
             <div className="flex items-center gap-2 rounded-sm border border-black/10 bg-white px-3 py-1.5 fnt-mono text-xs text-black/50 shadow-sm"><span className="h-2 w-2 rotate-45" style={{ backgroundColor: accentColor }} />Scroll to explore</div>
           </div>
         </div>

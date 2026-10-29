@@ -50,7 +50,7 @@ const HeroText = () => {
         <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[80px] lg:text-black xl:text-[88px]">
           <span className="block overflow-hidden">
             <span ref={line1Ref} className="block">
-              Frontend Developer,
+              MERN Stack Developer,
             </span>
           </span>
 
@@ -65,9 +65,9 @@ const HeroText = () => {
           ref={paraRef}
           className="mx-auto max-w-[290px] text-xs text-white/70 sm:max-w-sm sm:text-sm md:text-[12px] lg:mx-0 lg:text-black/70"
         >
-          I build interfaces with React, Redux, and GSAP — fast, animated,
-          and made to feel alive on scroll. Also edit the reels that show
-          them off.
+          I build full-stack products — React, Redux, and GSAP on the front,
+          Node.js, Express, and MongoDB on the back. Fast, animated, secure.
+          Also edit the reels that show them off.
         </p>
 
         <div>

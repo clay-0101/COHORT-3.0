@@ -206,10 +206,10 @@ const Footer = () => {
             <div className="footer-top-item md:col-span-4">
               <div className="footer-mono mb-2 text-[9px] uppercase tracking-[.3em] text-white/30 md:mb-5">01 / About</div>
               <h3 className="footer-display text-2xl font-bold uppercase leading-[.85] tracking-tight md:text-4xl lg:text-5xl">
-                Frontend<br /><span className="text-white/35">Developer</span>
+                MERN Stack<br /><span className="text-white/35">Developer</span>
               </h3>
               <p className="footer-mono mt-3 max-w-[300px] text-[9px] leading-[1.6] text-white/40 md:mt-6 md:text-[10px] md:leading-[1.8]">
-                Building interfaces, experimenting with motion and turning ideas into digital experiences.
+                Building interfaces and APIs, experimenting with motion and turning ideas into full-stack digital experiences.
               </p>
             </div>
 
@@ -266,7 +266,7 @@ const Footer = () => {
               </div>
               <div className="footer-bottom-item hidden md:block">
                 <p>STACK</p>
-                <p className="mt-1 text-white/60">REACT / GSAP / TAILWIND</p>
+                <p className="mt-1 text-white/60">MERN / REDUX / GSAP / TAILWIND</p>
               </div>
               <div className="footer-bottom-item flex flex-col gap-2">
                 <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="footer-link flex w-fit items-center gap-2 text-white/55">

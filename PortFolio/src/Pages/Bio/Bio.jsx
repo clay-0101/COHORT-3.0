@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const HEADING_TEXT =
-  "A Frontend Developer Who Turns Static Screens Into Interfaces That Move, Respond, and Feel Alive.";
+  "A MERN Stack Developer Who Builds Interfaces That Move and Backends That Scale, Secure, Fast, and Alive.";
 
 const CARDS = [
   {
@@ -23,6 +23,22 @@ const CARDS = [
   {
     title: "Tailwind CSS & Responsive Design",
     text: "Interfaces that hold up on any screen size, styled fast without sacrificing a polished, custom look.",
+  },
+  {
+    title: "Node.js & Express.js APIs",
+    text: "RESTful APIs with clean routing, middleware and CRUD, plus file handling, FormData uploads and ImageKit.",
+  },
+  {
+    title: "MongoDB & Mongoose",
+    text: "Cluster connections, schema design, aggregation pipelines, indexing and DB optimisation for fast queries.",
+  },
+  {
+    title: "Authentication & Security",
+    text: "JWT access and refresh tokens, Google OAuth, express-validator checks, and defences against web attacks.",
+  },
+  {
+    title: "Redis, Real-Time & Payments",
+    text: "Redis caching and beyond, Socket.io real-time communication, and Razorpay payment gateway integration.",
   },
   {
     title: "Video Editing & Post-Production",
@@ -207,7 +223,7 @@ const Bio = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative z-20 min-h-[320vh] w-full bg-black font-['Inter'] text-white">
+    <section ref={sectionRef} className="relative z-20 min-h-[480vh] w-full bg-black font-['Inter'] text-white">
       <div className="sticky top-0 flex h-screen w-full items-center overflow-hidden bg-black px-4 sm:px-6 md:px-8 lg:px-10 xl:px-[56px]">
         <div className="relative h-full w-full">
           <div className="grid h-full w-full grid-cols-1 gap-6 lg:grid-cols-[40%_60%] lg:gap-6 xl:gap-8">
